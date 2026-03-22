@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "Budget Free Engine",
+    "copyright": "© 2026 Budget Free Engine.",
+    "privacyPolicy": "Privacy Policy",
+    "admin": {
+      "logout": "Sign Out",
+      "login": "Login"
+    }
+  },
+  "landing": {
+    "badge": "✨ 100% free, no sign-up",
+    "title": "Calculate your software project budget",
+    "titleHighlight": "in minutes",
+    "subtitle": "42 smart questions that adapt to your project. Get a complexity estimate, investment range, and timeline.",
+    "calculate": "Calculate my budget",
+    "estimatedMin": "~5 minutes",
+    "trustNoCadastro": "🔒 No sign-up",
+    "trustLanguages": "🌍 4 languages",
+    "trustCurrencies": "💱 3 currencies",
+    "trustCriteria": "📊 42 criteria",
+    "featuresTitle": "Everything you need to estimate",
+    "featuresSubtitle": "Simple, fast and accurate",
+    "featureTree": "Smart Decision Tree",
+    "featureTreeDesc": "42 adaptive questions that automatically adjust to your project type, revealing the real complexity.",
+    "featureInstant": "Instant Estimate",
+    "featureInstantDesc": "Detailed result with investment range, timeline, and complexity level generated in seconds.",
+    "featureMultilingual": "4 Languages, 3 Currencies",
+    "featureMultilingualDesc": "Full support for PT, EN, ES, and IT with values in BRL, USD, and EUR.",
+    "socialCounter": "1,200+",
+    "socialCounterLabel": "budgets generated for free",
+    "testimonial1Quote": "I saved hours of spreadsheets and alignment meetings. Now I arrive at conversations with the numbers already structured.",
+    "testimonial1Author": "Maria S.",
+    "testimonial1Role": "Product Manager",
+    "testimonial2Quote": "I use it to give quick estimates to clients before closing a proposal. Professional and objective.",
+    "testimonial2Author": "Carlos R.",
+    "testimonial2Role": "Dev Freelancer",
+    "testimonial3Quote": "The 42 questions cover everything I need to qualify a project. An indispensable tool.",
+    "testimonial3Author": "Ana L.",
+    "testimonial3Role": "Tech Lead"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundMessage": "The page you are looking for does not exist or has been moved.",
+    "serverError": "Internal server error",
+    "serverErrorMessage": "An unexpected error occurred. Please try again.",
+    "tryAgain": "Try again",
+    "goHome": "Back to home"
+  }
+}

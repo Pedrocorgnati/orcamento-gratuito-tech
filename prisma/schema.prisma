@@ -1,0 +1,228 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Questions & Options
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Question {
+  id         String  @id @default(cuid())
+  block      String // QuestionBlock
+  type       String // QuestionType
+  order      Int
+  required   Boolean @default(true)
+  skip_logic Json?
+
+  options              Option[]             @relation("QuestionOptions")
+  nextOptions          Option[]             @relation("NextQuestion")
+  translations         QuestionTranslation[]
+  sessions             Session[]            @relation("CurrentQuestion")
+  answers              Answer[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([block])
+  @@index([block, order])
+  @@map("questions")
+}
+
+model Option {
+  id                String  @id @default(cuid())
+  question_id       String
+  next_question_id  String?
+  price_impact      Float   @default(0)
+  time_impact       Float   @default(0)
+  complexity_impact Float   @default(0)
+  weight            Float   @default(1.0)
+  order             Int
+
+  question     Question           @relation("QuestionOptions", fields: [question_id], references: [id], onDelete: Cascade)
+  nextQuestion Question?          @relation("NextQuestion", fields: [next_question_id], references: [id])
+  translations OptionTranslation[]
+  answers      Answer[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([question_id])
+  @@index([next_question_id])
+  @@map("options")
+}
+
+model QuestionTranslation {
+  id          String  @id @default(cuid())
+  question_id String
+  locale      String // Locale
+  title       String
+  description String?
+  help_text   String?
+
+  question Question @relation(fields: [question_id], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@unique([question_id, locale])
+  @@map("question_translations")
+}
+
+model OptionTranslation {
+  id          String  @id @default(cuid())
+  option_id   String
+  locale      String // Locale
+  label       String
+  description String?
+
+  option Option @relation(fields: [option_id], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@unique([option_id, locale])
+  @@map("option_translations")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Sessions & Answers
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Session {
+  id                     String   @id @default(cuid())
+  status                 String   @default("active") // SessionStatus
+  current_question_id    String?
+  project_type           String? // ProjectType
+  path_taken             Json     @default("[]")
+  accumulated_price      Float    @default(0)
+  accumulated_time       Float    @default(0)
+  accumulated_complexity Float    @default(0)
+  questions_answered     Int      @default(0)
+  progress_percentage    Float    @default(0)
+  locale                 String   @default("pt-BR") // Locale
+  currency               String   @default("BRL") // Currency
+  visitor_ip             String?
+  user_agent             String?
+  expires_at             DateTime
+
+  currentQuestion Question? @relation("CurrentQuestion", fields: [current_question_id], references: [id])
+  answers         Answer[]
+  lead            Lead?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([status])
+  @@index([expires_at])
+  @@index([status, expires_at])
+  @@map("sessions")
+}
+
+model Answer {
+  id                         String  @id @default(cuid())
+  session_id                 String
+  question_id                String
+  option_id                  String?
+  text_value                 String?
+  price_impact_snapshot      Float   @default(0)
+  time_impact_snapshot       Float   @default(0)
+  complexity_impact_snapshot Float   @default(0)
+  step_number                Int
+
+  session  Session  @relation(fields: [session_id], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [question_id], references: [id])
+  option   Option?  @relation(fields: [option_id], references: [id])
+
+  created_at DateTime @default(now())
+
+  @@unique([session_id, question_id])
+  @@index([session_id])
+  @@map("answers")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Leads
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Lead {
+  id                  String    @id @default(cuid())
+  session_id          String    @unique
+  name                String
+  email               String
+  phone               String?
+  company             String?
+  score               String // LeadScore
+  score_budget        Int
+  score_timeline      Int
+  score_profile       Int
+  score_total         Int
+  project_type        String // ProjectType
+  complexity          String // ComplexityLevel
+  estimated_price_min Float
+  estimated_price_max Float
+  estimated_days_min  Int
+  estimated_days_max  Int
+  features            Json
+  scope_story         String    @db.Text
+  locale              String
+  currency            String
+  consent_given       Boolean
+  consent_version     String
+  consent_at          DateTime
+  email_status        String    @default("pending") // EmailStatus
+  email_retry_count   Int       @default(0)
+  anonymized_at       DateTime?
+
+  session Session @relation(fields: [session_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([score])
+  @@index([project_type])
+  @@index([created_at])
+  @@index([email_status])
+  @@index([anonymized_at])
+  @@map("leads")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Config & Exchange Rates
+// ─────────────────────────────────────────────────────────────────────────────
+
+model ExchangeRate {
+  id            String @id @default(cuid())
+  from_currency String
+  to_currency   String
+  rate          Float
+  updated_by    String?
+
+  updated_at DateTime @updatedAt
+
+  @@unique([from_currency, to_currency])
+  @@map("exchange_rates")
+}
+
+model PricingConfig {
+  id                              String @id @default(cuid())
+  project_type                    String @unique // ProjectType
+  base_price                      Float
+  base_days                       Int
+  complexity_multiplier_low       Float  @default(1.0)
+  complexity_multiplier_medium    Float  @default(1.3)
+  complexity_multiplier_high      Float  @default(1.7)
+  complexity_multiplier_very_high Float  @default(2.2)
+
+  updated_at DateTime @updatedAt
+
+  @@map("pricing_configs")
+}

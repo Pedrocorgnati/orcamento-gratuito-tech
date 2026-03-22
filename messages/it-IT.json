@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "Budget Free Engine",
+    "copyright": "© 2026 Budget Free Engine.",
+    "privacyPolicy": "Politica sulla Privacy",
+    "admin": {
+      "logout": "Esci",
+      "login": "Accedi"
+    }
+  },
+  "landing": {
+    "badge": "✨ 100% gratuito, senza registrazione",
+    "title": "Calcola il budget del tuo progetto software",
+    "titleHighlight": "in minuti",
+    "subtitle": "42 domande intelligenti che si adattano al tuo progetto. Ricevi una stima di complessità, fascia di investimento e tempistica.",
+    "calculate": "Calcola il mio budget",
+    "estimatedMin": "~5 minuti",
+    "trustNoCadastro": "🔒 Senza registrazione",
+    "trustLanguages": "🌍 4 lingue",
+    "trustCurrencies": "💱 3 valute",
+    "trustCriteria": "📊 42 criteri",
+    "featuresTitle": "Tutto ciò di cui hai bisogno per stimare",
+    "featuresSubtitle": "Semplice, veloce e preciso",
+    "featureTree": "Albero Decisionale Intelligente",
+    "featureTreeDesc": "42 domande adattive che si regolano automaticamente al tipo di progetto, rivelando la complessità reale.",
+    "featureInstant": "Stima Istantanea",
+    "featureInstantDesc": "Risultato dettagliato con fascia di investimento, tempistica e livello di complessità generato in secondi.",
+    "featureMultilingual": "4 Lingue, 3 Valute",
+    "featureMultilingualDesc": "Supporto completo per PT, EN, ES e IT con valori in BRL, USD e EUR.",
+    "socialCounter": "1.200+",
+    "socialCounterLabel": "preventivi generati gratuitamente",
+    "testimonial1Quote": "Ho risparmiato ore di fogli di calcolo e riunioni di allineamento. Ora arrivo alle conversazioni con i numeri già strutturati.",
+    "testimonial1Author": "Maria S.",
+    "testimonial1Role": "Product Manager",
+    "testimonial2Quote": "Lo uso per dare stime rapide ai clienti prima di chiudere una proposta. Professionale e obiettivo.",
+    "testimonial2Author": "Carlos R.",
+    "testimonial2Role": "Dev Freelancer",
+    "testimonial3Quote": "Le 42 domande coprono tutto ciò di cui ho bisogno per qualificare un progetto. Strumento indispensabile.",
+    "testimonial3Author": "Ana L.",
+    "testimonial3Role": "Tech Lead"
+  },
+  "errors": {
+    "notFound": "Pagina non trovata",
+    "notFoundMessage": "La pagina che stai cercando non esiste o è stata spostata.",
+    "serverError": "Errore interno del server",
+    "serverErrorMessage": "Si è verificato un errore imprevisto. Per favore riprova.",
+    "tryAgain": "Riprova",
+    "goHome": "Torna alla home"
+  }
+}

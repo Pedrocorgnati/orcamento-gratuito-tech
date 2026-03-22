@@ -1,0 +1,50 @@
+{
+  "common": {
+    "appName": "Budget Free Engine",
+    "copyright": "© 2026 Budget Free Engine.",
+    "privacyPolicy": "Política de Privacidade",
+    "admin": {
+      "logout": "Sair",
+      "login": "Login"
+    }
+  },
+  "landing": {
+    "badge": "✨ 100% gratuito, sem cadastro",
+    "title": "Calcule o orçamento do seu projeto de software",
+    "titleHighlight": "em minutos",
+    "subtitle": "42 perguntas inteligentes que se adaptam ao seu projeto. Receba uma estimativa de complexidade, faixa de investimento e prazo.",
+    "calculate": "Calcular meu orçamento",
+    "estimatedMin": "~5 minutos",
+    "trustNoCadastro": "🔒 Sem cadastro",
+    "trustLanguages": "🌍 4 idiomas",
+    "trustCurrencies": "💱 3 moedas",
+    "trustCriteria": "📊 42 critérios",
+    "featuresTitle": "Tudo que você precisa para estimar",
+    "featuresSubtitle": "Simples, rápido e preciso",
+    "featureTree": "Árvore de Decisão Inteligente",
+    "featureTreeDesc": "42 perguntas adaptativas que se ajustam automaticamente ao seu tipo de projeto, revelando a complexidade real.",
+    "featureInstant": "Estimativa Instantânea",
+    "featureInstantDesc": "Resultado detalhado com faixa de investimento, prazo e nível de complexidade gerado em segundos.",
+    "featureMultilingual": "4 Idiomas, 3 Moedas",
+    "featureMultilingualDesc": "Suporte completo para PT, EN, ES e IT com valores em BRL, USD e EUR.",
+    "socialCounter": "1.200+",
+    "socialCounterLabel": "orçamentos gerados gratuitamente",
+    "testimonial1Quote": "Economizei horas de planilhas e reuniões de alinhamento. Agora chego nas conversas com os números já estruturados.",
+    "testimonial1Author": "Maria S.",
+    "testimonial1Role": "Product Manager",
+    "testimonial2Quote": "Uso para dar estimativa rápida para clientes antes de fechar proposta. Profissional e objetivo.",
+    "testimonial2Author": "Carlos R.",
+    "testimonial2Role": "Dev Freelancer",
+    "testimonial3Quote": "As 42 perguntas cobrem tudo que preciso para qualificar um projeto. Ferramenta indispensável.",
+    "testimonial3Author": "Ana L.",
+    "testimonial3Role": "Tech Lead"
+  },
+  "errors": {
+    "notFound": "Página não encontrada",
+    "notFoundMessage": "A página que você procura não existe ou foi movida.",
+    "serverError": "Erro interno do servidor",
+    "serverErrorMessage": "Ocorreu um erro inesperado. Tente novamente.",
+    "tryAgain": "Tentar novamente",
+    "goHome": "Voltar ao início"
+  }
+}

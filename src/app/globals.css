@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Class-based dark mode for next-themes */
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Design Tokens ── */
+@layer base {
+  :root {
+    /* Cores principais (Light - L22 Indigo Stripe) */
+    --color-primary: #4F46E5;
+    --color-primary-hover: #4338CA;
+    --color-on-primary: #FFFFFF;
+    --color-secondary: #6366F1;
+    --color-on-secondary: #FFFFFF;
+    --color-accent: #C7D2FE;
+    --color-on-accent: #312E81;
+    --color-background: #FFFFFF;
+    --color-surface: #F9FAFB;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6B7280;
+    --color-text-muted: #9CA3AF;
+    --color-border: #E5E7EB;
+    --color-muted: #F3F4F6;
+
+    /* Semânticas */
+    --color-success: #059669;
+    --color-on-success: #FFFFFF;
+    --color-warning: #D97706;
+    --color-on-warning: #FFFFFF;
+    --color-danger: #DC2626;
+    --color-on-danger: #FFFFFF;
+    --color-info: #0284C7;
+    --color-on-info: #FFFFFF;
+
+    /* Tipografia */
+    --font-family-base: 'Inter', sans-serif;
+    --font-family-mono: 'JetBrains Mono', monospace;
+
+    /* Raios */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+
+    /* Sombras */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+
+    /* Transições */
+    --duration-fast: 150ms;
+    --duration-normal: 200ms;
+    --duration-slow: 300ms;
+  }
+
+  .dark {
+    /* Cores principais (Dark - D15 Slate Indigo) */
+    --color-primary: #818CF8;
+    --color-primary-hover: #A5B4FC;
+    --color-on-primary: #0F0F1E;
+    --color-secondary: #6366F1;
+    --color-on-secondary: #FFFFFF;
+    --color-accent: #312E81;
+    --color-on-accent: #C7D2FE;
+    --color-background: #0F0F1E;
+    --color-surface: #1A1A2E;
+    --color-text-primary: #E0E7FF;
+    --color-text-secondary: #94A3B8;
+    --color-text-muted: #64748B;
+    --color-border: #2D2D5E;
+    --color-muted: #1A1A2E;
+
+    /* Semânticas dark */
+    --color-success: #34D399;
+    --color-on-success: #064E3B;
+    --color-warning: #FBBF24;
+    --color-on-warning: #78350F;
+    --color-danger: #FB7185;
+    --color-on-danger: #4C0519;
+    --color-info: #38BDF8;
+    --color-on-info: #0C4A6E;
+
+    /* Sombras dark */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
