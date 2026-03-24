@@ -1,46 +1,66 @@
-import { PublicLayout } from "@/components/layout";
-import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
-import type { Locale } from "@/i18n/routing";
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import type { AppLocale } from '@/i18n/routing'
+import { SessionStatus } from '@/lib/enums'
+import { COOKIE_NAMES } from '@/lib/constants'
 
-type PageProps = {
-  params: Promise<{ locale: string }>;
-};
+type FlowEntryPageProps = {
+  params: Promise<{ locale: string }>
+}
 
-export const metadata: Metadata = {
-  title: "Calcular Orçamento",
-};
+/**
+ * Entry point do fluxo de orçamento.
+ * - Se cookie session_id existe e sessão está ativa: retoma no ponto atual
+ * - Se sessão está COMPLETED: redireciona para /result
+ * - Sem sessão: cria nova via POST /api/v1/sessions e redireciona para /flow/Q001
+ */
+export default async function FlowEntryPage({ params }: FlowEntryPageProps) {
+  const { locale } = await params
+  const safeLocale = locale as AppLocale
 
-// TODO: Implementar módulo decision-engine-ui (module-8)
-export default async function FlowPage({ params }: PageProps) {
-  const { locale } = await params;
-  const safeLocale = locale as Locale;
+  const cookieStore = await cookies()
+  const sessionId = cookieStore.get(COOKIE_NAMES.SESSION_ID)?.value
 
-  return (
-    <PublicLayout locale={safeLocale}>
-      <div data-testid="flow-page" className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
-        <div className="text-5xl mb-4" aria-hidden="true">
-          🚀
-        </div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-          Motor de Decisão
-        </h1>
-        <p className="mt-3 max-w-md text-gray-600 dark:text-gray-400">
-          Esta seção está em desenvolvimento. O fluxo de perguntas interativo
-          será implementado em breve.
-        </p>
-        {/* RESOLVED: <Link><Button> → <Link className> direto */}
-        <div className="mt-6">
-          <Link
-            href="/"
-            locale={safeLocale}
-            data-testid="flow-back-button"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-lg border-2 border-blue-600 px-6 text-base font-medium text-blue-600 transition-colors hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950"
-          >
-            Voltar ao início
-          </Link>
-        </div>
-      </div>
-    </PublicLayout>
-  );
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
+
+  if (sessionId) {
+    // Sessão existente: verificar status
+    try {
+      const res = await fetch(`${baseUrl}/api/v1/sessions/${sessionId}`, {
+        headers: { Cookie: `${COOKIE_NAMES.SESSION_ID}=${sessionId}` },
+        cache: 'no-store',
+        signal: AbortSignal.timeout(5_000),
+      })
+
+      if (res.ok) {
+        const session = await res.json()
+        if (session.status === SessionStatus.COMPLETED) {
+          redirect(`/${safeLocale}/result`)
+        }
+        if (session.current_question_id) {
+          redirect(`/${safeLocale}/flow/${session.current_question_id}`)
+        }
+      }
+    } catch {
+      // Sessão inválida ou expirada — criar nova abaixo
+    }
+  }
+
+  // Sem sessão válida: criar nova
+  const res = await fetch(`${baseUrl}/api/v1/sessions`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ locale: safeLocale, currency: 'BRL' }),
+    cache: 'no-store',
+    signal: AbortSignal.timeout(5_000),
+  })
+
+  if (!res.ok) {
+    // Lança erro que será capturado pelo error.tsx
+    throw new Error('Falha ao criar sessão de orçamento')
+  }
+
+  const session = await res.json()
+  const firstQuestionId = session.current_question_id ?? 'Q001'
+  redirect(`/${safeLocale}/flow/${firstQuestionId}`)
 }

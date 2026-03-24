@@ -1,10 +1,12 @@
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
+import { CookieConsentBanner } from "@/components/layout/CookieConsentBanner";
+import { HtmlLangUpdater } from "@/components/layout/HtmlLangUpdater";
 
 type LocaleLayoutProps = {
   children: React.ReactNode;
@@ -38,6 +40,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound();
   }
 
+  setRequestLocale(locale);
+
   let messages;
   try {
     messages = await getMessages();
@@ -47,6 +51,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <HtmlLangUpdater locale={locale} />
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -54,6 +59,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         disableTransitionOnChange
       >
         {children}
+        <CookieConsentBanner />
         <Toaster
           position="bottom-right"
           richColors

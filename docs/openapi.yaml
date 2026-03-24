@@ -1,0 +1,1287 @@
+openapi: 3.1.0
+info:
+  title: "Budget Free Engine API"
+  description: |
+    Contrato de API gerado pelo SystemForge a partir do LLD.md.
+    Sistema de geração de orçamentos para projetos de software — lead magnet.
+    Monolito Next.js App Router com Prisma + Supabase PostgreSQL.
+  version: "1.0.0"
+  contact:
+    name: "Budget Free Engine Team"
+
+servers:
+  - url: "http://localhost:3000/api/v1"
+    description: "Desenvolvimento"
+  - url: "https://orcamentogratuito.tech/api/v1"
+    description: "Produção"
+
+security:
+  - supabaseAuth: []
+
+tags:
+  - name: sessions
+    description: "Sessões anônimas do fluxo de orçamento"
+  - name: estimation
+    description: "Cálculo de estimativa de preço e prazo"
+  - name: leads
+    description: "Captura e qualificação de leads"
+  - name: admin
+    description: "Painel administrativo (requer autenticação Supabase)"
+  - name: actions
+    description: "Server Actions Next.js expostos como endpoints internos"
+
+components:
+  securitySchemes:
+    supabaseAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "Token JWT emitido pelo Supabase Auth (magic link). Usado apenas em rotas /admin/*."
+
+  schemas:
+    # ──────────────────────────────────────────────────────────────────────────
+    # Entidades do ERD
+    # ──────────────────────────────────────────────────────────────────────────
+
+    Session:
+      type: object
+      required:
+        - id
+        - status
+        - locale
+        - currency
+        - accumulated_price
+        - accumulated_time
+        - accumulated_complexity
+        - questions_answered
+        - progress_percentage
+        - path_taken
+        - expires_at
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          description: "CUID da sessão (armazenado no cookie)"
+          example: "clxyz123abc"
+        status:
+          $ref: '#/components/schemas/SessionStatus'
+        current_question_id:
+          type: [string, 'null']
+          description: "ID da pergunta atual no fluxo"
+          example: "Q001"
+        project_type:
+          $ref: '#/components/schemas/ProjectType'
+        path_taken:
+          type: array
+          items:
+            type: string
+          description: "Array ordenado de question_ids respondidas"
+          example: ["Q001", "Q005", "Q010"]
+        accumulated_price:
+          type: number
+          format: float
+          description: "Soma dos price_impacts das respostas (BRL)"
+          example: 5000.0
+        accumulated_time:
+          type: number
+          format: float
+          description: "Soma dos time_impacts das respostas (dias)"
+          example: 15.0
+        accumulated_complexity:
+          type: number
+          format: float
+          description: "Soma dos complexity_impacts das respostas"
+          example: 42.0
+        questions_answered:
+          type: integer
+          description: "Número de perguntas respondidas"
+          example: 8
+        progress_percentage:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: "Percentual estimado de progresso (0-100)"
+          example: 50.0
+        locale:
+          $ref: '#/components/schemas/Locale'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        expires_at:
+          type: string
+          format: date-time
+          description: "TTL de 7 dias a partir da criação"
+          example: "2026-03-28T10:00:00Z"
+        created_at:
+          type: string
+          format: date-time
+          example: "2026-03-21T10:00:00Z"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2026-03-21T10:30:00Z"
+
+    Lead:
+      type: object
+      required:
+        - id
+        - session_id
+        - name
+        - email
+        - score
+        - score_budget
+        - score_timeline
+        - score_profile
+        - score_total
+        - project_type
+        - complexity
+        - estimated_price_min
+        - estimated_price_max
+        - estimated_days_min
+        - estimated_days_max
+        - features
+        - scope_story
+        - locale
+        - currency
+        - consent_given
+        - consent_version
+        - consent_at
+        - email_status
+        - email_retry_count
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          description: "CUID do lead"
+          example: "lead_abc123"
+        session_id:
+          type: string
+          description: "CUID da sessão que originou o lead (unique)"
+          example: "clxyz123abc"
+        name:
+          type: string
+          description: "Nome do visitante"
+          example: "João Silva"
+        email:
+          type: string
+          format: email
+          description: "Email do visitante"
+          example: "joao@example.com"
+        phone:
+          type: [string, 'null']
+          description: "Telefone (opcional)"
+          example: "+5511999999999"
+        company:
+          type: [string, 'null']
+          description: "Empresa (opcional)"
+          example: "Startup X"
+        score:
+          $ref: '#/components/schemas/LeadScore'
+        score_budget:
+          type: integer
+          minimum: 0
+          maximum: 40
+          description: "Pontuação de budget (0-40)"
+          example: 32
+        score_timeline:
+          type: integer
+          minimum: 0
+          maximum: 30
+          description: "Pontuação de timeline (0-30)"
+          example: 24
+        score_profile:
+          type: integer
+          minimum: 0
+          maximum: 30
+          description: "Pontuação de perfil (0-30)"
+          example: 22
+        score_total:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: "Pontuação total (0-100)"
+          example: 78
+        project_type:
+          $ref: '#/components/schemas/ProjectType'
+        complexity:
+          $ref: '#/components/schemas/ComplexityLevel'
+        estimated_price_min:
+          type: number
+          format: float
+          description: "Preço mínimo estimado (BRL)"
+          example: 15000.0
+        estimated_price_max:
+          type: number
+          format: float
+          description: "Preço máximo estimado (BRL)"
+          example: 25000.0
+        estimated_days_min:
+          type: integer
+          description: "Prazo mínimo estimado (dias)"
+          example: 45
+        estimated_days_max:
+          type: integer
+          description: "Prazo máximo estimado (dias)"
+          example: 60
+        features:
+          type: array
+          items:
+            type: string
+          description: "Lista de funcionalidades selecionadas"
+          example: ["Autenticação", "Dashboard", "API REST"]
+        scope_story:
+          type: string
+          description: "Narrativa textual do escopo do projeto"
+          example: "Seu projeto é um sistema web de complexidade média com autenticação e dashboard..."
+        locale:
+          $ref: '#/components/schemas/Locale'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        consent_given:
+          type: boolean
+          description: "Consentimento LGPD/GDPR dado pelo visitante"
+          example: true
+        consent_version:
+          type: string
+          description: "Versão da política de privacidade aceita"
+          example: "1.0"
+        consent_at:
+          type: string
+          format: date-time
+          description: "Timestamp do aceite de consentimento"
+          example: "2026-03-21T10:30:00Z"
+        email_status:
+          $ref: '#/components/schemas/EmailStatus'
+        email_retry_count:
+          type: integer
+          description: "Número de tentativas de envio de email"
+          example: 0
+        anonymized_at:
+          type: [string, 'null']
+          format: date-time
+          description: "Quando o lead foi anonimizado (LGPD)"
+          example: null
+        created_at:
+          type: string
+          format: date-time
+          example: "2026-03-21T10:30:00Z"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2026-03-21T10:30:00Z"
+
+    EstimationResult:
+      type: object
+      required:
+        - price_min
+        - price_max
+        - price_min_formatted
+        - price_max_formatted
+        - currency
+        - time_days_min
+        - time_days_max
+        - complexity
+        - complexity_score
+        - features
+        - project_type
+        - scope_story
+      properties:
+        price_min:
+          type: number
+          format: float
+          description: "Preço mínimo em BRL (antes da conversão de moeda)"
+          example: 15000.0
+        price_max:
+          type: number
+          format: float
+          description: "Preço máximo em BRL (antes da conversão de moeda)"
+          example: 25000.0
+        price_min_formatted:
+          type: string
+          description: "Preço mínimo formatado na moeda da sessão"
+          example: "R$ 15.000"
+        price_max_formatted:
+          type: string
+          description: "Preço máximo formatado na moeda da sessão"
+          example: "R$ 25.000"
+        currency:
+          $ref: '#/components/schemas/Currency'
+        time_days_min:
+          type: integer
+          description: "Prazo mínimo estimado (dias)"
+          example: 45
+        time_days_max:
+          type: integer
+          description: "Prazo máximo estimado (dias)"
+          example: 60
+        complexity:
+          $ref: '#/components/schemas/ComplexityLevel'
+        complexity_score:
+          type: number
+          format: float
+          description: "Score bruto de complexidade (soma dos complexity_impacts)"
+          example: 42.0
+        features:
+          type: array
+          items:
+            type: string
+          description: "Lista de funcionalidades identificadas pelas respostas"
+          example: ["Autenticação", "Dashboard", "API REST"]
+        project_type:
+          $ref: '#/components/schemas/ProjectType'
+        scope_story:
+          type: string
+          description: "Narrativa textual do escopo gerada a partir das respostas"
+          example: "Seu projeto é um sistema web de complexidade média..."
+
+    LeadSummary:
+      type: object
+      description: "Resumo do lead para exibição no admin panel"
+      required:
+        - id
+        - name
+        - email
+        - project_type
+        - score
+        - complexity
+        - estimated_price_min
+        - estimated_price_max
+        - estimated_days_min
+        - estimated_days_max
+        - created_at
+      properties:
+        id:
+          type: string
+          example: "lead_abc123"
+        name:
+          type: string
+          example: "João Silva"
+        email:
+          type: string
+          format: email
+          example: "joao@example.com"
+        project_type:
+          $ref: '#/components/schemas/ProjectType'
+        score:
+          $ref: '#/components/schemas/LeadScore'
+        complexity:
+          $ref: '#/components/schemas/ComplexityLevel'
+        estimated_price_min:
+          type: number
+          format: float
+          example: 15000.0
+        estimated_price_max:
+          type: number
+          format: float
+          example: 25000.0
+        estimated_days_min:
+          type: integer
+          example: 45
+        estimated_days_max:
+          type: integer
+          example: 60
+        created_at:
+          type: string
+          format: date-time
+          example: "2026-03-21T10:00:00Z"
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # Schemas de Input (Request Bodies)
+    # ──────────────────────────────────────────────────────────────────────────
+
+    CreateSessionInput:
+      type: object
+      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
+      example:
+        locale: "pt-BR"
+
+    SubmitAnswerInput:
+      type: object
+      required:
+        - sessionId
+        - questionId
+      properties:
+        sessionId:
+          type: string
+          description: "CUID da sessão"
+          example: "clxyz123abc"
+        questionId:
+          type: string
+          description: "ID da pergunta respondida"
+          example: "Q001"
+        optionId:
+          type: [string, 'null']
+          description: "CUID da opção selecionada (para choice types)"
+          example: "opt_abc123"
+        textValue:
+          type: [string, 'null']
+          maxLength: 500
+          description: "Valor textual (para text/number types)"
+          example: null
+      description: "Ao menos um de optionId ou textValue deve ser fornecido"
+      x-server-action: true
+
+    CreateLeadInput:
+      type: object
+      required:
+        - session_id
+        - name
+        - email
+        - consent_given
+      properties:
+        session_id:
+          type: string
+          description: "CUID da sessão (deve ter status completed)"
+          example: "clxyz123abc"
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+          description: "Nome do visitante"
+          example: "João Silva"
+        email:
+          type: string
+          format: email
+          maxLength: 255
+          description: "Email do visitante"
+          example: "joao@example.com"
+        phone:
+          type: string
+          maxLength: 20
+          description: "Telefone (opcional — aumenta score_profile)"
+          example: "+5511999999999"
+        company:
+          type: string
+          maxLength: 100
+          description: "Empresa (opcional — aumenta score_profile)"
+          example: "Startup X"
+        consent_given:
+          type: boolean
+          enum: [true]
+          description: "Deve ser true — consentimento LGPD/GDPR obrigatório"
+          example: true
+        consent_version:
+          type: string
+          default: "1.0"
+          description: "Versão da política aceita"
+          example: "1.0"
+
+    AdminLoginInput:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          description: "Email do proprietário (deve ser ADMIN_EMAIL env var)"
+          example: "admin@example.com"
+      x-server-action: true
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # Schemas de Response auxiliares
+    # ──────────────────────────────────────────────────────────────────────────
+
+    SubmitAnswerResult:
+      type: object
+      required:
+        - nextQuestionId
+        - progress
+        - isComplete
+      properties:
+        nextQuestionId:
+          type: [string, 'null']
+          description: "ID da próxima pergunta, ou null se fluxo completo"
+          example: "Q005"
+        progress:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: "Progresso estimado do fluxo (0.0 a 1.0)"
+          example: 0.15
+        isComplete:
+          type: boolean
+          description: "true quando o fluxo foi completado"
+          example: false
+
+    CreateLeadResult:
+      type: object
+      required:
+        - id
+        - score
+        - message
+      properties:
+        id:
+          type: string
+          description: "CUID do lead criado"
+          example: "lead_abc123"
+        score:
+          $ref: '#/components/schemas/LeadScore'
+        message:
+          type: string
+          description: "Mensagem de confirmação para o visitante"
+          example: "Obrigado! Você receberá a análise completa por email."
+
+    AdminLoginResult:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: "Mensagem genérica (nunca revela se email existe)"
+          example: "Se o email estiver cadastrado, você receberá o link."
+
+    Pagination:
+      type: object
+      required:
+        - total
+        - page
+        - per_page
+      properties:
+        total:
+          type: integer
+          description: "Total de registros encontrados"
+          example: 42
+        page:
+          type: integer
+          minimum: 1
+          description: "Página atual"
+          example: 1
+        per_page:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: "Registros por página"
+          example: 20
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              description: "Código de erro único"
+              example: "SESSION_NOT_FOUND"
+            message:
+              type: string
+              description: "Mensagem legível do erro"
+              example: "Sessão não encontrada."
+            details:
+              type: [string, 'null']
+              description: "Informações adicionais de validação (opcional)"
+              example: null
+
+    RateLimitErrorResponse:
+      type: object
+      required:
+        - error
+        - retry_after
+      properties:
+        error:
+          type: string
+          example: "Too many requests. Try again later."
+        retry_after:
+          type: integer
+          description: "Segundos até poder tentar novamente"
+          example: 60
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # Enums
+    # ──────────────────────────────────────────────────────────────────────────
+
+    Locale:
+      type: string
+      enum: [pt-BR, en-US, es-ES, it-IT]
+      default: "pt-BR"
+      description: "Locale da sessão — define idioma do fluxo"
+      example: "pt-BR"
+
+    Currency:
+      type: string
+      enum: [BRL, USD, EUR, USDC]
+      default: "BRL"
+      description: "Moeda usada na exibição dos valores"
+      example: "BRL"
+
+    SessionStatus:
+      type: string
+      enum: [active, completed, abandoned, expired]
+      description: |
+        Estado da sessão:
+        - active: visitante navegando no fluxo
+        - completed: última pergunta respondida
+        - abandoned: lead capturado + 24h sem atividade
+        - expired: TTL 7 dias atingido
+      example: "active"
+
+    ProjectType:
+      type: string
+      enum:
+        - web_system
+        - landing_page
+        - mobile_app
+        - saas_mvp
+        - e_commerce
+        - automation
+      description: "Tipo de projeto selecionado pelo visitante em Q001"
+      example: "web_system"
+
+    QuestionBlock:
+      type: string
+      enum:
+        - TIPO_PROJETO
+        - FUNCIONALIDADES
+        - INTEGRAÇÕES
+        - USUARIOS
+        - DESIGN
+        - PRAZO
+        - BUDGET
+        - PERFIL
+      description: "Bloco temático da pergunta (8 blocos, 42 perguntas total)"
+      example: "TIPO_PROJETO"
+
+    QuestionType:
+      type: string
+      enum:
+        - single_choice
+        - multiple_choice
+        - text
+        - number
+      description: "Tipo de input da pergunta"
+      example: "single_choice"
+
+    LeadScore:
+      type: string
+      enum: [A, B, C]
+      description: |
+        Score de qualificação do lead:
+        - A: score_total >= 70 (alta prioridade)
+        - B: score_total >= 40 (média prioridade)
+        - C: score_total < 40 (baixa prioridade)
+      example: "A"
+
+    ComplexityLevel:
+      type: string
+      enum: [low, medium, high, very_high]
+      description: |
+        Nível de complexidade inferido do complexity_score acumulado:
+        - low: 0-30
+        - medium: 31-50
+        - high: 51-70
+        - very_high: 71+
+      example: "medium"
+
+    EmailStatus:
+      type: string
+      enum: [pending, sent, retrying, failed]
+      description: |
+        Status do envio de email para o lead:
+        - pending: aguardando envio
+        - sent: enviado com sucesso
+        - retrying: retentativas em andamento (Resend 5xx)
+        - failed: 3 retries esgotados
+      example: "pending"
+
+  responses:
+    UnauthorizedError:
+      description: "Não autenticado — token ausente, inválido ou expirado (401)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              code: "UNAUTHORIZED"
+              message: "Autenticação necessária."
+
+    ForbiddenError:
+      description: "Sem permissão para o recurso (403)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              code: "FORBIDDEN"
+              message: "Você não tem permissão para acessar este recurso."
+
+    NotFoundError:
+      description: "Recurso não encontrado (404)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              code: "NOT_FOUND"
+              message: "Recurso não encontrado."
+
+    ConflictError:
+      description: "Conflito — recurso já existe (409)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              code: "CONFLICT"
+              message: "Lead já enviado para esta sessão."
+
+    ValidationError:
+      description: "Dados de entrada inválidos — falha no schema Zod (422)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              code: "VALIDATION_FAILED"
+              message: "Dados inválidos."
+              details: "email: Invalid email address"
+
+    RateLimitError:
+      description: "Rate limit atingido (429)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RateLimitErrorResponse'
+          example:
+            error: "Too many requests. Try again later."
+            retry_after: 60
+
+    InternalError:
+      description: "Erro interno do servidor (500)"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error:
+              code: "INTERNAL_ERROR"
+              message: "Erro interno. Tente novamente em alguns instantes."
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Paths
+# ──────────────────────────────────────────────────────────────────────────────
+
+paths:
+
+  # ── Sessions ──────────────────────────────────────────────────────────────
+
+  /sessions:
+    post:
+      tags: [sessions]
+      summary: "Criar sessão de orçamento"
+      description: |
+        Cria uma nova sessão anônima para o visitante iniciar o fluxo de orçamento.
+        Retorna o ID da sessão (armazenado em cookie pelo cliente), o status inicial
+        e a primeira pergunta (Q001).
+
+        **Rate limit:** 50 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionInput'
+            example:
+              locale: "pt-BR"
+      responses:
+        '201':
+          description: "Sessão criada com sucesso"
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - id
+                  - status
+                  - locale
+                  - currency
+                  - current_question_id
+                  - expires_at
+                properties:
+                  id:
+                    type: string
+                    example: "clxyz123abc"
+                  status:
+                    $ref: '#/components/schemas/SessionStatus'
+                  locale:
+                    $ref: '#/components/schemas/Locale'
+                  currency:
+                    $ref: '#/components/schemas/Currency'
+                  current_question_id:
+                    type: string
+                    description: "Sempre Q001 na criação"
+                    example: "Q001"
+                  expires_at:
+                    type: string
+                    format: date-time
+                    example: "2026-03-28T10:00:00Z"
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /sessions/{id}:
+    get:
+      tags: [sessions]
+      summary: "Buscar sessão por ID"
+      description: |
+        Recupera uma sessão existente pelo ID (do cookie).
+        Usado para retomar o fluxo ou verificar o estado antes de exibir resultados.
+
+        **Rate limit:** 50 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: "CUID da sessão"
+          schema:
+            type: string
+          example: "clxyz123abc"
+      responses:
+        '200':
+          description: "Sessão encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          description: "Sessão não encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_NOT_FOUND"
+                  message: "Sessão não encontrada."
+        '410':
+          description: "Sessão expirada — TTL 7 dias atingido"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_EXPIRED"
+                  message: "Sessão expirada. Inicie uma nova estimativa."
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  # ── Estimation ────────────────────────────────────────────────────────────
+
+  /sessions/{id}/estimate:
+    get:
+      tags: [estimation]
+      summary: "Calcular estimativa de preço e prazo"
+      description: |
+        Calcula a estimativa de preço e prazo a partir das respostas acumuladas na sessão.
+        A sessão deve estar com status `completed`. Retorna faixa de preço (±15%),
+        faixa de prazo, nível de complexidade, lista de funcionalidades e narrativa de escopo.
+
+        **Fórmula:** (base_price + sum(price_impacts)) * complexity_multiplier * [0.85, 1.15]
+        **Taxa de câmbio:** converte de BRL para a moeda da sessão via exchange_rates.
+
+        **Rate limit:** 50 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: "CUID da sessão (deve ter status completed)"
+          schema:
+            type: string
+          example: "clxyz123abc"
+      responses:
+        '200':
+          description: "Estimativa calculada com sucesso"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationResult'
+              example:
+                price_min: 15000.0
+                price_max: 25000.0
+                price_min_formatted: "R$ 15.000"
+                price_max_formatted: "R$ 25.000"
+                currency: "BRL"
+                time_days_min: 45
+                time_days_max: 60
+                complexity: "medium"
+                complexity_score: 42.0
+                features: ["Autenticação", "Dashboard", "API REST"]
+                project_type: "web_system"
+                scope_story: "Seu projeto é um sistema web de complexidade média..."
+        '404':
+          description: "Sessão não encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_NOT_FOUND"
+                  message: "Sessão não encontrada."
+        '409':
+          description: "Sessão ainda não completada — fluxo em andamento"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_NOT_COMPLETE"
+                  message: "Complete o fluxo de estimativa antes de calcular."
+        '410':
+          description: "Sessão expirada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_EXPIRED"
+                  message: "Sessão expirada. Inicie uma nova estimativa."
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  # ── Leads ─────────────────────────────────────────────────────────────────
+
+  /leads:
+    post:
+      tags: [leads]
+      summary: "Criar lead (captura de contato)"
+      description: |
+        Captura os dados de contato do visitante ao final do fluxo de orçamento.
+        Calcula o score de qualificação A/B/C e envia emails de notificação (proprietário)
+        e confirmação (visitante) via Resend.
+
+        **Pré-condição:** sessão com status `completed`.
+        **Idempotência:** unique constraint em session_id — não permite lead duplicado.
+        **Retry de email:** exponencial 1s → 4s → 16s, max 3 tentativas.
+
+        **Rate limit:** 10 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLeadInput'
+            example:
+              session_id: "clxyz123abc"
+              name: "João Silva"
+              email: "joao@example.com"
+              phone: "+5511999999999"
+              company: "Startup X"
+              consent_given: true
+              consent_version: "1.0"
+      responses:
+        '201':
+          description: "Lead criado e emails disparados com sucesso"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateLeadResult'
+              example:
+                id: "lead_abc123"
+                score: "A"
+                message: "Obrigado! Você receberá a análise completa por email."
+        '400':
+          description: "Requisição inválida — consentimento ausente ou sessão não completada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                consent_required:
+                  summary: "Consentimento não dado"
+                  value:
+                    error:
+                      code: "CONSENT_REQUIRED"
+                      message: "O consentimento é obrigatório para prosseguir."
+                session_not_complete:
+                  summary: "Sessão incompleta"
+                  value:
+                    error:
+                      code: "SESSION_NOT_COMPLETE"
+                      message: "Complete o fluxo de estimativa antes de enviar o formulário."
+        '404':
+          description: "Sessão não encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_NOT_FOUND"
+                  message: "Sessão não encontrada."
+        '409':
+          description: "Lead já enviado para esta sessão"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "LEAD_ALREADY_EXISTS"
+                  message: "Lead já enviado para esta sessão."
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  # ── Admin ─────────────────────────────────────────────────────────────────
+
+  /admin/leads:
+    get:
+      tags: [admin]
+      summary: "Listar leads (admin)"
+      description: |
+        Retorna lista paginada de leads com filtros opcionais.
+        Exibe dados de contato, score, estimativa e complexidade.
+        Requer autenticação via Supabase Auth (magic link).
+
+        **Rate limit:** 10 req/60s por IP.
+      security:
+        - supabaseAuth: []
+      parameters:
+        - name: score
+          in: query
+          required: false
+          description: "Filtrar por score de qualificação"
+          schema:
+            $ref: '#/components/schemas/LeadScore'
+          example: "A"
+        - name: type
+          in: query
+          required: false
+          description: "Filtrar por tipo de projeto (ProjectType)"
+          schema:
+            type: string
+          example: "web_system"
+        - name: from
+          in: query
+          required: false
+          description: "Data início do filtro (ISO 8601)"
+          schema:
+            type: string
+            format: date-time
+          example: "2026-01-01T00:00:00Z"
+        - name: to
+          in: query
+          required: false
+          description: "Data fim do filtro (ISO 8601)"
+          schema:
+            type: string
+            format: date-time
+          example: "2026-03-31T23:59:59Z"
+        - name: page
+          in: query
+          required: false
+          description: "Número da página (padrão: 1)"
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          example: 1
+        - name: per_page
+          in: query
+          required: false
+          description: "Registros por página (padrão: 20, máximo: 100)"
+          schema:
+            type: integer
+            default: 20
+            minimum: 1
+            maximum: 100
+          example: 20
+      responses:
+        '200':
+          description: "Lista de leads retornada com sucesso"
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data, total, page, per_page]
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LeadSummary'
+                  total:
+                    type: integer
+                    description: "Total de leads encontrados com os filtros aplicados"
+                    example: 42
+                  page:
+                    type: integer
+                    example: 1
+                  per_page:
+                    type: integer
+                    example: 20
+              example:
+                data:
+                  - id: "lead_abc"
+                    name: "João Silva"
+                    email: "joao@example.com"
+                    project_type: "web_system"
+                    score: "A"
+                    complexity: "medium"
+                    estimated_price_min: 15000.0
+                    estimated_price_max: 25000.0
+                    estimated_days_min: 45
+                    estimated_days_max: 60
+                    created_at: "2026-03-21T10:00:00Z"
+                total: 42
+                page: 1
+                per_page: 20
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: "Parâmetros de filtro inválidos"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "VALIDATION_FAILED"
+                  message: "Parâmetros de consulta inválidos."
+                  details: "score: Invalid enum value"
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  # ── Server Actions (expostos como endpoints internos) ─────────────────────
+
+  /actions/submit-answer:
+    post:
+      tags: [actions]
+      summary: "Submeter resposta a uma pergunta"
+      description: |
+        Server Action Next.js que salva a resposta do visitante a uma pergunta e
+        atualiza os scores acumulados e o progresso da sessão.
+
+        Usa upsert com unique `(session_id, question_id)` — permite re-responder.
+        Executa em transação Prisma: upsert answer + update session.
+
+        **Rate limit:** 50 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      x-server-action: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitAnswerInput'
+            example:
+              sessionId: "clxyz123abc"
+              questionId: "Q001"
+              optionId: "opt_abc123"
+              textValue: null
+      responses:
+        '200':
+          description: "Resposta salva — retorna próxima pergunta e progresso"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmitAnswerResult'
+              example:
+                nextQuestionId: "Q005"
+                progress: 0.15
+                isComplete: false
+        '404':
+          description: "Sessão não encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_NOT_FOUND"
+                  message: "Sessão não encontrada."
+        '410':
+          description: "Sessão expirada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error:
+                  code: "SESSION_EXPIRED"
+                  message: "Sessão expirada. Inicie uma nova estimativa."
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /actions/admin-login:
+    post:
+      tags: [actions]
+      summary: "Login admin via magic link"
+      description: |
+        Server Action Next.js que inicia o fluxo de autenticação do proprietário
+        via magic link (Supabase Auth OTP).
+
+        **Segurança:** sempre retorna mensagem genérica, independente do email ser válido
+        ou não (nunca revela se email existe no sistema).
+
+        Rate limit: 10 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      x-server-action: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminLoginInput'
+            example:
+              email: "admin@example.com"
+      responses:
+        '200':
+          description: "Resposta genérica (independente de sucesso ou não)"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminLoginResult'
+              example:
+                message: "Se o email estiver cadastrado, você receberá o link."
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '500':
+          $ref: '#/components/responses/InternalError'

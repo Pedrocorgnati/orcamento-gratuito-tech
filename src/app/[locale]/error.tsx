@@ -2,9 +2,9 @@
 
 import { PublicLayout } from "@/components/layout";
 import { Button } from "@/components/ui";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import type { AppLocale } from "@/i18n/routing";
 import { useEffect } from "react";
 
 interface ErrorPageProps {
@@ -13,14 +13,29 @@ interface ErrorPageProps {
 }
 
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
-  const locale = useLocale() as Locale;
+  const locale = useLocale() as AppLocale;
+  const t = useTranslations("errors");
+  const tCommon = useTranslations("common");
 
   useEffect(() => {
-    console.error("Error:", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("[ErrorBoundary]", error.message, error.digest);
+    }
+    // TODO (F11): Integrar com Sentry quando monitoring-setup for executado
+    // Sentry.captureException(error);
   }, [error]);
 
   return (
-    <PublicLayout locale={locale}>
+    <PublicLayout
+      locale={locale}
+      skipLinkLabel={tCommon("skipToContent")}
+      loginLabel={tCommon("admin.login")}
+      logoutLabel={tCommon("admin.logout")}
+      privacyLabel={tCommon("privacyPolicy")}
+      copyrightLabel={tCommon("copyright")}
+      homeAriaLabel={tCommon("homeAriaLabel")}
+      footerNavLabel={tCommon("footerNav")}
+    >
       <div
         role="main"
         aria-labelledby="error-title"
@@ -28,7 +43,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
       >
         {/* Background number */}
         <span
-          className="absolute select-none text-8xl font-black text-gray-100 sm:text-9xl dark:text-gray-800"
+          className="absolute select-none text-8xl font-black text-(--color-border) sm:text-9xl"
           aria-hidden="true"
         >
           500
@@ -42,28 +57,34 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
           <h1
             id="error-title"
-            className="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
+            className="text-2xl font-bold text-(--color-text-primary) sm:text-3xl"
           >
-            Erro interno do servidor
+            {t("serverError")}
           </h1>
 
-          <p className="max-w-md text-base text-gray-600 dark:text-gray-400">
-            Ocorreu um erro inesperado. Tente novamente.
+          <p className="max-w-md text-base text-(--color-text-secondary)">
+            {t("serverErrorMessage")}
           </p>
 
+          {/* Digest para debugging (apenas dev) */}
           {process.env.NODE_ENV === "development" && error.digest && (
-            <p className="font-mono text-xs text-gray-400">
+            <p className="font-mono text-xs text-(--color-text-muted)">
               Digest: {error.digest}
             </p>
           )}
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button variant="primary" size="lg" onClick={reset}>
-              Tentar novamente
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={reset}
+              aria-label={t("tryAgain")}
+            >
+              {t("tryAgain")}
             </Button>
-            <Link href="/" locale={locale as any}>
+            <Link href={`/${locale}`}>
               <Button variant="outline" size="lg">
-                Voltar ao início
+                {t("goHome")}
               </Button>
             </Link>
           </div>

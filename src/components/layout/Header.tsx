@@ -1,13 +1,17 @@
 import { LanguageSelector } from "./LanguageSelector";
 import { Link } from "@/i18n/navigation";
-import { Zap } from "lucide-react";
-import type { Locale } from "@/i18n/routing";
+import Image from "next/image";
+import type { AppLocale } from "@/i18n/routing";
+import { ROUTES } from "@/lib/constants";
 
 interface HeaderProps {
   variant?: "public" | "admin";
   isAuthenticated?: boolean;
   userEmail?: string;
-  locale: Locale;
+  locale: AppLocale;
+  loginLabel?: string;
+  logoutLabel?: string;
+  homeAriaLabel?: string;
 }
 
 export function Header({
@@ -15,22 +19,28 @@ export function Header({
   isAuthenticated = false,
   userEmail,
   locale,
+  loginLabel = "Login",
+  logoutLabel = "Sair",
+  homeAriaLabel = "Budget Free Engine — Início",
 }: HeaderProps) {
   return (
-    <header data-testid="header" className="sticky top-0 z-40 h-14 w-full border-b border-gray-200/50 bg-white/95 backdrop-blur-sm dark:border-gray-800/50 dark:bg-gray-950/95">
+    <header data-testid="header" className="sticky top-0 z-40 h-14 w-full border-b border-(--color-border)/50 bg-(--color-background)/95 backdrop-blur-sm">
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
-          href="/"
+          href={ROUTES.home}
           locale={locale}
           data-testid="header-logo-link"
-          className="flex items-center gap-2 text-lg font-bold text-gray-900 hover:text-blue-600 transition-colors dark:text-white dark:hover:text-blue-400"
-          aria-label="Budget Free Engine — Início"
+          className="flex items-center gap-2 text-lg font-bold text-(--color-text-primary) hover:text-(--color-primary) transition-colors"
+          aria-label={homeAriaLabel}
         >
-          {/* @ASSET_PLACEHOLDER name: logo-symbol type: image extension: svg format: 1:1 dimensions: 24x24 description: Logo símbolo do Budget Free Engine. style: Minimalista, stroke outline, monocromático. colors: primary (#4F46E5) light, primary-dark (#818CF8) dark context: Header navbar */}
-          <Zap className="h-5 w-5 text-blue-600 dark:text-blue-400" aria-hidden="true" />
-          <span className="hidden sm:inline">Budget Free Engine</span>
-          <span className="sm:hidden">BFE</span>
+          <Image
+            src="/images/logo.svg"
+            alt="Budget Free Engine"
+            width={140}
+            height={32}
+            priority
+          />
         </Link>
 
         {/* Right side */}
@@ -40,29 +50,29 @@ export function Header({
           {/* RESOLVED: <Link><Button> → <Link className> direto — HTML válido + touch target 44px */}
           {variant === "public" && !isAuthenticated && (
             <Link
-              href="/admin"
+              href={ROUTES.admin}
               locale={locale}
               data-testid="header-login-link"
-              className="flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:text-gray-300 dark:hover:bg-gray-800"
+              className="flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-(--color-text-secondary) hover:bg-(--color-muted) transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-primary)"
             >
-              Login
+              {loginLabel}
             </Link>
           )}
 
           {variant === "admin" && isAuthenticated && (
             <>
               {userEmail && (
-                <span data-testid="header-user-email" className="hidden sm:inline text-sm text-gray-600 dark:text-gray-400">
+                <span data-testid="header-user-email" className="hidden sm:inline text-sm text-(--color-text-secondary)">
                   {userEmail}
                 </span>
               )}
-              <form data-testid="header-logout-form" action="/api/auth/logout" method="POST">
+              <form data-testid="header-logout-form" action={ROUTES.authLogout} method="POST">
                 <button
                   data-testid="header-logout-button"
                   type="submit"
-                  className="flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 dark:text-gray-300 dark:hover:bg-gray-800"
+                  className="flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-(--color-text-secondary) hover:bg-(--color-muted) transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-primary)"
                 >
-                  Sair
+                  {logoutLabel}
                 </button>
               </form>
             </>

@@ -23,15 +23,15 @@ function EmptyState({ icon, message, description, action, className }: EmptyStat
       )}
     >
       {icon && (
-        <div className="text-5xl text-gray-400" aria-hidden="true">
+        <div className="text-5xl text-(--color-text-muted)" aria-hidden="true">
           {icon}
         </div>
       )}
-      <p className="text-base font-medium text-gray-900 dark:text-gray-100">
+      <p className="text-base font-medium text-(--color-text-primary)">
         {message}
       </p>
       {description && (
-        <p className="text-sm text-gray-500 dark:text-gray-400">{description}</p>
+        <p className="text-sm text-(--color-text-secondary)">{description}</p>
       )}
       {action && (
         <Button variant="outline" size="md" onClick={action.onClick}>

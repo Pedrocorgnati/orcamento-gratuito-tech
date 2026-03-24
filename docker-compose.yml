@@ -1,0 +1,43 @@
+# output/workspace/budget-free-tech/docker-compose.yml
+# Docker Compose para desenvolvimento local
+# Uso: docker compose up
+#
+# NOTA: O banco local (db) substitui o Supabase hosted para dev offline.
+# Para usar Supabase cloud, ajuste DATABASE_URL/DIRECT_URL no .env.docker
+# e remova o serviço db e o depends_on abaixo.
+
+services:
+  app:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - app_node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    command: sh -c "corepack enable && pnpm install && pnpm prisma generate && pnpm dev"
+    env_file:
+      - .env.docker
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - .env.docker
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  app_node_modules:
+  db_data:

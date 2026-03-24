@@ -1,0 +1,3462 @@
+{
+  "config": {
+    "configFile": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/playwright.config.ts",
+    "rootDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/e2e/visitor-flow.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.2",
+    "workers": 4,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "accessibility/global-a11y.spec.ts",
+      "file": "accessibility/global-a11y.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Acessibilidade Global — axe-core (INT-119)",
+          "file": "accessibility/global-a11y.spec.ts",
+          "line": 30,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing Page (/[locale]/) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-417ab531ed85efd797a0",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Flow Page (/[locale]/flow) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-e770dfbd4b3d5307689d",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Result Page (/[locale]/result) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-a0c0ceb2e3983341646e",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Lead Capture (/[locale]/lead-capture) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-6651627b53f244fdcc52",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Privacy Page (/[locale]/privacy) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-4e69943ef81408e8af27",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Thank You (/[locale]/thank-you) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-0950e770686086f1747c",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Admin Login Page (/admin) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-50f0a98efd76eed90676",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Landing Page (/[locale]/) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-51d040c99b2165c36c10",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Flow Page (/[locale]/flow) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-a834f092d6084b5177c9",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Result Page (/[locale]/result) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-2f5e2c1d87c2dafb9801",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Lead Capture (/[locale]/lead-capture) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-2e92ac0a6ad9230bad17",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Privacy Page (/[locale]/privacy) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-9c442344d3e4a904e8c2",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Thank You (/[locale]/thank-you) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-30548b412cba4b481b87",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Admin Login Page (/admin) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-404c5ee2dab156b0eba5",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Landing Page (/[locale]/) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-f2360eb752e42d0b5e6d",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Flow Page (/[locale]/flow) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-f838a5fb165cc2aca37f",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Result Page (/[locale]/result) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-92cf6cf35a06dd26df47",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Lead Capture (/[locale]/lead-capture) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-56c9f690328ecc4109e3",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Privacy Page (/[locale]/privacy) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-ebdf7ba280bcd750b7cb",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Thank You (/[locale]/thank-you) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-43103e35c737967b4aa1",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            },
+            {
+              "title": "Admin Login Page (/admin) — 0 violações critical/serious",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-7ae157d322c2da3131d2",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 40,
+              "column": 9
+            }
+          ]
+        },
+        {
+          "title": "Navegação por Teclado — 7 rotas",
+          "file": "accessibility/global-a11y.spec.ts",
+          "line": 67,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing: Tab navega por todos os elementos interativos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-129fd28b3e549776dd4a",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "Flow: OptionButtons navegáveis por teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-1271ce65100ab81a682d",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 93,
+              "column": 7
+            },
+            {
+              "title": "Admin login: formulário navegável por teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-a6485f68bfcdc616783f",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 115,
+              "column": 7
+            },
+            {
+              "title": "Landing: Tab navega por todos os elementos interativos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-811e83db52f88f2979f3",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "Flow: OptionButtons navegáveis por teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-18dbfb7ae6c6d2aae511",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 93,
+              "column": 7
+            },
+            {
+              "title": "Admin login: formulário navegável por teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-a65fb7f39d8ca19f7a88",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 115,
+              "column": 7
+            },
+            {
+              "title": "Landing: Tab navega por todos os elementos interativos",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-0ab80cde069989a47241",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "Flow: OptionButtons navegáveis por teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-c7df9a1deb09ab6f386c",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 93,
+              "column": 7
+            },
+            {
+              "title": "Admin login: formulário navegável por teclado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-de1f3faed2f41aa5a750",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 115,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Hierarquia de Headings",
+          "file": "accessibility/global-a11y.spec.ts",
+          "line": 128,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing: heading hierarchy h1 → h2 → h3",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-c3955c66283c46e42da1",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 129,
+              "column": 7
+            },
+            {
+              "title": "Flow: h1 presente na página de questões",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-c6fd56a479fe11c53f25",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 147,
+              "column": 7
+            },
+            {
+              "title": "Landing: heading hierarchy h1 → h2 → h3",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-164cf8e6d65e3de7ab50",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 129,
+              "column": 7
+            },
+            {
+              "title": "Flow: h1 presente na página de questões",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-fae6287446a0c08667eb",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 147,
+              "column": 7
+            },
+            {
+              "title": "Landing: heading hierarchy h1 → h2 → h3",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-8aeef2d78cd430226851",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 129,
+              "column": 7
+            },
+            {
+              "title": "Flow: h1 presente na página de questões",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-7b939b3feb176a10c7bf",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 147,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Contraste WCAG AA",
+          "file": "accessibility/global-a11y.spec.ts",
+          "line": 157,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing: 0 violações de contraste",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-477e204751ff9b2e5b0c",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 158,
+              "column": 7
+            },
+            {
+              "title": "Landing: 0 violações de contraste",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-2bbf7b0043cdfb79a5f8",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 158,
+              "column": 7
+            },
+            {
+              "title": "Landing: 0 violações de contraste",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-99ac9cc3b9945b44b518",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 158,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Aria-labels e Regiões",
+          "file": "accessibility/global-a11y.spec.ts",
+          "line": 183,
+          "column": 6,
+          "specs": [
+            {
+              "title": "CookieConsentBanner tem role=dialog e aria-label",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-95243b30f7617d781296",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 184,
+              "column": 7
+            },
+            {
+              "title": "ProgressBar tem aria-valuenow e aria-valuemax",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-8ce0239ac173b9583354",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 192,
+              "column": 7
+            },
+            {
+              "title": "CookieConsentBanner tem role=dialog e aria-label",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-caae7623ac62349c7219",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 184,
+              "column": 7
+            },
+            {
+              "title": "ProgressBar tem aria-valuenow e aria-valuemax",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-ed5595e2fc6f56b9e2fc",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 192,
+              "column": 7
+            },
+            {
+              "title": "CookieConsentBanner tem role=dialog e aria-label",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-6f7330e997ac17414bfd",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 184,
+              "column": 7
+            },
+            {
+              "title": "ProgressBar tem aria-valuenow e aria-valuemax",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "d8efe40479e71ed0351a-bd1231e88da865aa8ac4",
+              "file": "accessibility/global-a11y.spec.ts",
+              "line": 192,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/admin-flow.spec.ts",
+      "file": "e2e/admin-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Fluxo Admin (module-6)",
+          "file": "e2e/admin-flow.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "1. /admin exibe MagicLinkForm sem autenticação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-25bc25392929981c3634",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "2. /admin/leads redireciona para login sem autenticação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-faf0d2f2b3904b49d72c",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "3. Magic link form valida email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-f2413f4b619268ba2cb6",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "1. /admin exibe MagicLinkForm sem autenticação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-2d238a09edb6c52ae3e2",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "2. /admin/leads redireciona para login sem autenticação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-254d4fec0b2522a2d3f8",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "3. Magic link form valida email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-aa968ed231553f8c6baa",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "1. /admin exibe MagicLinkForm sem autenticação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-ddfc7ebd2552c30a73f6",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "2. /admin/leads redireciona para login sem autenticação",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-68551f395bfc0ad2def5",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "3. Magic link form valida email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "550a5cf5d27732ce9613-0a8f7ffe63b5b3d523e0",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 20,
+              "column": 7
+            }
+          ],
+          "suites": [
+            {
+              "title": "Com autenticação (requer TEST_ADMIN_TOKEN)",
+              "file": "e2e/admin-flow.spec.ts",
+              "line": 35,
+              "column": 8,
+              "specs": [
+                {
+                  "title": "4. /admin/leads carrega LeadsTable com leads",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-e467b46862e1d59409cc",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 47,
+                  "column": 9
+                },
+                {
+                  "title": "5. Filtro por Score A funciona",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-00a061bad1a38e8e00a0",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 61,
+                  "column": 9
+                },
+                {
+                  "title": "6. Paginação funciona",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-45501dcb3f4884b58e0f",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 77,
+                  "column": 9
+                },
+                {
+                  "title": "7. Botão Sair redireciona para /admin",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-a7be664f4b4ea6169ccb",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 87,
+                  "column": 9
+                },
+                {
+                  "title": "4. /admin/leads carrega LeadsTable com leads",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-011d06c0bd17a79ceff9",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 47,
+                  "column": 9
+                },
+                {
+                  "title": "5. Filtro por Score A funciona",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-a7107b98673c9d684853",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 61,
+                  "column": 9
+                },
+                {
+                  "title": "6. Paginação funciona",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-8d74f6ddebb10904f729",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 77,
+                  "column": 9
+                },
+                {
+                  "title": "7. Botão Sair redireciona para /admin",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "firefox",
+                      "projectName": "firefox",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-5e7fe64895d528349d5b",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 87,
+                  "column": 9
+                },
+                {
+                  "title": "4. /admin/leads carrega LeadsTable com leads",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "webkit",
+                      "projectName": "webkit",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-fe7e9204d43263776081",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 47,
+                  "column": 9
+                },
+                {
+                  "title": "5. Filtro por Score A funciona",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "webkit",
+                      "projectName": "webkit",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-7d452f1c376741fd2881",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 61,
+                  "column": 9
+                },
+                {
+                  "title": "6. Paginação funciona",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "webkit",
+                      "projectName": "webkit",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-0b0c9d8de697f85f4adf",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 77,
+                  "column": 9
+                },
+                {
+                  "title": "7. Botão Sair redireciona para /admin",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [
+                        {
+                          "type": "skip",
+                          "description": "Requer TEST_ADMIN_TOKEN",
+                          "location": {
+                            "file": "/home/pedro/Desktop/Repositórios/systemForge/output/workspace/budget-free-tech/tests/e2e/admin-flow.spec.ts",
+                            "line": 36,
+                            "column": 10
+                          }
+                        }
+                      ],
+                      "expectedStatus": "skipped",
+                      "projectId": "webkit",
+                      "projectName": "webkit",
+                      "results": [],
+                      "status": "skipped"
+                    }
+                  ],
+                  "id": "550a5cf5d27732ce9613-944cb315d140ca72cc32",
+                  "file": "e2e/admin-flow.spec.ts",
+                  "line": 87,
+                  "column": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/resume-flow.spec.ts",
+      "file": "e2e/resume-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Fluxo de Retomada de Sessão (INT-084)",
+          "file": "e2e/resume-flow.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "1. Retomada com session_id válido redireciona para /flow/[questionId]",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-87151df9510cce338480",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "2. Retomada com session_id expirado exibe mensagem de expiração",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-7aed24ae1ccb612a2a25",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "3. Retomada com ID inválido exibe mensagem not-found",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-ca188980117ccd6778cf",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "4. Retomada de sessão já completada redireciona para /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-a1f876d443c5ab755a23",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "1. Retomada com session_id válido redireciona para /flow/[questionId]",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-0af1189caffca80849d8",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "2. Retomada com session_id expirado exibe mensagem de expiração",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-2fcb47440493d2c92d17",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "3. Retomada com ID inválido exibe mensagem not-found",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-014a30bd76b39104be9b",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "4. Retomada de sessão já completada redireciona para /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-3ab1a716f9d977cda3a2",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "1. Retomada com session_id válido redireciona para /flow/[questionId]",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-b1c6296f3f265399463d",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "2. Retomada com session_id expirado exibe mensagem de expiração",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-87613c0d6b7077314c95",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "3. Retomada com ID inválido exibe mensagem not-found",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-43482ab5a06120d2072f",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "4. Retomada de sessão já completada redireciona para /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "16d45db14cbb385d0175-56f65eb15adcd6b34f90",
+              "file": "e2e/resume-flow.spec.ts",
+              "line": 54,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e/visitor-flow.spec.ts",
+      "file": "e2e/visitor-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Fluxo do Visitante Completo (INT-029)",
+          "file": "e2e/visitor-flow.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "1. Landing page carrega corretamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-14c955964c3fbe9dde2b",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "2. Navegar para o flow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-7b12745d50e73fdbbe27",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 23,
+              "column": 7
+            },
+            {
+              "title": "3. Responder 5+ questões e verificar progresso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-4ef6c8ecc98bf39b08ce",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "4. ConsistencyAlert não bloqueia fluxo normal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-b5a2d99d821d1170b5aa",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "5. Completar flow e chegar na página /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-e4c15f3d35d815c991db",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "6. Navegar de /result para /lead-capture",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-9b822dbd0b6e6e613c2c",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 138,
+              "column": 7
+            },
+            {
+              "title": "7. Preencher formulário de lead e verificar /thank-you",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-94d253b5f8ab48d71bf6",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 162,
+              "column": 7
+            },
+            {
+              "title": "1. Landing page carrega corretamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-73843e768d1565d2c7ec",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "2. Navegar para o flow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-9c9bf961303867a618c5",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 23,
+              "column": 7
+            },
+            {
+              "title": "3. Responder 5+ questões e verificar progresso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-ab747de059e8ebb03017",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "4. ConsistencyAlert não bloqueia fluxo normal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-9bd525ee659cdfc2f64d",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "5. Completar flow e chegar na página /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-2d7d4ead323593911a5e",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "6. Navegar de /result para /lead-capture",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-6755d8688904df175f65",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 138,
+              "column": 7
+            },
+            {
+              "title": "7. Preencher formulário de lead e verificar /thank-you",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-ad3e8cc15875ca8c2874",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 162,
+              "column": 7
+            },
+            {
+              "title": "1. Landing page carrega corretamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-c8af71d364f8741e120c",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "2. Navegar para o flow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-eff4d06c8e401e3b3e22",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 23,
+              "column": 7
+            },
+            {
+              "title": "3. Responder 5+ questões e verificar progresso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-4228efe8c5317e956275",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "4. ConsistencyAlert não bloqueia fluxo normal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-4ea0cbfdca061beb96af",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "5. Completar flow e chegar na página /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-e3ae7e599b4c40176bb1",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "6. Navegar de /result para /lead-capture",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-3edad140a36705611f37",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 138,
+              "column": 7
+            },
+            {
+              "title": "7. Preencher formulário de lead e verificar /thank-you",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-9d95800b0fd669fecdfd",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 162,
+              "column": 7
+            },
+            {
+              "title": "1. Landing page carrega corretamente",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-6217b2a3fd76ad851c87",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 11,
+              "column": 7
+            },
+            {
+              "title": "2. Navegar para o flow",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-0f57dc2cf7987c226c60",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 23,
+              "column": 7
+            },
+            {
+              "title": "3. Responder 5+ questões e verificar progresso",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-547502ffcf270ecb4416",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 38,
+              "column": 7
+            },
+            {
+              "title": "4. ConsistencyAlert não bloqueia fluxo normal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-cd4ab298528031164c3d",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 75,
+              "column": 7
+            },
+            {
+              "title": "5. Completar flow e chegar na página /result",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-9523d6eaef00b85b712e",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "6. Navegar de /result para /lead-capture",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-56aa3f75cff68c1795d5",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 138,
+              "column": 7
+            },
+            {
+              "title": "7. Preencher formulário de lead e verificar /thank-you",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "8836b4d34d6a83c91489-63c44d4bef72a09e7466",
+              "file": "e2e/visitor-flow.spec.ts",
+              "line": 162,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "performance/performance.spec.ts",
+      "file": "performance/performance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Performance — ISR e Cache (INT-116)",
+          "file": "performance/performance.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing page tem Cache-Control com s-maxage",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-d5635d0122e597ede243",
+              "file": "performance/performance.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "Privacy page tem Cache-Control",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-ec0c499e382f358c56b8",
+              "file": "performance/performance.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "API routes não têm cache longo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-819c28e330853db95860",
+              "file": "performance/performance.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "Landing page tem Cache-Control com s-maxage",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-b8c868d20d4ecc0920c7",
+              "file": "performance/performance.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "Privacy page tem Cache-Control",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-f97e8aa7dcce7cc0c7b6",
+              "file": "performance/performance.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "API routes não têm cache longo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-ec6c9bb979fdd686ba57",
+              "file": "performance/performance.spec.ts",
+              "line": 28,
+              "column": 7
+            },
+            {
+              "title": "Landing page tem Cache-Control com s-maxage",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-578ff595684c67fadd55",
+              "file": "performance/performance.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "Privacy page tem Cache-Control",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-7bc5448999b120430d31",
+              "file": "performance/performance.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "API routes não têm cache longo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-048eefbe08f3b36fe09a",
+              "file": "performance/performance.spec.ts",
+              "line": 28,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Performance — Core Web Vitals (INT-116)",
+          "file": "performance/performance.spec.ts",
+          "line": 39,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing page carrega em < 3s",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-f18b2e069b2e1194be4f",
+              "file": "performance/performance.spec.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "Transição entre questões < 500ms (local)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-c25f9287f599dca20873",
+              "file": "performance/performance.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "Landing page carrega em < 3s",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-8fb45e9cc85cf4e0f1d3",
+              "file": "performance/performance.spec.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "Transição entre questões < 500ms (local)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-e811e990368119f7ebd7",
+              "file": "performance/performance.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "Landing page carrega em < 3s",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-60cd521d86d3dd97bbd8",
+              "file": "performance/performance.spec.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "Transição entre questões < 500ms (local)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-43c41f9c07be5ecbe16b",
+              "file": "performance/performance.spec.ts",
+              "line": 50,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Performance — Imagens",
+          "file": "performance/performance.spec.ts",
+          "line": 71,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing usa next/image com alt text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-861c288cf02e39c68a30",
+              "file": "performance/performance.spec.ts",
+              "line": 72,
+              "column": 7
+            },
+            {
+              "title": "Landing usa next/image com alt text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-8d9d1e8191f83d47e71a",
+              "file": "performance/performance.spec.ts",
+              "line": 72,
+              "column": 7
+            },
+            {
+              "title": "Landing usa next/image com alt text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0418d4e48bf14d23f495-b86c1b3261e1bf9c9c43",
+              "file": "performance/performance.spec.ts",
+              "line": 72,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "security/security-headers.spec.ts",
+      "file": "security/security-headers.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Security Headers (SEC-003)",
+          "file": "security/security-headers.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "/ tem X-Frame-Options: DENY",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-95d23f3a4073afd280b4",
+              "file": "security/security-headers.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "/ tem X-Content-Type-Options: nosniff",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-e4f9c4c4bf967a893122",
+              "file": "security/security-headers.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "/ tem Content-Security-Policy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-1b688cfa8f56597ea17a",
+              "file": "security/security-headers.spec.ts",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "/ tem X-Frame-Options: DENY",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-fb4d1a2c7552be52505b",
+              "file": "security/security-headers.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "/ tem X-Content-Type-Options: nosniff",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-ac29f1a72faa7080b818",
+              "file": "security/security-headers.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "/ tem Content-Security-Policy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-394fac70dc5ac6d7e87a",
+              "file": "security/security-headers.spec.ts",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "/ tem X-Frame-Options: DENY",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-4e95e7383534eeacdf70",
+              "file": "security/security-headers.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "/ tem X-Content-Type-Options: nosniff",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-10a13f42c993b0a7f0de",
+              "file": "security/security-headers.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "/ tem Content-Security-Policy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-1643fa0dae7112c25980",
+              "file": "security/security-headers.spec.ts",
+              "line": 16,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "IDOR Prevention (SEC-007)",
+          "file": "security/security-headers.spec.ts",
+          "line": 25,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Sessão com cookie errado retorna 403/401",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-cfdc3996bfc2cefe26d9",
+              "file": "security/security-headers.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "Sessão com cookie errado retorna 403/401",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-2873fd0ed8bc2c5bee5f",
+              "file": "security/security-headers.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "Sessão com cookie errado retorna 403/401",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-9bf56e128ecd7a89bc09",
+              "file": "security/security-headers.spec.ts",
+              "line": 26,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Rate Limiting (ARCH-003)",
+          "file": "security/security-headers.spec.ts",
+          "line": 49,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Muitas requests retornam 429",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-319af154abbc5776a22a",
+              "file": "security/security-headers.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "Muitas requests retornam 429",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-2f5ea69c94c940e0104d",
+              "file": "security/security-headers.spec.ts",
+              "line": 50,
+              "column": 7
+            },
+            {
+              "title": "Muitas requests retornam 429",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-d6f585991ae14b35f6be",
+              "file": "security/security-headers.spec.ts",
+              "line": 50,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Honeypot Anti-spam (SEC-010)",
+          "file": "security/security-headers.spec.ts",
+          "line": 73,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Lead com honeypot preenchido retorna 200 (silently rejected)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-c56bc558c475511007bf",
+              "file": "security/security-headers.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "Lead com honeypot preenchido retorna 200 (silently rejected)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-dea7f431b12ad9cd4d64",
+              "file": "security/security-headers.spec.ts",
+              "line": 74,
+              "column": 7
+            },
+            {
+              "title": "Lead com honeypot preenchido retorna 200 (silently rejected)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-8c048f445bf7ea035fd6",
+              "file": "security/security-headers.spec.ts",
+              "line": 74,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Zod Validation (QUAL-005)",
+          "file": "security/security-headers.spec.ts",
+          "line": 91,
+          "column": 6,
+          "specs": [
+            {
+              "title": "POST /api/v1/sessions com body inválido retorna 400",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-e3cde11da61a8599f61f",
+              "file": "security/security-headers.spec.ts",
+              "line": 92,
+              "column": 7
+            },
+            {
+              "title": "POST /api/v1/leads com email inválido retorna 400",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-15b8e3878b85a5d0612a",
+              "file": "security/security-headers.spec.ts",
+              "line": 106,
+              "column": 7
+            },
+            {
+              "title": "POST /api/v1/sessions com body inválido retorna 400",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-f6ca458b13213c479567",
+              "file": "security/security-headers.spec.ts",
+              "line": 92,
+              "column": 7
+            },
+            {
+              "title": "POST /api/v1/leads com email inválido retorna 400",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-7b4b5fa8c616a8ec27d6",
+              "file": "security/security-headers.spec.ts",
+              "line": 106,
+              "column": 7
+            },
+            {
+              "title": "POST /api/v1/sessions com body inválido retorna 400",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-a9b78516217d1c7b8cf3",
+              "file": "security/security-headers.spec.ts",
+              "line": 92,
+              "column": 7
+            },
+            {
+              "title": "POST /api/v1/leads com email inválido retorna 400",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-24ed2a1184d9f0a4e6cc",
+              "file": "security/security-headers.spec.ts",
+              "line": 106,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "PII Log Guard (SEC-008)",
+          "file": "security/security-headers.spec.ts",
+          "line": 116,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Logger não expõe PII nas respostas de API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-d8d0c69cbfb036b61e0a",
+              "file": "security/security-headers.spec.ts",
+              "line": 117,
+              "column": 7
+            },
+            {
+              "title": "Logger não expõe PII nas respostas de API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-2534f047402a139a5f45",
+              "file": "security/security-headers.spec.ts",
+              "line": 117,
+              "column": 7
+            },
+            {
+              "title": "Logger não expõe PII nas respostas de API",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "e84bcc9c025517bc90d6-30690164657e4f643c66",
+              "file": "security/security-headers.spec.ts",
+              "line": 117,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-03-23T21:14:10.841Z",
+    "duration": 412.6710000000003,
+    "expected": 0,
+    "skipped": 151,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

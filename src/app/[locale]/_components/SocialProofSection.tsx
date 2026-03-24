@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import type { Locale } from "@/i18n/routing";
+import type { AppLocale } from "@/i18n/routing";
 
 interface SocialProofSectionProps {
-  locale: Locale;
+  locale: AppLocale;
 }
 
 export async function SocialProofSection({ locale }: SocialProofSectionProps) {
@@ -30,18 +30,18 @@ export async function SocialProofSection({ locale }: SocialProofSectionProps) {
     <section
       data-testid="social-proof-section"
       aria-labelledby="social-proof-headline"
-      className="bg-blue-600 dark:bg-blue-800 px-4 py-12 sm:py-16"
+      className="bg-(--color-primary) px-4 py-12 sm:py-16"
     >
       <div className="mx-auto max-w-4xl text-center">
         {/* Counter */}
         <p
           id="social-proof-headline"
           data-testid="social-proof-counter"
-          className="text-5xl font-bold text-white sm:text-6xl"
+          className="text-5xl font-bold text-(--color-on-primary) sm:text-6xl"
         >
           {t("socialCounter")}
         </p>
-        <p className="mt-2 text-lg text-blue-100 sm:text-xl">
+        <p className="mt-2 text-lg text-(--color-on-primary)/80 sm:text-xl">
           {t("socialCounterLabel")}
         </p>
 
@@ -51,11 +51,11 @@ export async function SocialProofSection({ locale }: SocialProofSectionProps) {
             <blockquote
               key={item.author}
               data-testid={`testimonial-card-${index}`}
-              className="rounded-lg bg-white/10 p-4 text-left backdrop-blur-sm"
+              className="rounded-lg bg-(--color-on-primary)/10 p-4 text-left backdrop-blur-sm"
             >
-              <p className="text-sm text-white/90">&ldquo;{item.quote}&rdquo;</p>
+              <p className="text-sm text-(--color-on-primary)/90">&ldquo;{item.quote}&rdquo;</p>
               <footer className="mt-3">
-                <cite className="not-italic text-xs text-blue-200">
+                <cite className="not-italic text-xs text-(--color-on-primary)/70">
                   — {item.author}, {item.role}
                 </cite>
               </footer>

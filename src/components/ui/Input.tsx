@@ -30,13 +30,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={id}
           className={cn(
-            "w-full h-10 min-h-[44px] px-3 text-sm rounded-lg border border-gray-300 bg-white text-gray-900 placeholder:text-gray-400 transition-colors duration-150",
-            "focus:outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500",
-            "disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed",
-            "dark:bg-gray-900 dark:border-gray-700 dark:text-gray-100 dark:placeholder:text-gray-500",
-            "dark:focus:ring-blue-400",
-            "dark:disabled:bg-gray-800",
-            error && "border-red-500 focus:ring-red-500 dark:border-red-500 dark:focus:ring-red-400",
+            "w-full h-10 min-h-[44px] px-3 text-base rounded-lg border border-(--color-border) bg-(--color-background) text-(--color-text-primary) placeholder:text-(--color-text-muted) transition-colors duration-150",
+            "focus:outline-none focus:border-transparent focus:ring-2 focus:ring-(--color-primary)",
+            "disabled:bg-(--color-surface) disabled:text-(--color-text-secondary) disabled:cursor-not-allowed",
+            error && "border-(--color-danger) focus:ring-(--color-danger)",
             className
           )}
           aria-invalid={!!error}
@@ -47,13 +44,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <p
             id={errorId}
             role="alert"
-            className="text-xs text-red-600 dark:text-red-400"
+            className="text-xs text-(--color-danger)"
           >
             {error}
           </p>
         )}
         {!error && hint && (
-          <p id={hintId} className="text-xs text-gray-500 dark:text-gray-400">
+          <p id={hintId} className="text-xs text-(--color-text-muted)">
             {hint}
           </p>
         )}

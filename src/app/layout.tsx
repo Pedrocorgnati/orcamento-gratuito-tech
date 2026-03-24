@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "@/lib/env"; // Valida variáveis de ambiente no startup
+import { AnalyticsWithConsent } from "@/components/analytics/AnalyticsWithConsent";
 
 // Camada 2: import via Client Component wrapper (dynamic ssr:false so requires client context)
 import { DataTestOverlayLoader } from "@/components/dev/DataTestOverlayLoader";
+import { ToastProvider } from "@/providers/ToastProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,6 +20,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#4F46E5',
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ?? "https://budgetfreeengine.com"
@@ -28,9 +38,7 @@ export const metadata: Metadata = {
   description:
     "Calcule o orçamento do seu projeto de software em minutos. 42 perguntas inteligentes, estimativa instantânea, 100% gratuito.",
   icons: {
-    // @ASSET_PLACEHOLDER name: favicon type: image extension: ico format: 1:1 dimensions: 32x32 description: Favicon do Budget Free Engine com símbolo reduzido. Forma geométrica abstrata com ícone de raio/energia representando velocidade e precisão. style: Minimalista, monocromático, legível em 32px. colors: primary (#4F46E5), background (#FFFFFF) context: Browser tab, PWA icon
     icon: "/favicon.ico",
-    // @ASSET_PLACEHOLDER name: apple-icon type: image extension: png format: 1:1 dimensions: 180x180 description: Apple touch icon do Budget Free Engine. Mesmo símbolo do favicon em alta resolução para dispositivos iOS. style: Minimalista, ícone com fundo sólido. colors: primary (#4F46E5), background (#FFFFFF) context: iOS home screen, Apple devices
     apple: "/apple-icon.png",
   },
 };
@@ -48,6 +56,9 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 font-[var(--font-inter)]">
         {children}
+        <ToastProvider />
+        {/* Analytics com consent gate — FEAT-UX-005 (wrapper isola beforeSend no cliente) */}
+        <AnalyticsWithConsent />
         {/* Camada 3: condicional de ambiente — bundler elimina em producao (constante em build time) */}
         {process.env.NODE_ENV === "development" && <DataTestOverlayLoader />}
       </body>

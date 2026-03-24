@@ -26,14 +26,59 @@ export function BottomSheet({
   className,
 }: BottomSheetProps) {
   const sheetRef = useRef<HTMLDivElement>(null);
-  const startYRef = useRef<number>(0);
-  const currentYRef = useRef<number>(0);
+  const startYRef = useRef<number>(0); // RESOLVED: removido _currentYRef nunca utilizado (G015)
 
-  // Fechar com Escape
+  // Focar o sheet ao abrir e restaurar o foco ao fechar (WCAG 2.4.3)
+  const triggerRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape" && isOpen) onClose();
+    if (isOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
+      // Pequeno delay para garantir que o sheet está no DOM
+      requestAnimationFrame(() => sheetRef.current?.focus());
+    } else {
+      triggerRef.current?.focus();
     }
+  }, [isOpen]);
+
+  // Fechar com Escape + focus trap com Tab (WCAG 2.1.2)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const FOCUSABLE =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const sheet = sheetRef.current;
+      if (!sheet) return;
+
+      const focusable = Array.from(
+        sheet.querySelectorAll<HTMLElement>(FOCUSABLE)
+      ).filter((el) => !el.hasAttribute("disabled"));
+
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);

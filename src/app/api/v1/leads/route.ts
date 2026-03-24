@@ -1,10 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { CreateLeadSchema } from '@/schemas/lead.schema'
+import { leadSchema } from '@/lib/validations/schemas'
 import { leadService } from '@/services/lead.service'
 import { buildError, ERROR_CODES } from '@/lib/errors'
+import { leadRateLimiter } from '@/lib/rate-limiter'
+import { logger } from '@/lib/logger'
 
 // POST /api/v1/leads — capturar lead ao final do fluxo
 export async function POST(request: NextRequest) {
+  // ── Rate limit (INT-096) ──────────────────────────────────────────────────
+  const ip =
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    request.headers.get('x-real-ip') ??
+    '127.0.0.1'
+
+  if (!leadRateLimiter.check(`lead:${ip}`)) {
+    return NextResponse.json(
+      buildError(ERROR_CODES.RATE_001, 'Muitas tentativas. Tente novamente mais tarde.'),
+      { status: 429, headers: { 'Retry-After': '3600' } }
+    )
+  }
+  // ── Fim Rate limit ────────────────────────────────────────────────────────
+
   try {
     const body = await request.json().catch(() => null)
 
@@ -15,7 +31,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const parsed = CreateLeadSchema.safeParse(body)
+    const parsed = leadSchema.safeParse(body)
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -37,26 +53,32 @@ export async function POST(request: NextRequest) {
 
     if (message === 'SESSION_NOT_FOUND') {
       return NextResponse.json(
-        buildError(ERROR_CODES.SESSION_NOT_FOUND, 'Sessão não encontrada.'),
+        buildError(ERROR_CODES.SESSION_080, 'Sessão não encontrada.'),
         { status: 404 }
       )
     }
     if (message === 'SESSION_NOT_COMPLETE') {
       return NextResponse.json(
-        buildError(ERROR_CODES.SESSION_NOT_COMPLETE, 'Complete o fluxo de estimativa antes de enviar o formulário.'),
+        buildError(ERROR_CODES.LEAD_050, 'Complete o fluxo de estimativa antes de enviar o formulário.'),
+        { status: 400 }
+      )
+    }
+    if (message === 'CONSENT_REQUIRED') {
+      return NextResponse.json(
+        buildError(ERROR_CODES.LEAD_051, 'Consentimento obrigatório para captura de lead.'),
         { status: 400 }
       )
     }
     if (message === 'LEAD_ALREADY_EXISTS') {
       return NextResponse.json(
-        buildError(ERROR_CODES.LEAD_ALREADY_EXISTS, 'Lead já enviado para esta sessão.'),
+        buildError(ERROR_CODES.LEAD_081, 'Lead já enviado para esta sessão.'),
         { status: 409 }
       )
     }
 
-    console.error('[POST /api/v1/leads]', err)
+    logger.error('lead_create_error', { message: err instanceof Error ? err.message : String(err) })
     return NextResponse.json(
-      buildError(ERROR_CODES.INTERNAL_ERROR, 'Erro interno. Tente novamente em alguns instantes.'),
+      buildError(ERROR_CODES.SYS_001, 'Erro interno. Tente novamente em alguns instantes.'),
       { status: 500 }
     )
   }

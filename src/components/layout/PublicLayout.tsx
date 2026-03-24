@@ -2,17 +2,22 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { cn } from "@/lib/utils";
 import React from "react";
-import type { Locale } from "@/i18n/routing";
+import type { AppLocale } from "@/i18n/routing";
 
 interface PublicLayoutProps {
   children: React.ReactNode;
-  locale: Locale;
+  locale: AppLocale;
   className?: string;
   variant?: "public" | "admin";
   isAuthenticated?: boolean;
   userEmail?: string;
   privacyLabel?: string;
   copyrightLabel?: string;
+  skipLinkLabel?: string;
+  loginLabel?: string;
+  logoutLabel?: string;
+  homeAriaLabel?: string;
+  footerNavLabel?: string;
 }
 
 export function PublicLayout({
@@ -24,15 +29,20 @@ export function PublicLayout({
   userEmail,
   privacyLabel,
   copyrightLabel,
+  skipLinkLabel = "Pular para conteúdo principal",
+  loginLabel,
+  logoutLabel,
+  homeAriaLabel,
+  footerNavLabel,
 }: PublicLayoutProps) {
   return (
     <div data-testid="public-layout" className="flex min-h-screen flex-col">
       {/* Skip link — accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-(--color-primary) focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-(--color-on-primary)"
       >
-        Pular para conteúdo principal
+        {skipLinkLabel}
       </a>
 
       <Header
@@ -40,6 +50,9 @@ export function PublicLayout({
         isAuthenticated={isAuthenticated}
         userEmail={userEmail}
         locale={locale}
+        loginLabel={loginLabel}
+        logoutLabel={logoutLabel}
+        homeAriaLabel={homeAriaLabel}
       />
 
       <main
@@ -55,6 +68,7 @@ export function PublicLayout({
         locale={locale}
         privacyLabel={privacyLabel}
         copyrightLabel={copyrightLabel}
+        footerNavLabel={footerNavLabel}
       />
     </div>
   );

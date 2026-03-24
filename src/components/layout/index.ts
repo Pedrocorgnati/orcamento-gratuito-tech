@@ -2,3 +2,4 @@ export { Header } from "./Header";
 export { Footer } from "./Footer";
 export { PublicLayout } from "./PublicLayout";
 export { LanguageSelector } from "./LanguageSelector";
+export { CookieConsentBanner } from "./CookieConsentBanner";

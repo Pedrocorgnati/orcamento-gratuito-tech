@@ -3,21 +3,30 @@ import React from "react";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "default" | "outlined" | "elevated";
+  padding?: "none" | "sm" | "md" | "lg";
 }
 
+const paddingMap = {
+  none: "",
+  sm: "p-2 sm:p-3",
+  md: "p-4 sm:p-6",
+  lg: "p-6 sm:p-8",
+} as const;
+
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant = "default", ...props }, ref) => {
+  ({ className, variant = "default", padding = "md", ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "rounded-xl p-4 sm:p-6",
+          "rounded-xl",
+          paddingMap[padding],
           {
-            "bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-800":
+            "bg-(--color-background) border border-(--color-border)":
               variant === "default",
-            "bg-transparent border-2 border-gray-300 dark:border-gray-600":
+            "bg-transparent border-2 border-(--color-border)":
               variant === "outlined",
-            "bg-white border border-gray-100 shadow-md dark:bg-gray-900 dark:border-gray-800":
+            "bg-(--color-background) border border-(--color-border) shadow-(--shadow-md)":
               variant === "elevated",
           },
           className

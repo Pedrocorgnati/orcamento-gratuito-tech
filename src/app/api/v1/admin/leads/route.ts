@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { AdminLeadsQuerySchema } from '@/schemas/lead.schema'
+import { adminLeadsQuerySchema } from '@/lib/validations/schemas'
 import { leadService } from '@/services/lead.service'
 import { buildError, ERROR_CODES } from '@/lib/errors'
 import { getUser } from '@/lib/supabase/server'
+import { logger } from '@/lib/logger'
 
 // GET /api/v1/admin/leads — listar leads (requer autenticação Supabase Auth)
 export async function GET(request: NextRequest) {
@@ -11,14 +12,14 @@ export async function GET(request: NextRequest) {
     const user = await getUser()
     if (!user) {
       return NextResponse.json(
-        buildError(ERROR_CODES.UNAUTHORIZED, 'Autenticação necessária.'),
+        buildError(ERROR_CODES.AUTH_001, 'Autenticação necessária.'),
         { status: 401 }
       )
     }
 
     // Parse query params
     const searchParams = Object.fromEntries(request.nextUrl.searchParams)
-    const parsed = AdminLeadsQuerySchema.safeParse(searchParams)
+    const parsed = adminLeadsQuerySchema.safeParse(searchParams)
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -37,12 +38,16 @@ export async function GET(request: NextRequest) {
       data,
       total,
       page: parsed.data.page,
-      per_page: parsed.data.per_page,
+      per_page: parsed.data.pageSize,
+    }, {
+      headers: {
+        'Cache-Control': 'no-store',
+      },
     })
-  } catch (err) {
-    console.error('[GET /api/v1/admin/leads]', err)
+  } catch (err: unknown) {
+    logger.error('admin_leads_get_error', { message: err instanceof Error ? err.message : String(err) })
     return NextResponse.json(
-      buildError(ERROR_CODES.INTERNAL_ERROR, 'Erro interno. Tente novamente em alguns instantes.'),
+      buildError(ERROR_CODES.SYS_001, 'Erro interno. Tente novamente em alguns instantes.'),
       { status: 500 }
     )
   }

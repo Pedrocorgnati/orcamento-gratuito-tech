@@ -6,9 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -17,6 +15,7 @@ datasource db {
 
 model Question {
   id         String  @id @default(cuid())
+  code       String  @unique // "Q001", "Q010", etc.
   block      String // QuestionBlock
   type       String // QuestionType
   order      Int
@@ -110,6 +109,7 @@ model Session {
   progress_percentage    Float    @default(0)
   locale                 String   @default("pt-BR") // Locale
   currency               String   @default("BRL") // Currency
+  intermediate_email     String?
   visitor_ip             String?
   user_agent             String?
   expires_at             DateTime
@@ -178,9 +178,18 @@ model Lead {
   consent_given       Boolean
   consent_version     String
   consent_at          DateTime
-  email_status        String    @default("pending") // EmailStatus
+  marketing_consent   Boolean   @default(false)  // INT-091
+  honeypot_triggered  Boolean   @default(false)  // SEC-010
+  is_suspicious       Boolean   @default(false)  // INT-103: detecção de respostas suspeitas
+  suspicious_pattern  String?                    // 'TOO_FAST' | 'TOO_UNIFORM' | 'BUDGET_MISMATCH'
+  email_status        String    @default("PENDING") // EmailStatus
   email_retry_count   Int       @default(0)
+  email_sent_at       DateTime?
   anonymized_at       DateTime?
+
+  // INT-024: placeholder para feedback de acurácia (V2)
+  // null = não avaliado, true = estimativa precisa, false = estimativa imprecisa
+  accuracy_feedback   Boolean?
 
   session Session @relation(fields: [session_id], references: [id])
 

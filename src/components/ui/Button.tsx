@@ -3,20 +3,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60 cursor-pointer active:scale-[0.98]",
   {
     variants: {
       variant: {
         primary:
-          "bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-500",
+          "bg-(--color-primary) text-(--color-on-primary) hover:bg-(--color-primary-hover) focus-visible:ring-(--color-primary) active:brightness-95",
         secondary:
-          "bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:ring-gray-400 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700",
+          "bg-(--color-muted) text-(--color-text-primary) hover:bg-(--color-surface) focus-visible:ring-(--color-border)",
         outline:
-          "border-2 border-blue-600 text-blue-600 bg-transparent hover:bg-blue-50 focus-visible:ring-blue-500 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950",
+          "border-2 border-(--color-primary) text-(--color-primary) bg-transparent hover:bg-(--color-accent) focus-visible:ring-(--color-primary)",
         ghost:
-          "bg-transparent text-gray-700 hover:bg-gray-100 focus-visible:ring-gray-400 dark:text-gray-300 dark:hover:bg-gray-800",
+          "bg-transparent text-(--color-text-secondary) hover:bg-(--color-surface) focus-visible:ring-(--color-border)",
         destructive:
-          "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500",
+          "bg-(--color-danger) text-(--color-on-danger) hover:opacity-90 focus-visible:ring-(--color-danger)",
       },
       size: {
         sm: "h-8 px-3 text-sm rounded-md",

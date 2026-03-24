@@ -1,0 +1,49 @@
+{
+  "_comment": "SLOs importados do PRD.md — Requisitos Não Funcionais / Performance. SLO-SPEC.md não gerado (F11 pendente).",
+  "source": "PRD.md seção 'Requisitos Não Funcionais — Performance'",
+  "generated_by": "/load-test-create",
+  "generated_at": "2026-03-23",
+  "global": {
+    "error_rate_max": 0.01,
+    "max_concurrent_users": 50,
+    "rate_limit_note": "Rate limit por IP: 50 req/60s (sessions/actions), 10 req/60s (leads, admin)"
+  },
+  "scenarios": {
+    "create-session": {
+      "p95_ms": 200,
+      "p99_ms": 500,
+      "error_rate_max": 0.01,
+      "_source": "PRD.md API Routes p95 < 200ms"
+    },
+    "get-session": {
+      "p95_ms": 200,
+      "p99_ms": 400,
+      "error_rate_max": 0.01,
+      "_source": "PRD.md API Routes p95 < 200ms"
+    },
+    "submit-answer": {
+      "p95_ms": 200,
+      "p99_ms": 400,
+      "error_rate_max": 0.01,
+      "_source": "PRD.md API Routes p95 < 200ms — transação Prisma: upsert answer + update session"
+    },
+    "get-estimate": {
+      "p95_ms": 800,
+      "p99_ms": 2000,
+      "error_rate_max": 0.01,
+      "_source": "Override sobre default — operação pesada: soma price_impacts + complexity_multiplier + conversão de moeda BRL→{locale}"
+    },
+    "capture-lead": {
+      "p95_ms": 200,
+      "p99_ms": 500,
+      "error_rate_max": 0.01,
+      "_source": "PRD.md API Routes p95 < 200ms — rate limit restrito 10 req/60s"
+    },
+    "full-flow": {
+      "p95_ms": 3000,
+      "p99_ms": 8000,
+      "error_rate_max": 0.01,
+      "_source": "Soma dos SLOs individuais: criação + N respostas + estimativa + lead"
+    }
+  }
+}
