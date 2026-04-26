@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Presupuesto de software IA a medida | LLM, RAG y agentes",
+    "description": "Pide presupuesto de software de IA a medida con LLMs (OpenAI, Anthropic, Llama), RAG con embeddings, pgvector/Pinecone, guardrails, evals y control de tokens."
+  },
+  "hero": {
+    "h1": "presupuesto software ia: software de IA a medida para tus datos y tus flujos",
+    "subtitle": "LLMs, RAG y agentes con guardrails, evals y control de costes por token.",
+    "cta": "Pide tu presupuesto"
+  },
+  "pain": {
+    "title": "Cuando la IA no encaja en tu operativa",
+    "bullets": [
+      "¿Alguna vez un prototipo con LLM funcionó en demo, pero falló con datos reales y permisos?",
+      "¿Alguna vez el coste de tokens subió sin explicación y no supiste qué prompt o versión lo cambió?",
+      "¿Alguna vez te frenó el cumplimiento: PII, retención, auditoría y trazabilidad en producción?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Calidad verificable",
+      "desc": "Definimos evals por caso de uso, criterios de aceptación y métricas para detectar regresiones antes de publicar."
+    },
+    {
+      "title": "RAG que aporta contexto",
+      "desc": "Embeddings, chunking, recuperación y reranking con base vectorial (pgvector o Pinecone) y control de acceso por documento."
+    },
+    {
+      "title": "Costes bajo control",
+      "desc": "Modelamos consumo de tokens, latencia y volumen, y aplicamos límites, caché y alertas por feature para mantener previsibilidad."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye tu software de IA a medida",
+    "bullets": [
+      "Selección de LLM: OpenAI, Anthropic o Llama",
+      "RAG con embeddings: chunking, retrieval y reranking",
+      "Vector DB: pgvector (Postgres) o Pinecone (gestionado)",
+      "Agentes con tool use: APIs internas, bases de datos y workflows",
+      "Fine-tuning cuando compensa: datasets, pruebas y despliegue seguro",
+      "Guardrails: inyección de prompts, filtros y reglas de política",
+      "Observabilidad de prompts: trazas, versionado y feedback",
+      "Costes de tokens: presupuestos, caché, batching y rate limits",
+      "Cumplimiento IA: datos, retención, logs y preparación de auditoría"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Asistente de conocimiento",
+      "desc": "Responde desde SOPs, políticas y documentación con RAG, citas y comprobaciones de relevancia."
+    },
+    {
+      "title": "Copiloto de soporte",
+      "desc": "Borradores de respuesta y resúmenes de tickets con tool use, respetando permisos y datos sensibles."
+    },
+    {
+      "title": "Automatización documental",
+      "desc": "Clasificación y extracción de campos en PDFs y correos, con objetivos de precisión y revisión humana."
+    },
+    {
+      "title": "Agente de operaciones internas",
+      "desc": "Encadena herramientas con límites: crea tareas, actualiza registros y escala excepciones con trazabilidad."
+    },
+    {
+      "title": "Ventas y enablement",
+      "desc": "Propuestas y mensajes basados en tu catálogo y normas, con validación antes de enviar al cliente."
+    }
+  ],
+  "stack": {
+    "title": "Opciones de stack LLM que implementamos",
+    "options": [
+      {
+        "name": "OpenAI",
+        "note": "Modelos sólidos para chat, extracción y tool use, con rutas claras para control de coste por tokens."
+      },
+      {
+        "name": "Anthropic",
+        "note": "Buen ajuste para contextos largos y flujos con políticas, donde importa la consistencia al seguir instrucciones."
+      },
+      {
+        "name": "Llama",
+        "note": "Opción open-weight para despliegue privado cuando necesitas más control sobre datos e infraestructura."
+      },
+      {
+        "name": "pgvector",
+        "note": "Búsqueda vectorial dentro de Postgres para operaciones simples y gobierno unificado de accesos."
+      },
+      {
+        "name": "Pinecone",
+        "note": "Base vectorial gestionada para escalado y baja latencia en cargas de recuperación de alto volumen."
+      },
+      {
+        "name": "Observabilidad",
+        "note": "Trazas de prompts, diffs por versión, analítica de tokens y errores para depurar y operar con confianza."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Alcance y presupuesto",
+        "desc": "Definimos objetivos, riesgos y un modelo de coste de tokens, retrieval y hosting."
+      },
+      {
+        "title": "Construcción y evals",
+        "desc": "Implementamos RAG, agentes y guardrails, y ejecutamos evals de calidad y seguridad antes del release."
+      },
+      {
+        "title": "Operación y mejora",
+        "desc": "Activamos observabilidad de prompts, alertas y controles de cumplimiento, y iteramos con métricas."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Qué influye más en el presupuesto de software IA?",
+      "a": "El alcance, el estado de tus datos y el nivel de fiabilidad esperado. RAG, evals y observabilidad suelen aumentar el arranque, pero reducen incidencias y gasto de tokens después."
+    },
+    {
+      "q": "¿Recomiendas RAG o fine-tuning para empezar?",
+      "a": "Normalmente RAG primero: embeddings y recuperación te permiten anclar respuestas a tu contenido y mejorar rápido. Consideramos fine-tuning si las evals muestran una mejora clara en formato o estilo."
+    },
+    {
+      "q": "¿Cómo controlas los costes de tokens en producción?",
+      "a": "Diseñamos prompts y contexto para ser mínimos, usamos caché y batching, aplicamos rate limits y presupuestos por feature. Además, añadimos observabilidad para ver coste por versión, ruta y caso de uso."
+    },
+    {
+      "q": "¿Cuándo usar pgvector y cuándo Pinecone?",
+      "a": "pgvector encaja si quieres Postgres como punto único de operación y permisos. Pinecone encaja si priorizas un servicio gestionado con escalado y rendimiento dedicado para la capa vectorial."
+    },
+    {
+      "q": "¿Cómo abordas el cumplimiento de IA y datos sensibles?",
+      "a": "Mapeamos flujos de datos, aplicamos mínimo privilegio, configuramos retención y audit logs, y añadimos guardrails como redacción de PII, políticas y límites de tool use para un comportamiento controlable."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Pide un presupuesto con números y criterios claros",
+    "desc": "Cuéntame tu caso de uso y tus restricciones de datos, y te propongo un alcance por fases con control de calidad y costes de tokens.",
+    "button": "Solicitar presupuesto"
+  }
+}

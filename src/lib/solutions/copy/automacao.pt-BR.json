@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Orçamento de automação de processos para sua operação",
+    "description": "Peça um orçamento de automação de processos com integração entre ERP, CRM, planilhas e APIs. Workflows em n8n/Make/Zapier, scripts Python e dashboards para medir ROI…"
+  },
+  "hero": {
+    "h1": "orçamento automação de processos sob medida para você",
+    "subtitle": "Automatize tarefas e integrações entre sistemas com foco em ROI medido por horas economizadas.",
+    "cta": "Solicitar orçamento agora"
+  },
+  "pain": {
+    "title": "Automação que tira o atrito do dia a dia",
+    "bullets": [
+      "Você já perdeu tempo copiando dados entre ERP, CRM e planilhas para fechar o dia?",
+      "Você já ficou preso em aprovações e tarefas repetitivas sem visibilidade do andamento?",
+      "Você já sofreu com integrações quebrando por mudanças de API, horários e limites de envio?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Integração real",
+      "desc": "Conecte ERP, CRM, planilhas e APIs com fluxos claros, logs e tratamento de erros para evitar retrabalho."
+    },
+    {
+      "title": "Controle e rastreio",
+      "desc": "Dashboards de acompanhamento e alertas para você saber o que rodou, o que falhou e o que precisa de ação."
+    },
+    {
+      "title": "ROI mensurável",
+      "desc": "Estimamos e acompanhamos o ROI por horas economizadas, com baseline antes e depois por processo automatizado."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no escopo do orçamento",
+    "bullets": [
+      "Mapeamento do processo atual",
+      "Definição de gatilhos e regras",
+      "Integração ERP/CRM/planilhas/APIs",
+      "Workflows em n8n/Make/Zapier",
+      "Scripts Python sob demanda",
+      "Google Apps Script para Sheets",
+      "Webhooks, filas e cron jobs",
+      "Dashboards, logs e alertas",
+      "Documentação e handover técnico"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Sincronização de cadastros",
+      "desc": "Mantenha contatos, empresas e oportunidades alinhados entre CRM, ERP e planilhas, com validação e deduplicação."
+    },
+    {
+      "title": "Atualização automática de status",
+      "desc": "Dispare webhooks para atualizar pedidos, entregas e cobranças conforme eventos, sem depender de tarefas manuais."
+    },
+    {
+      "title": "Rotinas recorrentes com cron",
+      "desc": "Execute conciliações, exportações e checagens em horários definidos, com filas e reprocessamento quando necessário."
+    },
+    {
+      "title": "Relatórios e indicadores",
+      "desc": "Gere relatórios em planilhas e dashboards com dados consolidados, reduzindo tempo de fechamento e erros de digitação."
+    },
+    {
+      "title": "Aprovações e SLAs",
+      "desc": "Organize workflows de aprovação com notificações, prazos e trilha de auditoria, para acelerar decisões sem perder controle."
+    }
+  ],
+  "stack": {
+    "title": "Ferramentas que podemos usar no seu cenário",
+    "options": [
+      {
+        "name": "n8n",
+        "note": "Workflows com conectores, webhooks e execução agendada, com observabilidade e reprocessamento."
+      },
+      {
+        "name": "Make",
+        "note": "Automação visual para integrações rápidas entre apps, com roteamento e tratamento de erros por etapa."
+      },
+      {
+        "name": "Zapier",
+        "note": "Integrações simples e disparos por eventos para reduzir trabalho manual em times comerciais e operações."
+      },
+      {
+        "name": "Python",
+        "note": "Scripts e serviços para regras mais complexas, consumo de APIs, filas e jobs com cron."
+      },
+      {
+        "name": "Apps Script",
+        "note": "Automação no Google Workspace para Sheets, Drive e Gmail, com validações e logs por execução."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "desc": "Entendemos seu fluxo, integrações e dor atual para definir objetivo, entradas, saídas e critérios de sucesso."
+      },
+      {
+        "title": "Implementação",
+        "desc": "Construímos os workflows, scripts e integrações com logs, monitoramento, webhooks e rotinas agendadas."
+      },
+      {
+        "title": "Acompanhamento",
+        "desc": "Entregamos dashboard e métricas, ajustamos o processo e registramos ROI por horas economizadas ao longo do uso."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Como funciona o orçamento de automação de processos?",
+      "a": "Você descreve o fluxo e os sistemas envolvidos, e nós detalhamos o escopo, estimativa de esforço, prazos e opções de implementação (workflow, scripts, integrações e monitoramento)."
+    },
+    {
+      "q": "Em quanto tempo dá para colocar uma automação no ar?",
+      "a": "Depende do número de integrações, regras e validações, mas a maioria dos casos vai de alguns dias a poucas semanas, incluindo testes e acompanhamento inicial."
+    },
+    {
+      "q": "Vocês integram com meu ERP, CRM e planilhas?",
+      "a": "Sim. Integramos via APIs, conectores, webhooks e, quando fizer sentido, via scripts (Python ou Google Apps Script) para consolidar dados e acionar rotinas."
+    },
+    {
+      "q": "Como vocês lidam com falhas, limites de API e reprocessamento?",
+      "a": "Implementamos logs e alertas, tratamento de erros por etapa, filas quando necessário e rotinas de reexecução, além de cron jobs para checagens e reconciliação."
+    },
+    {
+      "q": "Como eu vou saber se está valendo a pena?",
+      "a": "Definimos um baseline do tempo gasto hoje, medimos o tempo economizado após a automação e acompanhamos o ROI por horas economizadas com relatórios e dashboards."
+    },
+    {
+      "q": "Preciso dar acesso total aos meus sistemas?",
+      "a": "Não. Você pode fornecer acessos mínimos por ambiente e por função, usando chaves de API e permissões limitadas, e validamos tudo com você antes de ativar em produção."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vamos estimar seu ROI e montar o escopo",
+    "desc": "Envie seu fluxo atual e os sistemas envolvidos para receber um orçamento claro, com prazos, escopo e métricas.",
+    "button": "Quero meu orçamento"
+  }
+}

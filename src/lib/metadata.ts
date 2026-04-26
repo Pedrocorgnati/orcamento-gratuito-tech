@@ -16,6 +16,11 @@ interface PageMetadataOptions {
   ogImageUrl?: string;
   /** true para /admin, /result, /lead-capture, /thank-you */
   noIndex?: boolean;
+  /**
+   * Mapa locale → path para hreflang (usado quando slug/segment muda por locale).
+   * Se ausente, usa `path` para todos os locales.
+   */
+  pathByLocale?: Record<string, string>;
 }
 
 /**
@@ -30,16 +35,21 @@ export function generatePageMetadata({
   path,
   ogImageUrl,
   noIndex = false,
+  pathByLocale,
 }: PageMetadataOptions): Metadata {
-  const canonicalUrl = `${APP_URL}/${locale}${path === "/" ? "" : path}`;
+  const pathFor = (loc: string) => {
+    const p = pathByLocale?.[loc] ?? path;
+    return p === "/" ? "" : p;
+  };
+  const canonicalUrl = `${APP_URL}/${locale}${pathFor(locale)}`;
   const ogImage = ogImageUrl ?? `${APP_URL}/images/og-image.jpg`;
 
   // hreflang alternates para SEO multilíngue
   const languages: Record<string, string> = {};
   for (const loc of routing.locales) {
-    languages[loc] = `${APP_URL}/${loc}${path === "/" ? "" : path}`;
+    languages[loc] = `${APP_URL}/${loc}${pathFor(loc)}`;
   }
-  languages["x-default"] = `${APP_URL}/${routing.defaultLocale}${path === "/" ? "" : path}`;
+  languages["x-default"] = `${APP_URL}/${routing.defaultLocale}${pathFor(routing.defaultLocale)}`;
 
   return {
     title,

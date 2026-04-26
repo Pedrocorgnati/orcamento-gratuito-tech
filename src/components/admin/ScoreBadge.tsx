@@ -23,6 +23,7 @@ export function ScoreBadge({ score }: ScoreBadgeProps) {
   const config = scoreConfig[score] ?? { label: score, className: 'bg-gray-100 text-gray-700 border border-gray-200' }
   return (
     <span
+      data-testid={`score-badge-${score.toLowerCase()}`}
       className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold ${config.className}`}
       aria-label={`Score ${config.label}`}
     >

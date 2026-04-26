@@ -13,7 +13,6 @@ export default async function NotFound() {
     <PublicLayout
       locale={locale}
       skipLinkLabel={tCommon("skipToContent")}
-      loginLabel={tCommon("admin.login")}
       logoutLabel={tCommon("admin.logout")}
       privacyLabel={tCommon("privacyPolicy")}
       copyrightLabel={tCommon("copyright")}
@@ -21,6 +20,7 @@ export default async function NotFound() {
       footerNavLabel={tCommon("footerNav")}
     >
       <div
+        data-testid="page-not-found"
         role="main"
         aria-labelledby="not-found-title"
         className="relative flex min-h-[60vh] flex-col items-center justify-center px-4 text-center"
@@ -34,23 +34,24 @@ export default async function NotFound() {
         </span>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center gap-4">
+        <div data-testid="not-found-content" className="relative z-10 flex flex-col items-center gap-4">
           <span className="text-5xl" aria-hidden="true">
             🔍
           </span>
 
           <h1
             id="not-found-title"
+            data-testid="not-found-title"
             className="text-2xl font-bold text-(--color-text-primary) sm:text-3xl"
           >
             {t("notFound")}
           </h1>
 
-          <p className="max-w-md text-base text-(--color-text-secondary)">
+          <p data-testid="not-found-message" className="max-w-md text-base text-(--color-text-secondary)">
             {t("notFoundMessage")}
           </p>
 
-          <Link href="/" locale={locale}>
+          <Link href="/" locale={locale} data-testid="not-found-home-link">
             <Button variant="primary" size="lg">
               {t("goHome")}
             </Button>

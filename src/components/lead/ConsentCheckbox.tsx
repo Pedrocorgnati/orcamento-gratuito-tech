@@ -1,6 +1,7 @@
 'use client'
 
 import type { UseFormRegister, FieldErrors } from 'react-hook-form'
+import { PRIVACY_POLICY_VERSION } from '@/lib/privacy/policyVersion'
 
 interface ConsentCheckboxProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -59,6 +60,12 @@ export function ConsentCheckbox({
 
   return (
     <div className="space-y-4">
+      {/* CL-245: hidden policy version snapshot */}
+      <input
+        type="hidden"
+        defaultValue={PRIVACY_POLICY_VERSION}
+        {...register('policyVersion')}
+      />
       {/* Checkbox principal LGPD — INT-090: NÃO pré-marcado */}
       <div>
         <div className="flex items-start gap-3">

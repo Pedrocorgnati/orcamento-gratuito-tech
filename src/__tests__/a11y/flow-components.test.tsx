@@ -91,7 +91,7 @@ describe('Acessibilidade — Componentes do Fluxo', () => {
     })
 
     it('exibe mensagem quando não há opções', async () => {
-      const { getByText } = render(
+      const { getByTestId } = render(
         <QuestionCard
           questionId="q-empty"
           translation={mockTranslation}
@@ -100,7 +100,7 @@ describe('Acessibilidade — Componentes do Fluxo', () => {
           {null}
         </QuestionCard>
       )
-      expect(getByText('Nenhuma opção disponível para esta pergunta.')).toBeDefined()
+      expect(getByTestId('flow-question-empty')).toBeDefined()
     })
   })
 
@@ -150,11 +150,11 @@ describe('Acessibilidade — Componentes do Fluxo', () => {
     })
 
     it('tem touch target mínimo de 56px', () => {
-      const { getByRole } = render(
+      const { getByTestId } = render(
         <OptionButton optionId="opt-1" label="Website" isSelected={false} onClick={() => {}} />
       )
-      const button = getByRole('button')
-      expect(button.className).toContain('min-h-[56px]')
+      const wrapper = getByTestId('flow-option-button-opt-1')
+      expect(wrapper.className).toContain('min-h-[56px]')
     })
   })
 
@@ -203,7 +203,7 @@ describe('Acessibilidade — Componentes do Fluxo', () => {
     })
 
     it('tem touch target mínimo de 44px', () => {
-      const { container } = render(
+      const { getByTestId } = render(
         <OptionCheckbox
           optionId="opt-1"
           label="Autenticação"
@@ -211,8 +211,8 @@ describe('Acessibilidade — Componentes do Fluxo', () => {
           onChange={() => {}}
         />
       )
-      const label = container.querySelector('label')
-      expect(label?.className).toContain('min-h-[44px]')
+      const wrapper = getByTestId('flow-option-checkbox-opt-1')
+      expect(wrapper.className).toContain('min-h-[44px]')
     })
   })
 

@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "AI Software Development Cost for Custom AI Systems",
+    "description": "Estimate ai software development cost and ship custom LLM apps with RAG, agents, guardrails, evals, and compliance controls."
+  },
+  "hero": {
+    "h1": "ai software development cost for custom AI software",
+    "subtitle": "Build production LLM apps with predictable token spend, evaluation, and compliance-ready guardrails.",
+    "cta": "Get a cost estimate"
+  },
+  "pain": {
+    "title": "You need predictable outcomes, not surprises",
+    "bullets": [
+      "Have you ever built an LLM prototype that worked in demos, then failed on real company data?",
+      "Have you ever shipped a chatbot, then watched token cost climb with no way to trace what changed?",
+      "Have you ever worried about PII, retention, or audit needs after the app was already in production?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Cost you can forecast",
+      "desc": "We model token cost, latency, and throughput early, then design prompts, caching, and retrieval to keep spend stable."
+    },
+    {
+      "title": "Answers you can trust",
+      "desc": "RAG with embeddings, grounded citations, and quality evals reduces hallucinations and makes regressions visible before release."
+    },
+    {
+      "title": "Controls for real environments",
+      "desc": "Guardrails, prompt observability, and AI compliance practices help you meet security expectations and operate with confidence."
+    }
+  ],
+  "scope": {
+    "title": "What you get with custom AI software",
+    "bullets": [
+      "LLM selection: OpenAI, Anthropic, or Llama based on quality, privacy, and budget",
+      "RAG with embeddings: chunking, retrieval strategy, reranking, and relevance evaluation",
+      "Vector database: pgvector for Postgres-native needs or Pinecone for managed scale",
+      "Agents with tool use: call internal APIs, search docs, write tickets, and update systems with permissions",
+      "Fine-tuning when it pays off: task fit analysis, datasets, and safe rollout plans",
+      "Guardrails: policy rules, PII detection/redaction, prompt injection defenses, and content filters",
+      "Prompt observability: traces, versioning, feedback capture, and error taxonomy for fast debugging",
+      "Token cost controls: rate limits, caching, batching, and per-feature budget alerts",
+      "AI compliance support: data handling, retention, access controls, audit logs, and vendor review inputs"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Knowledge base assistant",
+      "desc": "Search and answer from SOPs, policies, and docs using RAG with citations and relevance checks."
+    },
+    {
+      "title": "Customer support copilot",
+      "desc": "Draft responses, summarize tickets, and pull account context with tool use while respecting data permissions."
+    },
+    {
+      "title": "Document intake automation",
+      "desc": "Extract fields, classify, and route PDFs and emails with eval-backed accuracy targets and human review loops."
+    },
+    {
+      "title": "Sales and enablement helper",
+      "desc": "Generate tailored outreach and proposals grounded in your product knowledge and approved messaging."
+    },
+    {
+      "title": "Internal workflow agent",
+      "desc": "Automate repetitive ops tasks by chaining tools safely: create tasks, update records, and escalate exceptions."
+    }
+  ],
+  "stack": {
+    "title": "LLM stack options we implement",
+    "options": [
+      {
+        "name": "OpenAI",
+        "note": "Strong general capability for chat, extraction, and tool use with flexible model choices."
+      },
+      {
+        "name": "Anthropic",
+        "note": "Great for long-context reasoning and careful instruction following in enterprise workflows."
+      },
+      {
+        "name": "Llama",
+        "note": "Self-hosted or private deployments when you need tighter control over data and infrastructure."
+      },
+      {
+        "name": "pgvector",
+        "note": "Keep vector search inside Postgres for simpler ops and consistent access control."
+      },
+      {
+        "name": "Pinecone",
+        "note": "Managed vector DB for high-scale retrieval workloads and operational simplicity."
+      },
+      {
+        "name": "Prompt observability",
+        "note": "Tracing, prompt/version diffing, and cost analytics so you can debug and control spend."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Scope and estimate",
+        "desc": "Define success metrics, risks, and a cost model for tokens, retrieval, and hosting."
+      },
+      {
+        "title": "Build and evaluate",
+        "desc": "Implement RAG, agents, and guardrails, then run quality evals and safety checks before launch."
+      },
+      {
+        "title": "Deploy and operate",
+        "desc": "Add observability, alerts, and compliance controls, then iterate with measured improvements."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What drives ai software development cost the most?",
+      "a": "Scope, data readiness, and the target reliability level. Adding RAG, evals, and observability typically costs more upfront, but prevents expensive production issues and token waste."
+    },
+    {
+      "q": "Do you recommend fine-tuning or RAG first?",
+      "a": "Usually RAG first, because embeddings plus retrieval can ground answers on your data with faster iteration. Fine-tuning can help for consistent formats or style, but we only use it when evaluation shows a clear win."
+    },
+    {
+      "q": "How do you control token cost in production?",
+      "a": "We design for budget: prompt minimization, caching, batching, rate limits, and retrieval that reduces unnecessary context. We also ship dashboards and alerts so you can track cost by feature and version."
+    },
+    {
+      "q": "When should I use pgvector vs Pinecone?",
+      "a": "pgvector fits teams that want Postgres-native operations and unified access control. Pinecone fits managed scale and high-throughput retrieval where you want to offload vector operations to a specialized service."
+    },
+    {
+      "q": "How do you handle AI compliance and sensitive data?",
+      "a": "We map data flows, apply least-privilege access, and add audit logs and retention controls. Guardrails can include PII redaction, policy checks, and safe tool-use boundaries so the system behaves predictably."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a clear estimate before you build",
+    "desc": "Share your use case and data constraints, and we will map scope, risks, and a plan to manage quality and token cost.",
+    "button": "Request a proposal"
+  }
+}

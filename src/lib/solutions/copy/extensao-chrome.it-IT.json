@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Preventivo estensione Chrome MV3 (Chrome/Edge/Firefox)",
+    "description": "Preventivo estensione MV3: content script, service worker, Storage API e OAuth, iniezione DOM, automazione LinkedIn/Gmail, permessi minimi, privacy, pubblicazione store."
+  },
+  "hero": {
+    "h1": "preventivo estensione chrome per Chrome, Edge e Firefox con architettura Manifest V3",
+    "subtitle": "Sviluppo MV3 con automazione, OAuth e permessi minimi, pronto per lo store.",
+    "cta": "Chiedi un preventivo"
+  },
+  "pain": {
+    "title": "Quando una estensione smette di essere banale",
+    "bullets": [
+      "Ti è mai capitato di passare a Manifest V3 e dover riscrivere tutto perché le background pages diventano un service worker?",
+      "Ti è mai capitato di vedere la review bloccata per permessi troppo ampi, anche se in locale l’estensione funziona bene?",
+      "Ti è mai capitato che l’iniezione DOM sia fragile e che messaging tra content script e background perda eventi o stato?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Architettura MV3 mantenibile",
+      "desc": "Separazione chiara tra content script e service worker in background, con messaging affidabile e storage coerente per evitare stati incoerenti e bug intermittenti."
+    },
+    {
+      "title": "Automazione con limiti chiari",
+      "desc": "Automazione di pagine come LinkedIn e Gmail tramite iniezione DOM e selettori robusti, con rate limit, stop conditions e fallbacks per ridurre i blocchi."
+    },
+    {
+      "title": "Permessi e privacy by design",
+      "desc": "Scope permessi definito per funzione, host permissions minime, gestione dati trasparente e testi privacy allineati alle policy del Chrome Web Store e alle aspettative degli utenti."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include lo sviluppo",
+    "bullets": [
+      "Analisi requisiti e flussi utente",
+      "Manifest V3 con manifest e policy",
+      "Content script e iniezione DOM",
+      "Service worker in background e eventi",
+      "Storage API local/sync e quote",
+      "Messaging runtime e tabs robusto",
+      "OAuth con gestione token e callback",
+      "Automazione pagine per domini specifici",
+      "Pubblicazione su Chrome Web Store completa",
+      "Revisione scope permessi e privacy"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Automazione LinkedIn",
+      "desc": "Riduci passaggi ripetitivi, guida il lavoro su profili e liste, e mantieni controlli di velocità per non creare comportamenti indesiderati."
+    },
+    {
+      "title": "Produttività Gmail",
+      "desc": "Aggiungi azioni contestuali e scorciatoie in Gmail con hook DOM sicuri, impostazioni per utente e sincronizzazione prevedibile dello stato."
+    },
+    {
+      "title": "Tool interni con login",
+      "desc": "Accesso via OAuth, storage delle preferenze per utente e distribuzione di una estensione che il team può supportare nel tempo."
+    },
+    {
+      "title": "CRM e sales enablement",
+      "desc": "Inserisci pannelli e pulsanti dentro web app già in uso per ridurre click, standardizzare note e riutilizzare contesto della pagina."
+    },
+    {
+      "title": "QA e validazioni mirate",
+      "desc": "Regole per dominio per controllare form e contenuti, con segnalazioni chiare, gestione errori e log utili per capire cosa non torna."
+    }
+  ],
+  "stack": {
+    "title": "API e scelte tecniche tipiche",
+    "options": [
+      {
+        "name": "Manifest V3",
+        "note": "Struttura MV3 per Chrome e Edge, con impostazioni coerenti e attenzione alle policy di pubblicazione."
+      },
+      {
+        "name": "Content Script",
+        "note": "Iniezione DOM e automazione in pagina con isolamento, selettori stabili e fallback quando la UI cambia."
+      },
+      {
+        "name": "Service Worker",
+        "note": "Service worker in background per eventi, orchestration tra tab, alarms e coordinamento delle azioni."
+      },
+      {
+        "name": "Storage API",
+        "note": "Persistenza local e sync, migrazioni dei dati, gestione quote e letture e scritture consistenti."
+      },
+      {
+        "name": "Messaging",
+        "note": "Messaging runtime e tabs con request/response, gestione errori, retry controllati e timeouts espliciti."
+      },
+      {
+        "name": "OAuth",
+        "note": "OAuth quando serve, con gestione token, minimizzazione dei permessi e protezioni per ridurre l’esposizione."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Brief tecnico",
+        "desc": "Mi dici siti target, flussi, vincoli e obiettivi; io ti faccio domande e chiudiamo lo scope."
+      },
+      {
+        "title": "Preventivo e design",
+        "desc": "Definiamo permessi, storage, messaging, OAuth e automazioni per stimare tempi, rischi e costo."
+      },
+      {
+        "title": "Sviluppo e pubblicazione",
+        "desc": "Implemento, testo, preparo il pacchetto e seguo la pubblicazione sul Chrome Web Store, incluse eventuali richieste in review."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Da cosa dipende davvero un preventivo per estensione Chrome MV3?",
+      "a": "Dipende soprattutto dallo scope: numero di domini, profondità dell’automazione, permessi necessari, presenza di OAuth, volume e durata dei dati in Storage API e supporto durante la review."
+    },
+    {
+      "q": "Puoi sviluppare con Manifest V3 e service worker in background?",
+      "a": "Sì. Progetto l’estensione in MV3 con content script per la pagina e service worker in background per coordinamento, eventi e automazioni, usando messaging con gestione errori esplicita."
+    },
+    {
+      "q": "Come definisci lo scope permessi e le host permissions per lo store?",
+      "a": "Applico il principio del minimo privilegio: ogni funzionalità viene mappata a API e domini specifici, evitando permessi larghi che aumentano rischio di review e preoccupazioni privacy."
+    },
+    {
+      "q": "È possibile automatizzare pagine come LinkedIn e Gmail senza instabilità?",
+      "a": "È possibile, con progettazione accurata: iniezione DOM robusta, selettori con fallback, rate limit, stop conditions e sincronizzazione stato tra content script e background via messaging."
+    },
+    {
+      "q": "Segui anche la pubblicazione sul Chrome Web Store e gli aggiornamenti?",
+      "a": "Sì. Gestisco packaging, listing e submission, e se arrivano richieste in review posso adattare permessi, descrizioni e testi privacy, poi preparo aggiornamenti e note di rilascio."
+    },
+    {
+      "q": "Funziona anche su Edge e Firefox con lo stesso codice?",
+      "a": "Edge è in genere molto vicino a Chrome. Per Firefox serve verificare compatibilità API e differenze di policy, quindi preparo una valutazione di portabilità e un piano di adattamento."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ricevi un preventivo chiaro, con scope e permessi definiti",
+    "desc": "Dimmi quali pagine vuoi supportare, se ti serve OAuth e cosa deve fare l’automazione. Ti mando una stima pratica con tempi, costi e deliverable.",
+    "button": "Richiedi il preventivo"
+  }
+}

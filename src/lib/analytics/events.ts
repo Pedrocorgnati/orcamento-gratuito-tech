@@ -1,7 +1,10 @@
 'use client'
 
 import { track } from '@vercel/analytics'
-import { hasAnalyticsConsent } from './consent'
+// RESOLVED: Gap G1 — analytics gating quebrado apos consolidacao do CookieBanner (CL-244).
+// O hook legado em ./consent le o cookie `COOKIE_CONSENT=true` nunca setado pela nova UI.
+// Apontamos para consentState (que le o novo cookie `consent_state` JSON).
+import { hasAnalyticsConsent } from '@/lib/cookies/consentState'
 
 // Super properties adicionadas a todos os eventos
 function getSuperProps() {

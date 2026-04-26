@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { cookies } from 'next/headers'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import { FlowLayout } from '@/components/flow/FlowLayout'
 import { QuestionPageClient } from '@/components/flow/QuestionPageClient'
@@ -13,6 +13,14 @@ import { COOKIE_NAMES } from '@/lib/constants'
 
 type QuestionPageProps = {
   params: Promise<{ locale: string; questionId: string }>
+  searchParams?: Promise<{ preselect?: string }>
+}
+
+function sanitizePreselectOrder(raw: string | undefined): number | null {
+  if (!raw) return null
+  const n = Number.parseInt(raw, 10)
+  if (!Number.isInteger(n) || n < 1 || n > 11) return null
+  return n
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -75,9 +83,11 @@ function QuestionPageSkeleton() {
 async function QuestionPageContent({
   locale,
   questionId,
+  preselectOrder,
 }: {
   locale: string
   questionId: string
+  preselectOrder?: number | null
 }) {
   const cookieStore = await cookies()
   const sessionId = cookieStore.get(COOKIE_NAMES.SESSION_ID)?.value
@@ -90,7 +100,7 @@ async function QuestionPageContent({
     type: string
     block: string
     order: number
-    translation: { locale: string; title: string; description: string | null }
+    translation: { locale: string; title: string; description: string | null; help_text: string | null }
     options: {
       id: string
       slug?: string
@@ -114,6 +124,7 @@ async function QuestionPageContent({
   let progressPercentage: number | undefined
   let questionsAnswered: number | undefined
   let projectType: string | null | undefined
+  let projectTypes: string[] | undefined
   let isFirstQuestion =
     question.code === 'Q001' || question.slug === 'Q001'
 
@@ -122,12 +133,28 @@ async function QuestionPageContent({
       progress_percentage: number
       questions_answered: number
       project_type?: string | null
+      project_types?: string[]
+      current_question_id?: string | null
+      status?: string
     }>(`/api/v1/sessions/${sessionId}`, { sessionId })
 
     if (session) {
+      // INV-ROUTE-001: bloqueia URL-skipping. Se a sessão tem current_question_id
+      // diferente do questionId pedido na URL, redireciona para a pergunta atual.
+      // Pula o guard quando: sessão ainda sem ponteiro (1ª pergunta), sessão
+      // completed (resultado), ou IDs idênticos.
+      if (
+        session.current_question_id &&
+        session.current_question_id !== questionId &&
+        session.status !== 'COMPLETED'
+      ) {
+        redirect(`/${locale}/flow/${session.current_question_id}`)
+      }
+
       progressPercentage = session.progress_percentage
       questionsAnswered = session.questions_answered
       projectType = session.project_type ?? null
+      projectTypes = session.project_types ?? []
       isFirstQuestion = session.questions_answered === 0
     }
   }
@@ -146,6 +173,7 @@ async function QuestionPageContent({
       progressPercentage={progressPercentage}
       questionsAnswered={questionsAnswered}
       projectType={projectType}
+      projectTypes={projectTypes}
       bottomAction={
         <BackButton
           isFirstQuestion={isFirstQuestion}
@@ -157,6 +185,7 @@ async function QuestionPageContent({
         question={question}
         locale={locale}
         sessionId={sessionId}
+        preselectOrder={isFirstQuestion ? preselectOrder ?? null : null}
       />
     </FlowLayout>
   )
@@ -166,13 +195,22 @@ async function QuestionPageContent({
 // Página principal
 // ─────────────────────────────────────────────────────────────────────────────
 
-export default async function QuestionPage({ params }: QuestionPageProps) {
+export default async function QuestionPage({
+  params,
+  searchParams,
+}: QuestionPageProps) {
   const { locale, questionId } = await params
+  const sp = searchParams ? await searchParams : undefined
+  const preselectOrder = sanitizePreselectOrder(sp?.preselect)
   const safeLocale = locale as AppLocale
 
   return (
     <Suspense fallback={<QuestionPageSkeleton />}>
-      <QuestionPageContent locale={safeLocale} questionId={questionId} />
+      <QuestionPageContent
+        locale={safeLocale}
+        questionId={questionId}
+        preselectOrder={preselectOrder}
+      />
     </Suspense>
   )
 }

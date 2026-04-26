@@ -6,7 +6,7 @@
  */
 export function AccuracyPlaceholder() {
   return (
-    <div className="mb-6 rounded-lg border border-dashed border-gray-300 p-4 text-center text-sm text-gray-500">
+    <div data-testid="admin-leads-accuracy-placeholder" className="mb-6 rounded-lg border border-dashed border-gray-300 p-4 text-center text-sm text-gray-500">
       <p className="font-medium">Acurácia de Estimativas (INT-024) — V2</p>
       <p className="mt-1">
         Meta: ≥ 70% de estimativas avaliadas como precisas pelo cliente.

@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Preventivo software cripto | Web3, audit e KYC/AML",
+    "description": "Preventivo per software cripto: wallet Web3 (MetaMask, WalletConnect), contratti Solidity su Ethereum/Polygon/Base, token ERC-20/721/1155, audit e KYC/AML."
+  },
+  "hero": {
+    "h1": "preventivo software cripto: scope, rischi e tempi per progetti Web3",
+    "subtitle": "Wallet Web3, smart contract Solidity e integrazioni su Ethereum, Polygon o Base, con compliance.",
+    "cta": "Richiedi un preventivo"
+  },
+  "pain": {
+    "title": "Quando lo scope è incerto, il Web3 rallenta",
+    "bullets": [
+      "Ti è mai capitato di integrare MetaMask o WalletConnect e vedere utenti bloccarsi al primo messaggio di firma?",
+      "Ti è mai capitato di rimandare il go-live perché non era chiaro come gestire audit contratti e priorità di remediation?",
+      "Ti è mai capitato di restare fermo tra KYC/AML, scelte di custody e integrazione exchange senza un piano operativo?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Scope che regge",
+      "desc": "Definiamo deliverable, assunzioni e confini: così il preventivo corrisponde al lavoro reale e non a stime “a sensazione”."
+    },
+    {
+      "title": "Sicurezza pianificata",
+      "desc": "Smart contract Solidity con test, review e un percorso di audit: riduci errori evitabili prima del mainnet."
+    },
+    {
+      "title": "Operatività e compliance",
+      "desc": "KYC/AML, log e controlli di custody progettati insieme al prodotto, per avere tracciabilità e governance."
+    }
+  ],
+  "scope": {
+    "title": "Cosa può includere il tuo progetto cripto",
+    "bullets": [
+      "Discovery e architettura",
+      "Wallet Web3: MetaMask e WalletConnect",
+      "Smart contract Solidity (EVM)",
+      "Chain EVM: Ethereum, Polygon, Base",
+      "Token: ERC-20, ERC-721, ERC-1155",
+      "Test e code review dei contratti",
+      "Audit contratti: supporto e remediation",
+      "Compliance KYC/AML e gestione dati",
+      "Custody: modello, ruoli e controlli",
+      "Integrazione exchange e analytics on-chain"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "dApp con login via wallet",
+      "desc": "Connessione con MetaMask o WalletConnect, firme sicure, e UX chiara anche per utenti alla prima esperienza."
+    },
+    {
+      "title": "Utility per token ERC-20",
+      "desc": "Regole di mint/burn, permessi e monitoraggio allineati a come il token si muove davvero nel prodotto."
+    },
+    {
+      "title": "NFT drop ERC-721/1155",
+      "desc": "Allowlist, mint flow, eventi indicizzati e dati utili per supporto, reportistica e customer care."
+    },
+    {
+      "title": "Operazioni con custody",
+      "desc": "Workflow di approvazione, limiti, gestione chiavi e audit trail coerenti con il tuo profilo di rischio."
+    },
+    {
+      "title": "Depositi/prelievi su exchange",
+      "desc": "Integrazione API exchange e analytics on-chain per riconciliare movimenti, conferme e indirizzi per token e rete."
+    }
+  ],
+  "stack": {
+    "title": "Stack Web3 scelto in base ai tuoi vincoli",
+    "options": [
+      {
+        "name": "MetaMask",
+        "note": "Connessione wallet, firme e permessi con messaggi chiari e pattern di sicurezza per le signature."
+      },
+      {
+        "name": "WalletConnect",
+        "note": "Supporto multi-wallet con QR/deep link e attenzione ai flussi mobile per ridurre drop-off."
+      },
+      {
+        "name": "Solidity",
+        "note": "Contratti EVM con test, review e una checklist per preparare l’audit e gestire le correzioni."
+      },
+      {
+        "name": "Ethereum/Polygon/Base",
+        "note": "Scelta della chain EVM in base a fee, liquidità, tempi di conferma e requisiti operativi."
+      },
+      {
+        "name": "ERC-20/721/1155",
+        "note": "Standard token e NFT selezionati in base a utility, compatibilità e tracciamento degli eventi."
+      },
+      {
+        "name": "KYC/AML e custody",
+        "note": "Flussi compliance, ruoli, controlli, integrazione exchange e analytics on-chain per la gestione quotidiana."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Allineamento iniziale",
+        "desc": "Mi racconti obiettivi, rete EVM e vincoli: formalizziamo scope, assunzioni e priorità."
+      },
+      {
+        "title": "Implementazione e verifica",
+        "desc": "Wallet flow, contratti Solidity e integrazioni con test e review; preparo il percorso di audit."
+      },
+      {
+        "title": "Go-live e operazioni",
+        "desc": "Deploy, monitoraggio, analytics on-chain e runbook per KYC/AML, custody e integrazione exchange."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Da cosa dipende il preventivo di un software cripto?",
+      "a": "Dipende soprattutto da scope e rischio: complessità degli smart contract, standard ERC richiesti, profondità dell’audit, KYC/AML, modello di custody, integrazione exchange e scelta tra Ethereum, Polygon o Base."
+    },
+    {
+      "q": "Serve davvero un audit dei contratti prima del lancio?",
+      "a": "Se i contratti gestiscono valore, permessi, mint/burn o stati complessi, un audit è fortemente consigliato. L’obiettivo è ridurre vulnerabilità evitabili e aumentare la fiducia prima dell’uso pubblico."
+    },
+    {
+      "q": "Quando entra in gioco la compliance KYC/AML?",
+      "a": "Quando tocchi fiat on/off ramp, trasferimenti di valore, giurisdizioni regolamentate o policy interne. La soluzione dipende dal modello di business, dal tipo di utenti e dalle responsabilità legate alla custody."
+    },
+    {
+      "q": "Custody o non-custodial: cosa cambia per UX e rischio?",
+      "a": "Nel non-custodial l’utente mantiene il controllo e spesso riduci responsabilità operative; con custody puoi semplificare UX, ma servono controlli più severi, monitoraggio continuo e processi di sicurezza e compliance."
+    },
+    {
+      "q": "Puoi integrare un exchange e riconciliare depositi e prelievi?",
+      "a": "Sì. Le API dell’exchange gestiscono stati e notifiche, mentre l’analytics on-chain verifica conferme e movimenti per address, token ed eventi di contratto, così hai riconciliazione e tracciabilità."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ottieni un preventivo chiaro e difendibile",
+    "desc": "Dimmi use case, chain (Ethereum/Polygon/Base), standard token e se ti servono audit contratti, KYC/AML, custody, integrazione exchange e analytics on-chain.",
+    "button": "Parliamone ora"
+  }
+}

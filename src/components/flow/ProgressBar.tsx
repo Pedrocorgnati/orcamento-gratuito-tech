@@ -29,16 +29,18 @@ export function ProgressBar({
   const label = t('progress_label', { answered: questionsAnswered, total: estimatedTotal })
 
   return (
-    <div className={cn('w-full', className)}>
+    <div data-testid="flow-progress-bar" className={cn('w-full', className)}>
       {/* Texto de progresso */}
       <div className="flex items-center justify-between px-4 pb-1 pt-1.5 sm:px-6">
         <span
+          data-testid="flow-progress-bar-label"
           className="text-xs text-(--color-text-muted)"
           aria-hidden="true"
         >
           {label}
         </span>
         <span
+          data-testid="flow-progress-bar-value"
           className="text-xs font-medium text-(--color-text-primary)"
           aria-hidden="true"
         >
@@ -48,6 +50,7 @@ export function ProgressBar({
 
       {/* Barra de progresso — 8px height, mobile-first */}
       <div
+        data-testid="flow-progress-bar-track"
         className="h-2 w-full overflow-hidden bg-(--color-muted)"
         role="progressbar"
         aria-valuenow={clampedProgress}
@@ -56,6 +59,7 @@ export function ProgressBar({
         aria-label={label}
       >
         <div
+          data-testid="flow-progress-bar-fill"
           className="progress-bar-fill h-full"
           style={{
             width: `${clampedProgress}%`,

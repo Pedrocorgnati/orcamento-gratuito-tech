@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Preventivo SaaS multi-tenant: costi e scope chiari",
+    "description": "Richiedi un preventivo SaaS con scope chiaro per un sistema multi-tenant: Stripe, RBAC, onboarding, dashboard, analytics, API, webhook, feature flag, SSO e GDPR."
+  },
+  "hero": {
+    "h1": "preventivo saas per sistema multi-tenant: costi, scope e tempi",
+    "subtitle": "Scope chiaro per multi-tenant SaaS: Stripe, RBAC, SSO, dashboard, analytics, API e webhook.",
+    "cta": "Richiedi preventivo"
+  },
+  "pain": {
+    "title": "Quando il preventivo diventa una lotteria",
+    "bullets": [
+      "Ti è mai capitato di stimare un SaaS e scoprire tardi costi extra per multi-tenant e RBAC?",
+      "Ti è mai capitato che Stripe e i webhook creassero stati di pagamento incoerenti tra app e fatture?",
+      "Ti è mai capitato di fare onboarding e poi aggiungere SSO, dashboard e analytics in corsa per chiudere contratti?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Perimetro trasparente",
+      "desc": "Definiamo cosa è incluso e cosa no: tenant, ruoli, piani, schermate e criteri di accettazione, così eviti sorprese."
+    },
+    {
+      "title": "Pronto per multi-tenant",
+      "desc": "Progettiamo isolamento tenant, RBAC, feature flag e amministrazione fin dall'inizio, per scalare senza rifare tutto."
+    },
+    {
+      "title": "Billing affidabile",
+      "desc": "Stripe e webhooks con retry, idempotenza e monitoraggio: rinnovi, upgrade/downgrade e fatture restano coerenti."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include di solito un preventivo SaaS",
+    "bullets": [
+      "Modello dati multi-tenant",
+      "Isolamento tenant e ruoli (RBAC)",
+      "Onboarding guidato e attivazione",
+      "Dashboard per team e admin",
+      "Analytics di prodotto e funnel",
+      "Stripe: piani, fatture, tasse",
+      "Webhook, retry e idempotenza",
+      "API pubblica con token e rate limit",
+      "Feature flag per rollout e piani",
+      "SSO (SAML/OIDC) e policy"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "MVP B2B",
+      "desc": "Parti con tenant, onboarding, Stripe e una dashboard essenziale per i primi clienti paganti."
+    },
+    {
+      "title": "SaaS a piani",
+      "desc": "Feature flag per tier, upgrade in-app e limiti per tenant, allineati a piani e prezzi Stripe."
+    },
+    {
+      "title": "Piattaforma API-first",
+      "desc": "API pubblica documentata, chiavi, quote e webhook per integrazioni affidabili con sistemi terzi."
+    },
+    {
+      "title": "Enterprise readiness",
+      "desc": "SSO, RBAC avanzato, auditabilità e controlli admin per rispettare requisiti IT aziendali."
+    },
+    {
+      "title": "Billing a consumo",
+      "desc": "Eventi tracciati, metering, sincronizzazione Stripe e gestione robusta dei webhook di riconciliazione."
+    }
+  ],
+  "stack": {
+    "title": "Stack che stimiamo senza sorprese",
+    "options": [
+      {
+        "name": "Next.js",
+        "note": "UI per onboarding e dashboard, pagine SEO e rendering dove serve per performance e UX."
+      },
+      {
+        "name": "Node.js",
+        "note": "API pubblica, webhook, job in background e validazione rigorosa delle richieste."
+      },
+      {
+        "name": "PostgreSQL",
+        "note": "Pattern multi-tenant, migrazioni, indici e reportistica con schemi pronti per analytics."
+      },
+      {
+        "name": "Stripe",
+        "note": "Abbonamenti, fatture, tasse e webhooks con idempotenza e retry per flussi di pagamento reali."
+      },
+      {
+        "name": "Auth e SSO",
+        "note": "RBAC coerente tra UI e API, SSO SAML/OIDC e policy sessione per clienti enterprise."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Allineamento",
+        "desc": "Mi dici tenant, ruoli, piani Stripe e schermate chiave; traduciamo tutto in moduli chiari."
+      },
+      {
+        "title": "Stima modulare",
+        "desc": "Ricevi un preventivo per fasi: onboarding, dashboard, analytics, API, webhook, SSO e GDPR."
+      },
+      {
+        "title": "Consegna a milestone",
+        "desc": "Rilasci incrementali con demo, verifiche RBAC e controlli su webhooks e metriche di attivazione."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Multi-tenant: cosa cambia davvero nel preventivo?",
+      "a": "Serve isolamento dei dati per tenant, RBAC per ruoli, limiti e dashboard dedicate. Questo impatta modello dati, test, sicurezza e osservabilità, quindi va stimato in modo esplicito."
+    },
+    {
+      "q": "Stripe basta o ci sono attività extra da considerare?",
+      "a": "Stripe accelera pagamenti e abbonamenti, ma devi gestire webhooks, retry, stati intermedi, prorate, tasse, upgrade/downgrade e riconciliazione. Nel preventivo includiamo questi casi reali."
+    },
+    {
+      "q": "Potete includere un'API pubblica e i webhook per integrazioni?",
+      "a": "Sì. Definiamo autenticazione, versioning, rate limit, token, webhooks e analytics d'uso, così le integrazioni esterne restano stabili nel tempo."
+    },
+    {
+      "q": "Come definisci RBAC senza complicare onboarding e UX?",
+      "a": "Partiamo da ruoli e permessi per tenant, poi li applichiamo in modo coerente in UI e API. Così l'onboarding resta semplice, ma le azioni sensibili sono sempre protette."
+    },
+    {
+      "q": "Come affrontate la conformità GDPR in un SaaS?",
+      "a": "Mappiamo dati personali, basi giuridiche e consensi, poi includiamo export/cancellazione, retention, log e tracciabilità. L'obiettivo è avere processi chiari e verificabili, non solo banner."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ottieni il tuo preventivo SaaS con scope chiaro",
+    "desc": "Raccontami il tuo prodotto, il modello di billing e le feature essenziali. Ti rispondo con una stima per moduli, tempi e rischi controllati.",
+    "button": "Richiedi ora"
+  }
+}

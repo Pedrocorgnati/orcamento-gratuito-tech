@@ -5,6 +5,11 @@ import { routing } from "@/i18n/routing";
 import type { AppLocale } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/metadata";
+import {
+  PRIVACY_POLICY_VERSION,
+  PRIVACY_POLICY_EFFECTIVE_DATE,
+  PRIVACY_POLICY_CHANGELOG,
+} from "@/lib/privacy/policyVersion";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -276,7 +281,6 @@ export default async function PrivacyPage({ params }: PageProps) {
     <PublicLayout
       locale={locale as AppLocale}
       skipLinkLabel={tCommon("skipToContent")}
-      loginLabel={tCommon("admin.login")}
       logoutLabel={tCommon("admin.logout")}
       privacyLabel={tCommon("privacyPolicy")}
       copyrightLabel={tCommon("copyright")}
@@ -304,14 +308,17 @@ export default async function PrivacyPage({ params }: PageProps) {
         </nav>
 
         {/* Header */}
-        <header className="mb-8 border-b border-(--color-border) pb-6">
-          <h1 className="text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
+        <header data-testid="privacy-header" className="mb-8 border-b border-(--color-border) pb-6">
+          <h1 data-testid="privacy-title" className="text-3xl font-bold text-(--color-text-primary) sm:text-4xl">
             {content.title}
           </h1>
-          <p className="mt-2 text-sm text-(--color-text-muted)">
+          <p data-testid="privacy-last-updated" className="mt-2 text-sm text-(--color-text-muted)">
             {labels.lastUpdated}: {content.lastUpdated}
           </p>
-          <p className="text-sm text-(--color-text-muted)">
+          <p data-testid="privacy-version" className="mt-1 text-xs text-(--color-text-muted)">
+            v{PRIVACY_POLICY_VERSION} · {PRIVACY_POLICY_EFFECTIVE_DATE}
+          </p>
+          <p data-testid="privacy-framework" className="text-sm text-(--color-text-muted)">
             {labels.basedOn} {content.framework}
           </p>
         </header>

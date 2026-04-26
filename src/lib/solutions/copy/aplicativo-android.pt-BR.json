@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "Orçamento aplicativo Android com escopo claro e prazo real",
+    "description": "Peça um orçamento de aplicativo Android com faixas de preço, escopo por fases e entregáveis (Play Store, push, offline, login, pagamentos). Sem surpresa."
+  },
+  "hero": {
+    "h1": "orçamento aplicativo android com preço por escopo (e sem chute)",
+    "subtitle": "Você recebe faixas de custo por fase, com entregáveis Android e prazo de verdade.",
+    "cta": "Pedir orçamento agora"
+  },
+  "pain": {
+    "title": "Transparência que falta no mercado",
+    "bullets": [
+      "Você já pediu orçamento e recebeu só um valor solto, sem explicar o que entra no Android.",
+      "Você já ficou travado(a) entre “nativo” e “cross”, sem saber impacto no prazo e no custo.",
+      "Você já perdeu semanas com retrabalho porque o escopo não cobria Play Store, offline e push."
+    ]
+  },
+  "benefits": [
+    { "title": "Preço por fase", "desc": "Você vê o custo separado por MVP, V2 e evolução. Cada fase vem com lista de telas, integrações e critérios de aceite." },
+    { "title": "Escopo Android", "desc": "Tudo o que normalmente vira “extra” entra explícito: AAB/assinatura, publicação na Play Store, push, deep links, analytics e crash reporting." },
+    { "title": "Entrega previsível", "desc": "Cronograma com marcos, builds de teste a cada semana e checklist de pronto (performance, permissões, offline, versões Android suportadas)." }
+  ],
+  "scope": {
+    "title": "O que entregamos no Android",
+    "bullets": [
+      "App Android em AAB com assinatura (keystore), versionamento e builds de homologação",
+      "Publicação na Google Play (listagem, tracks, políticas básicas e rollout controlado)",
+      "Push notifications (Firebase Cloud Messaging) com segmentação e eventos",
+      "Offline-first (cache local, filas de sincronização e conflitos tratados)",
+      "Deep links e App Links para abrir telas específicas (campanhas, convites, recuperação)",
+      "Login seguro (Google Sign-In/OAuth) e gestão de sessão + refresh token",
+      "Pagamentos no app: In-App Purchases/assinaturas (quando faz sentido ao produto)",
+      "Analytics + Crashlytics (funis, eventos, erros e desempenho por versão/dispositivo)"
+    ]
+  },
+  "useCases": [
+    { "title": "Delivery local", "desc": "Pedido rápido, status em tempo real e recompra. Reduz abandono com push e carrinho persistente offline." },
+    { "title": "Logística e campo", "desc": "Checklist e coleta em locais sem sinal. Sincroniza depois, com auditoria e rastreio por usuário/dispositivo." },
+    { "title": "Assinatura de conteúdo", "desc": "Paywall Android com assinatura na Play Store, renovações e acesso por plano, com métricas de conversão." },
+    { "title": "Agendamentos", "desc": "Agenda, confirmação e lembretes por push. Menos faltas e mais ocupação com fluxos simples." },
+    { "title": "Marketplace B2B", "desc": "Catálogo, pedido e aprovação por perfis. Integra com ERP via API e reduz erro de digitação." }
+  ],
+  "stack": {
+    "title": "Stack (você escolhe com a gente)",
+    "options": [
+      { "name": "Kotlin + Jetpack Compose", "note": "Nativo Android, ótimo para performance, UX e integração com recursos do sistema." },
+      { "name": "Flutter", "note": "Uma base para Android/iOS com boa performance e UI consistente, ideal para produtos multi-plataforma." },
+      { "name": "React Native", "note": "Boa opção quando seu time já é forte em JS/TS e precisa acelerar com componentes nativos." },
+      { "name": "Firebase", "note": "Push (FCM), Auth, Analytics, Crashlytics e Remote Config para iterar rápido com dados." },
+      { "name": "Supabase", "note": "Postgres + Auth + Storage. Bom quando você quer banco relacional e APIs rápidas." },
+      { "name": "CI/CD (GitHub Actions)", "note": "Automação de build e distribuição (internal testing/closed testing) para reduzir erros de release." }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      { "title": "Escopo em 1 call", "desc": "Mapeamos telas, perfis, integrações e regras. Saem prioridades e riscos do Android." },
+      { "title": "Orçamento por fases", "desc": "Você recebe faixas de preço, prazo e entregáveis por MVP/V2, com o que fica fora do escopo." },
+      { "title": "Construção e release", "desc": "Sprints curtos, builds para teste e publicação na Play Store quando o checklist estiver fechado." }
+    ]
+  },
+  "faq": [
+    { "q": "Quanto custa um aplicativo Android?", "a": "Depende do escopo (telas, login, pagamentos, offline, integrações). Por isso entregamos orçamento por fases com faixas de preço e lista de entregáveis Android." },
+    { "q": "Vocês fazem app nativo ou Flutter/React Native?", "a": "Fazemos os dois. A escolha vem de prazo, necessidade de recursos do Android, performance e se você precisa iOS junto. A recomendação vem no orçamento com trade-offs claros." },
+    { "q": "O orçamento já inclui publicação na Play Store?", "a": "Sim, quando a fase inclui release: AAB, assinatura, criação/configuração de tracks e suporte no processo de publicação. Conta de desenvolvedor do Google fica no seu nome." },
+    { "q": "Dá para ter offline e depois sincronizar?", "a": "Dá, e é parte do escopo quando necessário. Definimos o que funciona sem internet, como sincroniza, e como tratamos conflitos para não perder dados." },
+    { "q": "Como vocês garantem que o prazo não estoura?", "a": "Com escopo fechado por fase, critérios de aceite e entregas semanais. Mudança de escopo vira ajuste formal (prazo/custo) antes de começar." }
+  ],
+  "ctaFinal": {
+    "title": "Quer ver preço com clareza?",
+    "desc": "Envie seu objetivo, público e integrações. Você recebe um orçamento de aplicativo Android por fases.",
+    "button": "Solicitar orçamento"
+  }
+}

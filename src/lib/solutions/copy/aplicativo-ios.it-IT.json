@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Preventivo app iOS: sviluppo iPhone su misura",
+    "description": "Richiedi un preventivo app iOS chiaro e rapido: analisi, UX secondo HIG, sviluppo in Swift/SwiftUI o cross-platform, TestFlight e pubblicazione su App Store Connect."
+  },
+  "hero": {
+    "h1": "Preventivo app iOS per iPhone: sviluppo, test e pubblicazione senza sorprese",
+    "subtitle": "Dimmi obiettivi e funzioni: preparo stima, tempi e roadmap per la tua app iPhone.",
+    "cta": "Richiedi il preventivo"
+  },
+  "pain": {
+    "title": "Se il preventivo non ti fa dormire sereno",
+    "bullets": [
+      "Ti è mai capitato di ricevere un preventivo vago, senza elenco funzioni, priorità e cosa resta fuori?",
+      "Ti è mai capitato di scoprire tardi costi extra per App Store Connect, TestFlight, o integrazioni come APNs?",
+      "Ti è mai capitato di aspettare settimane perché la UI non rispetta le HIG e la revisione App Store si blocca?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Stima trasparente e verificabile",
+      "desc": "Ti consegno una stima per funzionalità, con ipotesi esplicite, rischi e priorità. Così puoi confrontare offerte e decidere cosa fare prima, senza ambiguità."
+    },
+    {
+      "title": "Percorso completo fino allo store",
+      "desc": "Non è solo codice: includo preparazione App Store Connect, beta con TestFlight, checklist per la review e supporto alla pubblicazione. Tu sai sempre a che punto siamo."
+    },
+    {
+      "title": "Scelte iOS coerenti con il prodotto",
+      "desc": "Progetto e sviluppo in Swift/SwiftUI quando serve massima qualità nativa, oppure in Flutter o React Native se il time-to-market è prioritario. La scelta è motivata, non casuale."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include lo sviluppo della tua app iOS",
+    "bullets": [
+      "Workshop requisiti e definizione MVP",
+      "Backlog con stime e priorità",
+      "UX e UI secondo HIG Apple",
+      "Sviluppo nativo in Swift e SwiftUI",
+      "Cross-platform con Flutter o React Native",
+      "Notifiche push con APNs e gestione token",
+      "Accesso sicuro con Sign in with Apple",
+      "In-App Purchases e abbonamenti con receipt validation",
+      "Beta testing e feedback con TestFlight",
+      "Setup e pubblicazione su App Store Connect"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "MVP per startup",
+      "desc": "Validi l’idea con un rilascio rapido su iPhone e un backlog pronto per le iterazioni."
+    },
+    {
+      "title": "App per servizi e prenotazioni",
+      "desc": "Calendari, pagamenti e notifiche APNs per ricordare appuntamenti e aggiornamenti."
+    },
+    {
+      "title": "Prodotti digitali con acquisti",
+      "desc": "Monetizzi con In-App Purchases e abbonamenti, rispettando le linee guida Apple."
+    },
+    {
+      "title": "Area clienti aziendale",
+      "desc": "Accesso con Sign in with Apple, profili, documenti e comunicazioni in app."
+    },
+    {
+      "title": "Refactoring o migrazione",
+      "desc": "Migliori performance e UX passando a SwiftUI o razionalizzando un progetto Flutter/React Native."
+    }
+  ],
+  "stack": {
+    "title": "Stack e integrazioni tipiche su iOS",
+    "options": [
+      {
+        "name": "Swift",
+        "note": "Ideale per app iPhone native, performance elevate e pieno accesso alle API iOS."
+      },
+      {
+        "name": "SwiftUI",
+        "note": "UI moderna e consistente, con componenti riutilizzabili e allineamento naturale alle HIG."
+      },
+      {
+        "name": "Flutter",
+        "note": "Cross-platform quando vuoi condividere gran parte del codice, mantenendo una buona qualità su iOS."
+      },
+      {
+        "name": "React Native",
+        "note": "Cross-platform adatto a team web, con attenzione a bridge, performance e componenti realmente iOS."
+      },
+      {
+        "name": "APNs + Sign in with Apple",
+        "note": "Notifiche push affidabili e login Apple conforme, con gestione dei casi di revoca e sicurezza."
+      },
+      {
+        "name": "App Store Connect + TestFlight",
+        "note": "Distribuzione beta, gestione build e metadata, preparazione alla review e rilascio controllato."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Scoperta e scope",
+        "desc": "Raccogliamo obiettivi, utenti e funzionalità, poi trasformiamo tutto in backlog stimato."
+      },
+      {
+        "title": "Progetto e sviluppo",
+        "desc": "Definiamo UX/UI secondo HIG e implementiamo in Swift/SwiftUI o in Flutter/React Native."
+      },
+      {
+        "title": "Test e pubblicazione",
+        "desc": "Distribuiamo via TestFlight, correggiamo feedback, e pubblichiamo con App Store Connect."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Che cosa serve per fare un preventivo app iOS accurato?",
+      "a": "Mi bastano obiettivo, pubblico, funzioni principali e vincoli (tempi, budget, integrazioni). Se hai già schermate o una bozza di flusso, la stima diventa più precisa."
+    },
+    {
+      "q": "È meglio sviluppare nativo in Swift/SwiftUI o usare Flutter?",
+      "a": "Dipende da performance, budget e roadmap. Nativo è perfetto per interazioni complesse e massima integrazione iOS; Flutter accelera se vuoi anche Android e una codebase condivisa."
+    },
+    {
+      "q": "Come gestisci beta testing e feedback prima della pubblicazione?",
+      "a": "Uso TestFlight per distribuire build a tester interni ed esterni, raccolgo feedback, traccio bug e itero velocemente. Arriviamo in review con una checklist chiara e misurabile."
+    },
+    {
+      "q": "Le notifiche push e l’accesso Apple sono inclusi nel progetto?",
+      "a": "Possono essere inclusi nello scope: integrazione APNs, gestione token, preferenze utente e contenuti notifiche. Per login, implemento Sign in with Apple con flussi di sicurezza e gestione errori."
+    },
+    {
+      "q": "Puoi gestire acquisti in-app e abbonamenti in modo conforme?",
+      "a": "Sì: implemento In-App Purchases, gestione prodotti e paywall, e validazione ricevute (dove necessario). Definiamo anche UX e messaggi per ridurre churn e richieste di rimborso."
+    },
+    {
+      "q": "Quanto tempo serve per pubblicare un’app su App Store Connect?",
+      "a": "Dipende dalla complessità e dalla preparazione dei contenuti (screenshot, descrizione, privacy). Di solito prevedo una fase dedicata a metadata e review, più margine per eventuali richieste Apple."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vuoi un preventivo app iOS chiaro e rapidamente verificabile?",
+    "desc": "Scrivimi con le funzioni essenziali e l’obiettivo: ti rispondo con stima, tempi e opzioni tecniche per iPhone.",
+    "button": "Chiedi un preventivo"
+  }
+}

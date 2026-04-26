@@ -107,3 +107,68 @@ jobs:
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
           NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL }}
           NODE_ENV: production
+
+  # RESOLVED: Gap G6 — CI wiring for critical E2E suite (TASK-6 gap).
+  # continue-on-error until seed strategy + test DB are fully tuned — non-blocking
+  # signal visible in the PR checks while the team iterates.
+  e2e-critical:
+    name: E2E Critical (Playwright)
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck]
+    continue-on-error: true
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: budget_free_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/budget_free_test
+      DIRECT_URL: postgresql://postgres:postgres@localhost:5432/budget_free_test
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar browsers Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Gerar Prisma Client + migrate + seed
+        run: |
+          npx prisma generate
+          npx prisma migrate deploy
+          npx prisma db seed
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Start server (background)
+        run: npm run start &
+        env:
+          PORT: 3000
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: Run critical E2E suite
+        run: npm run test:e2e:critical

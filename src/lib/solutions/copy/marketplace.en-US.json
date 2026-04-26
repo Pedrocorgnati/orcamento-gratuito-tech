@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Marketplace development cost with clear scope",
+    "description": "Get a clear, scoped estimate for a multi-vendor marketplace: Stripe Connect split payments, search and ranking, reviews, chat, vendor dashboard, anti-fraud, and…"
+  },
+  "hero": {
+    "h1": "marketplace development cost for your multi-vendor marketplace",
+    "subtitle": "Clear scope, Stripe Connect split payments, and catalog SEO built to convert from day one.",
+    "cta": "Request pricing"
+  },
+  "pain": {
+    "title": "When the numbers never settle",
+    "bullets": [
+      "Have you ever tried to price a marketplace and the scope grows every meeting?",
+      "Have you ever started Stripe Connect and got stuck on onboarding, KYC, payouts, and compliance details?",
+      "Have you ever launched a catalog and no one finds it because search, ranking, and SEO do not line up?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Predictable scope",
+      "desc": "You get a build plan with defined modules, acceptance criteria, and what is included, so your estimate stays stable."
+    },
+    {
+      "title": "Real multi-vendor ops",
+      "desc": "Separate buyer and seller flows, vendor dashboards, order management, and commission rules that match how you run the marketplace."
+    },
+    {
+      "title": "Catalog that can rank",
+      "desc": "Category structure, indexable pages, and structured data for catalog SEO, paired with search and ranking to increase conversion."
+    }
+  ],
+  "scope": {
+    "title": "What your build includes",
+    "bullets": [
+      "Vendor onboarding and approval flow",
+      "Products, variants, inventory, attributes",
+      "Commission rules by vendor and category",
+      "Stripe Connect split payments and payouts",
+      "Search, filters, sorting, and ranking",
+      "Ratings, reviews, and moderation tools",
+      "Buyer-seller chat with history",
+      "Vendor dashboard for orders and payouts",
+      "Anti-fraud checks and risk rules",
+      "Catalog SEO pages and structured data"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Niche marketplace",
+      "desc": "You need deep filtering, attributes, and category SEO to win long-tail searches and convert high-intent buyers."
+    },
+    {
+      "title": "Local vendor network",
+      "desc": "You want seller dashboards, automated split payouts, and commission reporting without manual back-office work."
+    },
+    {
+      "title": "B2B marketplace",
+      "desc": "You need role-based access, company accounts, pricing rules, and workflows that fit procurement and repeat ordering."
+    },
+    {
+      "title": "Large catalog, search-led",
+      "desc": "You need fast search, relevance tuning, synonyms, and ranking controls so buyers find products in seconds."
+    },
+    {
+      "title": "Higher-risk categories",
+      "desc": "You need layered anti-fraud, review queues, and payout controls to reduce chargebacks and protect marketplace trust."
+    }
+  ],
+  "stack": {
+    "title": "Options for key integrations",
+    "options": [
+      {
+        "name": "Stripe Connect",
+        "note": "Split payments, payouts, and seller onboarding aligned to your commission model."
+      },
+      {
+        "name": "OpenSearch",
+        "note": "Scalable search and ranking with filters, facets, and relevance tuning for large catalogs."
+      },
+      {
+        "name": "Algolia",
+        "note": "Instant search experience with analytics and hands-on relevance controls for merchandising."
+      },
+      {
+        "name": "Sift",
+        "note": "Anti-fraud signals and decisioning to reduce chargebacks and account abuse."
+      },
+      {
+        "name": "Twilio",
+        "note": "Notifications and verification to support chat, alerts, and safer account flows."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Quick discovery",
+        "desc": "You share your vendor model, commission rules, and the buyer journey you want to support."
+      },
+      {
+        "title": "Scope and estimate",
+        "desc": "You receive modules, deliverables, timeline, and dependencies with clear acceptance criteria."
+      },
+      {
+        "title": "Build and launch plan",
+        "desc": "You validate split payments, search, reviews, anti-fraud, and catalog SEO before going live."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What drives marketplace development cost the most?",
+      "a": "The biggest drivers are multi-vendor workflows, Stripe Connect onboarding and payouts, search and ranking needs, and the depth of catalog SEO and moderation."
+    },
+    {
+      "q": "Can you support Stripe Connect split payments end to end?",
+      "a": "Yes. The scope can cover seller onboarding, KYC requirements, split logic, payout schedules, refunds, disputes, and reconciliation reporting."
+    },
+    {
+      "q": "How do commissions work for multiple vendors?",
+      "a": "You can set commissions by vendor, category, or rule. The platform calculates the take rate per order and applies it through the payout flow with reports for you and sellers."
+    },
+    {
+      "q": "Do you include search, ranking, and filters?",
+      "a": "Yes. You get search with filters and sorting. For large catalogs, we can add relevance tuning, synonyms, and ranking controls for better findability."
+    },
+    {
+      "q": "Are ratings, reviews, and buyer-seller chat included?",
+      "a": "Yes. The build can include reviews for products and sellers, moderation tools, and buyer-seller chat with message history and notifications."
+    },
+    {
+      "q": "How long does it take to launch a marketplace MVP?",
+      "a": "It depends on your scope and integrations. After discovery, you get a staged timeline, usually starting with an MVP and expanding features like advanced search or anti-fraud."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ready to scope your marketplace with confidence?",
+    "desc": "Tell us your vendor model and goals, and get a clear estimate for a multi-vendor marketplace with split payments, search, reviews, chat, and catalog SEO.",
+    "button": "Get a scoped quote"
+  }
+}

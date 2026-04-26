@@ -1,4 +1,133 @@
 {
+  "nav": {
+    "logo": "Budget Free Engine",
+    "solutions": "Solutions",
+    "solutionsAriaLabel": "Open solutions menu",
+    "howItWorks": "How it works",
+    "ctaQuote": "Free quote",
+    "allSolutions": "See all solutions",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "backToHome": "Back to home",
+    "items": {
+      "site-institucional": {
+        "name": "Company website",
+        "shortPitch": "Professional SEO-first site"
+      },
+      "landing-page": {
+        "name": "Landing page",
+        "shortPitch": "Conversion-focused capture"
+      },
+      "ecommerce": {
+        "name": "E-commerce",
+        "shortPitch": "Full online store"
+      },
+      "saas": {
+        "name": "SaaS platform",
+        "shortPitch": "Scalable web software"
+      },
+      "aplicativo-android": {
+        "name": "Android app",
+        "shortPitch": "Native or hybrid"
+      },
+      "automacao": {
+        "name": "Automation",
+        "shortPitch": "Remove repetitive work"
+      },
+      "marketplace": {
+        "name": "Marketplace",
+        "shortPitch": "Connect buyers and sellers"
+      },
+      "cripto": {
+        "name": "Crypto",
+        "shortPitch": "Wallets, DEX and Web3"
+      },
+      "extensao-chrome": {
+        "name": "Chrome extension",
+        "shortPitch": "Browser productivity"
+      },
+      "aplicativo-ios": {
+        "name": "iOS app",
+        "shortPitch": "Native for iPhone and iPad"
+      },
+      "inteligencia-artificial": {
+        "name": "Artificial intelligence",
+        "shortPitch": "LLMs, RAG and agents"
+      }
+    }
+  },
+  "solutions": {
+    "hub": {
+      "metaTitle": "Solutions by project type — Budget Free Engine",
+      "metaDescription": "11 software types covered with a free estimate in minutes: websites, e-commerce, apps, SaaS, automation, AI and more.",
+      "title": "Solutions by project type",
+      "subtitle": "Pick the format closest to your project and get a precise estimate in minutes.",
+      "ctaFinal": "Not sure where to start?",
+      "ctaFinalButton": "Get a free quote",
+      "learnMore": "Learn more"
+    },
+    "common": {
+      "breadcrumbHome": "Home",
+      "breadcrumbHub": "Solutions",
+      "heroH1": "{name} budget in minutes",
+      "heroSubtitle": "{pitch}. Get complexity, investment range and timeline — no signup required.",
+      "ctaPrimary": "Get a free quote",
+      "ctaSecondary": "See other solutions",
+      "trustNoCadastro": "🔒 No signup",
+      "trustLanguages": "🌍 4 languages",
+      "trustMinutes": "⚡ 5 minutes",
+      "painTitle": "Have you been through this?",
+      "painItem1": "Asked for quotes and got three wildly different prices?",
+      "painItem2": "Started a project and watched the scope explode halfway through?",
+      "painItem3": "Hired without technical criteria and regretted it?",
+      "benefitsTitle": "Why estimate before hiring",
+      "benefit1Title": "42 technical criteria",
+      "benefit1Desc": "Smart questions that reveal your project's real complexity.",
+      "benefit2Title": "In minutes",
+      "benefit2Desc": "Instant answer — no waiting days for commercial proposals.",
+      "benefit3Title": "Multi-currency and multi-language",
+      "benefit3Desc": "Estimate in BRL, USD or EUR, in 4 languages — compare global vendors.",
+      "scopeTitle": "What's included in the estimate",
+      "scopeItem1": "Core features for this project type",
+      "scopeItem2": "Integrations with external systems",
+      "scopeItem3": "Security and compliance requirements",
+      "scopeItem4": "Design and user experience",
+      "scopeItem5": "Tests, deploy and documentation",
+      "useCasesTitle": "Typical use cases",
+      "useCase1": "Startups validating MVPs",
+      "useCase2": "Companies scaling operations",
+      "useCase3": "Agencies pricing deliverables",
+      "useCase4": "Investors evaluating costs",
+      "stackTitle": "Recommended stacks",
+      "stack1Name": "Modern web stack",
+      "stack1Desc": "TypeScript + leading JS framework for speed and maintainability.",
+      "stack2Name": "Robust backend",
+      "stack2Desc": "REST/GraphQL API with relational DB and cache.",
+      "stack3Name": "Managed infra",
+      "stack3Desc": "Serverless hosting with global CDN and monitoring.",
+      "stack4Name": "Observability",
+      "stack4Desc": "Logs, metrics and tracing for production debugging.",
+      "howItWorksTitle": "How it works",
+      "step1Title": "Answer in 5 minutes",
+      "step1Desc": "Questions adapt to your project.",
+      "step2Title": "Get the estimate",
+      "step2Desc": "Complexity, value and timeline on screen.",
+      "step3Title": "Refine and share",
+      "step3Desc": "Re-run whenever the scope changes.",
+      "faqTitle": "Frequently asked questions",
+      "faq1Q": "How much does this type of project cost?",
+      "faq1A": "It depends on features, integrations and team. Use the free quote to see a real range based on your scope.",
+      "faq2Q": "Do I need technical details?",
+      "faq2A": "No. The flow translates questions into business language.",
+      "faq3Q": "Does the estimate work with any vendor?",
+      "faq3A": "Yes. It's based on 42 universal market criteria.",
+      "faq4Q": "How long does execution take?",
+      "faq4A": "The estimate includes a timeline range based on complexity.",
+      "ctaFinalTitle": "Ready to quote {name}?",
+      "ctaFinalDesc": "In 5 minutes you get a real estimate.",
+      "ctaFinalButton": "Start now →"
+    }
+  },
   "common": {
     "appName": "Budget Free Engine",
     "loading": "Loading...",
@@ -16,8 +145,7 @@
     "privacyPolicy": "Privacy Policy",
     "languageSelector": "Select language",
     "admin": {
-      "logout": "Sign Out",
-      "login": "Login"
+      "logout": "Sign Out"
     },
     "skipToContent": "Skip to main content",
     "homeAriaLabel": "Budget Free Engine — Home",
@@ -246,7 +374,21 @@
       "privacyLink": "Learn more in our Privacy Policy",
       "acceptAll": "Accept all cookies",
       "acceptAllAriaLabel": "Accept all cookies and close notice",
-      "viewPolicy": "View Policy"
+      "viewPolicy": "View Policy",
+      "essentialsOnly": "Essentials only",
+      "customize": "Customize"
+    },
+    "preferences": {
+      "title": "Cookie preferences",
+      "description": "Choose which cookies you allow us to use.",
+      "essentialLabel": "Essential",
+      "essentialDescription": "Required for the site to function.",
+      "analyticsLabel": "Analytics",
+      "analyticsDescription": "Help us understand usage and improve.",
+      "marketingLabel": "Marketing",
+      "marketingDescription": "Let us show more relevant content.",
+      "save": "Save preferences",
+      "cancel": "Cancel"
     }
   },
   "accessibility": {
@@ -276,5 +418,36 @@
     "features_internal_sso": "Corporate Single Sign-On (SSO) (SAML/OIDC)",
     "features_internal_audit": "Complete user action audit log",
     "features_internal_export": "Report export in PDF and Excel"
+  },
+  "emails": {
+    "resume": {
+      "subject": "Your estimate is in progress — come back and finish",
+      "preview": "Pick up where you left off and get your estimate in minutes.",
+      "greeting": "Hi there!",
+      "body": "You started calculating an estimate with Budget Free Engine and paused halfway. Your answers are saved and you can pick up right where you left off.",
+      "progressLabel": "Your progress:",
+      "ctaLabel": "Resume my estimate",
+      "expiryNotice": "Your answers are kept for a limited time. Come back now to avoid losing your progress.",
+      "footer": "Budget Free Engine",
+      "privacyNotice": "You received this email because you started an estimate and shared your address during the flow (legitimate interest — GDPR/LGPD).",
+      "rightsInfo": "To exercise your rights or stop receiving these reminders, reply to this email.",
+      "unsubscribeLabel": "Privacy Policy"
+    }
+  },
+  "session": {
+    "expired": {
+      "title": "Your session has expired",
+      "description": "After more than 7 days of inactivity your progress can no longer be resumed. Start a new estimate — it only takes a few minutes.",
+      "cta": "Start new estimate"
+    }
+  },
+  "unsubscribe": {
+    "title": "Unsubscribe",
+    "description": "Manage email preferences",
+    "successTitle": "You are unsubscribed",
+    "successMessage": "You will no longer receive automatic emails. Thanks for your interest.",
+    "errorTitle": "Invalid link",
+    "errorMessage": "We could not process this link. It may have expired or already been used.",
+    "backHome": "Back to home"
   }
 }

@@ -65,44 +65,49 @@ export async function GET(request: NextRequest) {
     }
 
     // ============================================================
-    // STEP 3: Anonimizar em transação Prisma
+    // STEP 3: Anonimizar em batches (evita timeout no Vercel/Neon)
+    // Batch de 100 por iteração — seguro para connection pool padrão
     // ============================================================
-    const result = await prisma.$transaction(async (tx) => {
-      return await tx.lead.updateMany({
-        where: {
-          created_at: { lt: retentionDate },
-          anonymized_at: null,
-        },
+    const BATCH_SIZE = 100
+    let totalAnonymized = 0
+
+    while (true) {
+      const batch = await prisma.lead.findMany({
+        where: { created_at: { lt: retentionDate }, anonymized_at: null },
+        select: { id: true },
+        take: BATCH_SIZE,
+      })
+
+      if (batch.length === 0) break
+
+      const ids = batch.map((l) => l.id)
+      const batchResult = await prisma.lead.updateMany({
+        where: { id: { in: ids } },
         data: {
-          // REMOVENDO PII:
           name: '[Removido]',
           email: 'anonimizado@example.com',
           phone: null,
           company: null,
-          scope_story: '[Removido]', // não-nullable no schema — usar string sentinela
-
-          // PRESERVANDO para analytics (não PII):
-          // score, project_type, complexity,
-          // estimated_price_min, estimated_price_max, currency
-          // created_at (para análises temporais)
-
-          // Marcar como anonimizado
+          scope_story: '[Removido]',
           anonymized_at: new Date(),
         },
       })
-    })
+
+      totalAnonymized += batchResult.count
+
+      if (batch.length < BATCH_SIZE) break
+    }
 
     const duration = Date.now() - startTime
 
-    // Log estruturado — sem PII (count only, não IDs)
     logger.info('anonymize_leads', {
-      anonymized_count: result.count,
+      anonymized_count: totalAnonymized,
       retention_months: 12,
       duration_ms: duration,
     })
 
     return NextResponse.json({
-      anonymized: result.count,
+      anonymized: totalAnonymized,
       duration_ms: duration,
     })
   } catch (error) {

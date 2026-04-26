@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Preventivo App Android | Sviluppo Kotlin e Compose",
+    "description": "Richiedi un preventivo app android chiaro e rapido. Sviluppiamo la tua app, la pubblichiamo su Play Store (AAB) e curiamo qualità, performance e manutenzione."
+  },
+  "hero": {
+    "h1": "preventivo app android per la tua app su Play Store",
+    "subtitle": "Dalla prima bozza al rilascio: tempi chiari, costi trasparenti, codice che scala.",
+    "cta": "Chiedi un preventivo"
+  },
+  "pain": {
+    "title": "I problemi più comuni",
+    "bullets": [
+      "Ti è mai capitato di avere un progetto fermo perché requisiti e stime non erano allineati?",
+      "Ti è mai capitato che l'app venisse rifiutata su Play Store per policy, AAB o permessi gestiti male?",
+      "Ti è mai capitato che notifiche push (FCM), deep links o login social funzionassero “a tratti”?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Preventivo leggibile",
+      "desc": "Ricevi una stima dettagliata per feature, milestone e rischi, così sai cosa stai pagando e perché."
+    },
+    {
+      "title": "Rilascio senza sorprese",
+      "desc": "Prepariamo AAB, schede Play Store, track di test e checklist di conformità per arrivare alla pubblicazione."
+    },
+    {
+      "title": "App stabile e veloce",
+      "desc": "Architettura pulita, gestione errori, analytics e test: meno crash, più conversioni e aggiornamenti più rapidi."
+    }
+  ],
+  "scope": {
+    "title": "Cosa includiamo nello sviluppo",
+    "bullets": [
+      "Analisi requisiti e stima per release",
+      "Sviluppo Android in Kotlin",
+      "UI con Jetpack Compose",
+      "Pubblicazione su Google Play (AAB)",
+      "Notifiche push con FCM",
+      "Deep links e app links",
+      "Offline-first e sync dati",
+      "Integrazione Flutter o React Native"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "E-commerce",
+      "desc": "Catalogo, pagamenti, tracking ordini e promozioni con deep links per campagne."
+    },
+    {
+      "title": "Logistica",
+      "desc": "Scansioni, percorsi, prove di consegna e modalità offline-first per aree senza rete."
+    },
+    {
+      "title": "Eventi e ticket",
+      "desc": "Wallet biglietti, QR, notifiche FCM e aggiornamenti in tempo reale durante l’evento."
+    },
+    {
+      "title": "Field service",
+      "desc": "Task sul territorio, foto, firme, sincronizzazione e flussi robusti anche con connessione instabile."
+    },
+    {
+      "title": "Community e contenuti",
+      "desc": "Feed, profili, moderazione, notifiche e deep links per aumentare retention e ritorno utenti."
+    }
+  ],
+  "stack": {
+    "title": "Stack consigliato (in base al tuo caso)",
+    "options": [
+      {
+        "name": "Kotlin",
+        "note": "Ideale per app native, performance e integrazioni profonde con Android."
+      },
+      {
+        "name": "Jetpack Compose",
+        "note": "UI moderna e consistente, più veloce da iterare su design e componenti."
+      },
+      {
+        "name": "Flutter",
+        "note": "Ottimo per multi-piattaforma con una codebase, mantenendo ottima UX."
+      },
+      {
+        "name": "React Native",
+        "note": "Valido se hai già team React e vuoi accelerare su feature cross-platform."
+      },
+      {
+        "name": "FCM + Deep Links",
+        "note": "Notifiche e percorsi diretti alle schermate giuste per crescita e conversione."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Call di scoperta",
+        "desc": "Raccogliamo obiettivi, target, priorità e vincoli tecnici."
+      },
+      {
+        "title": "Preventivo e roadmap",
+        "desc": "Confermiamo scope, tempi e costi per milestone, con deliverable chiari."
+      },
+      {
+        "title": "Sviluppo e pubblicazione",
+        "desc": "Implementiamo, testiamo e rilasciamo su Play Store con AAB e track di test."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Quanto tempo serve per un’app Android?",
+      "a": "Dipende da scope e integrazioni. Dopo la call, ti proponiamo una roadmap con milestone e tempi stimati."
+    },
+    {
+      "q": "Il preventivo app android è vincolante?",
+      "a": "È una stima basata sui requisiti. Se lo scope cambia, aggiorniamo il preventivo in modo trasparente."
+    },
+    {
+      "q": "Pubblicate voi su Play Store?",
+      "a": "Sì: prepariamo AAB, listing, privacy e checklist. Possiamo pubblicare sul tuo account o affiancarti."
+    },
+    {
+      "q": "Supportate notifiche FCM e deep links?",
+      "a": "Sì: configuriamo FCM, gestiamo token, segmentazione e deep links/app links con test end-to-end."
+    },
+    {
+      "q": "Gestite anche offline-first?",
+      "a": "Sì: progettiamo cache, sincronizzazione, conflitti e retry per garantire un’esperienza affidabile."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Parliamone e stimiamo il progetto",
+    "desc": "Mandaci obiettivi e funzionalità: ti rispondiamo con un preventivo chiaro e una roadmap.",
+    "button": "Richiedi ora"
+  }
+}

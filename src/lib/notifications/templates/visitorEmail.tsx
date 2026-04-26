@@ -38,6 +38,8 @@ interface VisitorEmailStrings {
   footerAuto: string
   privacyNotice: string
   rightsInfo: string
+  // CL-232: unsubscribe label (optional for backward compat)
+  unsubscribeLabel?: string
 }
 
 // Strings i18n para NOTIF-003 — GDPR minimization: sem Q&A detalhado
@@ -69,6 +71,7 @@ const VISITOR_EMAIL_STRINGS: Record<SupportedLocale, VisitorEmailStrings> = {
       'Você recebeu este email porque preencheu o formulário de orçamento.',
     rightsInfo:
       'Para exercer seus direitos (LGPD Art. 18): contato via email.',
+    unsubscribeLabel: 'Cancelar inscrição',
   },
   en_US: {
     greeting: 'Hello, {name}! 👋',
@@ -97,6 +100,7 @@ const VISITOR_EMAIL_STRINGS: Record<SupportedLocale, VisitorEmailStrings> = {
       'You received this email because you submitted an estimate form.',
     rightsInfo:
       'To exercise your rights (GDPR Arts. 15-22): contact us via email.',
+    unsubscribeLabel: 'Unsubscribe',
   },
   es_ES: {
     greeting: '¡Hola, {name}! 👋',
@@ -125,6 +129,7 @@ const VISITOR_EMAIL_STRINGS: Record<SupportedLocale, VisitorEmailStrings> = {
       'Recibiste este correo porque completaste el formulario de presupuesto.',
     rightsInfo:
       'Para ejercer tus derechos (GDPR Arts. 15-22): contacto vía email.',
+    unsubscribeLabel: 'Darse de baja',
   },
   it_IT: {
     greeting: 'Ciao, {name}! 👋',
@@ -153,6 +158,7 @@ const VISITOR_EMAIL_STRINGS: Record<SupportedLocale, VisitorEmailStrings> = {
       'Hai ricevuto questa email perché hai compilato il modulo di preventivo.',
     rightsInfo:
       'Per esercitare i tuoi diritti (GDPR artt. 15-22): contatto via email.',
+    unsubscribeLabel: 'Annulla iscrizione',
   },
 }
 
@@ -280,6 +286,16 @@ export function renderVisitorEmail({ lead, estimation }: VisitorEmailProps) {
             <Text style={footerAutoStyle}>{s.footerAuto}</Text>
             <Text style={privacyTextStyle}>{s.privacyNotice}</Text>
             <Text style={privacyTextStyle}>{s.rightsInfo}</Text>
+            {lead.unsubscribe_token ? (
+              <Text style={privacyTextStyle}>
+                <a
+                  href={`${process.env.NEXT_PUBLIC_APP_URL ?? 'https://budgetfree.tech'}/${bcp47}/unsubscribe/${lead.unsubscribe_token}`}
+                  style={{ color: '#93c5fd', textDecoration: 'underline' }}
+                >
+                  {s.unsubscribeLabel ?? 'Unsubscribe'}
+                </a>
+              </Text>
+            ) : null}
           </Section>
         </Container>
       </Body>

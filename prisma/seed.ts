@@ -1,13 +1,18 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
 import { seedQuestions } from "./seeds/questions";
 import { seedTranslations } from "./seeds/translations";
 import { seedGraph } from "./seeds/graph";
 import { seedDevData } from "./seeds/dev-data";
+import { addDontKnowOptions } from "./seeds/add-dont-know-options";
+import { addDescriptionsPtBr } from "./seeds/add-descriptions-pt-BR";
+import { applyCopywritingReviewV1 } from "./seeds/copywriting-review-v1";
+import { applyQuestionsRefactorV2 } from "./seeds/refactor-questions-v2";
 
-const adapter = new PrismaNeon({
-  connectionString: process.env.DATABASE_URL,
-});
+const url = process.env.DATABASE_URL;
+const isNeon = !!url && /neon\.tech|supabase\.co/.test(url);
+const adapter = isNeon
+  ? new (require("@prisma/adapter-neon").PrismaNeon)({ connectionString: url })
+  : new (require("@prisma/adapter-pg").PrismaPg)({ connectionString: url });
 const prisma = new PrismaClient({ adapter });
 
 // ─── Exchange Rates ──────────────────────────────────────────────────────────
@@ -97,6 +102,33 @@ async function seedPricingConfigs() {
       complexity_multiplier_high: 1.6,
       complexity_multiplier_very_high: 2.5,
     },
+    {
+      project_type: "MARKETPLACE",
+      base_price: 22000.0,
+      base_days: 70,
+      complexity_multiplier_low: 0.8,
+      complexity_multiplier_medium: 1.0,
+      complexity_multiplier_high: 1.5,
+      complexity_multiplier_very_high: 2.1,
+    },
+    {
+      project_type: "CRYPTO",
+      base_price: 28000.0,
+      base_days: 75,
+      complexity_multiplier_low: 0.85,
+      complexity_multiplier_medium: 1.0,
+      complexity_multiplier_high: 1.6,
+      complexity_multiplier_very_high: 2.3,
+    },
+    {
+      project_type: "BROWSER_EXT",
+      base_price: 6000.0,
+      base_days: 21,
+      complexity_multiplier_low: 0.75,
+      complexity_multiplier_medium: 1.0,
+      complexity_multiplier_high: 1.4,
+      complexity_multiplier_very_high: 1.9,
+    },
   ];
 
   for (const config of configs) {
@@ -130,6 +162,22 @@ async function main() {
     console.log("  Configurando grafo de navegação DAG...");
     await seedGraph(prisma);
     console.log("  ✅ Grafo configurado");
+
+    console.log("  Adicionando opções 'Não sei / preciso de orientação'...");
+    await addDontKnowOptions(prisma);
+    console.log("  ✅ Opções auxiliares adicionadas");
+
+    console.log("  Atualizando descriptions pt-BR...");
+    await addDescriptionsPtBr(prisma);
+    console.log("  ✅ Descriptions pt-BR atualizadas");
+
+    console.log("  Aplicando refactor v2 do catálogo de perguntas...");
+    await applyQuestionsRefactorV2(prisma);
+    console.log("  ✅ Refactor v2 aplicado");
+
+    console.log("  Aplicando revisão de copywriting v1...");
+    await applyCopywritingReviewV1(prisma);
+    console.log("  ✅ Copywriting v1 aplicado");
 
     console.log("  Semeando dados de desenvolvimento (sessões, leads, edge cases)...");
     await seedDevData(prisma);

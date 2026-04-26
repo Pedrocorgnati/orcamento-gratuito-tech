@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Orçamento sistema cripto | Web3, contratos e compliance",
+    "description": "Peça um orçamento sistema cripto com MetaMask/WalletConnect, contratos Solidity, EVM (Ethereum, Polygon, Base), tokens ERC-20/721/1155, auditoria e KYC/AML."
+  },
+  "hero": {
+    "h1": "orçamento sistema cripto: Web3 com segurança, compliance e entrega objetiva",
+    "subtitle": "Wallets (MetaMask/WalletConnect), contratos Solidity e integrações para você lançar com segurança.",
+    "cta": "Solicitar orçamento"
+  },
+  "pain": {
+    "title": "Cripto não perdoa erro, e o custo vem rápido",
+    "bullets": [
+      "Você já travou no “como conectar a carteira” e perdeu usuário na primeira tela.",
+      "Você já teve medo de publicar contrato sem auditoria e virar alvo por um bug simples.",
+      "Você já ficou preso entre compliance (KYC/AML), custody e integrações, sem um escopo claro."
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Escopo sem surpresas",
+      "desc": "Você recebe um plano com entregáveis, limites e riscos mapeados, para orçamento e prazo fazerem sentido."
+    },
+    {
+      "title": "Segurança tratada como requisito",
+      "desc": "Smart contracts em Solidity com testes, revisão e auditoria de contrato para reduzir superfície de ataque."
+    },
+    {
+      "title": "Compliance e operação prontas",
+      "desc": "Desenho de KYC/AML, trilhas de auditoria e integração com custody/exchange para você operar com controle."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no seu sistema cripto",
+    "bullets": [
+      "Discovery e arquitetura",
+      "Wallets (MetaMask/WalletConnect)",
+      "Smart contracts Solidity",
+      "Token ERC-20",
+      "NFT ERC-721/1155",
+      "Testes e revisão",
+      "Auditoria de contrato",
+      "Compliance KYC/AML",
+      "Custody (opcional)",
+      "Exchange + analytics on-chain"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "dApp com login por carteira",
+      "desc": "Fluxo de conexão com MetaMask e WalletConnect, permissões claras e UX para reduzir abandono."
+    },
+    {
+      "title": "Tokenização com ERC-20",
+      "desc": "Emissão, mint/burn, regras e integrações com carteiras e exploradores, com controles operacionais."
+    },
+    {
+      "title": "NFTs ERC-721 e ERC-1155",
+      "desc": "Coleções, mint, whitelist e utilidades, com contratos testados e trilha de auditoria do processo."
+    },
+    {
+      "title": "Custody e operações internas",
+      "desc": "Fluxos com carteiras gerenciadas, aprovações, limites e registro para conciliar segurança e agilidade."
+    },
+    {
+      "title": "Integração com exchange",
+      "desc": "Depósito/saque, status e conciliação, com monitoramento on-chain e alertas para incidentes."
+    }
+  ],
+  "stack": {
+    "title": "Stack Web3 que encaixa no seu cenário",
+    "options": [
+      {
+        "name": "MetaMask",
+        "note": "Conexão, assinatura e permissões com mensagens claras para o usuário."
+      },
+      {
+        "name": "WalletConnect",
+        "note": "Conexão multi-wallet, com foco em mobile e QR/Deep Link."
+      },
+      {
+        "name": "Solidity",
+        "note": "Contratos com padrões EVM, testes e práticas para minimizar riscos."
+      },
+      {
+        "name": "EVM chains",
+        "note": "Ethereum, Polygon e Base conforme custo, liquidez e exigências do seu produto."
+      },
+      {
+        "name": "KYC/AML",
+        "note": "Regras, eventos e trilhas para atender compliance sem travar o funil."
+      },
+      {
+        "name": "On-chain analytics",
+        "note": "Métricas e monitoramento por transações, eventos e endereços, com alertas."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico e escopo",
+        "desc": "Você explica o caso de uso, o risco e o público; eu desenho o escopo e o orçamento."
+      },
+      {
+        "title": "Construção e validação",
+        "desc": "Implemento wallets, contratos e integrações, com testes e revisão antes do deploy."
+      },
+      {
+        "title": "Go-live e operação",
+        "desc": "Publicação na chain escolhida, monitoramento on-chain e rotinas de compliance/operacional."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "O que influencia o orçamento de um sistema cripto?",
+      "a": "Escopo de smart contracts, padrão do token (ERC-20/721/1155), integrações (wallets, custody, exchange), exigências de KYC/AML, necessidade de auditoria e a chain escolhida impactam custo e prazo."
+    },
+    {
+      "q": "Auditoria de contrato é obrigatória?",
+      "a": "Depende do risco e do que o contrato controla. Em geral, se há fundos sob gestão, regras de emissão, mint/burn, ou lógica complexa, auditoria é fortemente recomendada para reduzir falhas e aumentar confiança."
+    },
+    {
+      "q": "Quando faz sentido implementar KYC/AML?",
+      "a": "Quando há compra/venda, resgate, distribuição de valor, operação em jurisdições reguladas ou políticas internas do seu negócio. A decisão também depende do tipo de ativo, do público e do modelo de custódia."
+    },
+    {
+      "q": "Custody é melhor do que non-custodial?",
+      "a": "Não existe “melhor” universal. Non-custodial dá controle ao usuário e simplifica responsabilidade, enquanto custody pode melhorar UX e operação, mas aumenta exigências de segurança, controles e compliance."
+    },
+    {
+      "q": "Dá para integrar com exchange e conciliar depósitos/saques?",
+      "a": "Sim. Integramos APIs da exchange para status de transações e conciliação, e complementamos com monitoramento on-chain por endereço/evento para validar o que foi efetivamente liquidado."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vamos fechar seu escopo e seu orçamento sem enrolação",
+    "desc": "Me diga o caso de uso, a chain (ou a dúvida) e se precisa de KYC/AML, custody e auditoria. Eu retorno com orçamento e próximos passos.",
+    "button": "Pedir orçamento"
+  }
+}

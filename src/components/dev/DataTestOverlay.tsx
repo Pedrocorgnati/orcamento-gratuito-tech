@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 
 /**
  * DevDataTestOverlay — Overlay visual de debug para data-testid
@@ -9,7 +9,7 @@ import { useState, useCallback, useEffect } from 'react'
  * Este componente NUNCA deve aparecer em producao.
  *
  * Funcionalidade:
- * - Botao flutuante [data-test] no canto superior direito
+ * - Botao flutuante [data-test] arrastavel (drag) — reposicionavel na tela
  * - Ao clicar, exibe overlays com todos os data-testid do DOM
  * - Ao clicar em um overlay, copia o data-testid para o clipboard
  * - Feedback visual (verde = copiado)
@@ -19,6 +19,15 @@ export function DevDataTestOverlay() {
   const [isActive, setIsActive] = useState(false)
   const [elements, setElements] = useState<Array<{ id: string; rect: DOMRect }>>([])
   const [copiedId, setCopiedId] = useState<string | null>(null)
+
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null)
+  const isDragging = useRef(false)
+  const dragOffset = useRef({ x: 0, y: 0 })
+  const hasDragged = useRef(false)
+
+  useEffect(() => {
+    setPos({ x: window.innerWidth - 120, y: 12 })
+  }, [])
 
   const scanDataTestIds = useCallback(() => {
     const allElements = document.querySelectorAll('[data-testid]')
@@ -30,6 +39,10 @@ export function DevDataTestOverlay() {
   }, [])
 
   const handleToggle = useCallback(() => {
+    if (hasDragged.current) {
+      hasDragged.current = false
+      return
+    }
     if (!isActive) {
       scanDataTestIds()
     }
@@ -57,6 +70,67 @@ export function DevDataTestOverlay() {
     }
   }, [])
 
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (!pos) return
+    isDragging.current = true
+    hasDragged.current = false
+    dragOffset.current = {
+      x: e.clientX - pos.x,
+      y: e.clientY - pos.y,
+    }
+    e.preventDefault()
+  }, [pos])
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (!pos || !e.touches[0]) return
+    isDragging.current = true
+    hasDragged.current = false
+    dragOffset.current = {
+      x: e.touches[0].clientX - pos.x,
+      y: e.touches[0].clientY - pos.y,
+    }
+  }, [pos])
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging.current) return
+      hasDragged.current = true
+      const newX = Math.max(0, Math.min(window.innerWidth - 100, e.clientX - dragOffset.current.x))
+      const newY = Math.max(0, Math.min(window.innerHeight - 36, e.clientY - dragOffset.current.y))
+      setPos({ x: newX, y: newY })
+    }
+
+    const handleMouseUp = () => {
+      isDragging.current = false
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDragging.current || !e.touches[0]) return
+      hasDragged.current = true
+      const touch = e.touches[0]
+      const newX = Math.max(0, Math.min(window.innerWidth - 100, touch.clientX - dragOffset.current.x))
+      const newY = Math.max(0, Math.min(window.innerHeight - 36, touch.clientY - dragOffset.current.y))
+      setPos({ x: newX, y: newY })
+      e.preventDefault()
+    }
+
+    const handleTouchEnd = () => {
+      isDragging.current = false
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
+    window.addEventListener('touchend', handleTouchEnd)
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [])
+
   // Atualizar posicoes no scroll e resize
   useEffect(() => {
     if (!isActive) return
@@ -77,15 +151,19 @@ export function DevDataTestOverlay() {
     return null
   }
 
+  if (!pos) return null
+
   return (
     <>
-      {/* Botao flutuante */}
+      {/* Botao flutuante arrastavel */}
       <button
         onClick={handleToggle}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         style={{
           position: 'fixed',
-          top: '12px',
-          right: '12px',
+          top: `${pos.y}px`,
+          left: `${pos.x}px`,
           zIndex: 99999,
           padding: '6px 12px',
           fontSize: '12px',
@@ -96,10 +174,11 @@ export function DevDataTestOverlay() {
           borderRadius: '6px',
           backgroundColor: isActive ? '#ef4444' : '#ffffff',
           color: isActive ? '#ffffff' : '#ef4444',
-          cursor: 'pointer',
+          cursor: 'grab',
           boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-          transition: 'all 150ms ease',
+          transition: 'background-color 150ms ease, border-color 150ms ease, color 150ms ease',
           userSelect: 'none',
+          touchAction: 'none',
         }}
         aria-label={isActive ? 'Esconder data-testid overlays' : 'Mostrar data-testid overlays'}
       >

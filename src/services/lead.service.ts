@@ -6,6 +6,7 @@ import { calculateLeadScore } from '@/lib/scoring/calculateLeadScore'
 import { detectFillerResponses } from '@/lib/scoring/detectFillerResponses'
 import { estimationService } from '@/services/estimation.service'
 import { sendLeadNotification } from '@/lib/notifications/sendLeadNotification'
+import { PRIVACY_POLICY_VERSION } from '@/lib/privacy/policyVersion'
 import type { Prisma } from '@prisma/client'
 
 export type LeadCreateResult = {
@@ -25,7 +26,25 @@ export type LeadSummary = {
   estimated_price_max: number
   estimated_days_min: number
   estimated_days_max: number
+  email_status: string
   created_at: Date
+}
+
+/**
+ * CL-286: busca leads nao-anonimizados do mesmo email nos ultimos N meses
+ * (case-insensitive) para suportar flag "LEAD RECORRENTE" no email ao owner.
+ */
+export async function findRecurringLeads(email: string, windowMonths = 12) {
+  const since = new Date(Date.now() - windowMonths * 30 * 24 * 60 * 60 * 1000)
+  return prisma.lead.findMany({
+    where: {
+      email: { equals: email, mode: 'insensitive' },
+      created_at: { gte: since },
+      anonymized_at: null,
+    },
+    orderBy: { created_at: 'desc' },
+    select: { id: true, created_at: true },
+  })
 }
 
 export class LeadService {
@@ -55,6 +74,13 @@ export class LeadService {
 
     // 3. Calcular estimativa
     const estimation = await estimationService.calculate(input.sessionId)
+
+    // CL-281: snapshot da versão de pesos usada (por project_type primário)
+    const pricingSnapshot = await prisma.pricingConfig.findUnique({
+      where: { project_type: estimation.project_type },
+      select: { version: true },
+    })
+    const pricingVersion = pricingSnapshot?.version ?? 'v1'
 
     // 4. Obter budget e deadline das respostas da sessão
     const budgetAnswer = session.answers.find(
@@ -136,6 +162,27 @@ export class LeadService {
         is_suspicious: fillerResult.isSuspicious,
         suspicious_pattern: fillerResult.pattern,
         email_status: EmailStatus.PENDING,
+        pricing_version: pricingVersion,
+        whatsapp: input.whatsapp ?? null,
+        // CL-250: propagate first-touch attribution from Session to Lead
+        utm_source: session.utm_source ?? null,
+        utm_medium: session.utm_medium ?? null,
+        utm_campaign: session.utm_campaign ?? null,
+        utm_term: session.utm_term ?? null,
+        utm_content: session.utm_content ?? null,
+        referrer: session.referrer ?? null,
+        // CL-245: privacy policy version (optional; undefined falls through to null)
+        // RESOLVED: Gap G4 — warn on version mismatch (client sent outdated policyVersion).
+        consent_policy_version: (() => {
+          const submitted = (input as { policyVersion?: string }).policyVersion
+          if (submitted && submitted !== PRIVACY_POLICY_VERSION) {
+            logger.warn('consent_policy_version_mismatch', {
+              submitted,
+              current: PRIVACY_POLICY_VERSION,
+            })
+          }
+          return submitted ?? null
+        })(),
       },
     })
 
@@ -154,12 +201,48 @@ export class LeadService {
     }
   }
 
+  async findById(id: string) {
+    const lead = await prisma.lead.findUnique({
+      where: { id },
+      include: {
+        session: {
+          include: {
+            answers: {
+              where: { question: { code: { in: ['Q096', 'Q097', 'Q098', 'Q099'] } } },
+              include: {
+                question: { select: { code: true } },
+              },
+            },
+          },
+        },
+      },
+    })
+
+    if (!lead) return null
+
+    const narrativeByCode = new Map<string, string>()
+    for (const a of lead.session?.answers ?? []) {
+      if (a.text_value) narrativeByCode.set(a.question.code, a.text_value)
+    }
+
+    return {
+      lead,
+      userNarrative: {
+        vision: narrativeByCode.get('Q096') ?? null,
+        mustHaves: narrativeByCode.get('Q097') ?? null,
+        references: narrativeByCode.get('Q098') ?? null,
+        openNotes: narrativeByCode.get('Q099') ?? null,
+      },
+    }
+  }
+
   async findMany(query: AdminLeadsQuery): Promise<{ data: LeadSummary[]; total: number }> {
-    const { score, type, from, to, page, pageSize } = query
+    const { score, type, status, from, to, page, pageSize } = query
 
     const where: Prisma.LeadWhereInput = {
       ...(score ? { score } : {}),
       ...(type ? { project_type: type } : {}),
+      ...(status ? { email_status: status } : {}),
       ...(from || to
         ? {
             created_at: {
@@ -188,6 +271,7 @@ export class LeadService {
           estimated_price_max: true,
           estimated_days_min: true,
           estimated_days_max: true,
+          email_status: true,
           created_at: true,
         },
       }),

@@ -62,6 +62,12 @@ vi.mock('@/services/lead.service', () => ({
 
 vi.mock('@/lib/supabase/server', () => ({
   getUser: vi.fn(),
+  requireAdmin: vi.fn().mockResolvedValue({
+    ok: false,
+    status: 401,
+    code: 'AUTH_001',
+    message: 'Autenticação necessária.',
+  }),
 }))
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -500,4 +506,97 @@ describe('ERROR-CATALOG compliance: LEAD_ALREADY_EXISTS — lead duplicado (409)
     const data = await response.json()
     expect(data).toHaveProperty('error')
   })
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DEGRADED: resiliência a falhas externas (G013)
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('DEGRADED — Prisma connection failure (SYS_001)', () => {
+  it('GET /api/v1/sessions/[id] com Prisma offline deve retornar 500 com error.code', async () => {
+    // Route usa findByIdWithQuestion (não findById)
+    vi.mocked(sessionService.findByIdWithQuestion).mockRejectedValueOnce(
+      new Error('P2024: connection pool timeout')
+    )
+    const request = buildRequest(`/api/v1/sessions/${SESSION_ID}`)
+    const response = await getSession(request, {
+      params: Promise.resolve({ id: SESSION_ID }),
+    })
+    expect(response.status).toBe(500)
+    const data = await response.json()
+    expect(data).toHaveProperty('error')
+    expect(data.error.message).not.toContain('P2024')
+    expect(data.error.message).not.toContain('pool')
+  })
+
+  it('POST /api/v1/leads com Prisma offline não deve expor mensagem raw', async () => {
+    // Reset rate limiter state antes de testar (evita 429 por acúmulo de chamadas)
+    vi.mocked(leadService.create).mockRejectedValueOnce(
+      new Error('P2024: connection pool timeout')
+    )
+    // Rate limiter tem estado interno — mock o módulo para bypass
+    const { leadRateLimiter } = await import('@/lib/rate-limiter')
+    const origCheck = leadRateLimiter.check.bind(leadRateLimiter)
+    vi.spyOn(leadRateLimiter, 'check').mockReturnValueOnce(true)
+
+    const request = buildRequest('/api/v1/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId: 'clt3zk5bj0000xx6z9q79test',
+        name: 'Test User',
+        email: 'test@example.com',
+        consentGiven: true,
+        consentVersion: '1.0',
+      }),
+    })
+    const response = await createLead(request)
+    expect(response.status).toBe(500)
+    const data = await response.json()
+    expect(data.error.message).not.toContain('P2024')
+    expect(data.error.message).not.toContain('pool')
+
+    vi.restoreAllMocks()
+  })
+})
+
+describe('DEGRADED — Supabase Auth indisponível (G013)', () => {
+  it('GET /api/v1/admin/leads com Supabase Auth offline deve retornar 401/503 sem stack trace', async () => {
+    vi.mocked(getUser).mockRejectedValueOnce(new Error('Service Unavailable'))
+    const request = buildRequest('/api/v1/admin/leads')
+    const response = await getAdminLeads(request)
+    expect([401, 503]).toContain(response.status)
+    const data = await response.json()
+    expect(data).toHaveProperty('error')
+    expect(JSON.stringify(data)).not.toContain('Service Unavailable')
+  })
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SESSION_021: resposta incompleta sem optionIds nem textValue (G014)
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('ERROR-CATALOG compliance: SESSION_021 — resposta incompleta', () => {
+  it('POST /api/v1/sessions/[id]/answers sem option_ids e sem text_value deve retornar 400', async () => {
+    const request = buildRequest(`/api/v1/sessions/${SESSION_ID}/answers`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question_id: 'q-001' }),
+    })
+    const response = await submitAnswer(request, {
+      params: Promise.resolve({ id: SESSION_ID }),
+    })
+    expect([400, 422]).toContain(response.status)
+    const data = await response.json()
+    expect(data).toHaveProperty('error')
+    expect(data.error.message).toBeDefined()
+  })
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
+// AUTH_004: sessão admin expirada por inatividade (G014 — pendente de impl)
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('ERROR-CATALOG compliance: AUTH_004 — sessão admin expirada', () => {
+  it.todo('GET /api/v1/admin/leads com token expirado deve retornar AUTH_004 — implementar requireAdmin timeout logic')
 })

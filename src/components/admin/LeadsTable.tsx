@@ -9,6 +9,7 @@ import {
   type SortingState,
 } from '@tanstack/react-table'
 import { useState } from 'react'
+import { useParams, useRouter } from 'next/navigation'
 import { ProjectType } from '@/lib/enums'
 import { ScoreBadge } from './ScoreBadge'
 import { EmptyState } from '@/components/ui/EmptyState'
@@ -20,6 +21,9 @@ const PROJECT_TYPE_LABELS: Record<string, string> = {
   [ProjectType.WEB_APP]: 'Sistema Web',
   [ProjectType.MOBILE_APP]: 'App Mobile',
   [ProjectType.AUTOMATION_AI]: 'Automação/IA',
+  [ProjectType.MARKETPLACE]: 'Marketplace',
+  [ProjectType.CRYPTO]: 'Crypto / Web3',
+  [ProjectType.BROWSER_EXT]: 'Extensão Browser',
 }
 
 function formatCurrency(value: number): string {
@@ -47,6 +51,9 @@ interface LeadsTableProps {
 }
 
 export function LeadsTable({ data, error = null }: LeadsTableProps) {
+  const router = useRouter()
+  const params = useParams<{ locale?: string }>()
+  const locale = params?.locale ?? 'pt-BR'
   const [sorting, setSorting] = useState<SortingState>([
     { id: 'created_at', desc: true },
   ])
@@ -93,6 +100,40 @@ export function LeadsTable({ data, error = null }: LeadsTableProps) {
         )
       },
     }),
+    columnHelper.accessor('email_status', {
+      header: 'Email',
+      cell: (info) => {
+        const status = info.getValue()
+        if (status === 'DEAD_LETTER') {
+          return (
+            <span
+              data-testid="admin-leads-email-status-dead-letter"
+              className="inline-flex items-center rounded-md bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700"
+              title="Email ao proprietario falhou 3x — acao manual necessaria"
+            >
+              Falha
+            </span>
+          )
+        }
+        if (status === 'FAILED') {
+          return (
+            <span className="inline-flex items-center rounded-md bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-700">
+              Retry
+            </span>
+          )
+        }
+        if (status === 'SENT') {
+          return (
+            <span className="inline-flex items-center rounded-md bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
+              OK
+            </span>
+          )
+        }
+        return (
+          <span className="text-xs text-(--color-text-secondary)">Pendente</span>
+        )
+      },
+    }),
     columnHelper.accessor('created_at', {
       header: 'Data',
       cell: (info) => (
@@ -116,7 +157,7 @@ export function LeadsTable({ data, error = null }: LeadsTableProps) {
 
   if (error) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-8 text-center">
+      <div data-testid="admin-leads-table-error" className="rounded-lg border border-red-200 bg-red-50 px-4 py-8 text-center">
         <p className="text-sm font-medium text-red-600">Erro ao carregar leads</p>
         <p className="mt-1 text-xs text-red-500">{error}</p>
       </div>
@@ -125,7 +166,7 @@ export function LeadsTable({ data, error = null }: LeadsTableProps) {
 
   if (data.length === 0) {
     return (
-      <div className="rounded-lg border border-(--color-border) bg-(--color-background)">
+      <div data-testid="admin-leads-table-empty" className="rounded-lg border border-(--color-border) bg-(--color-background)">
         <EmptyState
           message="Nenhum lead encontrado"
           description="Ainda não há orçamentos gerados ou os filtros não retornaram resultados."
@@ -135,15 +176,16 @@ export function LeadsTable({ data, error = null }: LeadsTableProps) {
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-background) shadow-(--shadow-sm)">
+    <div data-testid="admin-leads-table-wrapper" className="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-background) shadow-(--shadow-sm)">
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table data-testid="admin-leads-table" className="w-full text-sm">
           <thead className="border-b border-(--color-border) bg-(--color-surface)">
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
+              <tr key={headerGroup.id} data-testid="admin-leads-table-header-row">
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
+                    data-testid={`admin-leads-table-header-${header.column.id}`}
                     className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wide text-(--color-text-secondary) cursor-pointer select-none hover:bg-(--color-muted)"
                     onClick={header.column.getToggleSortingHandler()}
                     aria-sort={
@@ -172,10 +214,21 @@ export function LeadsTable({ data, error = null }: LeadsTableProps) {
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="hover:bg-(--color-surface) transition-colors"
+                data-testid={`admin-leads-row-${row.original.id}`}
+                className="cursor-pointer hover:bg-(--color-surface) transition-colors"
+                onClick={() => router.push(`/${locale}/admin/leads/${row.original.id}`)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    router.push(`/${locale}/admin/leads/${row.original.id}`)
+                  }
+                }}
+                role="link"
+                tabIndex={0}
+                aria-label={`Ver detalhes do lead ${row.original.name}`}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-4 py-3">
+                  <td key={cell.id} data-testid={`admin-leads-cell-${row.original.id}-${cell.column.id}`} className="px-4 py-3">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}

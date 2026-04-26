@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Cuánto cuesta tienda online: tienda a medida",
+    "description": "Descubre cuánto cuesta una tienda online a medida con Stripe o Redsys, pasarela, envíos, IVA/impuestos, stock, cupones, ERP, panel admin y SEO (Core Web Vitals)."
+  },
+  "hero": {
+    "h1": "cuánto cuesta tienda online: precio de una tienda a medida",
+    "subtitle": "Define catálogo, pasarela, envíos e impuestos y lanza una tienda rápida y SEO-ready.",
+    "cta": "Pide tu estimación"
+  },
+  "pain": {
+    "title": "Por qué una tienda online se dispara de precio",
+    "bullets": [
+      "¿Alguna vez lanzaste la tienda y después descubriste que el IVA, los envíos y las devoluciones no estaban bien definidos",
+      "¿Alguna vez integraste Stripe o Redsys y te atascaste con webhooks, estados de pago y casos de pagos fallidos",
+      "¿Alguna vez tu panel admin se quedó corto y tuviste que pagar otra vez para arreglar stock, cupones, informes o ERP"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Presupuesto con desglose real",
+      "desc": "Recibes una estimación ligada al alcance: tamaño del catálogo, checkout, cupones, reglas de envío, IVA/impuestos e integraciones."
+    },
+    {
+      "title": "Checkout listo para vender",
+      "desc": "Publicas un flujo de pago con Stripe y/o Redsys, manejo de webhooks, reintentos, devoluciones y estados de pedido coherentes."
+    },
+    {
+      "title": "SEO y rendimiento desde el inicio",
+      "desc": "Sales con base técnica de SEO y foco en Core Web Vitals para cargar rápido, mejorar la experiencia y posicionar mejor."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye una tienda online a medida",
+    "bullets": [
+      "Catálogo, variantes y categorías",
+      "Carrito y checkout completo",
+      "Pasarela: Stripe y/o Redsys",
+      "IVA/impuestos, facturas y devoluciones",
+      "Envío: zonas, tarifas y tracking",
+      "Stock: gestión y alertas",
+      "Cupones, descuentos y promociones",
+      "Panel admin: productos, pedidos y clientes",
+      "Integración ERP: sync y reporting",
+      "SEO técnico y Core Web Vitals"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Tienda propia sin límites",
+      "desc": "Necesitas control total del catálogo, datos y reglas, sin depender de restricciones de plataforma."
+    },
+    {
+      "title": "Ecommerce headless",
+      "desc": "Quieres un frontend flexible con APIs para catálogo, carrito y pedidos, y un backoffice sólido."
+    },
+    {
+      "title": "Operaciones con ERP",
+      "desc": "Te interesa sincronizar productos, stock, precios y pedidos con tu ERP para reducir trabajo manual."
+    },
+    {
+      "title": "B2B y precios por cliente",
+      "desc": "Gestionas listas de precios, grupos, aprobaciones y flujos de compra con permisos en el panel admin."
+    },
+    {
+      "title": "Promos y campañas",
+      "desc": "Vas a usar cupones, bundles o descuentos avanzados y quieres medir bien la conversión."
+    }
+  ],
+  "stack": {
+    "title": "Opciones de construcción para tu ecommerce",
+    "options": [
+      {
+        "name": "Frontend a medida",
+        "note": "Experiencia de compra personalizada con control de SEO, rendimiento y conversión."
+      },
+      {
+        "name": "Arquitectura headless",
+        "note": "Separación frontend-backend para iterar rápido y conectar múltiples canales cuando haga falta."
+      },
+      {
+        "name": "Stripe",
+        "note": "Pagos con tarjeta y métodos compatibles, webhooks y devoluciones con trazabilidad."
+      },
+      {
+        "name": "Redsys",
+        "note": "Integración de pasarela habitual en España con confirmaciones, fallos y estados de pedido consistentes."
+      },
+      {
+        "name": "Panel admin",
+        "note": "Backoffice para catálogo, pedidos, stock, cupones y roles, pensado para operar día a día."
+      },
+      {
+        "name": "Integración ERP",
+        "note": "Sincroniza stock, precios y pedidos para cuadrar operaciones y evitar errores por duplicidad."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Definimos el alcance",
+        "desc": "Aterrizamos catálogo, envíos, IVA/impuestos, cupones y pasarela, más integraciones como ERP."
+      },
+      {
+        "title": "Estimación y plan",
+        "desc": "Recibes hitos, entregables y un rango de coste basado en el alcance acordado."
+      },
+      {
+        "title": "Construcción y lanzamiento",
+        "desc": "Entregamos una tienda probada con panel admin, analítica y checklist de despliegue."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿De qué depende cuánto cuesta tienda online?",
+      "a": "Principalmente del alcance: tamaño del catálogo, reglas de envío, IVA/impuestos, cupones, flujos del panel admin e integraciones externas como ERP o sistemas de logística."
+    },
+    {
+      "q": "¿Se puede integrar Stripe y Redsys a la vez?",
+      "a": "Sí. Se puede ofrecer más de una pasarela y mantener estados de pedido coherentes con webhooks, reintentos, devoluciones y casos de pago fallido."
+    },
+    {
+      "q": "¿Incluye impuestos y configuración de envíos?",
+      "a": "Sí. Implementamos las reglas de IVA/impuestos y envíos por zonas y tarifas, y dejamos documentado cómo mantenerlo desde el panel admin."
+    },
+    {
+      "q": "¿La tienda sale preparada para SEO y Core Web Vitals?",
+      "a": "Sí. Cubrimos lo esencial de SEO técnico (URLs limpias, metadatos, sitemap, datos estructurados cuando aplique) y priorizamos Core Web Vitals."
+    },
+    {
+      "q": "¿Headless es para mí o complica el proyecto?",
+      "a": "Headless encaja si necesitas un frontend muy personalizado, varias experiencias o canales. Si tu caso es más simple, una arquitectura tradicional puede ser más rápida y económica."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Obtén una estimación realista para tu tienda",
+    "desc": "Cuéntame tu catálogo, pasarela, envíos e impuestos y te devuelvo alcance y presupuesto claros.",
+    "button": "Solicitar presupuesto"
+  }
+}

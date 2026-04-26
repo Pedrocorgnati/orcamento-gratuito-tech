@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Quanto custa loja virtual sob medida | Orçamento e-commerce",
+    "description": "Entenda quanto custa loja virtual sob medida: escopo, integrações (Pix/cartão/boleto), frete, ERP, SEO e Core Web Vitals. Peça um orçamento claro."
+  },
+  "hero": {
+    "h1": "Quanto custa loja virtual sob medida para o seu e-commerce?",
+    "subtitle": "Você recebe um orçamento claro, com escopo, prazos e integrações que fazem sua operação rodar.",
+    "cta": "Pedir orçamento"
+  },
+  "pain": {
+    "title": "Quando o e-commerce trava, dói no caixa",
+    "bullets": [
+      "Você já perdeu vendas porque o checkout é lento, confuso ou falha no Pix e no cartão?",
+      "Você já ficou refém de plugin, agência ou ERP, sem saber o que está integrado de verdade?",
+      "Você já publicou campanha com cupons e frete e, na hora H, o estoque e o preço não batem?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Checkout que converte",
+      "desc": "Fluxo simples, rápido e confiável, com Pix, cartão e boleto, recuperação de carrinho e validações para reduzir abandono."
+    },
+    {
+      "title": "Operação integrada",
+      "desc": "Integrações com ERP, estoque e catálogo para evitar divergências, automatizar rotinas e dar visibilidade no painel admin."
+    },
+    {
+      "title": "SEO e performance",
+      "desc": "Arquitetura pensada para indexação e Core Web Vitals, com templates de categorias/produtos e base headless quando faz sentido."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no orçamento",
+    "bullets": [
+      "Mapeamento de requisitos do e-commerce",
+      "UX do catálogo e navegação",
+      "Cadastro de produtos e variações",
+      "Checkout com Pix, cartão e boleto",
+      "Gateway de pagamento e antifraude",
+      "Frete: regras, tabelas e prazos",
+      "Cupons, promoções e campanhas sazonais",
+      "Integração com ERP e estoque",
+      "SEO técnico e Core Web Vitals",
+      "Painel admin e rotinas operacionais"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Loja D2C",
+      "desc": "Para marcas que precisam de catálogo completo, campanhas, cupons e checkout enxuto para vender mais."
+    },
+    {
+      "title": "B2B com preço por cliente",
+      "desc": "Regras comerciais, pedidos recorrentes, tabelas de preço e integração com ERP para faturamento e estoque."
+    },
+    {
+      "title": "Catálogo grande",
+      "desc": "Categorias profundas, filtros, busca, páginas indexáveis e governança de dados para milhares de SKUs."
+    },
+    {
+      "title": "Headless commerce",
+      "desc": "Quando você quer separar front e back, ganhar flexibilidade no CMS e otimizar performance com foco em CWV."
+    },
+    {
+      "title": "Migração de plataforma",
+      "desc": "Troca com cuidado em URLs, SEO, redirecionamentos e dados, sem perder histórico e com plano de lançamento."
+    }
+  ],
+  "stack": {
+    "title": "Stack sob medida para seu cenário",
+    "options": [
+      {
+        "name": "Headless + Next.js",
+        "note": "Ideal para performance e SEO, com front custom e integrações via APIs."
+      },
+      {
+        "name": "Shopify",
+        "note": "Bom para time enxuto, com tema custom e apps bem selecionados para operação."
+      },
+      {
+        "name": "WooCommerce",
+        "note": "Flexível em WordPress, com atenção a performance, manutenção e segurança do ecossistema."
+      },
+      {
+        "name": "VTEX",
+        "note": "Para operação robusta e ecossistema enterprise, com integrações e governança de catálogo."
+      },
+      {
+        "name": "Magento/Adobe Commerce",
+        "note": "Para cenários complexos, com alta customização e necessidade de equipe técnica dedicada."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "desc": "Entendemos produtos, operação, integrações, metas e prioridades para fechar o escopo."
+      },
+      {
+        "title": "Build",
+        "desc": "Desenhamos UX, implementamos catálogo/checkout e integrações, e validamos com testes e métricas."
+      },
+      {
+        "title": "Go-live",
+        "desc": "Plano de lançamento, monitoramento, ajustes finos e evolução contínua com backlog priorizado."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Quanto custa loja virtual sob medida?",
+      "a": "Depende de escopo e integrações: catálogo, checkout, gateway (Pix/cartão/boleto), frete, ERP/estoque, SEO e nível de personalização. O orçamento sai após um diagnóstico rápido."
+    },
+    {
+      "q": "Em quanto tempo a loja fica pronta?",
+      "a": "O prazo varia conforme complexidade e dependências de integrações. Em geral, alinhamos uma primeira versão entregável e um plano de evoluções para não travar o lançamento."
+    },
+    {
+      "q": "Vocês integram com ERP e estoque?",
+      "a": "Sim. Mapeamos o que precisa sincronizar (produtos, preços, saldo, pedidos, notas) e definimos a forma de integração (API, middleware ou rotinas), com logs e tolerância a falhas."
+    },
+    {
+      "q": "Como vocês cuidam de SEO e Core Web Vitals?",
+      "a": "Trabalhamos estrutura de URLs, metadata, sitemap, dados estruturados quando aplicável e templates indexáveis. Em performance, focamos em CWV com otimizações de imagens, scripts e carregamento."
+    },
+    {
+      "q": "Dá para fazer headless commerce no meu caso?",
+      "a": "Dá, mas nem sempre vale. A decisão depende de necessidade de flexibilidade no front, integrações, conteúdo, time interno e metas de performance. A recomendação sai no diagnóstico."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Peça seu orçamento de loja virtual",
+    "desc": "Conte seu cenário e receba uma proposta objetiva, com escopo, prazos e prioridades de entrega.",
+    "button": "Quero orçamento"
+  }
+}

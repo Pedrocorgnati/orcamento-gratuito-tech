@@ -1,3 +1,23 @@
+import * as Sentry from '@sentry/nextjs'
+import { redactPII } from '@/lib/security/redactPII'
+
+/**
+ * Captura excecao via Sentry aplicando redacao de PII no contexto.
+ * Seguro para chamar em ambiente sem SENTRY_DSN configurado (no-op silencioso).
+ */
+export function reportError(err: unknown, context?: Record<string, unknown>): void {
+  try {
+    Sentry.captureException(err, {
+      extra: context ? redactPII(context) : undefined,
+    })
+  } catch {
+    // Nunca propagar falha do reporter
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[reportError]', err)
+    }
+  }
+}
+
 // Constantes de erro padronizadas — sincronizadas com ERROR-CATALOG.md e openapi.yaml
 
 export const ERROR_CODES = {
@@ -15,6 +35,7 @@ export const ERROR_CODES = {
 
   // Auth
   AUTH_001: 'AUTH_001',         // sessão admin inválida / não autenticado
+  AUTH_002: 'AUTH_002',         // autenticado mas sem permissão (não é ADMIN_EMAIL)
 
   // Validation
   VAL_001: 'VAL_001',           // campo obrigatório ausente

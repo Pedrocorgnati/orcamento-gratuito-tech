@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { z } from 'zod'
 import { cookies } from 'next/headers'
 import { prisma } from '@/lib/prisma'
 import { SessionStatus } from '@/lib/enums'
@@ -7,26 +6,18 @@ import { COOKIE_NAMES } from '@/lib/constants'
 import { buildError, ERROR_CODES } from '@/lib/errors'
 import { logger } from '@/lib/logger'
 import { recalculateAccumulators } from '@/lib/session/recalculateAccumulators' // RESOLVED: G011
+import { buildAnswerFlowContext } from '@/lib/session/answerFlow'
+import { answerPayloadSchema } from '@/lib/validations/schemas'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // NOTA ARQUITETURAL: Esta API Route coexiste intencionalmente com o Server
 // Action `submitAnswer()` em `src/actions/answer.ts`. O SA é consumido pelo
 // QuestionPageClient (client component), enquanto esta rota REST é usada por
-// contract tests e potenciais integrações externas. Ambos implementam a mesma
-// lógica (IDOR guard + Zod + upsert atômico).
+// contract tests e potenciais integrações externas. Ambos compartilham:
+//   • answerPayloadSchema / answerSchema em src/lib/validations/schemas.ts
+//   • validateTextValueByCode (chamado dentro de buildAnswerFlowContext)
+// para garantir contrato unificado de validação.
 // ─────────────────────────────────────────────────────────────────────────────
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Schema
-// GAP-002: option_ids aceita array de strings (min 1 item) para MULTIPLE_CHOICE
-// ─────────────────────────────────────────────────────────────────────────────
-
-const answerPayloadSchema = z.object({
-  question_id: z.string().min(1, 'question_id é obrigatório'),
-  option_ids: z.array(z.string().min(1)).min(1).optional(),
-  text_value: z.string().min(1).max(2000).nullable().optional(),
-  answered_at: z.string().datetime().optional(),
-})
 
 // ─────────────────────────────────────────────────────────────────────────────
 // POST /api/v1/sessions/[id]/answers — salvar resposta e atualizar acumuladores
@@ -90,145 +81,112 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
   }
 
   try {
-    // 1. Buscar sessão
-    const session = await prisma.session.findUnique({
-      where: { id: sessionId },
-      select: {
-        id: true,
-        status: true,
-        expires_at: true,
-        questions_answered: true,
-      },
-    })
-
-    if (!session) {
-      return NextResponse.json(
-        buildError(ERROR_CODES.SESSION_NOT_FOUND, 'Sessão não encontrada.'),
-        { status: 404 }
-      )
-    }
-
-    if (session.status === SessionStatus.EXPIRED || session.expires_at < new Date()) {
-      return NextResponse.json(
-        buildError(ERROR_CODES.SESSION_EXPIRED, 'Sessão expirada.'),
-        { status: 410 }
-      )
-    }
-
-    if (session.status === SessionStatus.COMPLETED) {
-      return NextResponse.json(
-        buildError(ERROR_CODES.CONFLICT, 'Sessão já concluída.'),
-        { status: 409 }
-      )
-    }
-
-    // 2. Buscar todas as options selecionadas e calcular impactos (SUM)
-    let priceImpact = 0
-    let timeImpact = 0
-    let complexityImpact = 0
-    let nextQuestionId: string | null = null
-
-    if (option_ids && option_ids.length > 0) {
-      const options = await prisma.option.findMany({
-        where: { id: { in: option_ids }, question_id },
+    const { nextQuestionId, updatedSession } = await prisma.$transaction(async (tx) => {
+      const session = await tx.session.findUnique({
+        where: { id: sessionId },
         select: {
           id: true,
-          price_impact: true,
-          time_impact: true,
-          complexity_impact: true,
-          next_question_id: true,
-          order: true,
+          status: true,
+          expires_at: true,
+          questions_answered: true,
+          current_question_id: true,
         },
-        orderBy: { order: 'asc' },
       })
 
-      if (options.length !== option_ids.length) {
-        return NextResponse.json(
-          buildError(ERROR_CODES.VALIDATION_FAILED, 'Uma ou mais opções são inválidas para esta pergunta.'),
-          { status: 422 }
-        )
+      if (!session) throw new Error('SESSION_NOT_FOUND')
+      if (session.status === SessionStatus.EXPIRED || session.expires_at < new Date()) {
+        throw new Error('SESSION_EXPIRED')
+      }
+      if (session.status === SessionStatus.COMPLETED) {
+        throw new Error('SESSION_COMPLETED')
+      }
+      if (session.current_question_id && session.current_question_id !== question_id) {
+        throw new Error('OUT_OF_SEQUENCE')
       }
 
-      // SUM de todos os impactos
-      priceImpact = options.reduce((sum, o) => sum + o.price_impact, 0)
-      timeImpact = options.reduce((sum, o) => sum + o.time_impact, 0)
-      complexityImpact = options.reduce((sum, o) => sum + o.complexity_impact, 0)
-      // next_question_id da última option (maior order)
-      const lastOption = options[options.length - 1]!
-      nextQuestionId = lastOption.next_question_id
-    }
+      const {
+        priceImpact,
+        timeImpact,
+        complexityImpact,
+        nextQuestionId,
+        sessionUpdateData,
+        persistedTextValue,
+      } = await buildAnswerFlowContext({
+        sessionId,
+        questionId: question_id,
+        optionIds: option_ids,
+        textValue: text_value,
+        client: tx,
+      })
 
-    // 3. Verificar se resposta existe (para determinar step_number correto)
-    const existingAnswer = await prisma.answer.findUnique({
-      where: { session_id_question_id: { session_id: sessionId, question_id } },
-      select: { step_number: true },
-    })
+      const existingAnswer = await tx.answer.findUnique({
+        where: { session_id_question_id: { session_id: sessionId, question_id } },
+        select: { step_number: true },
+      })
+      const stepNumber = existingAnswer?.step_number ?? session.questions_answered + 1
+      const singleOptionId = option_ids && option_ids.length === 1 ? option_ids[0]! : null
 
-    const stepNumber = existingAnswer?.step_number ?? session.questions_answered + 1
-
-    // Serializar option_ids como JSON string (campo option_id no DB é String?)
-    const optionIdValue = option_ids && option_ids.length > 0 ? JSON.stringify(option_ids) : null
-
-    // 4. Upsert answer + atualizar timestamp da sessão em transação atômica (GAP-004)
-    await prisma.$transaction([
-      prisma.answer.upsert({
+      await tx.answer.upsert({
         where: { session_id_question_id: { session_id: sessionId, question_id } },
         create: {
           session_id: sessionId,
           question_id,
-          option_id: optionIdValue,
-          text_value: text_value ?? null,
+          option_id: singleOptionId,
+          text_value: persistedTextValue,
           price_impact_snapshot: priceImpact,
           time_impact_snapshot: timeImpact,
           complexity_impact_snapshot: complexityImpact,
           step_number: stepNumber,
         },
         update: {
-          option_id: optionIdValue,
-          text_value: text_value ?? null,
+          option_id: singleOptionId,
+          text_value: persistedTextValue,
           price_impact_snapshot: priceImpact,
           time_impact_snapshot: timeImpact,
           complexity_impact_snapshot: complexityImpact,
         },
-      }),
-      prisma.session.update({
+      })
+
+      const {
+        newQuestionsAnswered,
+        newPath,
+        newAccumPrice,
+        newAccumTime,
+        newAccumComplexity,
+        isComplete,
+        progressPercentage,
+      } = await recalculateAccumulators(
+        sessionId,
+        nextQuestionId,
+        !!(option_ids && option_ids.length > 0),
+        tx
+      )
+
+      const updatedSession = await tx.session.update({
         where: { id: sessionId },
-        data: { updated_at: new Date() },
-      }),
-    ])
+        data: {
+          ...sessionUpdateData,
+          accumulated_price: newAccumPrice,
+          accumulated_time: newAccumTime,
+          accumulated_complexity: newAccumComplexity,
+          path_taken: newPath,
+          questions_answered: newQuestionsAnswered,
+          progress_percentage: progressPercentage,
+          current_question_id: nextQuestionId,
+          status: isComplete ? SessionStatus.COMPLETED : SessionStatus.IN_PROGRESS,
+          updated_at: new Date(),
+        },
+        select: {
+          status: true,
+          questions_answered: true,
+          progress_percentage: true,
+          accumulated_price: true,
+          accumulated_time: true,
+          accumulated_complexity: true,
+        },
+      })
 
-    // 5. Recalcular acumuladores a partir de TODAS as respostas (garantia de precisão)
-    const {
-      newQuestionsAnswered,
-      newPath,
-      newAccumPrice,
-      newAccumTime,
-      newAccumComplexity,
-      isComplete,
-      progressPercentage,
-    } = await recalculateAccumulators(sessionId, nextQuestionId, !!(option_ids && option_ids.length > 0))
-
-    // 6. Atualizar sessão com acumuladores recalculados
-    const updatedSession = await prisma.session.update({
-      where: { id: sessionId },
-      data: {
-        accumulated_price: newAccumPrice,
-        accumulated_time: newAccumTime,
-        accumulated_complexity: newAccumComplexity,
-        path_taken: newPath,
-        questions_answered: newQuestionsAnswered,
-        progress_percentage: progressPercentage,
-        current_question_id: nextQuestionId,
-        status: isComplete ? SessionStatus.COMPLETED : SessionStatus.IN_PROGRESS,
-      },
-      select: {
-        status: true,
-        questions_answered: true,
-        progress_percentage: true,
-        accumulated_price: true,
-        accumulated_time: true,
-        accumulated_complexity: true,
-      },
+      return { nextQuestionId, updatedSession }
     })
 
     return NextResponse.json(
@@ -245,6 +203,47 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       { status: 201 }
     )
   } catch (err: unknown) {
+    const code = err instanceof Error ? err.message : 'UNKNOWN'
+    switch (code) {
+      case 'INVALID_OPTIONS':
+        return NextResponse.json(
+          buildError(ERROR_CODES.VALIDATION_FAILED, 'Uma ou mais opções são inválidas para esta pergunta.'),
+          { status: 422 }
+        )
+      case 'QUESTION_NOT_FOUND':
+        return NextResponse.json(
+          buildError(ERROR_CODES.VALIDATION_FAILED, 'Pergunta inválida.'),
+          { status: 422 }
+        )
+      case 'SESSION_NOT_FOUND':
+        return NextResponse.json(
+          buildError(ERROR_CODES.SESSION_NOT_FOUND, 'Sessão não encontrada.'),
+          { status: 404 }
+        )
+      case 'SESSION_EXPIRED':
+        return NextResponse.json(
+          buildError(ERROR_CODES.SESSION_EXPIRED, 'Sessão expirada.'),
+          { status: 410 }
+        )
+      case 'SESSION_COMPLETED':
+        return NextResponse.json(
+          buildError(ERROR_CODES.CONFLICT, 'Sessão já concluída.'),
+          { status: 409 }
+        )
+      case 'OUT_OF_SEQUENCE':
+        return NextResponse.json(
+          buildError(ERROR_CODES.VALIDATION_FAILED, 'Pergunta fora de sequência. Atualize a página.'),
+          { status: 409 }
+        )
+      default:
+        if (code.startsWith('INVALID_TEXT_VALUE:')) {
+          return NextResponse.json(
+            buildError(ERROR_CODES.VALIDATION_FAILED, code.slice('INVALID_TEXT_VALUE:'.length)),
+            { status: 422 }
+          )
+        }
+    }
+
     logger.error('answers_internal_error', { session_id: sessionId, error: err instanceof Error ? err.message : String(err) })
     return NextResponse.json(
       buildError(ERROR_CODES.INTERNAL_ERROR, 'Erro interno. Tente novamente em alguns instantes.'),

@@ -8,6 +8,7 @@ export function TableSkeleton({ rows = 8, cols = 6 }: TableSkeletonProps) {
 
   return (
     <div
+      data-testid="admin-leads-table-skeleton"
       role="status"
       aria-label="Carregando leads..."
       className="overflow-hidden rounded-lg border border-gray-200 bg-white animate-pulse"

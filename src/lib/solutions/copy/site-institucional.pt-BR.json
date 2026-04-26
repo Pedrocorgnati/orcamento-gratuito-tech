@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Orçamento de site institucional para sua empresa",
+    "description": "Peça orçamento de site institucional com SEO on-page, performance (LCP/Core Web Vitals), CMS para blog, multi-idioma, LGPD, GA4/GTM e integrações com CRM e WhatsApp."
+  },
+  "hero": {
+    "h1": "orçamento site institucional: um site corporativo rápido, claro e confiável",
+    "subtitle": "Seu site institucional com SEO, Core Web Vitals, LGPD, acessibilidade e integrações do dia a dia.",
+    "cta": "Pedir orçamento"
+  },
+  "pain": {
+    "title": "Seu site passa confiança ou levanta dúvidas?",
+    "bullets": [
+      "Você já recebeu leads fracos porque o site não explica bem o que você faz e para quem é?",
+      "Você já perdeu contato porque o formulário falha, não cai no CRM ou ninguém recebe o alerta na hora?",
+      "Você já investiu em tráfego e o site ficou lento no mobile, derrubando LCP e Core Web Vitals?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "SEO que sustenta aquisição",
+      "desc": "Estrutura on-page bem feita, páginas institucionais completas e base pronta para crescer com blog, conteúdos e páginas de serviço."
+    },
+    {
+      "title": "Performance que dá gosto de usar",
+      "desc": "Otimizações focadas em LCP, CLS e INP, com imagens, fontes e scripts controlados para o site abrir rápido no mobile."
+    },
+    {
+      "title": "Integrações sem gambiarra",
+      "desc": "Formulários conectados ao seu CRM, eventos medidos no GA4 via GTM e botão de WhatsApp com rastreio para entender o que converte."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no orçamento",
+    "bullets": [
+      "Arquitetura de páginas e navegação",
+      "Design alinhado à sua marca",
+      "Implementação com foco em CWV",
+      "SEO on-page e SEO técnico básico",
+      "Blog com CMS (headless ou tradicional)",
+      "Multi-idioma com URLs organizadas",
+      "Formulários integrados com CRM",
+      "LGPD: cookies e consentimento",
+      "Rastreio GA4 + GTM por eventos",
+      "Acessibilidade seguindo WCAG"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Empresa B2B",
+      "desc": "Para explicar oferta com clareza, captar leads qualificados e apoiar o time comercial com conteúdo e provas."
+    },
+    {
+      "title": "Indústria e manufatura",
+      "desc": "Linhas de produto, fichas técnicas, segmentos e formulários por área, com navegação rápida no mobile."
+    },
+    {
+      "title": "Serviços profissionais",
+      "desc": "Consultorias, escritórios e clínicas que precisam de confiança, conteúdo e agendamento ou contato bem rastreado."
+    },
+    {
+      "title": "Grupo empresarial",
+      "desc": "Holding com múltiplas marcas, páginas institucionais por unidade e suporte a multi-idioma quando necessário."
+    },
+    {
+      "title": "Captação contínua",
+      "desc": "Quando o blog e as páginas de serviço precisam crescer com governança de conteúdo e uma base estável de SEO."
+    }
+  ],
+  "stack": {
+    "title": "Opções de stack para site institucional",
+    "options": [
+      {
+        "name": "Next.js + Headless CMS",
+        "note": "Boa escolha para performance, SEO e blog escalável com edição de conteúdo por equipe."
+      },
+      {
+        "name": "WordPress otimizado",
+        "note": "Quando o time já usa WP e quer rapidez na edição, com cuidado extra em performance e segurança."
+      },
+      {
+        "name": "Webflow",
+        "note": "Para landing institucional com time de marketing, mantendo padrões de SEO e métricas bem configuradas."
+      },
+      {
+        "name": "Estático + CMS leve",
+        "note": "Para máxima simplicidade e velocidade, com blog gerenciado por CMS e deploy automatizado."
+      },
+      {
+        "name": "Multi-idioma avançado",
+        "note": "Quando idiomas, domínios e governança exigem estrutura dedicada para SEO e manutenção contínua."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Brief",
+        "desc": "Você responde um roteiro curto e alinhamos objetivo, público, páginas e integrações."
+      },
+      {
+        "title": "Entrega",
+        "desc": "Design, conteúdo base, implementação e instrumentação (GA4/GTM), com checkpoints semanais."
+      },
+      {
+        "title": "Publicação",
+        "desc": "Go-live com redirecionamentos quando necessário, checklist de LGPD e monitoramento de métricas."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Como funciona o orçamento de site institucional?",
+      "a": "A proposta depende de páginas, complexidade do design, blog/CMS, multi-idioma, integrações (CRM/WhatsApp) e requisitos como LGPD e acessibilidade. Depois do brief, você recebe escopo e prazos."
+    },
+    {
+      "q": "O que impacta mais o valor final do site?",
+      "a": "Quantidade de páginas e layouts, necessidade de conteúdo, integrações com CRM, multi-idioma, migração de URLs, nível de acessibilidade e o quanto você quer evoluir o blog com governança."
+    },
+    {
+      "q": "Vocês configuram GA4 e GTM com eventos?",
+      "a": "Sim. Definimos eventos (formulário enviado, clique no WhatsApp, CTA, download), configuramos via GTM e validamos no GA4 para você medir o funil e melhorar conversão."
+    },
+    {
+      "q": "Dá para integrar formulário com meu CRM?",
+      "a": "Dá. Mapeamos campos, regras de validação, origem do lead e automações. A integração pode ser via API, webhook ou ferramentas de automação, com logs para evitar perda de contato."
+    },
+    {
+      "q": "Como vocês tratam LGPD e cookies no site?",
+      "a": "Implementamos banner de consentimento, categorização de cookies e disparo de tags condicionado ao aceite quando aplicável. Também orientamos textos e páginas essenciais, como privacidade e termos."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vamos montar seu orçamento de site institucional",
+    "desc": "Conte o que você precisa e eu te devolvo uma proposta objetiva, com escopo, prazos e prioridades.",
+    "button": "Quero orçamento"
+  }
+}

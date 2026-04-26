@@ -57,9 +57,9 @@ export function EstimationDisplay({ estimation, exchangeRates, locale }: Estimat
   const complexityLabel   = COMPLEXITY_SECTION_LABEL[locale] ?? COMPLEXITY_SECTION_LABEL['en-US']
 
   return (
-    <div className="space-y-5">
+    <div data-testid="result-estimation" className="space-y-5">
       {/* Seletor de moeda */}
-      <div className="flex justify-end">
+      <div data-testid="result-currency-selector-wrapper" className="flex justify-end">
         <CurrencySelector
           defaultCurrency={estimation.currency}
           priceMinBrl={estimation.priceMin}
@@ -71,11 +71,11 @@ export function EstimationDisplay({ estimation, exchangeRates, locale }: Estimat
       </div>
 
       {/* Faixa de investimento */}
-      <div>
+      <div data-testid="result-investment-range">
         <p className="text-xs font-semibold text-(--color-text-secondary) uppercase tracking-wider mb-1">
           {investmentLabel}
         </p>
-        <p className="text-3xl md:text-4xl font-bold text-(--color-text-primary) leading-tight">
+        <p data-testid="result-investment-range-value" className="text-3xl md:text-4xl font-bold text-(--color-text-primary) leading-tight">
           {formattedMin}{' '}
           <span className="text-(--color-text-muted) font-normal">–</span>{' '}
           {formattedMax}
@@ -83,17 +83,17 @@ export function EstimationDisplay({ estimation, exchangeRates, locale }: Estimat
       </div>
 
       {/* Prazo estimado */}
-      <div>
+      <div data-testid="result-timeline">
         <p className="text-xs font-semibold text-(--color-text-secondary) uppercase tracking-wider mb-1">
           {timelineLabel}
         </p>
-        <p className="text-2xl font-semibold text-(--color-text-secondary)">
+        <p data-testid="result-timeline-value" className="text-2xl font-semibold text-(--color-text-secondary)">
           {formattedDays}
         </p>
       </div>
 
       {/* Complexidade */}
-      <div className="flex flex-col md:flex-row md:items-center gap-2">
+      <div data-testid="result-complexity" className="flex flex-col md:flex-row md:items-center gap-2">
         <p className="text-xs font-semibold text-(--color-text-secondary) uppercase tracking-wider">
           {complexityLabel}
         </p>

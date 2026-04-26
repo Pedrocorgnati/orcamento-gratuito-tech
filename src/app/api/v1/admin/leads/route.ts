@@ -2,18 +2,20 @@ import { NextRequest, NextResponse } from 'next/server'
 import { adminLeadsQuerySchema } from '@/lib/validations/schemas'
 import { leadService } from '@/services/lead.service'
 import { buildError, ERROR_CODES } from '@/lib/errors'
-import { getUser } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/supabase/server'
 import { logger } from '@/lib/logger'
 
-// GET /api/v1/admin/leads — listar leads (requer autenticação Supabase Auth)
+// GET /api/v1/admin/leads — listar leads (requer admin: sessão Supabase + ADMIN_EMAIL)
 export async function GET(request: NextRequest) {
   try {
-    // Auth guard — Supabase JWT
-    const user = await getUser()
-    if (!user) {
+    const guard = await requireAdmin()
+    if (!guard.ok) {
+      if (guard.status === 403) {
+        logger.warn('admin_api_forbidden', { path: '/api/v1/admin/leads' })
+      }
       return NextResponse.json(
-        buildError(ERROR_CODES.AUTH_001, 'Autenticação necessária.'),
-        { status: 401 }
+        buildError(ERROR_CODES[guard.code], guard.message),
+        { status: guard.status }
       )
     }
 

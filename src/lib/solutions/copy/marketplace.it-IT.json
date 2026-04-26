@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Preventivo marketplace multi-vendor con scope chiaro",
+    "description": "Preventivo chiaro per marketplace multi-vendor: split Stripe Connect, ricerca e ranking, recensioni, chat, dashboard venditori, commissioni, antifrode, SEO catalogo."
+  },
+  "hero": {
+    "h1": "preventivo marketplace per il tuo marketplace multi-vendor",
+    "subtitle": "Scope chiaro, pagamenti split con Stripe Connect e SEO catalogo per convertire dal primo giorno.",
+    "cta": "Richiedi preventivo"
+  },
+  "pain": {
+    "title": "Quando i costi non si fermano mai",
+    "bullets": [
+      "Ti è mai capitato di chiedere un preventivo e vedere lo scope crescere a ogni call, senza un confine chiaro?",
+      "Ti è mai capitato di partire con Stripe Connect e bloccarti tra onboarding venditori, KYC, payout, rimborsi e contestazioni?",
+      "Ti è mai capitato di pubblicare un catalogo enorme e scoprire che ricerca, ranking e SEO non portano traffico qualificato?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Scope prevedibile",
+      "desc": "Definiamo moduli, criteri di accettazione e inclusioni, così il preventivo resta stabile e puoi decidere senza sorprese."
+    },
+    {
+      "title": "Multi-vendor reale",
+      "desc": "Flussi separati compratore e venditore, gestione ordini, dashboard venditore, regole di commissione e reportistica coerenti col tuo modello."
+    },
+    {
+      "title": "Catalogo che si trova",
+      "desc": "Struttura categorie, pagine indicizzabili e dati strutturati per la SEO del catalogo, allineati a ricerca, filtri e ranking per aumentare conversioni."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include lo sviluppo",
+    "bullets": [
+      "Onboarding e approvazione venditori",
+      "Prodotti, varianti, stock e attributi",
+      "Regole commissioni per venditore e categoria",
+      "Stripe Connect split payments e payout",
+      "Ricerca, filtri, sorting e ranking",
+      "Recensioni, rating e strumenti di moderazione",
+      "Chat compratore-venditore con storico",
+      "Dashboard venditore per ordini e pagamenti",
+      "Controlli antifrode e regole di rischio",
+      "SEO catalogo e dati strutturati"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Marketplace di nicchia",
+      "desc": "Ti servono filtri profondi, attributi e SEO per categorie per intercettare ricerche long-tail e convertire utenti già intenzionati."
+    },
+    {
+      "title": "Rete di venditori locali",
+      "desc": "Vuoi dashboard venditore, payout automatici con split e report commissioni per ridurre il lavoro di back-office manuale."
+    },
+    {
+      "title": "Marketplace B2B",
+      "desc": "Ti servono ruoli e permessi, account aziendali, listini e workflow adatti a riordini, approvazioni e acquisti ricorrenti."
+    },
+    {
+      "title": "Catalogo grande, guidato dalla ricerca",
+      "desc": "Ti serve una ricerca veloce con controlli di rilevanza, sinonimi e ranking per far trovare i prodotti in pochi secondi."
+    },
+    {
+      "title": "Categorie a rischio più alto",
+      "desc": "Ti servono antifrode a più livelli, code di revisione e controlli sui payout per ridurre chargeback e proteggere la fiducia nel marketplace."
+    }
+  ],
+  "stack": {
+    "title": "Opzioni per integrazioni chiave",
+    "options": [
+      {
+        "name": "Stripe Connect",
+        "note": "Split, payout e onboarding venditori allineati al tuo modello di commissioni."
+      },
+      {
+        "name": "OpenSearch",
+        "note": "Ricerca scalabile con filtri e tuning della rilevanza per cataloghi grandi e tante categorie."
+      },
+      {
+        "name": "Algolia",
+        "note": "Ricerca istantanea con analytics e controlli pratici sulla rilevanza per merchandising e conversione."
+      },
+      {
+        "name": "Sift",
+        "note": "Segnali antifrode e decisioning per ridurre chargeback, abuso di account e ordini sospetti."
+      },
+      {
+        "name": "Twilio",
+        "note": "Notifiche e verifica per supportare chat, avvisi e flussi account più sicuri."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Allineamento rapido",
+        "desc": "Mi dici modello venditori, regole commissioni e il percorso di acquisto che vuoi offrire."
+      },
+      {
+        "title": "Scope e preventivo",
+        "desc": "Ricevi moduli, deliverable, tempi e dipendenze con criteri di accettazione chiari."
+      },
+      {
+        "title": "Piano di lancio",
+        "desc": "Validiamo split, ricerca, recensioni, antifrode e SEO catalogo prima di andare online."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Da cosa dipende di più un preventivo marketplace?",
+      "a": "I fattori principali sono i flussi multi-vendor, l'onboarding e i payout con Stripe Connect, le esigenze di ricerca e ranking e la profondità di SEO catalogo e moderazione."
+    },
+    {
+      "q": "Gestite Stripe Connect split end-to-end per i venditori?",
+      "a": "Sì. Lo scope può coprire onboarding venditori, requisiti KYC, logica di split, schedule payout, rimborsi, dispute e riconciliazione con report per te e per i seller."
+    },
+    {
+      "q": "Come funzionano le commissioni con più venditori?",
+      "a": "Puoi definire commissioni per venditore, categoria o regola. La piattaforma calcola la take rate per ordine e la applica nel flusso payout, con report chiari per amministrazione e venditori."
+    },
+    {
+      "q": "Sono inclusi ricerca, ranking e filtri del catalogo?",
+      "a": "Sì. Include ricerca con filtri e ordinamenti. Per cataloghi grandi possiamo aggiungere tuning della rilevanza, sinonimi e controlli di ranking per migliorare trovabilità e conversioni."
+    },
+    {
+      "q": "Recensioni e chat compratore-venditore sono previste?",
+      "a": "Sì. Possiamo includere recensioni per prodotti e venditori, strumenti di moderazione, e chat compratore-venditore con storico messaggi e notifiche."
+    },
+    {
+      "q": "Quanto tempo serve per lanciare un MVP multi-vendor?",
+      "a": "Dipende dallo scope e dalle integrazioni. Dopo l'allineamento, ti proponiamo una roadmap a fasi: prima un MVP, poi estensioni come ricerca avanzata, antifrode più profonda o automazioni per i seller."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vuoi un preventivo chiaro per il tuo marketplace multi-vendor?",
+    "desc": "Raccontami modello venditori e obiettivi: ti preparo uno scope definito con split Stripe Connect, ricerca, recensioni, chat e SEO catalogo.",
+    "button": "Parliamone ora"
+  }
+}

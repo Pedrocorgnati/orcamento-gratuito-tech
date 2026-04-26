@@ -5,6 +5,7 @@ import { prisma } from '@/lib/prisma'
 import { buildError, ERROR_CODES } from '@/lib/errors'
 import { logger } from '@/lib/logger'
 import { COOKIE_NAMES } from '@/lib/constants'
+import { SessionStatus } from '@/lib/enums'
 
 const emailSchema = z.object({
   email: z.string().email(),
@@ -57,7 +58,13 @@ export async function PATCH(
 
     const session = await prisma.session.findUnique({
       where: { id },
-      select: { id: true, status: true, expires_at: true },
+      select: {
+        id: true,
+        status: true,
+        expires_at: true,
+        resume_email_sent_at: true,
+        resume_email_scheduled_for: true,
+      },
     })
 
     if (!session) {
@@ -67,17 +74,46 @@ export async function PATCH(
       )
     }
 
-    if (session.status !== 'active' || session.expires_at < new Date()) {
+    // Aceita captura intermediária em sessões ativas (IN_PROGRESS) ou finalizadas.
+    // Rejeita só se explicitamente expirada ou se passou do TTL.
+    const isExpired =
+      session.status === SessionStatus.EXPIRED ||
+      session.expires_at < new Date()
+    const isActive =
+      session.status === SessionStatus.IN_PROGRESS ||
+      session.status === SessionStatus.COMPLETED
+    if (isExpired || !isActive) {
       return NextResponse.json(
         buildError(ERROR_CODES.SESSION_081, 'Sessao expirada. Inicie uma nova estimativa.'),
         { status: 410 }
       )
     }
 
+    // CL-111: agendar email de retomada em 24h apenas quando:
+    // - nunca foi enviado
+    // - sessao nao esta completa
+    // Idempotente: se ja houver um scheduled_for pendente, mantem o antigo.
+    const shouldScheduleResume =
+      session.resume_email_sent_at === null &&
+      session.status !== SessionStatus.COMPLETED
+
+    const RESUME_EMAIL_DELAY_MS = 24 * 60 * 60 * 1000
+    const nextScheduled =
+      shouldScheduleResume && session.resume_email_scheduled_for === null
+        ? new Date(Date.now() + RESUME_EMAIL_DELAY_MS)
+        : session.resume_email_scheduled_for
+
     const updated = await prisma.session.update({
       where: { id },
-      data: { intermediate_email: parsed.data.email },
-      select: { id: true, intermediate_email: true },
+      data: {
+        intermediate_email: parsed.data.email,
+        resume_email_scheduled_for: nextScheduled,
+      },
+      select: {
+        id: true,
+        intermediate_email: true,
+        resume_email_scheduled_for: true,
+      },
     })
 
     return NextResponse.json(updated, { status: 200 })

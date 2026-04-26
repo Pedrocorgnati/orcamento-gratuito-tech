@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Orçamento aplicativo iOS: desenvolvimento para iPhone",
+    "description": "Peça orçamento aplicativo iOS com escopo claro, desenvolvimento em Swift/SwiftUI ou cross-platform, testes no TestFlight e publicação via App Store Connect."
+  },
+  "hero": {
+    "h1": "orçamento aplicativo ios: desenvolvimento do seu app para iPhone",
+    "subtitle": "Planeje, valide e publique seu app no iPhone com escopo claro, prazo real e suporte completo.",
+    "cta": "Pedir orçamento"
+  },
+  "pain": {
+    "title": "O que costuma atrasar um app iOS",
+    "bullets": [
+      "Você já tentou estimar custo sem ter o escopo fechado e acabou refazendo tudo no meio do caminho",
+      "Você já ficou preso em certificados, provisioning e App Store Connect sem saber o que falta para subir a build",
+      "Você já passou por rejeição por detalhes das Human Interface Guidelines e perdeu dias com ajustes pequenos"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Escopo e orçamento claros",
+      "desc": "Você recebe uma proposta com entregáveis objetivos, riscos mapeados e critérios de aceite para evitar surpresas durante o desenvolvimento."
+    },
+    {
+      "title": "Pronto para a Apple",
+      "desc": "Implementação alinhada às Human Interface Guidelines, com atenção a privacidade, permissões, acessibilidade e fluxo de revisão da App Store."
+    },
+    {
+      "title": "Entrega com testes e lançamento",
+      "desc": "Builds organizadas, distribuição via TestFlight e processo de publicação no App Store Connect, com checklist para reduzir retrabalho."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no desenvolvimento iOS",
+    "bullets": [
+      "Configuração do App Store Connect e do bundle id",
+      "Pipeline de builds e distribuição com TestFlight",
+      "App nativo em Swift com SwiftUI ou UIKit",
+      "Push notifications com APNs e controle de permissões",
+      "Autenticação com Sign in with Apple quando aplicável",
+      "Compras no app com In-App Purchases e recibos",
+      "Adequação às Human Interface Guidelines e acessibilidade",
+      "Gestão de certificados, provisioning profiles e assinaturas",
+      "Checklist de submissão, review e versões na App Store"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "MVP para validação",
+      "desc": "Lance a primeira versão no iPhone, com as telas essenciais e métricas para validar demanda."
+    },
+    {
+      "title": "App de assinatura",
+      "desc": "Implemente planos com In-App Purchases, paywall, restauração e regras da App Store."
+    },
+    {
+      "title": "App com login seguro",
+      "desc": "Fluxos de autenticação com Sign in with Apple e boas práticas de sessão e permissões."
+    },
+    {
+      "title": "App com notificações",
+      "desc": "Envie alertas e lembretes com APNs, preferências de opt-in e segmentação por eventos."
+    },
+    {
+      "title": "Migração para iOS",
+      "desc": "Recrie um produto existente priorizando SwiftUI, consistência de UX e performance no iPhone."
+    }
+  ],
+  "stack": {
+    "title": "Tecnologias e opções de implementação",
+    "options": [
+      {
+        "name": "Swift + SwiftUI",
+        "note": "Ideal para UI moderna, performance e aderência às diretrizes da Apple."
+      },
+      {
+        "name": "Swift + UIKit",
+        "note": "Boa escolha para apps com UI complexa e integrações legadas no ecossistema iOS."
+      },
+      {
+        "name": "Flutter",
+        "note": "Cross-platform com UI consistente, mantendo integrações iOS como APNs e IAP."
+      },
+      {
+        "name": "React Native",
+        "note": "Cross-platform com ecossistema amplo, com atenção a módulos nativos e revisão da App Store."
+      },
+      {
+        "name": "CI/CD iOS",
+        "note": "Automação de build, assinatura e entrega para TestFlight e App Store Connect."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Brief e objetivos",
+        "desc": "Você descreve o produto, público, telas e integrações para fecharmos o escopo."
+      },
+      {
+        "title": "Proposta e cronograma",
+        "desc": "Montamos o orçamento por etapas, com entregas, critérios de aceite e marcos."
+      },
+      {
+        "title": "Desenvolver e publicar",
+        "desc": "Construímos, testamos no TestFlight e publicamos no App Store Connect com checklist."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Como vocês montam o orçamento do app iOS?",
+      "a": "A estimativa parte do escopo: telas, integrações, autenticação, APNs, In-App Purchases, regras da App Store e nível de design. Com isso, você recebe valores por etapa e prazos realistas."
+    },
+    {
+      "q": "Vocês publicam o app na minha conta Apple?",
+      "a": "Sim. O ideal é o app ficar na sua conta do App Store Connect. Orientamos a criação de acessos, certificados e o processo de submissão, mantendo você como proprietário."
+    },
+    {
+      "q": "Dá para testar antes de enviar para a App Store?",
+      "a": "Sim. Usamos o TestFlight para distribuir versões para você e para testers, coletar feedback e estabilizar o app antes da submissão final."
+    },
+    {
+      "q": "Preciso mesmo usar Sign in with Apple?",
+      "a": "Depende. Se o app oferecer login por terceiros (como Google), a Apple pode exigir Sign in with Apple também. Avaliamos seu caso e definimos a melhor estratégia."
+    },
+    {
+      "q": "Nativo ou Flutter/React Native, o que escolher?",
+      "a": "Nativo em Swift/SwiftUI tende a ser melhor para performance e integração com recursos iOS. Flutter e React Native podem acelerar quando você quer compartilhar código com Android. A escolha depende do seu prazo, UX e integrações."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vamos estimar seu app para iPhone",
+    "desc": "Conte o que você quer lançar e receba um orçamento com escopo, etapas e prazo.",
+    "button": "Solicitar orçamento"
+  }
+}

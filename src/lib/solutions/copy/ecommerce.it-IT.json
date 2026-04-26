@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Quanto costa ecommerce: negozio online su misura",
+    "description": "Capisci quanto costa ecommerce su misura: Stripe, PayPal e Satispay, gestione IVA, spedizioni, magazzino/ERP, coupon, pannello admin, SEO e Core Web Vitals."
+  },
+  "hero": {
+    "h1": "quanto costa ecommerce: preventivo per un negozio online su misura",
+    "subtitle": "Definiamo catalogo, checkout, IVA e spedizione, poi lanciamo uno store veloce e SEO-ready.",
+    "cta": "Richiedi il tuo preventivo"
+  },
+  "pain": {
+    "title": "Quando il negozio online frena crescita e margini",
+    "bullets": [
+      "Ti è mai capitato di partire con un’idea chiara, ma di bloccarti su IVA, fatture, resi e regole di spedizione non definite",
+      "Ti è mai capitato di integrare Stripe o PayPal e scoprire tardi webhooks, pagamenti falliti, rimborsi e stati ordine incoerenti",
+      "Ti è mai capitato di gestire il magazzino a mano e poi dover rifare tutto per sincronizzare gestionale/ERP, giacenze e report"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Budget più leggibile",
+      "desc": "Ricevi una stima legata allo scope reale: numero prodotti e varianti, flussi di checkout, coupon, regole IVA, spedizioni, integrazioni e complessità del pannello admin."
+    },
+    {
+      "title": "Checkout che incassa davvero",
+      "desc": "Mettiamo a terra un checkout completo con Stripe, PayPal e Satispay, gestione webhooks, antifrode dove serve, rimborsi, contestazioni e aggiornamenti affidabili dello stato ordine."
+    },
+    {
+      "title": "SEO e performance inclusi",
+      "desc": "Parti con basi solide di SEO tecnico, dati strutturati quando utili, e priorità Core Web Vitals per pagine veloci, stabili e pronte a scalare sul catalogo."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include un ecommerce su misura",
+    "bullets": [
+      "Catalogo prodotti, varianti e collezioni",
+      "Carrello e checkout con pagamenti",
+      "Stripe, PayPal e Satispay integrati",
+      "IVA, fatture e gestione dei resi",
+      "Spedizione: zone, tariffe e tracking",
+      "Magazzino: giacenze, alert e picking",
+      "Coupon, sconti e promozioni gestibili",
+      "Pannello admin per ordini e clienti",
+      "Opzione integrazione con gestionale/ERP aziendale",
+      "SEO, sitemap e focus Core Web Vitals"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Ecommerce su misura",
+      "desc": "Vuoi uno store costruito sui tuoi processi, senza limiti di piattaforma, con pieno controllo su dati, logiche e roadmap."
+    },
+    {
+      "title": "Headless ecommerce",
+      "desc": "Ti serve un frontend flessibile e un backend solido, con API per catalogo, carrello e ordini, pronto per più canali."
+    },
+    {
+      "title": "Operatività con ERP",
+      "desc": "Devi ridurre attività manuali, sincronizzando prodotti, prezzi, stock e ordini con il tuo gestionale/ERP e i flussi di magazzino."
+    },
+    {
+      "title": "Cataloghi complessi",
+      "desc": "Gestisci molte varianti, attributi e regole di prezzo, e ti serve un pannello admin che resti chiaro anche quando il catalogo cresce."
+    },
+    {
+      "title": "Promo e conversione",
+      "desc": "Hai bisogno di coupon, sconti, bundle o regole promozionali, con tracciamento e controlli per evitare errori a checkout."
+    }
+  ],
+  "stack": {
+    "title": "Opzioni tecniche per il tuo negozio online",
+    "options": [
+      {
+        "name": "Storefront custom",
+        "note": "Esperienza su misura con controllo su navigazione, SEO, performance e flussi di conversione dal catalogo al pagamento."
+      },
+      {
+        "name": "Architettura headless",
+        "note": "Frontend separato e backend con API per catalogo, carrello e ordini, utile quando hai più touchpoint o app."
+      },
+      {
+        "name": "Pagamenti",
+        "note": "Stripe, PayPal e Satispay con webhooks, idempotenza, rimborsi, gestione errori e stati ordine consistenti."
+      },
+      {
+        "name": "Spedizione e IVA",
+        "note": "Regole per zone, tariffe e corrieri, più gestione IVA e documenti, con messaggi chiari in checkout."
+      },
+      {
+        "name": "Magazzino + ERP",
+        "note": "Gestione giacenze e fulfillment, con possibilità di sync con gestionale/ERP per ridurre doppie inserzioni e mismatch."
+      },
+      {
+        "name": "Pannello admin",
+        "note": "Gestione prodotti, ordini, clienti, coupon e contenuti operativi, con ruoli e audit di base dove necessario."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Allineamento e scope",
+        "desc": "Raccogliamo requisiti su catalogo, pagamenti, IVA, spedizioni, magazzino e integrazioni, e definiamo priorità chiare."
+      },
+      {
+        "title": "Stima e roadmap",
+        "desc": "Ricevi milestone, deliverable e una fascia di costo basata sullo scope concordato, con rischi e dipendenze esplicitati."
+      },
+      {
+        "title": "Sviluppo e go-live",
+        "desc": "Costruiamo, testiamo e rilasciamo con checklist di messa online, pannello admin operativo e basi SEO/Core Web Vitals."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Da cosa dipende davvero quanto costa ecommerce su misura?",
+      "a": "Dipende soprattutto dallo scope: dimensione del catalogo, regole di varianti e prezzi, complessità del checkout, coupon, IVA, spedizione, resi, e integrazioni come magazzino e gestionale/ERP."
+    },
+    {
+      "q": "Possiamo offrire Stripe, PayPal e Satispay insieme nel checkout?",
+      "a": "Sì. Gestiamo più metodi di pagamento con webhooks, stati ordine coerenti, rimborsi e casi limite come pagamenti falliti, conferme ritardate e tentativi duplicati."
+    },
+    {
+      "q": "Gestite IVA, fatturazione e regole di spedizione per diverse aree?",
+      "a": "Sì. Implementiamo le regole che ti servono per IVA e documenti, e per spedizione (zone, tariffe, soglie, tracking), e ti lasciamo un pannello admin per aggiornarle senza dipendere dal team tecnico."
+    },
+    {
+      "q": "Cosa fate per SEO e Core Web Vitals su un catalogo grande?",
+      "a": "Impostiamo URL e metadati puliti, sitemap, dati strutturati quando utili, e lavoriamo su performance, immagini, caching e stabilità del layout, così da mantenere buoni Core Web Vitals anche con molte pagine."
+    },
+    {
+      "q": "Ha senso scegliere un approccio headless per il mio ecommerce?",
+      "a": "Ha senso se vuoi un frontend molto personalizzato, più canali o integrazioni spinte. Se invece cerchi rapidità e gestione più semplice, una architettura più tradizionale può ridurre tempi e costi."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Calcoliamo insieme quanto costa il tuo ecommerce su misura",
+    "desc": "Dimmi cosa vendi, come gestisci IVA e spedizione, e quali integrazioni ti servono: ti rimandiamo scope, milestone e stima realistica.",
+    "button": "Prenota una call gratuita"
+  }
+}

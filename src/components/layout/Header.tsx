@@ -9,7 +9,6 @@ interface HeaderProps {
   isAuthenticated?: boolean;
   userEmail?: string;
   locale: AppLocale;
-  loginLabel?: string;
   logoutLabel?: string;
   homeAriaLabel?: string;
 }
@@ -19,7 +18,6 @@ export function Header({
   isAuthenticated = false,
   userEmail,
   locale,
-  loginLabel = "Login",
   logoutLabel = "Sair",
   homeAriaLabel = "Budget Free Engine — Início",
 }: HeaderProps) {
@@ -46,18 +44,6 @@ export function Header({
         {/* Right side */}
         <div data-testid="header-actions" className="flex items-center gap-3">
           <LanguageSelector />
-
-          {/* RESOLVED: <Link><Button> → <Link className> direto — HTML válido + touch target 44px */}
-          {variant === "public" && !isAuthenticated && (
-            <Link
-              href={ROUTES.admin}
-              locale={locale}
-              data-testid="header-login-link"
-              className="flex min-h-[44px] items-center rounded-md px-3 text-sm font-medium text-(--color-text-secondary) hover:bg-(--color-muted) transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--color-primary)"
-            >
-              {loginLabel}
-            </Link>
-          )}
 
           {variant === "admin" && isAuthenticated && (
             <>

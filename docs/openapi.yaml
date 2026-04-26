@@ -1285,3 +1285,228 @@ paths:
           $ref: '#/components/responses/RateLimitError'
         '500':
           $ref: '#/components/responses/InternalError'
+
+  # ── Endpoints documentados em G016 (TASK-REFORGE-1 module-19) ─────────────
+
+  /sessions/{id}/email:
+    patch:
+      tags: [sessions]
+      summary: "Salvar email intermediário na sessão"
+      description: |
+        Captura o email do visitante durante o fluxo (antes de completar).
+        Permite envio de email de retomada em 24h se sessão não for concluída.
+
+        **Segurança (SEC-007/IDOR):** cookie `session_id` deve coincidir com `{id}`.
+        **Rate limit:** 50 req/60s por IP.
+        **Público:** sem autenticação.
+      security: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "clxyz123abc"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: "Email intermediário salvo"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  intermediate_email:
+                    type: string
+                  resume_email_scheduled_for:
+                    type: [string, 'null']
+                    format: date-time
+        '403':
+          description: "IDOR — cookie não coincide com path id"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: "Sessão não encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '410':
+          description: "Sessão expirada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /sessions/{id}/go-back:
+    patch:
+      tags: [sessions]
+      summary: "Voltar à pergunta anterior no fluxo"
+      description: |
+        Retrocede a sessão para a pergunta anterior. Usado pelo botão "Voltar" da UI.
+        **Segurança:** IDOR guard via cookie.
+      security: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Sessão atualizada com pergunta anterior"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '403':
+          description: "IDOR bloqueado"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: "Sessão não encontrada"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /admin/leads/{id}:
+    delete:
+      tags: [admin]
+      summary: "Deletar lead por ID"
+      description: |
+        Remove um lead do sistema (operação irreversível).
+        Requer autenticação Supabase com email ADMIN_EMAIL.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Lead deletado"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: "Lead não encontrado"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  # ── Cron Jobs (x-internal — protegidos por CRON_SECRET, não por auth) ──────
+
+  /cron/anonymize-leads:
+    get:
+      tags: [admin]
+      summary: "Cron: anonimizar leads (LGPD/GDPR — retenção 12 meses)"
+      x-internal: true
+      security: []
+      parameters:
+        - { name: Authorization, in: header, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: "Anonimização concluída em batches de 100"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  anonymized: { type: integer }
+                  duration_ms: { type: integer }
+        '401':
+          description: "CRON_SECRET inválido"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /cron/cleanup-sessions:
+    get:
+      tags: [admin]
+      summary: "Cron: limpar sessões expiradas (mutex OPS-003)"
+      x-internal: true
+      security: []
+      parameters:
+        - { name: Authorization, in: header, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: "Limpeza concluída (ou pulada se mutex ativo)"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cleaned: { type: integer }
+                  skipped: { type: boolean }
+                  duration_ms: { type: integer }
+        '401':
+          description: "CRON_SECRET inválido"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /cron/send-resume-emails:
+    get:
+      tags: [admin]
+      summary: "Cron: enviar emails de retomada para sessões incompletas"
+      x-internal: true
+      security: []
+      parameters:
+        - { name: Authorization, in: header, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: "Emails enviados"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sent: { type: integer }
+                  failed: { type: integer }
+                  duration_ms: { type: integer }
+        '401':
+          description: "CRON_SECRET inválido"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'

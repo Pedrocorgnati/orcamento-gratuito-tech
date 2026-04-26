@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Presupuesto para extensión Chrome: coste, alcance y entrega",
+    "description": "Presupuesto para extensión Chrome/Edge/Firefox (Manifest V3): content scripts, service worker, OAuth y publicación en Chrome Web Store. Permisos mínimos y privacidad."
+  },
+  "hero": {
+    "h1": "presupuesto extensión chrome para tu extensión en Chrome, Edge y Firefox",
+    "subtitle": "Presupuesto claro para tu extensión: alcance, plazos y permisos.",
+    "cta": "Pedir presupuesto ahora"
+  },
+  "pain": {
+    "title": "¿Te suena?",
+    "bullets": [
+      "¿Alguna vez te han pasado un presupuesto sin detallar permisos, pantallas y flujos?",
+      "¿Alguna vez una extensión “simple” se complica por OAuth, cookies y automatización de páginas?",
+      "¿Alguna vez te preocupa la privacidad por la inyección DOM y el acceso a datos sensibles?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Alcance sin sorpresas",
+      "desc": "Definimos qué hace la extensión y qué no, con lista de páginas, eventos, permisos y criterios de entrega para evitar ampliaciones ambiguas."
+    },
+    {
+      "title": "Compatibilidad real",
+      "desc": "Diseñamos pensando en Manifest V3 y en el comportamiento de Chrome/Edge y Firefox, con alternativas cuando una API o política cambia según el navegador."
+    },
+    {
+      "title": "Privacidad por defecto",
+      "desc": "Aplicamos permisos mínimos, aislamiento de content scripts, control de datos en storage API y un enfoque claro de qué se procesa localmente y qué sale de tu equipo."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye el presupuesto",
+    "bullets": [
+      "Arquitectura Manifest V3: service worker en background, eventos y life-cycle.",
+      "Content scripts: inyección DOM, selectores estables y manejo de SPAs.",
+      "Messaging: comunicación segura entre UI, content scripts y background.",
+      "Storage API: sincronización, caché, cuotas y estrategia de expiración.",
+      "OAuth: flujo, refresh tokens, scopes y pantalla de consentimiento.",
+      "Automatización de páginas: LinkedIn, Gmail u otras, con límites claros.",
+      "Scope de permisos: host permissions, optional permissions y justificación.",
+      "Publicación: checklist y envío a Chrome Web Store (metadatos y revisión).",
+      "Privacidad: minimización de datos, telemetría opcional y políticas."
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Prospección en LinkedIn",
+      "desc": "Automatiza tareas repetitivas, extrae datos visibles y crea acciones asistidas sin romper el flujo del usuario."
+    },
+    {
+      "title": "Productividad en Gmail",
+      "desc": "Añade botones, plantillas y atajos dentro del DOM, con permisos acotados al correo y mensajes internos controlados."
+    },
+    {
+      "title": "QA y scraping interno",
+      "desc": "Captura estados de UI, valida flujos y registra evidencias, con storage API y exportación cuando tú lo decidas."
+    },
+    {
+      "title": "Integración con tu SaaS",
+      "desc": "Conecta con tu API vía OAuth y tokens, manteniendo credenciales fuera del DOM y con rotación y revocación."
+    },
+    {
+      "title": "Automatización de backoffice",
+      "desc": "Rellena formularios, navega entre vistas y ejecuta pasos guiados, incluso en páginas con React o rutas dinámicas."
+    }
+  ],
+  "stack": {
+    "title": "Stack recomendado",
+    "options": [
+      {
+        "name": "Manifest V3",
+        "note": "Service worker, permisos por host y políticas de la tienda bien contempladas."
+      },
+      {
+        "name": "Content scripts",
+        "note": "Inyección DOM controlada, manejo de SPAs y detección de cambios en la página."
+      },
+      {
+        "name": "Background SW",
+        "note": "Colas, alarmas, listeners y tareas que no dependen del tab activo."
+      },
+      {
+        "name": "Storage API",
+        "note": "Estado persistente, caché y preferencias del usuario con límites y estrategia."
+      },
+      {
+        "name": "Messaging",
+        "note": "Canales entre popup, options page, content scripts y service worker."
+      },
+      {
+        "name": "OAuth",
+        "note": "Scopes mínimos, refresh, revocación y separación entre UI y credenciales."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Brief técnico",
+        "desc": "Aterrizamos objetivos, páginas objetivo, flujos, navegadores y restricciones de permisos."
+      },
+      {
+        "title": "Alcance y estimación",
+        "desc": "Desglosamos módulos: UI, content scripts, background, storage, OAuth y publicación."
+      },
+      {
+        "title": "Entrega y publicación",
+        "desc": "Implementación, QA y preparación para Chrome Web Store, con checklist de privacidad."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Trabajáis con Manifest V3 desde el inicio?",
+      "a": "Sí. Planteamos la arquitectura con service worker en background, content scripts y permisos por host para que el proyecto encaje con las políticas actuales de Chrome y Edge."
+    },
+    {
+      "q": "¿Cómo definís el scope de permisos de la extensión?",
+      "a": "Proponemos permisos mínimos y, cuando conviene, optional permissions. Cada permiso se justifica por funcionalidad, y dejamos claro qué URLs requieren host permissions."
+    },
+    {
+      "q": "¿La extensión puede automatizar LinkedIn o Gmail?",
+      "a": "Se puede automatizar navegación e inyección DOM en páginas objetivo. El presupuesto incluye límites: qué acciones, en qué pantallas, y cómo se detectan cambios en SPAs para mantener estabilidad."
+    },
+    {
+      "q": "¿Qué implica OAuth en una extensión de navegador?",
+      "a": "Define el proveedor, los scopes, el manejo de tokens y refresh, y cómo se guarda el estado en storage API. También contempla errores, revocación y consentimiento del usuario."
+    },
+    {
+      "q": "¿Cómo cuidáis la privacidad y los datos del usuario?",
+      "a": "Evitamos capturar más de lo necesario, aislamos content scripts, usamos messaging con validación y documentamos qué datos se almacenan, por cuánto tiempo y con qué finalidad."
+    },
+    {
+      "q": "¿Incluís la publicación en Chrome Web Store?",
+      "a": "Sí, como parte del alcance. Preparamos el paquete, assets, metadatos, descripción, capturas y revisamos requisitos para reducir rechazos por permisos o prácticas de privacidad."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Hablemos de tu extensión y te damos un presupuesto claro",
+    "desc": "Cuéntanos qué páginas quieres automatizar, si necesitas OAuth y qué datos debe guardar en storage. Te devolvemos alcance, plazos y permisos propuestos.",
+    "button": "Solicitar presupuesto"
+  }
+}

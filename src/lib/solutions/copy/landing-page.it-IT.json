@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Preventivo landing page ad alta conversione | Pronta per Ads",
+    "description": "Preventivo landing page: copy che converte, A/B test, Pixel Meta + Google Ads, GA4, form validato, CRM, target LCP < 2.5s e Lighthouse 100."
+  },
+  "hero": {
+    "h1": "preventivo landing page: una pagina che trasforma click in contatti",
+    "subtitle": "Landing ad alta conversione con tracking, pixel e performance, pensata per campagne Ads misurabili.",
+    "cta": "Richiedi il preventivo"
+  },
+  "pain": {
+    "title": "Stai pagando traffico, ma la pagina non sta convertendo",
+    "bullets": [
+      "Ti è mai capitato di lanciare Ads e vedere click costosi senza richieste o contatti qualificati?",
+      "Ti è mai capitato di controllare PageSpeed e scoprire che il caricamento è lento e le persone abbandonano?",
+      "Ti è mai capitato di perdere lead perché il form non valida i campi, dà errori, o non invia al CRM?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Copy di conversione",
+      "desc": "Struttura e parole che portano all’azione: promessa chiara, prove, gestione obiezioni e CTA naturale, senza frizioni."
+    },
+    {
+      "title": "Misurazione pulita",
+      "desc": "GA4 configurato con eventi e conversioni definiti, così leggi funnel, CVR e costo per lead senza dati “sporchi”."
+    },
+    {
+      "title": "Performance reali",
+      "desc": "Ottimizzazione con target LCP < 2.5s e obiettivo Lighthouse 100, per ridurre drop-off e migliorare i risultati delle campagne."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include la tua landing",
+    "bullets": [
+      "Hero + CTA ad alta chiarezza",
+      "Riprova sociale (testimonianze, loghi, numeri)",
+      "Sezioni benefici e differenziatori",
+      "Blocchi anti-obiezione e FAQ",
+      "Form con validazione e messaggi chiari",
+      "Integrazione CRM via API o webhook",
+      "Pixel Meta + tag Google Ads",
+      "GA4 eventi + conversioni",
+      "Setup pronto per A/B testing"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Generazione lead",
+      "desc": "Landing orientata alla qualità dei contatti, ideale per campagne conversione e follow-up rapido del team."
+    },
+    {
+      "title": "Richiesta preventivo",
+      "desc": "Pagina consulenziale con prove e gestione obiezioni, pensata per far partire richieste complete e utili."
+    },
+    {
+      "title": "Iscrizione webinar",
+      "desc": "Registrazione con agenda e speaker proof, più eventi GA4 e pixel per ottimizzare iscrizioni e remarketing."
+    },
+    {
+      "title": "Lista d’attesa",
+      "desc": "Pagina snella per validare domanda, catturare intent e misurare iscrizioni con tracking coerente."
+    },
+    {
+      "title": "Offerta servizio B2B",
+      "desc": "Struttura per traffico freddo e retargeting, con CTA a chiamata o form e blocchi di fiducia ben visibili."
+    }
+  ],
+  "stack": {
+    "title": "Stack e integrazioni, scegli tu",
+    "options": [
+      {
+        "name": "GA4",
+        "note": "Eventi e conversioni mappati sul funnel, con naming consistente e verifiche in debug."
+      },
+      {
+        "name": "Google Tag Manager",
+        "note": "Gestione tag ordinata e scalabile, per modifiche rapide senza interventi invasivi sulla pagina."
+      },
+      {
+        "name": "Google Ads",
+        "note": "Tag e conversioni allineati agli obiettivi, per ottimizzazione basata su risultati e non su vanity metrics."
+      },
+      {
+        "name": "Meta Pixel",
+        "note": "Eventi standard e custom per retargeting e pubblici più precisi, con controllo dei parametri inviati."
+      },
+      {
+        "name": "CRM",
+        "note": "Invio lead automatico via API/webhook verso HubSpot, Pipedrive, Salesforce o equivalente."
+      },
+      {
+        "name": "A/B testing",
+        "note": "Pagina pronta per varianti su headline, CTA e ordine sezioni, con misurazione chiara delle differenze."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Allineamento rapido",
+        "desc": "Mi condividi offerta, pubblico e obiettivo; preparo struttura e copy per la conversione."
+      },
+      {
+        "title": "Build + tracking",
+        "desc": "Pubblico la landing con GA4, Pixel Meta/Google Ads, form validato e integrazione CRM."
+      },
+      {
+        "title": "Ottimizzazione con test",
+        "desc": "Attivi traffico e facciamo A/B test sugli elementi chiave per aumentare CVR con dati reali."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Da cosa dipende il preventivo landing page?",
+      "a": "Dipende da complessità del layout, numero di sezioni, livello di personalizzazione del copy, integrazioni (CRM, GA4, tag), quantità di varianti per A/B test e tempi di consegna."
+    },
+    {
+      "q": "Installi Pixel Meta e Google Ads insieme a GA4?",
+      "a": "Sì. Configuro GA4 con eventi e conversioni definiti, e installo Pixel Meta e tag Google Ads per misurare e ottimizzare le campagne con coerenza."
+    },
+    {
+      "q": "La landing sarà veloce abbastanza per il traffico a pagamento?",
+      "a": "La performance è un requisito: target LCP < 2.5s e obiettivo Lighthouse 100. Il risultato finale dipende anche da asset (immagini, font) e script terzi richiesti."
+    },
+    {
+      "q": "Il form include validazione e feedback chiari?",
+      "a": "Sì. Il form valida i campi, mostra messaggi di errore e conferma, e riduce gli invii incompleti, così perdi meno lead ad alta intenzione."
+    },
+    {
+      "q": "Puoi integrare la landing con il mio CRM?",
+      "a": "Sì. I lead possono arrivare al CRM via API o webhook (o automazioni), in modo che ogni invio entri subito nel pipeline senza export manuali."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ottieni un preventivo chiaro, a scopo definito",
+    "desc": "Dimmi cosa vendi, a chi e qual è l’obiettivo della campagna. Ti mando un preventivo con tracking, pixel e integrazioni inclusi.",
+    "button": "Chiedi un preventivo"
+  }
+}

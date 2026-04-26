@@ -56,13 +56,13 @@ export default async function LeadCapturePage({ params }: LeadCapturePageProps) 
   return (
     <>
       <MobileHeader title="Budget Free Engine" showBack />
-      <main className="min-h-screen bg-gray-50 py-8 px-4 md:py-16">
+      <main data-testid="page-lead-capture" className="min-h-screen bg-gray-50 py-8 px-4 md:py-16">
         <div className="max-w-lg mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <div data-testid="lead-capture-header" className="text-center mb-8">
+            <h1 data-testid="lead-capture-title" className="text-2xl md:text-3xl font-bold text-gray-900">
               {content.title}
             </h1>
-            <p className="text-gray-500 mt-2">
+            <p data-testid="lead-capture-subtitle" className="text-gray-500 mt-2">
               {content.subtitle}
             </p>
           </div>

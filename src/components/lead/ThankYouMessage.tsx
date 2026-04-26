@@ -93,24 +93,24 @@ export function ThankYouMessage({ name, locale, homeHref }: ThankYouMessageProps
   const content = MESSAGES[locale] ?? MESSAGES['en-US']!
 
   return (
-    <Card className="p-8 text-center shadow-(--shadow-lg) rounded-2xl bg-(--color-background)">
+    <Card data-testid="thank-you-card" className="p-8 text-center shadow-(--shadow-lg) rounded-2xl bg-(--color-background)">
       {/* Ícone de sucesso — decorativo */}
       <CheckCircleIcon />
 
       {/* Título personalizado */}
-      <h1 className="text-2xl md:text-3xl font-bold text-(--color-text-primary) mb-2">
+      <h1 data-testid="thank-you-title" className="text-2xl md:text-3xl font-bold text-(--color-text-primary) mb-2">
         {content.title(name)}
       </h1>
 
       {/* Subtítulo */}
-      <p className="text-lg text-(--color-text-secondary) mb-6">
+      <p data-testid="thank-you-subtitle" className="text-lg text-(--color-text-secondary) mb-6">
         {content.subtitle}
       </p>
 
       {/* Próximos passos */}
-      <ul className="text-left space-y-3 mb-8" aria-label={content.nextStepsAriaLabel}>
+      <ul data-testid="thank-you-next-steps" className="text-left space-y-3 mb-8" aria-label={content.nextStepsAriaLabel}>
         {content.nextSteps.map((step, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm text-(--color-text-secondary)">
+          <li key={i} data-testid={`thank-you-next-step-${i + 1}`} className="flex items-start gap-3 text-sm text-(--color-text-secondary)">
             <span
               className="flex-shrink-0 w-5 h-5 rounded-full bg-(--color-accent) text-(--color-on-accent) flex items-center justify-center text-xs font-bold mt-0.5"
               aria-hidden="true"
@@ -123,12 +123,13 @@ export function ThankYouMessage({ name, locale, homeHref }: ThankYouMessageProps
       </ul>
 
       {/* Botões */}
-      <div className="space-y-3">
+      <div data-testid="thank-you-actions" className="space-y-3">
         {/* ShareButtons — placeholder V1, disabled */}
         <div>
           <p className="text-sm text-(--color-text-secondary) mb-2">{content.shareTitle}</p>
           <Button
             disabled
+            data-testid="thank-you-share-button"
             className="w-full opacity-50 cursor-not-allowed"
             aria-label={content.shareLabel}
             title="Disponível em breve"
@@ -140,6 +141,7 @@ export function ThankYouMessage({ name, locale, homeHref }: ThankYouMessageProps
         {/* Link para home */}
         <a
           href={homeHref}
+          data-testid="thank-you-home-link"
           className="block w-full text-center py-2 px-4 text-(--color-text-secondary) hover:text-(--color-text-primary) text-sm font-medium transition-colors"
         >
           {content.homeLabel}

@@ -30,6 +30,9 @@ const PROJECT_TYPE_OPTIONS = [
   { value: ProjectType.WEB_APP, label: 'Sistema Web' },
   { value: ProjectType.MOBILE_APP, label: 'App Mobile' },
   { value: ProjectType.AUTOMATION_AI, label: 'Automação/IA' },
+  { value: ProjectType.MARKETPLACE, label: 'Marketplace' },
+  { value: ProjectType.CRYPTO, label: 'Crypto / Web3' },
+  { value: ProjectType.BROWSER_EXT, label: 'Extensão Browser' },
 ] as const
 
 export function Filters() {
@@ -106,9 +109,9 @@ export function Filters() {
   const hasActiveFilters = !!(currentScore || currentType || currentFrom || currentTo)
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3 mb-4">
+    <div data-testid="admin-leads-filter-bar" className="flex flex-wrap items-center gap-3 rounded-lg border border-gray-200 bg-white px-4 py-3 mb-4">
       {/* Score chips */}
-      <div className="flex items-center gap-1.5">
+      <div data-testid="admin-leads-filter-score-group" className="flex items-center gap-1.5">
         <span className="text-xs font-medium text-gray-500 mr-1">Score:</span>
         {SCORE_OPTIONS.map((score) => {
           const isActive = currentScore === score
@@ -116,6 +119,7 @@ export function Filters() {
             <button
               key={score}
               type="button"
+              data-testid={`admin-leads-filter-score-${score.toLowerCase()}-button`}
               onClick={() => handleScoreToggle(score)}
               className={`inline-flex items-center justify-center min-w-11 min-h-11 rounded-full text-xs font-bold border transition-all ${
                 isActive ? SCORE_COLORS_ACTIVE[score] : SCORE_COLORS[score]
@@ -133,12 +137,13 @@ export function Filters() {
       <div className="h-5 w-px bg-gray-200" aria-hidden="true" />
 
       {/* Project type select */}
-      <div className="flex items-center gap-2">
+      <div data-testid="admin-leads-filter-type-group" className="flex items-center gap-2">
         <label htmlFor="filter-type" className="text-xs font-medium text-gray-500">
           Tipo:
         </label>
         <select
           id="filter-type"
+          data-testid="admin-leads-filter-type-select"
           value={currentType}
           onChange={handleTypeChange}
           className={FILTER_INPUT_CLASS}
@@ -155,10 +160,11 @@ export function Filters() {
       <div className="h-5 w-px bg-gray-200" aria-hidden="true" />
 
       {/* Date range */}
-      <div className="flex flex-wrap items-center gap-2">
+      <div data-testid="admin-leads-filter-date-group" className="flex flex-wrap items-center gap-2">
         <span className="text-xs font-medium text-gray-500">Período:</span>
         <input
           type="date"
+          data-testid="admin-leads-filter-date-from-input"
           value={fromInput}
           onChange={(e) => setFromInput(e.target.value)}
           className={FILTER_INPUT_CLASS}
@@ -167,6 +173,7 @@ export function Filters() {
         <span className="text-xs text-gray-400">até</span>
         <input
           type="date"
+          data-testid="admin-leads-filter-date-to-input"
           value={toInput}
           min={fromInput || undefined}
           onChange={(e) => setToInput(e.target.value)}
@@ -179,6 +186,7 @@ export function Filters() {
       {hasActiveFilters && (
         <button
           type="button"
+          data-testid="admin-leads-filter-clear-button"
           onClick={handleClearAll}
           className="ml-auto text-xs text-gray-500 hover:text-gray-900 underline"
         >

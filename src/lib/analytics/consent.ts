@@ -1,9 +1,11 @@
 'use client'
 
 /**
- * Verifica se o usuário deu consentimento para analytics.
- * Integra com o cookie COOKIE_CONSENT definido pelo module-17.
- * FEAT-UX-005, INT-033 (LGPD/GDPR)
+ * @deprecated (Gap G1, intake-review 2026-04-23): use `@/lib/cookies/consentState`
+ * instead. The new CookieBanner (CL-244) writes a JSON cookie `consent_state`;
+ * this legacy helper still reads the old `COOKIE_CONSENT=true` cookie which is
+ * no longer set by any UI. Kept only for backward compat with `onConsentGranted`
+ * listener — will be removed once consumers migrate.
  */
 export function hasAnalyticsConsent(): boolean {
   if (typeof document === 'undefined') return false

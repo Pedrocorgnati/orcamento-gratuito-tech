@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "SaaS Development Pricing for Multi-Tenant Builds",
+    "description": "Clear SaaS development pricing for secure multi-tenant apps with Stripe billing, RBAC, SSO, analytics, APIs, and SOC2-ready controls."
+  },
+  "hero": {
+    "h1": "saas development pricing for multi-tenant SaaS systems",
+    "subtitle": "Transparent rates and scope for multi-tenant SaaS: Stripe billing, RBAC, SSO, dashboards, and APIs.",
+    "cta": "Get pricing"
+  },
+  "pain": {
+    "title": "Common pricing headaches",
+    "bullets": [
+      "Have you ever tried to price multi-tenant architecture and got vague answers instead of a clear scope?",
+      "Have you ever shipped onboarding, then realized you still need RBAC, audit logs, and SSO to close deals?",
+      "Have you ever integrated Stripe billing and webhooks, only to discover edge cases that break renewals?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Transparent scope",
+      "desc": "You get line-item scope tied to SaaS building blocks, so you can budget with fewer surprises."
+    },
+    {
+      "title": "Multi-tenant ready",
+      "desc": "Tenant isolation, role-based access control, and feature flags are planned up front for safer scaling."
+    },
+    {
+      "title": "Revenue-safe billing",
+      "desc": "Stripe subscriptions, invoices, taxes, and webhooks are implemented with retries, idempotency, and monitoring."
+    }
+  ],
+  "scope": {
+    "title": "What pricing typically includes",
+    "bullets": [
+      "Multi-tenant data model",
+      "RBAC and permissions",
+      "Onboarding flows",
+      "Dashboards and analytics",
+      "Stripe billing + webhooks",
+      "Public API and keys",
+      "Feature flags + rollout",
+      "SSO + SOC2 controls"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "B2B SaaS MVP",
+      "desc": "Launch fast with tenants, onboarding, Stripe billing, and a focused dashboard for early customers."
+    },
+    {
+      "title": "Enterprise add-ons",
+      "desc": "Add SSO, advanced RBAC, auditability, and admin controls without rewriting your core product."
+    },
+    {
+      "title": "API-first platform",
+      "desc": "Offer a public API with tokens, quotas, webhooks, and analytics so partners can build safely."
+    },
+    {
+      "title": "Usage-based billing",
+      "desc": "Track events, meter usage, sync to Stripe, and handle reconciliation with reliable webhook processing."
+    },
+    {
+      "title": "Feature rollout control",
+      "desc": "Use feature flags to target tenants, run staged releases, and measure impact with analytics."
+    }
+  ],
+  "stack": {
+    "title": "Stacks we price confidently",
+    "options": [
+      {
+        "name": "Next.js",
+        "note": "App Router, server actions where appropriate, and SEO-friendly pages for your landing and app."
+      },
+      {
+        "name": "Node.js",
+        "note": "REST or GraphQL APIs with webhooks, background jobs, and strict request validation."
+      },
+      {
+        "name": "Postgres",
+        "note": "Multi-tenant patterns, row-level strategies, migrations, and reporting-friendly schemas."
+      },
+      {
+        "name": "Stripe",
+        "note": "Subscriptions, invoices, proration, tax handling, and resilient webhook consumption with idempotency."
+      },
+      {
+        "name": "Auth (SSO)",
+        "note": "RBAC, SCIM-ready structure, and SSO options (SAML/OIDC) aligned with SOC2 expectations."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Define scope",
+        "desc": "You share your tenants, roles, billing model, and must-have screens; we map the modules."
+      },
+      {
+        "title": "Price the build",
+        "desc": "You receive a clear estimate with phases for onboarding, dashboards, APIs, and Stripe billing."
+      },
+      {
+        "title": "Deliver and iterate",
+        "desc": "We ship in milestones with demos, analytics checks, and webhook monitoring from day one."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What affects SaaS development pricing the most?",
+      "a": "Multi-tenant isolation, billing complexity, RBAC depth, SSO requirements, and analytics/reporting are the biggest drivers of time and cost."
+    },
+    {
+      "q": "Do you include Stripe billing and webhooks?",
+      "a": "Yes. Pricing can include subscriptions, invoicing, proration, taxes, and robust webhook handling with retries and idempotency."
+    },
+    {
+      "q": "Can you build a public API for my product?",
+      "a": "Yes. We scope authentication, rate limits, versioning, webhooks, and usage analytics so external integrations are reliable."
+    },
+    {
+      "q": "How do you handle RBAC in a multi-tenant app?",
+      "a": "We define roles and permissions per tenant, enforce them consistently in the API and UI, and add audit-friendly checks for sensitive actions."
+    },
+    {
+      "q": "Is the implementation aligned with SOC2 needs?",
+      "a": "We design with least-privilege access, logging, secure secrets handling, and SSO options, so your app is prepared for SOC2 controls."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a clear quote for your SaaS build",
+    "desc": "Tell us your tenants, billing model, and must-have features. You get scoped SaaS development pricing you can plan around.",
+    "button": "Request a quote"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Crypto software development cost | Web3 scope & audits",
+    "description": "Crypto software development cost for MetaMask/WalletConnect, Solidity on Ethereum/Polygon/Base, audits, KYC/AML, custody, token standards (ERC-20/721/1155)."
+  },
+  "hero": {
+    "h1": "crypto software development cost: scope, risk, and delivery for Web3 products",
+    "subtitle": "MetaMask/WalletConnect, Solidity contracts, and EVM builds on Ethereum, Polygon, or Base with compliance-ready operations.",
+    "cta": "Get a cost estimate"
+  },
+  "pain": {
+    "title": "When the scope is fuzzy, crypto gets expensive fast",
+    "bullets": [
+      "Have you ever shipped a wallet connect flow and watched users drop off at the first signature prompt?",
+      "Have you ever delayed launch because you could not justify a Solidity smart contract audit to stakeholders?",
+      "Have you ever gotten stuck between KYC/AML compliance, custody decisions, and exchange integration with no clear plan?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "A scope you can price",
+      "desc": "You get a clear backlog, deliverables, assumptions, and boundaries so estimates map to real work, not guesses."
+    },
+    {
+      "title": "Security as a requirement",
+      "desc": "Solidity smart contracts are built with tests, reviews, and an audit plan so you reduce avoidable risk before mainnet."
+    },
+    {
+      "title": "Compliance-ready operations",
+      "desc": "KYC/AML flows, custody controls, and audit trails are defined early so you can operate with visibility and governance."
+    }
+  ],
+  "scope": {
+    "title": "What your Web3 build can include",
+    "bullets": [
+      "Discovery and architecture",
+      "Wallets: MetaMask and WalletConnect",
+      "Solidity smart contracts (EVM)",
+      "EVM chains: Ethereum, Polygon, Base",
+      "Tokens: ERC-20, ERC-721, ERC-1155",
+      "Contract tests and reviews",
+      "Contract audit coordination",
+      "KYC/AML compliance design",
+      "Custody model and controls",
+      "Exchange integration and on-chain analytics"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Wallet-based sign-in dApp",
+      "desc": "Connect with MetaMask or WalletConnect, handle signatures safely, and keep the UX clear for first-time users."
+    },
+    {
+      "title": "ERC-20 token utilities",
+      "desc": "Mint/burn rules, permissions, and integrations aligned with how your token actually moves and is monitored."
+    },
+    {
+      "title": "NFT drops (ERC-721/1155)",
+      "desc": "Collections, allowlists, mint flows, and contract events you can track for support and reporting."
+    },
+    {
+      "title": "Custody-backed operations",
+      "desc": "Approval flows, limits, key management decisions, and logs that match your risk posture and compliance needs."
+    },
+    {
+      "title": "Exchange deposit/withdraw",
+      "desc": "Exchange APIs plus on-chain analytics to reconcile deposits, withdrawals, and confirmations by address and event."
+    }
+  ],
+  "stack": {
+    "title": "A Web3 stack matched to your constraints",
+    "options": [
+      {
+        "name": "MetaMask",
+        "note": "Wallet connect, signing, and permissions with clear prompts and safe message patterns."
+      },
+      {
+        "name": "WalletConnect",
+        "note": "Multi-wallet support with strong mobile UX using QR and deep links where appropriate."
+      },
+      {
+        "name": "Solidity",
+        "note": "EVM smart contracts with testing strategy, review checkpoints, and audit readiness."
+      },
+      {
+        "name": "EVM chains",
+        "note": "Ethereum, Polygon, or Base selection based on fees, liquidity needs, and operational constraints."
+      },
+      {
+        "name": "KYC/AML",
+        "note": "Compliance workflows mapped to your product flows, with traceability and data handling guidelines."
+      },
+      {
+        "name": "On-chain analytics",
+        "note": "Event indexing, address monitoring, and dashboards so you can investigate issues quickly."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Align on scope",
+        "desc": "You share your use case, chain preferences, and constraints; scope and assumptions are documented."
+      },
+      {
+        "title": "Build and verify",
+        "desc": "Wallet flows, Solidity contracts, and integrations are implemented with tests and security reviews."
+      },
+      {
+        "title": "Launch and operate",
+        "desc": "Deploy to the chosen EVM chain, set up monitoring, and runbook the compliance and custody workflows."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What drives crypto software development cost the most?",
+      "a": "Scope and risk do. Smart contract complexity, ERC-20/721/1155 requirements, audit depth, KYC/AML needs, custody model, exchange integration, and the chain choice all change effort and timelines."
+    },
+    {
+      "q": "Do I need a smart contract audit before launch?",
+      "a": "If contracts control value, permissions, mint/burn logic, or complex state, an audit is strongly recommended. The goal is to reduce avoidable failures and increase confidence before public usage."
+    },
+    {
+      "q": "When does KYC/AML compliance become necessary?",
+      "a": "When your product touches fiat ramps, value transfers, regulated jurisdictions, or internal compliance policies. The right approach depends on your business model, users, and custody responsibilities."
+    },
+    {
+      "q": "Is custody better than non-custodial for UX?",
+      "a": "It depends. Non-custodial keeps user control and can reduce your operational responsibility, while custody can streamline UX but increases security controls, monitoring, and compliance obligations."
+    },
+    {
+      "q": "Can you integrate an exchange and reconcile deposits?",
+      "a": "Yes. Exchange APIs can provide transaction status, and on-chain analytics can validate confirmations and reconcile movements by address, token, and contract event."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a clear estimate and a scope you can defend",
+    "desc": "Share your use case, target chain, token standard, and whether you need KYC/AML, custody, audits, or exchange integration.",
+    "button": "Request my estimate"
+  }
+}

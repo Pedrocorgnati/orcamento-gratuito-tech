@@ -32,6 +32,8 @@ export interface PricingConfigData {
   complexity_multiplier_medium: number
   complexity_multiplier_high: number
   complexity_multiplier_very_high: number
+  /** CL-281: versão semântica dos pesos/preços (snapshot no Lead) */
+  version?: string
 }
 
 export interface CalculationInput {
@@ -62,6 +64,8 @@ export interface EstimationCalculated {
   locale: Locale
   currency: Currency
   projectType: ProjectType
+  /** CL-281: versão dos pesos utilizada neste cálculo */
+  pricingVersion: string
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -170,5 +174,6 @@ export function calculateEstimation(input: CalculationInput): EstimationCalculat
     locale:      input.locale,
     currency:    input.currency,
     projectType: input.projectType,
+    pricingVersion: input.pricingConfig.version ?? 'v1',
   }
 }

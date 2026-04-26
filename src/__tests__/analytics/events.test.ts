@@ -6,12 +6,12 @@ vi.mock('@vercel/analytics', () => ({
 }))
 
 // Mock consent — controlar retorno por teste
-vi.mock('@/lib/analytics/consent', () => ({
+vi.mock('@/lib/cookies/consentState', () => ({
   hasAnalyticsConsent: vi.fn(),
 }))
 
 import { track } from '@vercel/analytics'
-import { hasAnalyticsConsent } from '@/lib/analytics/consent'
+import { hasAnalyticsConsent } from '@/lib/cookies/consentState'
 import {
   trackFlowStarted,
   trackQuestionAnswered,

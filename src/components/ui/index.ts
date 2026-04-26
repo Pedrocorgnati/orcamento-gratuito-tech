@@ -4,6 +4,9 @@ export type { ButtonProps } from "./Button";
 export { Card } from "./Card";
 export type { CardProps } from "./Card";
 
+export { CollapsibleInfo } from "./CollapsibleInfo";
+export type { CollapsibleInfoProps } from "./CollapsibleInfo";
+
 export { Label } from "./Label";
 export type { LabelProps } from "./Label";
 
@@ -17,3 +20,6 @@ export { SkeletonLoader } from "./SkeletonLoader";
 export type { SkeletonLoaderProps, SkeletonType } from "./SkeletonLoader";
 
 export { ErrorBoundary } from "./ErrorBoundary";
+
+export { ConfirmDialog } from "./ConfirmDialog";
+export type { ConfirmDialogProps } from "./ConfirmDialog";

@@ -18,10 +18,32 @@ import type { EstimationResult } from '@/lib/types'
 import type { Lead } from '@prisma/client'
 import { formatCurrency } from '@/lib/utils/format'
 import { Locale, Currency, ComplexityLevel, LeadScore } from '@/lib/enums'
+import { computeEstimationConfidence } from '@/lib/scoring/estimationConfidence'
+
+function computeConfidencePctForEmail(lead: Lead, estimation: EstimationResult): number {
+  return computeEstimationConfidence({
+    isSuspicious: Boolean(lead.is_suspicious),
+    consistencyAlertsCount: 0,
+    complexityScore: estimation.complexity_score ?? 0,
+    featuresCount: (estimation.features ?? []).length,
+  }).percent
+}
 
 interface OwnerEmailProps {
   lead: Lead
   estimation: EstimationResult
+  /** CL-286: N total de leads (incluindo este) nos ultimos 12 meses para o mesmo email. */
+  recurrenceCount?: number
+  /** Datas de submissoes anteriores (sem o atual). */
+  previousSubmissions?: Date[]
+}
+
+function fmtDate(d: Date): string {
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(new Date(d))
 }
 
 // Configuração de badge por score A/B/C
@@ -58,11 +80,17 @@ const COMPLEXITY_LABELS: Record<ComplexityLevel, string> = {
   [ComplexityLevel.VERY_HIGH]: 'Muito Alta',
 }
 
-export function renderOwnerEmail({ lead, estimation }: OwnerEmailProps) {
+export function renderOwnerEmail({
+  lead,
+  estimation,
+  recurrenceCount = 1,
+  previousSubmissions = [],
+}: OwnerEmailProps) {
   const scoreKey = (lead.score as LeadScore) ?? LeadScore.C
   const scoreConfig = SCORE_CONFIG[scoreKey] ?? SCORE_CONFIG[LeadScore.C]
   const complexityLabel =
     COMPLEXITY_LABELS[estimation.complexity] ?? estimation.complexity
+  const isRecurring = recurrenceCount >= 2
 
   return (
     <Html lang="pt-BR">
@@ -80,6 +108,28 @@ export function renderOwnerEmail({ lead, estimation }: OwnerEmailProps) {
             </Text>
           </Section>
 
+          {/* CL-286: Banner "LEAD RECORRENTE" quando mesmo email ja submeteu */}
+          {isRecurring && (
+            <Section style={sectionStyle}>
+              <div
+                style={{
+                  backgroundColor: '#fef3c7',
+                  border: '1px solid #f59e0b',
+                  color: '#92400e',
+                  padding: '12px 16px',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                }}
+              >
+                ⚠️ LEAD RECORRENTE ({recurrenceCount}x) — Este email ja submeteu
+                {previousSubmissions.length > 0
+                  ? ` em: ${previousSubmissions.map(fmtDate).join(', ')}`
+                  : '.'}
+              </div>
+            </Section>
+          )}
+
           {/* Badge de Score */}
           <Section style={sectionStyle}>
             <div
@@ -92,6 +142,32 @@ export function renderOwnerEmail({ lead, estimation }: OwnerEmailProps) {
               {scoreConfig.label} — {lead.score_total}/100
             </div>
             <Text style={descriptionStyle}>{scoreConfig.description}</Text>
+          </Section>
+
+          {/* CL-124 / CL-063: Score de confiança da estimativa + label categórica */}
+          <Section style={sectionStyle}>
+            {(() => {
+              const confidencePct = computeConfidencePctForEmail(lead, estimation)
+              const confColor =
+                confidencePct >= 80 ? '#16a34a' : confidencePct >= 50 ? '#ca8a04' : '#dc2626'
+              const confLabel =
+                confidencePct >= 80 ? 'Alta' : confidencePct >= 50 ? 'Média' : 'Baixa'
+              return (
+                <div
+                  style={{
+                    display: 'inline-block',
+                    padding: '8px 14px',
+                    borderRadius: '999px',
+                    backgroundColor: confColor,
+                    color: '#ffffff',
+                    fontWeight: 600,
+                    fontSize: '14px',
+                  }}
+                >
+                  Confiança da estimativa: {confidencePct}% ({confLabel})
+                </div>
+              )
+            })()}
           </Section>
 
           <Hr style={hrStyle} />
@@ -236,6 +312,37 @@ export function renderOwnerEmail({ lead, estimation }: OwnerEmailProps) {
           )}
 
           <Hr style={hrStyle} />
+
+          {/* CL-250: Attribution block (render only if UTM or referrer present) */}
+          {(lead.utm_source ||
+            lead.utm_medium ||
+            lead.utm_campaign ||
+            lead.referrer) && (
+            <>
+              <Section style={sectionStyle}>
+                <Text style={{ ...labelStyle, fontWeight: 'bold' as const }}>
+                  Origem do lead
+                </Text>
+                {lead.utm_source && (
+                  <Text style={labelStyle}>
+                    Fonte: {lead.utm_source}
+                    {lead.utm_medium ? ` · Meio: ${lead.utm_medium}` : ''}
+                    {lead.utm_campaign ? ` · Campanha: ${lead.utm_campaign}` : ''}
+                  </Text>
+                )}
+                {lead.utm_term && (
+                  <Text style={labelStyle}>Termo: {lead.utm_term}</Text>
+                )}
+                {lead.utm_content && (
+                  <Text style={labelStyle}>Conteúdo: {lead.utm_content}</Text>
+                )}
+                {lead.referrer && (
+                  <Text style={labelStyle}>Referrer: {lead.referrer}</Text>
+                )}
+              </Section>
+              <Hr style={hrStyle} />
+            </>
+          )}
 
           {/* CTA Button */}
           <Section style={{ ...sectionStyle, textAlign: 'center' as const }}>

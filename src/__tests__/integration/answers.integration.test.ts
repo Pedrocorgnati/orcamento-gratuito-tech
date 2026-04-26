@@ -132,6 +132,102 @@ describe('POST /api/v1/sessions/[id]/answers', () => {
     expect(answerCount).toBe(1)
   })
 
+  it('[C1] persiste session.project_type ao responder Q001', async () => {
+    const q001 = await prisma.question.findFirst({
+      where: { code: 'Q001' },
+      include: { options: { where: { order: 3 }, take: 1 } },
+    })
+    if (!q001 || q001.options.length === 0) return
+
+    const session = await createTestSession({ current_question_id: q001.id })
+    mockCookie(session.id)
+
+    const res = await POST(
+      postRequest(
+        `/api/v1/sessions/${session.id}/answers`,
+        { question_id: q001.id, option_ids: [q001.options[0]!.id] },
+        session.id
+      ),
+      { params: Promise.resolve({ id: session.id }) }
+    )
+
+    expect(res.status).toBe(201)
+
+    const updatedSession = await prisma.session.findUnique({
+      where: { id: session.id },
+      select: { project_type: true },
+    })
+    expect(updatedSession?.project_type).toBe('ECOMMERCE')
+  })
+
+  it('[C1] resolve dynamic_next em Q005 conforme o tipo do projeto', async () => {
+    const [q005, q020, q030] = await Promise.all([
+      prisma.question.findFirst({
+        where: { code: 'Q005' },
+        include: { options: { where: { order: 1 }, take: 1 } },
+      }),
+      prisma.question.findFirst({ where: { code: 'Q020' }, select: { id: true } }),
+      prisma.question.findFirst({ where: { code: 'Q030' }, select: { id: true } }),
+    ])
+    if (!q005 || q005.options.length === 0 || !q020 || !q030) return
+
+    const [ecommerceSession, webAppSession] = await Promise.all([
+      createTestSession({ current_question_id: q005.id, project_type: 'ECOMMERCE' }),
+      createTestSession({ current_question_id: q005.id, project_type: 'WEB_APP' }),
+    ])
+
+    mockCookie(ecommerceSession.id)
+    const ecommerceResponse = await POST(
+      postRequest(
+        `/api/v1/sessions/${ecommerceSession.id}/answers`,
+        { question_id: q005.id, option_ids: [q005.options[0]!.id] },
+        ecommerceSession.id
+      ),
+      { params: Promise.resolve({ id: ecommerceSession.id }) }
+    )
+
+    expect(ecommerceResponse.status).toBe(201)
+    expect((await ecommerceResponse.json()).next_question_id).toBe(q020.id)
+
+    mockCookie(webAppSession.id)
+    const webAppResponse = await POST(
+      postRequest(
+        `/api/v1/sessions/${webAppSession.id}/answers`,
+        { question_id: q005.id, option_ids: [q005.options[0]!.id] },
+        webAppSession.id
+      ),
+      { params: Promise.resolve({ id: webAppSession.id }) }
+    )
+
+    expect(webAppResponse.status).toBe(201)
+    expect((await webAppResponse.json()).next_question_id).toBe(q030.id)
+  })
+
+  it('[C1] usa skip_logic.next_question para TEXT_INPUT em Q100', async () => {
+    const [q100, q101] = await Promise.all([
+      prisma.question.findFirst({ where: { code: 'Q100' }, select: { id: true } }),
+      prisma.question.findFirst({ where: { code: 'Q101' }, select: { id: true } }),
+    ])
+    if (!q100 || !q101) return
+
+    const session = await createTestSession({ current_question_id: q100.id })
+    mockCookie(session.id)
+
+    const res = await POST(
+      postRequest(
+        `/api/v1/sessions/${session.id}/answers`,
+        { question_id: q100.id, text_value: 'Al' },
+        session.id
+      ),
+      { params: Promise.resolve({ id: session.id }) }
+    )
+
+    expect(res.status).toBe(201)
+
+    const body = await res.json()
+    expect(body.next_question_id).toBe(q101.id)
+  })
+
   it('[C2] retorna 400 quando body JSON e invalido', async () => {
     const session = await createTestSession()
     mockCookie(session.id)

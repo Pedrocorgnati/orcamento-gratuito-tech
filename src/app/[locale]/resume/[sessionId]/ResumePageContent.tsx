@@ -6,6 +6,7 @@ import { AlertCircle, Clock, WifiOff } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Card } from '@/components/ui/Card'
 import { Button, buttonVariants } from '@/components/ui/Button'
+import { SessionExpiredMessage } from '@/components/flow/SessionExpiredMessage'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types & Constants
@@ -343,41 +344,44 @@ type ResumePageContentProps = {
 export function ResumePageContent({ locale, state }: ResumePageContentProps) {
   const router = useRouter()
 
+  if (state === 'EXPIRED') {
+    return <SessionExpiredMessage locale={locale} />
+  }
+
   const localeMessages = RESUME_MESSAGES[locale] ?? RESUME_MESSAGES['pt-BR']
   const message = localeMessages[state]
   const Icon = STATE_ICONS[state]
 
   const iconColorClass = cn(
     'h-8 w-8',
-    state === 'EXPIRED' && 'text-yellow-500',
-    state === 'NETWORK_ERROR' && 'text-blue-500',
-    !['EXPIRED', 'NETWORK_ERROR'].includes(state) && 'text-destructive'
+    state === 'NETWORK_ERROR' ? 'text-blue-500' : 'text-destructive'
   )
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-(--color-background) px-4 py-8">
+    <div data-testid={`page-resume-${state.toLowerCase()}`} className="flex min-h-screen items-center justify-center bg-(--color-background) px-4 py-8">
       <Card variant="elevated" padding="lg" className="w-full max-w-md text-center">
         {/* Icon */}
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-900">
+        <div data-testid="resume-icon" className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-900">
           <Icon className={iconColorClass} aria-hidden={true} />
         </div>
 
         {/* Title */}
-        <h1 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+        <h1 data-testid="resume-title" className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
           {message.title}
         </h1>
 
         {/* Description */}
-        <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
+        <p data-testid="resume-description" className="mb-6 text-sm text-gray-500 dark:text-gray-400">
           {message.description}
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+        <div data-testid="resume-actions" className="flex flex-col gap-3 sm:flex-row sm:justify-center">
           {message.showNewBudgetCTA && (
             <Button
               variant="primary"
               size="md"
+              data-testid="resume-new-budget-button"
               className="w-full sm:w-auto"
               onClick={() => router.push(`/${locale}/flow`)}
             >
@@ -389,6 +393,7 @@ export function ResumePageContent({ locale, state }: ResumePageContentProps) {
             <Button
               variant="outline"
               size="md"
+              data-testid="resume-retry-button"
               className="w-full sm:w-auto"
               onClick={() => window.location.reload()}
             >
@@ -398,6 +403,7 @@ export function ResumePageContent({ locale, state }: ResumePageContentProps) {
 
           <Link
             href={`/${locale}`}
+            data-testid="resume-back-home-link"
             className={cn(
               buttonVariants({ variant: 'ghost', size: 'md' }),
               'w-full sm:w-auto'

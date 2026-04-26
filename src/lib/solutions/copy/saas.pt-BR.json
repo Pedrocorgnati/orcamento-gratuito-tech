@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Orçamento sistema SaaS multi-tenant | Escopo e preço",
+    "description": "Saiba o que entra no orçamento de sistema SaaS multi-tenant: Stripe Billing, RBAC, onboarding, dashboards, analytics, webhooks, API pública, SSO e compliance LGPD."
+  },
+  "hero": {
+    "h1": "orçamento sistema saas para um SaaS multi-tenant pronto para escalar",
+    "subtitle": "Você recebe um orçamento claro com escopo, prazos e itens críticos como Stripe Billing, RBAC e SSO.",
+    "cta": "Pedir orçamento"
+  },
+  "pain": {
+    "title": "Quando o SaaS cresce, o risco cresce junto",
+    "bullets": [
+      "Você já teve dificuldade para separar tenants, permissões e planos sem criar exceções no código?",
+      "Você já perdeu tempo com cobrança e upgrades porque o billing não conversa bem com o produto?",
+      "Você já ficou no escuro sem dashboards, analytics e trilhas de onboarding para reduzir churn?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Multi-tenant de verdade",
+      "desc": "Isolamento por tenant, limites por plano, trilhas de migração e governança de dados para crescer com segurança e previsibilidade."
+    },
+    {
+      "title": "Billing alinhado ao produto",
+      "desc": "Integração com Stripe Billing para assinatura, trial, upgrades/downgrades, cupons e proration, com webhooks e trilha de auditoria."
+    },
+    {
+      "title": "Controle e visibilidade",
+      "desc": "RBAC, SSO e logs para acesso confiável, além de dashboards e analytics para acompanhar ativação, uso, retenção e receita."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no orçamento",
+    "bullets": [
+      "Arquitetura multi-tenant",
+      "RBAC por role e tenant",
+      "SSO (SAML/OIDC)",
+      "Onboarding e guided tour",
+      "Dashboards e analytics",
+      "Stripe Billing e webhooks",
+      "API pública e chaves",
+      "Feature flags por plano",
+      "Compliance LGPD e auditoria"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "SaaS B2B por assinatura",
+      "desc": "Planos, trials, upgrades e cobrança recorrente com controle de acesso por time e por tenant."
+    },
+    {
+      "title": "Produto com times internos",
+      "desc": "RBAC e SSO para empresas, com políticas de acesso, logs e relatórios de auditoria."
+    },
+    {
+      "title": "Marketplace de integrações",
+      "desc": "Webhooks e API pública para parceiros, com versionamento, limites e rastreabilidade por tenant."
+    },
+    {
+      "title": "SaaS orientado a dados",
+      "desc": "Dashboards, métricas de funil e analytics por tenant para acompanhar adoção e reduzir churn."
+    },
+    {
+      "title": "Lançamento com roadmap",
+      "desc": "Feature flags para liberar módulos por plano, por conta e por ambiente sem retrabalho no deploy."
+    }
+  ],
+  "stack": {
+    "title": "Opções de stack comuns em SaaS",
+    "options": [
+      {
+        "name": "Next.js",
+        "note": "Bom para app e dashboard, com SSR/ISR quando fizer sentido para SEO e performance."
+      },
+      {
+        "name": "Node.js API",
+        "note": "Camada de API para multi-tenant, RBAC, webhooks e integrações com serviços externos."
+      },
+      {
+        "name": "PostgreSQL",
+        "note": "Base relacional com modelagem por tenant e trilha de auditoria para dados sensíveis."
+      },
+      {
+        "name": "Stripe Billing",
+        "note": "Assinaturas, ciclos de cobrança, cupons e eventos via webhooks para manter o produto sincronizado."
+      },
+      {
+        "name": "SSO OIDC/SAML",
+        "note": "Login corporativo e controle centralizado para reduzir atrito no onboarding e em acessos."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "desc": "Entendemos seu SaaS, usuários, planos, integrações e requisitos de LGPD para fechar o escopo."
+      },
+      {
+        "title": "Proposta",
+        "desc": "Você recebe estimativa com marcos, prioridades e o que fica dentro e fora do orçamento."
+      },
+      {
+        "title": "Execução",
+        "desc": "Implementamos com onboarding, billing, RBAC e observabilidade, validando com testes e métricas."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Como vocês calculam o orçamento de um SaaS?",
+      "a": "O custo depende do escopo por módulo e do nível de maturidade desejado: multi-tenant, billing, RBAC, SSO, dashboards, integrações e compliance LGPD. O orçamento sai após um diagnóstico curto."
+    },
+    {
+      "q": "Multi-tenant aumenta muito a complexidade?",
+      "a": "Aumenta, mas reduz retrabalho no futuro. Definimos estratégia de isolamento, modelagem, limites por plano e políticas de acesso para evitar gambiarras quando o número de contas crescer."
+    },
+    {
+      "q": "Vocês integram Stripe Billing e webhooks?",
+      "a": "Sim. Implementamos ciclo completo de assinatura com Stripe Billing e webhooks, incluindo idempotência, reprocessamento e trilha de auditoria para manter cobrança e acesso coerentes."
+    },
+    {
+      "q": "Como funciona RBAC e permissões por tenant?",
+      "a": "Mapeamos papéis e permissões por produto e por conta, com regras claras, logs de acesso e padrões de autorização na API para reduzir riscos e incidentes."
+    },
+    {
+      "q": "Dá para ter API pública com segurança?",
+      "a": "Dá. Definimos autenticação por chaves/tokens, limites por tenant, versionamento, eventos via webhooks e monitoramento para evitar abuso e manter estabilidade."
+    },
+    {
+      "q": "O que vocês consideram para compliance LGPD?",
+      "a": "Políticas de retenção, consentimento quando aplicável, minimização de dados, controles de acesso, trilha de auditoria, resposta a incidentes e rotinas para atender solicitações do titular."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Peça seu orçamento e saia do achismo",
+    "desc": "Descreva seu cenário e receba uma proposta objetiva, com escopo, prazos e prioridades para o seu SaaS multi-tenant.",
+    "button": "Quero meu orçamento"
+  }
+}

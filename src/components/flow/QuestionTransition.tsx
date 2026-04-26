@@ -28,6 +28,21 @@ export function QuestionTransition({
     const el = containerRef.current
     if (!el) return
 
+    // CL-160: instrumentação leve (amostragem 10%) para medir p95 de transição.
+    if (typeof performance !== 'undefined' && typeof performance.mark === 'function' && Math.random() < 0.1) {
+      try {
+        const markStart = 'question_transition_start'
+        const markEnd = 'question_transition_end'
+        performance.mark(markStart)
+        requestAnimationFrame(() => {
+          performance.mark(markEnd)
+          try {
+            performance.measure('question_transition_duration', markStart, markEnd)
+          } catch {}
+        })
+      } catch {}
+    }
+
     // Ler direction: prop > sessionStorage > 'forward'
     const dir =
       directionProp ??

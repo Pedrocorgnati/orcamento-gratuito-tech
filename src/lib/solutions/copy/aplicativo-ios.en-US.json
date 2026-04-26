@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "iOS App Development Cost: iPhone App Estimate",
+    "description": "Get a clear iPhone app estimate in Swift/SwiftUI or cross-platform, with TestFlight builds, App Store Connect setup, and App Review readiness."
+  },
+  "hero": {
+    "h1": "ios app development cost: get a clear estimate for your iPhone app",
+    "subtitle": "Plan scope, validate with TestFlight, and ship through App Store Connect with confidence.",
+    "cta": "Get an estimate"
+  },
+  "pain": {
+    "title": "Why iPhone apps go over budget",
+    "bullets": [
+      "Have you ever tried pricing an app before scope was locked and paid twice for rework",
+      "Have you ever gotten stuck on certificates, provisioning, and App Store Connect access when you needed a build",
+      "Have you ever cleared QA, then lost days in App Review due to HIG, privacy prompts, or Sign in with Apple"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Scope you can trust",
+      "desc": "You get a proposal with clear deliverables, acceptance criteria, and risk flags so estimates stay stable as you build."
+    },
+    {
+      "title": "Apple-ready delivery",
+      "desc": "You ship with Human Interface Guidelines alignment, privacy-friendly permissions, accessibility basics, and App Store review considerations."
+    },
+    {
+      "title": "TestFlight to release",
+      "desc": "You receive signed builds, TestFlight distribution, and an App Store Connect submission checklist that reduces last-minute surprises."
+    }
+  ],
+  "scope": {
+    "title": "What’s included in iOS development",
+    "bullets": [
+      "App Store Connect setup and bundle ID",
+      "TestFlight builds, distribution, and feedback",
+      "Native Swift with SwiftUI or UIKit",
+      "Push notifications via APNs setup",
+      "Sign in with Apple authentication flow",
+      "In-App Purchases implementation and receipts",
+      "Human Interface Guidelines and UX checks",
+      "Certificates, provisioning, and code signing",
+      "Submission, review, and release management"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "MVP launch",
+      "desc": "You ship the essential iPhone flows fast, then iterate using real user feedback."
+    },
+    {
+      "title": "Subscription app",
+      "desc": "You implement In-App Purchases, paywalls, restore flows, and App Store rules safely."
+    },
+    {
+      "title": "Secure login",
+      "desc": "You add Sign in with Apple and session handling that fits common iOS privacy expectations."
+    },
+    {
+      "title": "Push-first product",
+      "desc": "You deliver APNs notifications with opt-in messaging, preferences, and event-based triggers."
+    },
+    {
+      "title": "iOS rebuild",
+      "desc": "You modernize an existing product with SwiftUI priorities and consistent iPhone UX."
+    }
+  ],
+  "stack": {
+    "title": "Implementation options for your app",
+    "options": [
+      {
+        "name": "Swift + SwiftUI",
+        "note": "Great for modern UI, smooth performance, and strong alignment with Apple patterns."
+      },
+      {
+        "name": "Swift + UIKit",
+        "note": "A solid choice for complex screens, legacy components, and mature iOS integrations."
+      },
+      {
+        "name": "Flutter",
+        "note": "Cross-platform speed with room for iOS-native work like APNs, IAP, and signing."
+      },
+      {
+        "name": "React Native",
+        "note": "Cross-platform delivery with an ecosystem that often needs careful native module work."
+      },
+      {
+        "name": "iOS CI/CD",
+        "note": "Automated builds, signing, and releases for TestFlight and App Store Connect workflows."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Align on scope",
+        "desc": "You share screens, roles, integrations, and constraints so scope stays explicit."
+      },
+      {
+        "title": "Estimate by milestones",
+        "desc": "You receive a staged estimate with deliverables, risks, and acceptance checkpoints."
+      },
+      {
+        "title": "Build and publish",
+        "desc": "You validate via TestFlight, then submit through App Store Connect with guidance."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What drives iOS app development cost the most?",
+      "a": "Scope is the biggest driver: number of screens, backend integrations, Sign in with Apple, APNs, In-App Purchases, and QA plus App Review prep."
+    },
+    {
+      "q": "Will you publish the app in my Apple account?",
+      "a": "Yes. Your app should live in your App Store Connect account, and you remain the owner while we guide access, signing, and submission."
+    },
+    {
+      "q": "Can I test builds before App Store submission?",
+      "a": "Yes. We use TestFlight so you and testers can review builds, report issues, and approve fixes before final review."
+    },
+    {
+      "q": "Do I need Sign in with Apple for my app?",
+      "a": "It depends on your login options. If you offer third-party sign-in, Apple may require Sign in with Apple too, so we confirm it early."
+    },
+    {
+      "q": "Should you choose native or Flutter/React Native?",
+      "a": "Native Swift/SwiftUI is often the safest for iOS polish and performance. Flutter or React Native can reduce time when you also target Android, depending on integrations."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a realistic iPhone app estimate",
+    "desc": "Tell us what you want to ship and you get scope, milestones, timeline, and a clear budget.",
+    "button": "Request pricing"
+  }
+}

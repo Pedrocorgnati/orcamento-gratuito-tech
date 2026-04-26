@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "title": "Orçamento de marketplace multi-vendor com escopo claro",
+    "description": "Receba um orçamento de marketplace multi-vendor com escopo fechado, comissão definida e integrações como split via Stripe Connect ou Pagar.me, busca, reputação e SEO…"
+  },
+  "hero": {
+    "h1": "orçamento marketplace para seu marketplace multi-vendor",
+    "subtitle": "Escopo enxuto, integrações certas e SEO de catálogo pensado para vender desde o dia 1.",
+    "cta": "Pedir orçamento agora"
+  },
+  "pain": {
+    "title": "Quando o orçamento não fecha",
+    "bullets": [
+      "Você já tentou estimar custo e o escopo virou uma lista sem fim.",
+      "Você já viu o split de pagamento virar dor de cabeça com Stripe Connect ou Pagar.me.",
+      "Você já investiu em catálogo e ninguém encontra, porque busca, ranking e SEO não fecham."
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Escopo que dá previsibilidade",
+      "desc": "Você recebe entregáveis claros por etapa, com critérios de aceite, para saber exatamente o que entra no seu marketplace."
+    },
+    {
+      "title": "Multi-vendor de verdade",
+      "desc": "Fluxos separados para comprador e lojista, com painel do lojista, gestão de pedidos e regras de comissão por categoria ou vendedor."
+    },
+    {
+      "title": "Catálogo que performa no Google",
+      "desc": "Estrutura de categorias, páginas e dados estruturados pensada para SEO, além de busca e ranking para aumentar conversão no site."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no orçamento",
+    "bullets": [
+      "Onboarding de vendedores e KYC conforme necessidade",
+      "Cadastro de produtos, variações, estoque e atributos",
+      "Comissão configurável por vendedor, categoria e regra",
+      "Split de pagamento com Stripe Connect ou Pagar.me",
+      "Busca e ranking com filtros, relevância e ordenação",
+      "Reputação, avaliações e moderação de conteúdo",
+      "Chat comprador-vendedor com histórico e anexos",
+      "Anti-fraude e regras de risco por pedido e perfil"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Marketplace de nicho",
+      "desc": "Você vende profundidade de catálogo e precisa de filtros, atributos e SEO forte por categoria e marca."
+    },
+    {
+      "title": "Rede de lojistas locais",
+      "desc": "Você quer comissão por loja, painel do lojista e repasse automático com split para reduzir operação manual."
+    },
+    {
+      "title": "B2B com tabelas por cliente",
+      "desc": "Você precisa de regras de preço, condições de pagamento e controle de acesso por perfil e empresa."
+    },
+    {
+      "title": "Catálogo grande e busca crítica",
+      "desc": "Você precisa de ranking, sinônimos e performance de busca para o usuário encontrar rápido e comprar mais."
+    },
+    {
+      "title": "Operação com alto risco",
+      "desc": "Você precisa de camadas de anti-fraude e revisão para reduzir chargeback e proteger sua reputação."
+    }
+  ],
+  "stack": {
+    "title": "Integrações que fazem diferença",
+    "options": [
+      {
+        "name": "Stripe Connect",
+        "note": "Split e repasse para vendedores com regras e conciliação."
+      },
+      {
+        "name": "Pagar.me",
+        "note": "Split nacional, boletos e conciliação para operação no Brasil."
+      },
+      {
+        "name": "OpenSearch",
+        "note": "Busca e ranking com filtros, relevância e escala de catálogo."
+      },
+      {
+        "name": "Algolia",
+        "note": "Busca instantânea com analytics e ajustes finos de relevância."
+      },
+      {
+        "name": "ClearSale ou Konduto",
+        "note": "Camada de anti-fraude para reduzir chargeback e bloqueios."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico rápido",
+        "desc": "Você descreve o modelo de comissão, tipos de vendedores e jornada de compra."
+      },
+      {
+        "title": "Escopo e orçamento",
+        "desc": "Você recebe módulos, entregas, prazos e dependências com critérios de aceite."
+      },
+      {
+        "title": "Plano de implantação",
+        "desc": "Você valida integrações, SEO de catálogo e anti-fraude antes de colocar no ar."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "O orçamento já inclui split de pagamento?",
+      "a": "Sim, o escopo considera split via Stripe Connect ou Pagar.me, incluindo regras de comissão, repasse e conciliação conforme o seu modelo."
+    },
+    {
+      "q": "Como funciona a comissão do marketplace?",
+      "a": "Você define comissão por vendedor, categoria ou regra. O sistema calcula automaticamente e aplica no split, com relatórios para você e para o lojista."
+    },
+    {
+      "q": "O marketplace vem com busca e ranking?",
+      "a": "Sim. O escopo inclui busca com filtros e ordenação. Se o catálogo for grande, avaliamos OpenSearch ou Algolia para performance e relevância."
+    },
+    {
+      "q": "Vocês cuidam de avaliações e reputação?",
+      "a": "Sim. Inclui avaliações de produto e vendedor, cálculo de reputação e moderação para evitar abuso, ajudando a aumentar confiança e conversão."
+    },
+    {
+      "q": "O SEO de catálogo está dentro do escopo?",
+      "a": "Sim. Inclui estrutura de categorias, páginas indexáveis, tags e dados estruturados. Você também recebe recomendações para conteúdo e governança de catálogo."
+    },
+    {
+      "q": "Em quanto tempo dá para colocar no ar?",
+      "a": "Depende do escopo e das integrações. Depois do diagnóstico, você recebe um cronograma por etapas, com um MVP primeiro e expansão de módulos depois."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Pronto para fechar seu orçamento com clareza?",
+    "desc": "Conte o seu cenário e receba um escopo objetivo para lançar um marketplace multi-vendor com split, reputação, busca e SEO de catálogo.",
+    "button": "Solicitar orçamento"
+  }
+}

@@ -82,7 +82,9 @@ export function LanguageSelector({
       }
       trackLocaleChanged({ from: locale, to: newLocale });
       setCookieLocale(newLocale);
-      router.replace(pathname, { locale: newLocale });
+      // pathname retornado inclui rotas dinâmicas na união de tipos.
+      // No runtime é uma string concreta; o router resolve preservando params.
+      router.replace(pathname as never, { locale: newLocale });
       closeDropdown();
     },
     [locale, router, pathname, closeDropdown],

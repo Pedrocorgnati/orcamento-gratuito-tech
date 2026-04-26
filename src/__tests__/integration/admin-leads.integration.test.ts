@@ -20,6 +20,7 @@ import { createCompletedSession, buildLeadPayload } from './helpers/db'
 // Mock Supabase Auth — nao temos sessao real em testes
 vi.mock('@/lib/supabase/server', () => ({
   getUser: vi.fn(),
+  requireAdmin: vi.fn(),
   createSupabaseServerClient: vi.fn(),
 }))
 
@@ -28,26 +29,54 @@ vi.mock('@/lib/notifications/sendLeadNotification', () => ({
   sendLeadNotification: vi.fn().mockResolvedValue(undefined),
 }))
 
-import { getUser } from '@/lib/supabase/server'
+import { getUser, requireAdmin } from '@/lib/supabase/server'
 import { GET } from '@/app/api/v1/admin/leads/route'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Helpers de mock de autenticacao
 // ─────────────────────────────────────────────────────────────────────────────
 
+type AdminUserShape = NonNullable<Awaited<ReturnType<typeof getUser>>>
+
 function mockAuthenticatedAdmin() {
-  vi.mocked(getUser).mockResolvedValue({
+  const user = {
     id: 'admin-user-id',
     email: 'admin@example.com',
     app_metadata: {},
     user_metadata: {},
     aud: 'authenticated',
     created_at: new Date().toISOString(),
-  } as ReturnType<typeof getUser> extends Promise<infer T> ? NonNullable<T> : never)
+  } as AdminUserShape
+  vi.mocked(getUser).mockResolvedValue(user)
+  vi.mocked(requireAdmin).mockResolvedValue({ ok: true, user })
 }
 
 function mockUnauthenticated() {
   vi.mocked(getUser).mockResolvedValue(null)
+  vi.mocked(requireAdmin).mockResolvedValue({
+    ok: false,
+    status: 401,
+    code: 'AUTH_001',
+    message: 'Autenticação necessária.',
+  })
+}
+
+function mockAuthenticatedNonAdmin() {
+  const user = {
+    id: 'attacker-user-id',
+    email: 'attacker@evil.com',
+    app_metadata: {},
+    user_metadata: {},
+    aud: 'authenticated',
+    created_at: new Date().toISOString(),
+  } as AdminUserShape
+  vi.mocked(getUser).mockResolvedValue(user)
+  vi.mocked(requireAdmin).mockResolvedValue({
+    ok: false,
+    status: 403,
+    code: 'AUTH_002',
+    message: 'Acesso negado.',
+  })
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -259,6 +288,21 @@ describe('GET /api/v1/admin/leads', () => {
     expect(res.status).toBe(401)
     const body = await res.json()
     // Body de erro nao deve conter dados de leads
+    expect(body.data).toBeUndefined()
+  })
+
+  // ── Cenario 5: RBAC defesa em profundidade ────────────────────────────────
+
+  it('[C5] retorna 403 (AUTH_002) para usuario autenticado mas nao admin', async () => {
+    mockAuthenticatedNonAdmin()
+    await seedTestLeads(2)
+
+    const req = getRequest('/api/v1/admin/leads')
+    const res = await GET(req)
+
+    expect(res.status).toBe(403)
+    const body = await res.json()
+    expect(body.error.code).toBe('AUTH_002')
     expect(body.data).toBeUndefined()
   })
 })

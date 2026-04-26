@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
-import { CookieConsentBanner } from "@/components/layout/CookieConsentBanner";
+import { CookieBanner } from "@/components/privacy/CookieBanner";
 import { HtmlLangUpdater } from "@/components/layout/HtmlLangUpdater";
 
 type LocaleLayoutProps = {
@@ -59,7 +59,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         disableTransitionOnChange
       >
         {children}
-        <CookieConsentBanner />
+        {/* CL-244: unificado — CookieBanner (nova versao com preferences dialog) substitui CookieConsentBanner simples */}
+        <CookieBanner />
         <Toaster
           position="bottom-right"
           richColors

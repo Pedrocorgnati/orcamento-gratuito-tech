@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Business process automation pricing and ROI estimate",
+    "description": "Get a clear quote for automacao: ERP/CRM/Sheets/API integrations, n8n/Make/Zapier workflows, Python + Apps Script, monitoring dashboards, ROI in hours saved."
+  },
+  "hero": {
+    "h1": "business automation cost estimate for your operations",
+    "subtitle": "Automate ERP, CRM, Sheets, and APIs with monitored workflows and ROI tracked in hours saved.",
+    "cta": "Request a cost estimate"
+  },
+  "pain": {
+    "title": "Automation that removes daily friction",
+    "bullets": [
+      "Have you ever spent the last hour of the day copying data between your ERP, CRM, and spreadsheets?",
+      "Have you ever chased approvals and repetitive tasks with no visibility into what is stuck or why?",
+      "Have you ever had an integration break due to an API change, rate limit, or a missed schedule?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Real integrations",
+      "desc": "Connect ERP, CRM, Google Sheets, and external APIs with clear logic, validation, logs, and step-by-step error handling."
+    },
+    {
+      "title": "Visibility you can trust",
+      "desc": "Monitoring dashboards and alerts show what ran, what failed, and what needs action, so you are not guessing."
+    },
+    {
+      "title": "ROI in hours saved",
+      "desc": "We baseline the current manual effort, track hours saved after go-live, and report ROI per automated process."
+    }
+  ],
+  "scope": {
+    "title": "What your automation quote includes",
+    "bullets": [
+      "Process mapping and baseline time",
+      "Triggers, rules, and validations",
+      "ERP/CRM/Sheets/API integrations",
+      "n8n/Make/Zapier workflow build",
+      "Python scripts for complex logic",
+      "Google Apps Script for Sheets",
+      "Webhooks for event-driven updates",
+      "Queues and cron-based jobs",
+      "Monitoring dashboards, logs, and alerts"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Customer and lead sync",
+      "desc": "Keep contacts, companies, and deals aligned across CRM, ERP, and Sheets with validation and deduplication."
+    },
+    {
+      "title": "Order and billing status updates",
+      "desc": "Use webhooks and APIs to update orders, invoices, and collections automatically when events happen."
+    },
+    {
+      "title": "Scheduled reconciliations",
+      "desc": "Run daily or weekly checks via cron and queues, with retries and reprocessing when systems are slow."
+    },
+    {
+      "title": "Automated reporting",
+      "desc": "Generate Sheets reports and dashboard metrics from consolidated data to reduce close time and manual errors."
+    },
+    {
+      "title": "Approvals with SLAs",
+      "desc": "Route approvals with notifications, deadlines, and an audit trail so decisions move faster without losing control."
+    }
+  ],
+  "stack": {
+    "title": "Tools we can use in your setup",
+    "options": [
+      {
+        "name": "n8n",
+        "note": "Self-hosted or managed workflows with connectors, webhooks, scheduling, and retry-friendly runs."
+      },
+      {
+        "name": "Make",
+        "note": "Visual scenarios for fast app integrations, branching logic, and per-step error handling."
+      },
+      {
+        "name": "Zapier",
+        "note": "Event-based automations for sales and ops, ideal for straightforward triggers and actions."
+      },
+      {
+        "name": "Python",
+        "note": "Custom scripts and services for advanced rules, API orchestration, queues, and scheduled jobs."
+      },
+      {
+        "name": "Google Apps Script",
+        "note": "Google Workspace automation for Sheets, Drive, and Gmail with logging and controlled permissions."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnose",
+        "desc": "You share the process and systems involved, and we define inputs, outputs, rules, and success metrics."
+      },
+      {
+        "title": "Build",
+        "desc": "We implement workflows, scripts, and integrations with webhooks, queues/cron, logging, and safe retries."
+      },
+      {
+        "title": "Monitor",
+        "desc": "You get dashboards and alerts, plus ROI tracking in hours saved so you can scale what works."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "How do you estimate business automation cost?",
+      "a": "We scope the process steps, systems, data volumes, rules, and reliability requirements, then estimate effort, timeline, and operating costs."
+    },
+    {
+      "q": "How fast can you deliver an automation?",
+      "a": "Simple workflows can go live in days; multi-system integrations with validations, monitoring, and retries usually take a few weeks."
+    },
+    {
+      "q": "Can you integrate my ERP, CRM, Sheets, and APIs?",
+      "a": "Yes. We use native connectors when available, and fall back to APIs, webhooks, Python, or Apps Script where it fits the system and data needs."
+    },
+    {
+      "q": "How do you handle failures, rate limits, and reprocessing?",
+      "a": "We add per-step error handling, logging, alerts, backoff for rate limits, queues for bursty workloads, and scheduled checks with cron."
+    },
+    {
+      "q": "How will I know the ROI is real?",
+      "a": "We capture a baseline of manual time today, measure time saved after launch, and report ROI in hours saved per process and per month."
+    },
+    {
+      "q": "Do I need to grant full access to my systems?",
+      "a": "No. You can provide least-privilege API keys or service accounts, and we validate permissions and environments before production rollout."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a clear scope and ROI estimate",
+    "desc": "Share your current workflow and systems, and receive a practical quote with timelines, monitoring, and success metrics.",
+    "button": "Get my estimate"
+  }
+}

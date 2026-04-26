@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Presupuesto de marketplace multi-vendedor con alcance claro",
+    "description": "Presupuesto con alcance claro para marketplace multi-vendedor: Stripe Connect (split y payouts), búsqueda/ranking, valoraciones, chat, anti-fraude y SEO de catálogo."
+  },
+  "hero": {
+    "h1": "presupuesto marketplace para tu marketplace multi-vendedor",
+    "subtitle": "Alcance claro, pagos divididos con Stripe Connect y SEO de catálogo desde el primer día.",
+    "cta": "Pedir presupuesto"
+  },
+  "pain": {
+    "title": "Cuando el presupuesto no se fija",
+    "bullets": [
+      "¿Alguna vez intentaste estimar un marketplace y el alcance crece en cada reunión?",
+      "¿Alguna vez empezaste Stripe Connect y te atascaste con onboarding, KYC, payouts y conciliación?",
+      "¿Alguna vez lanzaste un catálogo y nadie lo encuentra porque búsqueda, ranking y SEO no encajan?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Alcance predecible",
+      "desc": "Recibes un plan de construcción con módulos definidos, criterios de aceptación y entregables claros para mantener estable el presupuesto."
+    },
+    {
+      "title": "Operación multi-vendedor real",
+      "desc": "Flujos separados de comprador y vendedor, panel vendedor, gestión de pedidos y reglas de comisión que reflejan cómo operas tu marketplace."
+    },
+    {
+      "title": "Catálogo que posiciona",
+      "desc": "Arquitectura de categorías, páginas indexables y datos estructurados para SEO de catálogo, alineados con búsqueda y ranking para convertir mejor."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye el alcance",
+    "bullets": [
+      "Onboarding y aprobación de vendedores",
+      "Productos, variantes, inventario y atributos",
+      "Reglas de comisiones por vendedor y categoría",
+      "Stripe Connect: split payments y payouts",
+      "Búsqueda, filtros, ordenación y ranking",
+      "Valoraciones, reseñas y moderación",
+      "Chat comprador-vendedor con historial",
+      "Panel vendedor para pedidos y pagos",
+      "Controles anti-fraude y reglas de riesgo",
+      "SEO de catálogo y datos estructurados"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Marketplace de nicho",
+      "desc": "Necesitas filtrado profundo, atributos y SEO por categorías para captar búsquedas long-tail y convertir compradores con intención."
+    },
+    {
+      "title": "Red de vendedores local",
+      "desc": "Quieres paneles para vendedores, payouts automáticos y reporting de comisiones sin trabajo manual de back-office."
+    },
+    {
+      "title": "Marketplace B2B",
+      "desc": "Requieres roles, cuentas de empresa, reglas de precio y flujos que encajen con compras recurrentes y aprobaciones."
+    },
+    {
+      "title": "Catálogo grande, orientado a búsqueda",
+      "desc": "Necesitas búsqueda rápida, ajustes de relevancia, sinónimos y controles de ranking para que encuentren productos en segundos."
+    },
+    {
+      "title": "Categorías con más riesgo",
+      "desc": "Necesitas capas de anti-fraude, colas de revisión y control de payouts para reducir chargebacks y proteger la confianza."
+    }
+  ],
+  "stack": {
+    "title": "Opciones para integraciones clave",
+    "options": [
+      {
+        "name": "Stripe Connect",
+        "note": "Split, payouts y onboarding de vendedores ajustados a tu modelo de comisiones."
+      },
+      {
+        "name": "OpenSearch",
+        "note": "Búsqueda y ranking escalables con filtros, facetas y ajuste de relevancia en catálogos grandes."
+      },
+      {
+        "name": "Algolia",
+        "note": "Búsqueda instantánea con analítica y control de relevancia para merchandising del catálogo."
+      },
+      {
+        "name": "Sift",
+        "note": "Señales anti-fraude y decisión para reducir chargebacks y abuso de cuentas."
+      },
+      {
+        "name": "Twilio",
+        "note": "Notificaciones y verificación para chat, alertas y flujos de cuenta más seguros."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Descubrimiento rápido",
+        "desc": "Nos cuentas tu modelo de vendedores, comisiones y el recorrido de compra que quieres."
+      },
+      {
+        "title": "Alcance y presupuesto",
+        "desc": "Recibes módulos, entregables, timeline y dependencias con criterios de aceptación claros."
+      },
+      {
+        "title": "Plan de construcción y salida",
+        "desc": "Validamos split payments, búsqueda, reseñas, anti-fraude y SEO de catálogo antes del go-live."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Qué dispara más el presupuesto de un marketplace?",
+      "a": "Suele venir de los flujos multi-vendedor, el onboarding y los payouts de Stripe Connect, las necesidades de búsqueda y ranking, y la profundidad de SEO y moderación."
+    },
+    {
+      "q": "Cubrís Stripe Connect de punta a punta?",
+      "a": "Sí. El alcance puede incluir onboarding de vendedores, requisitos KYC, lógica de split, calendarios de payouts, reembolsos, disputas y conciliación con reporting."
+    },
+    {
+      "q": "Cómo gestionáis comisiones entre varios vendedores?",
+      "a": "Puedes definir comisiones por vendedor, por categoría o por reglas. La plataforma calcula el take rate por pedido y lo aplica en el flujo de payouts con informes para ti y para vendedores."
+    },
+    {
+      "q": "Incluye búsqueda, ranking y filtros del catálogo?",
+      "a": "Sí. Incluye búsqueda con filtros y ordenación. Para catálogos grandes, se puede añadir ajuste de relevancia, sinónimos y controles de ranking para mejorar la encontrabilidad."
+    },
+    {
+      "q": "Se incluyen valoraciones, reseñas y chat comprador-vendedor?",
+      "a": "Sí. Se puede incluir reseñas de producto y vendedor, herramientas de moderación y chat con historial y notificaciones."
+    },
+    {
+      "q": "Cuánto tarda en salir un MVP de marketplace?",
+      "a": "Depende del alcance y de las integraciones. Tras el discovery, definimos un timeline por etapas: un MVP primero y después mejoras como búsqueda avanzada o anti-fraude adicional."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Listo para fijar el alcance y el presupuesto?",
+    "desc": "Cuéntanos tu modelo de vendedores y objetivos y te devolvemos un presupuesto claro con split payments, búsqueda, valoraciones, chat y SEO de catálogo.",
+    "button": "Solicitar presupuesto"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Preventivo automazione processi (RPA) e ROI in ore",
+    "description": "Richiedi un preventivo chiaro: integrazioni ERP/CRM/fogli/API, workflow n8n/Make/Zapier, Python e Google Apps Script, dashboard e ROI in ore risparmiate."
+  },
+  "hero": {
+    "h1": "preventivo automazione per processi e integrazioni (RPA)",
+    "subtitle": "Integra ERP, CRM, fogli e API con workflow monitorati e ROI misurato in ore risparmiate.",
+    "cta": "Richiedi preventivo"
+  },
+  "pain": {
+    "title": "Automazione che riduce l'attrito quotidiano",
+    "bullets": [
+      "Ti è mai capitato di chiudere la giornata copiando dati tra ERP, CRM e fogli di calcolo?",
+      "Ti è mai capitato di inseguire approvazioni e attività ripetitive senza sapere cosa è bloccato e perché?",
+      "Ti è mai capitato che un'integrazione si rompesse per un cambio API, un rate limit o un cron saltato?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Integrazioni solide",
+      "desc": "Colleghi ERP, CRM, fogli e API con regole chiare, validazioni, log e gestione errori per ridurre il lavoro manuale."
+    },
+    {
+      "title": "Controllo e visibilità",
+      "desc": "Dashboard e alert ti mostrano cosa è partito, cosa è fallito e cosa richiede intervento, con traccia eseguibile."
+    },
+    {
+      "title": "ROI misurabile",
+      "desc": "Definiamo un baseline del tempo speso oggi, poi misuriamo ore risparmiate dopo il go-live e calcoliamo il ROI per workflow."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include il preventivo di automazione",
+    "bullets": [
+      "Mappatura processo e baseline",
+      "Trigger, regole e validazioni",
+      "Integrazioni ERP/CRM/fogli/API",
+      "Workflow n8n/Make/Zapier",
+      "Script Python per logiche complesse",
+      "Google Apps Script per Workspace",
+      "Webhook per eventi in tempo reale",
+      "Job schedulati con code/cron",
+      "Dashboard, log e alert operativi",
+      "Report ROI in ore risparmiate"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Sync anagrafiche e lead",
+      "desc": "Allinei contatti, aziende e opportunità tra CRM, ERP e fogli con validazione, deduplica e campi obbligatori."
+    },
+    {
+      "title": "Stati ordini e fatture",
+      "desc": "Aggiorni automaticamente ordini, fatture e incassi via API e webhook quando un evento cambia lo stato."
+    },
+    {
+      "title": "Riconciliazioni programmate",
+      "desc": "Esegui controlli giornalieri o settimanali con cron e code, con retry e riprocessamento quando serve."
+    },
+    {
+      "title": "Report e dashboard",
+      "desc": "Generi report su Sheets e KPI su dashboard partendo da dati consolidati, riducendo errori e tempi di chiusura."
+    },
+    {
+      "title": "Approvazioni con SLA",
+      "desc": "Orchestri approvazioni con notifiche, scadenze e audit trail per accelerare decisioni senza perdere controllo."
+    }
+  ],
+  "stack": {
+    "title": "Strumenti compatibili con il tuo contesto",
+    "options": [
+      {
+        "name": "n8n",
+        "note": "Workflow self-hosted o managed con connettori, webhook, scheduling, retry e tracciamento esecuzioni."
+      },
+      {
+        "name": "Make",
+        "note": "Scenari visuali per integrare app rapidamente, con filtri, branching e gestione errori per step."
+      },
+      {
+        "name": "Zapier",
+        "note": "Automazioni event-driven per vendite e operations, ideali per trigger e azioni lineari e veloci."
+      },
+      {
+        "name": "Python",
+        "note": "Script e servizi per regole avanzate, orchestrazione API, code, job schedulati e controlli di qualità dati."
+      },
+      {
+        "name": "Google Apps Script",
+        "note": "Automazioni su Google Workspace (Sheets, Drive, Gmail) con permessi controllati, log e notifiche."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Analisi",
+        "desc": "Mi descrivi il processo e i sistemi coinvolti: definiamo input, output, regole, volumi e metriche."
+      },
+      {
+        "title": "Implementazione",
+        "desc": "Costruiamo workflow, script e integrazioni con webhook, code/cron, logging, alert e retry sicuri."
+      },
+      {
+        "title": "Misurazione",
+        "desc": "Attiviamo dashboard e monitoraggio, poi misuriamo le ore risparmiate e ottimizziamo ciò che funziona."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Come calcoli un preventivo automazione affidabile?",
+      "a": "Definiamo i passaggi del processo, i sistemi (ERP/CRM/fogli/API), le regole, i volumi e i requisiti di affidabilità; poi stimiamo effort, tempi e costi operativi."
+    },
+    {
+      "q": "Puoi integrare ERP, CRM, fogli e API esterne?",
+      "a": "Sì. Usiamo connettori quando conviene e, dove serve, API, webhook, Python o Google Apps Script per gestire formati, validazioni e casi particolari."
+    },
+    {
+      "q": "Quanto tempo serve per mettere online un workflow?",
+      "a": "Dipende da complessità e sistemi coinvolti: automazioni semplici possono partire in pochi giorni; integrazioni multi-sistema con controlli e monitoraggio richiedono in genere alcune settimane."
+    },
+    {
+      "q": "Come gestisci errori, rate limit e riprocessamenti?",
+      "a": "Inseriamo handling per step, log dettagliati, alert, backoff sui rate limit, code per i picchi e job cron per controlli e riconciliazioni."
+    },
+    {
+      "q": "Come misuri il ROI in modo concreto?",
+      "a": "Misuriamo il tempo manuale attuale (baseline), poi tracciamo le ore risparmiate dopo il go-live e produciamo report mensili per processo e per area."
+    },
+    {
+      "q": "Devo darti accesso completo ai miei sistemi?",
+      "a": "No. Lavoriamo con permessi minimi (API key o service account) e ambienti separati, così puoi controllare cosa viene letto e cosa viene scritto."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ottieni un preventivo chiaro e un ROI in ore",
+    "desc": "Raccontami il tuo flusso e i sistemi coinvolti: ricevi scopo, tempi, dashboard di monitoraggio e stima delle ore risparmiate.",
+    "button": "Richiedi un preventivo"
+  }
+}

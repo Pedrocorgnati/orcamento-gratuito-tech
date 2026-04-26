@@ -1,4 +1,133 @@
 {
+  "nav": {
+    "logo": "Budget Free Engine",
+    "solutions": "Soluzioni",
+    "solutionsAriaLabel": "Apri menu soluzioni",
+    "howItWorks": "Come funziona",
+    "ctaQuote": "Preventivo gratuito",
+    "allSolutions": "Vedi tutte le soluzioni",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "backToHome": "Torna alla home",
+    "items": {
+      "site-institucional": {
+        "name": "Sito aziendale",
+        "shortPitch": "Vetrina professionale con SEO"
+      },
+      "landing-page": {
+        "name": "Landing page",
+        "shortPitch": "Cattura focalizzata sulla conversione"
+      },
+      "ecommerce": {
+        "name": "E-commerce",
+        "shortPitch": "Negozio online completo"
+      },
+      "saas": {
+        "name": "Sistema SaaS",
+        "shortPitch": "Software web scalabile"
+      },
+      "aplicativo-android": {
+        "name": "App Android",
+        "shortPitch": "Nativa o ibrida"
+      },
+      "automacao": {
+        "name": "Automazione",
+        "shortPitch": "Elimina attività ripetitive"
+      },
+      "marketplace": {
+        "name": "Marketplace",
+        "shortPitch": "Connetti venditori e acquirenti"
+      },
+      "cripto": {
+        "name": "Cripto",
+        "shortPitch": "Wallet, DEX e Web3"
+      },
+      "extensao-chrome": {
+        "name": "Estensione Chrome",
+        "shortPitch": "Produttività nel browser"
+      },
+      "aplicativo-ios": {
+        "name": "App iOS",
+        "shortPitch": "Nativa per iPhone e iPad"
+      },
+      "inteligencia-artificial": {
+        "name": "Intelligenza Artificiale",
+        "shortPitch": "LLM, RAG e agenti"
+      }
+    }
+  },
+  "solutions": {
+    "hub": {
+      "metaTitle": "Soluzioni per tipo di progetto — Budget Free Engine",
+      "metaDescription": "11 tipi di software coperti con preventivo gratuito in minuti: siti, e-commerce, app, SaaS, automazione, IA e altro.",
+      "title": "Soluzioni per tipo di progetto",
+      "subtitle": "Scegli il formato più vicino al tuo progetto e ricevi una stima precisa in pochi minuti.",
+      "ctaFinal": "Non sai da dove iniziare?",
+      "ctaFinalButton": "Ottieni preventivo gratuito",
+      "learnMore": "Scopri di più"
+    },
+    "common": {
+      "breadcrumbHome": "Inizio",
+      "breadcrumbHub": "Soluzioni",
+      "heroH1": "Preventivo per {name} in minuti",
+      "heroSubtitle": "{pitch}. Ricevi complessità, fascia di investimento e tempi — senza registrazione.",
+      "ctaPrimary": "Ottieni preventivo gratuito",
+      "ctaSecondary": "Vedi altre soluzioni",
+      "trustNoCadastro": "🔒 Senza registrazione",
+      "trustLanguages": "🌍 4 lingue",
+      "trustMinutes": "⚡ 5 minuti",
+      "painTitle": "Ti è già successo?",
+      "painItem1": "Hai chiesto preventivi e ricevuto tre prezzi molto diversi?",
+      "painItem2": "Hai avviato un progetto vedendo l'ambito esplodere a metà strada?",
+      "painItem3": "Hai assunto senza criterio tecnico e te ne sei pentito?",
+      "benefitsTitle": "Perché stimare prima di assumere",
+      "benefit1Title": "42 criteri tecnici",
+      "benefit1Desc": "Domande intelligenti che rivelano la complessità reale del tuo progetto.",
+      "benefit2Title": "In minuti",
+      "benefit2Desc": "Risposta immediata, senza aspettare giorni per proposte commerciali.",
+      "benefit3Title": "Multi-valuta e multi-lingua",
+      "benefit3Desc": "Stima in BRL, USD o EUR, in 4 lingue — confronta fornitori globali.",
+      "scopeTitle": "Cosa è incluso nella stima",
+      "scopeItem1": "Funzionalità core per questo tipo di progetto",
+      "scopeItem2": "Integrazioni con sistemi esterni",
+      "scopeItem3": "Requisiti di sicurezza e compliance",
+      "scopeItem4": "Design ed esperienza utente",
+      "scopeItem5": "Test, deploy e documentazione",
+      "useCasesTitle": "Casi d'uso tipici",
+      "useCase1": "Startup che validano MVP",
+      "useCase2": "Aziende che scalano operazioni",
+      "useCase3": "Agenzie che tariffano consegne",
+      "useCase4": "Investitori che valutano costi",
+      "stackTitle": "Stack consigliati",
+      "stack1Name": "Stack web moderno",
+      "stack1Desc": "TypeScript + framework JS leader per velocità e manutenibilità.",
+      "stack2Name": "Backend robusto",
+      "stack2Desc": "API REST/GraphQL con DB relazionale e cache.",
+      "stack3Name": "Infra gestita",
+      "stack3Desc": "Hosting serverless con CDN globale e monitoraggio.",
+      "stack4Name": "Osservabilità",
+      "stack4Desc": "Log, metriche e tracing per debug in produzione.",
+      "howItWorksTitle": "Come funziona",
+      "step1Title": "Rispondi in 5 minuti",
+      "step1Desc": "Le domande si adattano al tuo progetto.",
+      "step2Title": "Ricevi la stima",
+      "step2Desc": "Complessità, valore e tempi a schermo.",
+      "step3Title": "Rifinisci e condividi",
+      "step3Desc": "Ricalcola quando cambia l'ambito.",
+      "faqTitle": "Domande frequenti",
+      "faq1Q": "Quanto costa questo tipo di progetto?",
+      "faq1A": "Dipende da funzionalità, integrazioni e team. Usa il preventivo gratuito per vedere una fascia reale in base al tuo ambito.",
+      "faq2Q": "Mi servono dettagli tecnici?",
+      "faq2A": "No. Il flusso traduce le domande in linguaggio di business.",
+      "faq3Q": "La stima funziona con qualsiasi fornitore?",
+      "faq3A": "Sì. Si basa su 42 criteri tecnici universali di mercato.",
+      "faq4Q": "Quanto dura l'esecuzione?",
+      "faq4A": "Il preventivo include una fascia di tempo stimata in base alla complessità.",
+      "ctaFinalTitle": "Pronto a preventivare {name}?",
+      "ctaFinalDesc": "In 5 minuti hai una stima reale.",
+      "ctaFinalButton": "Inizia ora →"
+    }
+  },
   "common": {
     "appName": "Budget Free Engine",
     "loading": "Caricamento...",
@@ -16,8 +145,7 @@
     "privacyPolicy": "Informativa sulla Privacy",
     "languageSelector": "Seleziona lingua",
     "admin": {
-      "logout": "Esci",
-      "login": "Accedi"
+      "logout": "Esci"
     },
     "skipToContent": "Vai al contenuto principale",
     "homeAriaLabel": "Budget Free Engine — Home",
@@ -246,7 +374,21 @@
       "privacyLink": "Scopri di più nella nostra Informativa sulla Privacy",
       "acceptAll": "Accetta tutti i cookie",
       "acceptAllAriaLabel": "Accetta tutti i cookie e chiudi l'avviso",
-      "viewPolicy": "Vedi Policy"
+      "viewPolicy": "Vedi Policy",
+      "essentialsOnly": "Solo essenziali",
+      "customize": "Personalizza"
+    },
+    "preferences": {
+      "title": "Preferenze cookie",
+      "description": "Scegli quali cookie permettere.",
+      "essentialLabel": "Essenziali",
+      "essentialDescription": "Necessari per il funzionamento.",
+      "analyticsLabel": "Analytics",
+      "analyticsDescription": "Ci aiutano a capire l'uso e migliorare.",
+      "marketingLabel": "Marketing",
+      "marketingDescription": "Permettono di mostrare contenuti più rilevanti.",
+      "save": "Salva preferenze",
+      "cancel": "Annulla"
     }
   },
   "accessibility": {
@@ -276,5 +418,36 @@
     "features_internal_sso": "Single Sign-On (SSO) aziendale (SAML/OIDC)",
     "features_internal_audit": "Log di audit completo delle azioni degli utenti",
     "features_internal_export": "Esportazione di report in PDF ed Excel"
+  },
+  "emails": {
+    "resume": {
+      "subject": "Il tuo preventivo in corso — torna e completa",
+      "preview": "Riprendi da dove hai lasciato e ricevi il tuo preventivo in pochi minuti.",
+      "greeting": "Ciao!",
+      "body": "Hai iniziato a calcolare un preventivo con Budget Free Engine e ti sei fermato a meta strada. Le tue risposte sono salvate e puoi riprendere esattamente da dove avevi lasciato.",
+      "progressLabel": "Il tuo avanzamento:",
+      "ctaLabel": "Riprendi il mio preventivo",
+      "expiryNotice": "Le tue risposte vengono conservate per un tempo limitato. Torna adesso per non perdere i progressi.",
+      "footer": "Budget Free Engine",
+      "privacyNotice": "Hai ricevuto questa email perche hai iniziato un preventivo e condiviso il tuo indirizzo durante il flusso (interesse legittimo — GDPR/LGPD).",
+      "rightsInfo": "Per esercitare i tuoi diritti o non ricevere piu questi promemoria, rispondi a questa email.",
+      "unsubscribeLabel": "Informativa Privacy"
+    }
+  },
+  "session": {
+    "expired": {
+      "title": "La tua sessione è scaduta",
+      "description": "Dopo più di 7 giorni di inattività non è più possibile riprendere il tuo progresso. Inizia un nuovo preventivo — richiede solo pochi minuti.",
+      "cta": "Inizia un nuovo preventivo"
+    }
+  },
+  "unsubscribe": {
+    "title": "Annulla iscrizione",
+    "description": "Gestisci preferenze email",
+    "successTitle": "Iscrizione annullata",
+    "successMessage": "Non riceverai più email automatiche. Grazie per il tuo interesse.",
+    "errorTitle": "Link non valido",
+    "errorMessage": "Non siamo riusciti a elaborare questo link. Potrebbe essere scaduto o già usato.",
+    "backHome": "Torna alla home"
   }
 }

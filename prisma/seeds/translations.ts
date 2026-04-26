@@ -1,4 +1,6 @@
 import type { PrismaClient } from '@prisma/client'
+import { applyCopywritingReviewV1 } from './copywriting-review-v1'
+import { syncRefactorTranslations } from './refactor-questions-v2'
 
 type LocaleKey = 'pt_BR' | 'en_US' | 'es_ES' | 'it_IT'
 
@@ -74,10 +76,10 @@ export async function seedTranslations(prisma: PrismaClient) {
       it_IT: 'Qual è il tipo di progetto?',
     },
     description: {
-      pt_BR: 'Selecione a categoria que melhor descreve o que você precisa construir.',
-      en_US: 'Select the category that best describes what you need to build.',
-      es_ES: 'Selecciona la categoría que mejor describe lo que necesitas construir.',
-      it_IT: 'Seleziona la categoria che meglio descrive ciò che devi costruire.',
+      pt_BR: 'Selecione um ou mais tipos de projeto. Vamos combinar os blocos de escopo e somar a estimativa final.',
+      en_US: 'Select one or more project types. We will combine the scope blocks and sum the final estimate.',
+      es_ES: 'Selecciona uno o más tipos de proyecto. Combinaremos los bloques de alcance y sumaremos la estimación final.',
+      it_IT: 'Seleziona uno o più tipi di progetto. Combineremo i blocchi di scope e sommeremo la stima finale.',
     },
   })
 
@@ -87,19 +89,22 @@ export async function seedTranslations(prisma: PrismaClient) {
   await upsertOptionTranslation(prisma, 'Q001', 4, { label: { pt_BR: 'Sistema Web / Aplicação Web', en_US: 'Web System / Web Application', es_ES: 'Sistema Web / Aplicación Web', it_IT: 'Sistema Web / Applicazione Web' } })
   await upsertOptionTranslation(prisma, 'Q001', 5, { label: { pt_BR: 'App Mobile', en_US: 'Mobile App', es_ES: 'Aplicación Móvil', it_IT: 'App Mobile' } })
   await upsertOptionTranslation(prisma, 'Q001', 6, { label: { pt_BR: 'Automação e IA', en_US: 'Automation and AI', es_ES: 'Automatización e IA', it_IT: 'Automazione e IA' } })
+  await upsertOptionTranslation(prisma, 'Q001', 7, { label: { pt_BR: 'Marketplace', en_US: 'Marketplace', es_ES: 'Marketplace', it_IT: 'Marketplace' } })
+  await upsertOptionTranslation(prisma, 'Q001', 8, { label: { pt_BR: 'Plataforma Crypto / Web3', en_US: 'Crypto / Web3 Platform', es_ES: 'Plataforma Crypto / Web3', it_IT: 'Piattaforma Crypto / Web3' } })
+  await upsertOptionTranslation(prisma, 'Q001', 9, { label: { pt_BR: 'Extensão de Browser', en_US: 'Browser Extension', es_ES: 'Extensión de Navegador', it_IT: 'Estensione Browser' } })
 
   await upsertQuestionTranslation(prisma, 'Q005', {
     title: {
-      pt_BR: 'Como você descreveria o porte da sua empresa?',
+      pt_BR: 'Qual é o perfil do cliente ou contratante?',
       en_US: 'How would you describe your company size?',
       es_ES: '¿Cómo describirías el tamaño de tu empresa?',
       it_IT: 'Come descriveresti le dimensioni della tua azienda?',
     },
   })
-  await upsertOptionTranslation(prisma, 'Q005', 1, { label: { pt_BR: 'Empresa estabelecida (médio/grande porte)', en_US: 'Established company (mid/large)', es_ES: 'Empresa establecida (mediana/grande)', it_IT: 'Azienda consolidata (media/grande)' } })
-  await upsertOptionTranslation(prisma, 'Q005', 2, { label: { pt_BR: 'Startup / empresa em fase inicial', en_US: 'Startup / early stage', es_ES: 'Startup / fase inicial', it_IT: 'Startup / fase iniziale' } })
-  await upsertOptionTranslation(prisma, 'Q005', 3, { label: { pt_BR: 'Freelancer / Pessoa Física', en_US: 'Freelancer / Individual', es_ES: 'Freelancer / Persona Física', it_IT: 'Freelancer / Persona Fisica' } })
-  await upsertOptionTranslation(prisma, 'Q005', 4, { label: { pt_BR: 'Grande empresa / Enterprise', en_US: 'Large enterprise', es_ES: 'Gran empresa / Enterprise', it_IT: 'Grande azienda / Enterprise' } })
+  await upsertOptionTranslation(prisma, 'Q005', 1, { label: { pt_BR: 'Empresa consolidada (média/grande)', en_US: 'Established company (mid/large)', es_ES: 'Empresa consolidada (mediana/grande)', it_IT: 'Azienda consolidata (media/grande)' } })
+  await upsertOptionTranslation(prisma, 'Q005', 2, { label: { pt_BR: 'Startup em fase inicial', en_US: 'Startup / early stage', es_ES: 'Startup en fase inicial', it_IT: 'Startup in fase iniziale' } })
+  await upsertOptionTranslation(prisma, 'Q005', 3, { label: { pt_BR: 'Freelancer / Pessoa física', en_US: 'Freelancer / Individual', es_ES: 'Freelancer / Persona física', it_IT: 'Freelancer / Persona fisica' } })
+  await upsertOptionTranslation(prisma, 'Q005', 4, { label: { pt_BR: 'Corporação / Enterprise', en_US: 'Large enterprise', es_ES: 'Corporación / Enterprise', it_IT: 'Corporazione / Enterprise' } })
 
   // ──────────────────────────────────────────────────────────────
   // BLOCO 2: WEBSITES (Q010-Q014)
@@ -138,7 +143,7 @@ export async function seedTranslations(prisma: PrismaClient) {
   })
   await upsertOptionTranslation(prisma, 'Q014', 1, { label: { pt_BR: 'Design estático', en_US: 'Static design', es_ES: 'Diseño estático', it_IT: 'Design statico' } })
   await upsertOptionTranslation(prisma, 'Q014', 2, { label: { pt_BR: 'Animações CSS básicas', en_US: 'Basic CSS animations', es_ES: 'Animaciones CSS básicas', it_IT: 'Animazioni CSS di base' } })
-  await upsertOptionTranslation(prisma, 'Q014', 3, { label: { pt_BR: 'Animações complexas / WebGL', en_US: 'Complex animations / WebGL', es_ES: 'Animaciones complejas / WebGL', it_IT: 'Animazioni complesse / WebGL' } })
+  await upsertOptionTranslation(prisma, 'Q014', 3, { label: { pt_BR: 'Interações visuais avançadas / 3D', en_US: 'Complex animations / WebGL', es_ES: 'Animaciones complejas / WebGL', it_IT: 'Animazioni complesse / WebGL' } })
 
   // ──────────────────────────────────────────────────────────────
   // BLOCO 3: ECOMMERCE (Q020-Q024)
@@ -161,7 +166,7 @@ export async function seedTranslations(prisma: PrismaClient) {
   await upsertOptionTranslation(prisma, 'Q020', 3, { label: { pt_BR: 'Mais de 500 produtos', en_US: 'More than 500 products', es_ES: 'Más de 500 productos', it_IT: 'Più di 500 prodotti' } })
 
   // Q021: Integração de pagamento?
-  await upsertOptionTranslation(prisma, 'Q021', 1, { label: { pt_BR: 'Sem integração de pagamento', en_US: 'No payment integration', es_ES: 'Sin integración de pago', it_IT: 'Nessuna integrazione di pagamento' } })
+  await upsertOptionTranslation(prisma, 'Q021', 1, { label: { pt_BR: 'Apenas catálogo (sem venda online)', en_US: 'No payment integration', es_ES: 'Sin integración de pago', it_IT: 'Nessuna integrazione di pagamento' } })
   await upsertOptionTranslation(prisma, 'Q021', 2, { label: { pt_BR: 'Gateway único (Stripe, PagSeguro)', en_US: 'Single gateway (Stripe, PayPal)', es_ES: 'Gateway único (Stripe, MercadoPago)', it_IT: 'Gateway singolo (Stripe, PayPal)' } })
   await upsertOptionTranslation(prisma, 'Q021', 3, { label: { pt_BR: 'Múltiplos gateways + parcelamento', en_US: 'Multiple gateways + installments', es_ES: 'Múltiples gateways + cuotas', it_IT: 'Gateway multipli + rate' } })
 
@@ -268,7 +273,7 @@ export async function seedTranslations(prisma: PrismaClient) {
 
   const mobileTitles: Record<string, Record<LocaleKey, string>> = {
     Q045: { pt_BR: 'Para qual plataforma o app será desenvolvido?', en_US: 'Which platform will the app be developed for?', es_ES: '¿Para qué plataforma se desarrollará la app?', it_IT: "Per quale piattaforma verrà sviluppata l'app?" },
-    Q046: { pt_BR: 'Qual abordagem de desenvolvimento você prefere?', en_US: 'Which development approach do you prefer?', es_ES: '¿Qué enfoque de desarrollo prefieres?', it_IT: 'Quale approccio di sviluppo preferisci?' },
+    Q046: { pt_BR: 'Qual experiência você espera no app?', en_US: 'Which development approach do you prefer?', es_ES: '¿Qué enfoque de desarrollo prefieres?', it_IT: 'Quale approccio di sviluppo preferisci?' },
     Q047: { pt_BR: 'O app precisa de notificações push?', en_US: 'Does the app need push notifications?', es_ES: '¿La app necesita notificaciones push?', it_IT: "L'app ha bisogno di notifiche push?" },
     Q048: { pt_BR: 'O app precisa funcionar offline?', en_US: 'Does the app need to work offline?', es_ES: '¿La app necesita funcionar sin conexión?', it_IT: "L'app deve funzionare offline?" },
     Q049: { pt_BR: 'O app precisa acessar hardware do dispositivo?', en_US: 'Does the app need to access device hardware?', es_ES: '¿La app necesita acceder al hardware del dispositivo?', it_IT: "L'app deve accedere all'hardware del dispositivo?" },
@@ -281,8 +286,8 @@ export async function seedTranslations(prisma: PrismaClient) {
   await upsertOptionTranslation(prisma, 'Q045', 2, { label: { pt_BR: 'Apenas Android', en_US: 'Android only', es_ES: 'Solo Android', it_IT: 'Solo Android' } })
   await upsertOptionTranslation(prisma, 'Q045', 3, { label: { pt_BR: 'iOS e Android', en_US: 'iOS and Android', es_ES: 'iOS y Android', it_IT: 'iOS e Android' } })
 
-  await upsertOptionTranslation(prisma, 'Q046', 1, { label: { pt_BR: 'React Native / Flutter (cross-platform)', en_US: 'React Native / Flutter (cross-platform)', es_ES: 'React Native / Flutter (multiplataforma)', it_IT: 'React Native / Flutter (cross-platform)' } })
-  await upsertOptionTranslation(prisma, 'Q046', 2, { label: { pt_BR: 'Nativo por plataforma (Swift + Kotlin)', en_US: 'Native per platform (Swift + Kotlin)', es_ES: 'Nativo por plataforma (Swift + Kotlin)', it_IT: 'Nativo per piattaforma (Swift + Kotlin)' } })
+  await upsertOptionTranslation(prisma, 'Q046', 1, { label: { pt_BR: 'Uma única base para lançar mais rápido nas duas plataformas', en_US: 'React Native / Flutter (cross-platform)', es_ES: 'React Native / Flutter (multiplataforma)', it_IT: 'React Native / Flutter (cross-platform)' } })
+  await upsertOptionTranslation(prisma, 'Q046', 2, { label: { pt_BR: 'Experiência mais refinada e performance máxima em cada plataforma', en_US: 'Native per platform (Swift + Kotlin)', es_ES: 'Nativo por plataforma (Swift + Kotlin)', it_IT: 'Nativo per piattaforma (Swift + Kotlin)' } })
 
   await upsertOptionTranslation(prisma, 'Q047', 1, { label: { pt_BR: 'Sem push', en_US: 'No push notifications', es_ES: 'Sin notificaciones push', it_IT: 'Nessuna notifica push' } })
   await upsertOptionTranslation(prisma, 'Q047', 2, { label: { pt_BR: 'Push básico (FCM)', en_US: 'Basic push (FCM)', es_ES: 'Push básico (FCM)', it_IT: 'Push base (FCM)' } })
@@ -310,32 +315,118 @@ export async function seedTranslations(prisma: PrismaClient) {
   }
 
   // Q050: Tipo de automação / IA
-  await upsertOptionTranslation(prisma, 'Q050', 1, { label: { pt_BR: 'Automação de processos (RPA)', en_US: 'Process automation (RPA)', es_ES: 'Automatización de procesos (RPA)', it_IT: 'Automazione dei processi (RPA)' } })
-  await upsertOptionTranslation(prisma, 'Q050', 2, { label: { pt_BR: 'IA Generativa (ChatGPT, LLM)', en_US: 'Generative AI (ChatGPT, LLM)', es_ES: 'IA Generativa (ChatGPT, LLM)', it_IT: 'IA Generativa (ChatGPT, LLM)' } })
+  await upsertOptionTranslation(prisma, 'Q050', 1, { label: { pt_BR: 'Automação de tarefas e processos', en_US: 'Process automation (RPA)', es_ES: 'Automatización de procesos (RPA)', it_IT: 'Automazione dei processi (RPA)' } })
+  await upsertOptionTranslation(prisma, 'Q050', 2, { label: { pt_BR: 'Inteligência artificial para conversar, resumir ou gerar conteúdo', en_US: 'Generative AI (ChatGPT, LLM)', es_ES: 'IA Generativa (ChatGPT, LLM)', it_IT: 'IA Generativa (ChatGPT, LLM)' } })
   await upsertOptionTranslation(prisma, 'Q050', 3, { label: { pt_BR: 'Machine Learning / Análise de dados', en_US: 'Machine Learning / Data analysis', es_ES: 'Machine Learning / Análisis de datos', it_IT: 'Machine Learning / Analisi dati' } })
 
   // Q051: Fonte de dados para IA
   await upsertOptionTranslation(prisma, 'Q051', 1, { label: { pt_BR: 'Dados internos do sistema', en_US: 'Internal system data', es_ES: 'Datos internos del sistema', it_IT: 'Dati interni del sistema' } })
-  await upsertOptionTranslation(prisma, 'Q051', 2, { label: { pt_BR: 'APIs e fontes externas', en_US: 'External APIs and sources', es_ES: 'APIs y fuentes externas', it_IT: 'API e fonti esterne' } })
-  await upsertOptionTranslation(prisma, 'Q051', 3, { label: { pt_BR: 'Múltiplas fontes + data pipeline', en_US: 'Multiple sources + data pipeline', es_ES: 'Múltiples fuentes + data pipeline', it_IT: 'Fonti multiple + data pipeline' } })
+  await upsertOptionTranslation(prisma, 'Q051', 2, { label: { pt_BR: 'Dados vindos de outros sistemas e ferramentas', en_US: 'External APIs and sources', es_ES: 'APIs y fuentes externas', it_IT: 'API e fonti esterne' } })
+  await upsertOptionTranslation(prisma, 'Q051', 3, { label: { pt_BR: 'Várias fontes com tratamento e atualização contínua dos dados', en_US: 'Multiple sources + data pipeline', es_ES: 'Múltiples fuentes + data pipeline', it_IT: 'Fonti multiple + data pipeline' } })
 
   // Q052: Integração da IA ao sistema
-  await upsertOptionTranslation(prisma, 'Q052', 1, { label: { pt_BR: 'API standalone', en_US: 'Standalone API', es_ES: 'API independiente', it_IT: 'API standalone' } })
+  await upsertOptionTranslation(prisma, 'Q052', 1, { label: { pt_BR: 'Como um serviço separado, conectado quando necessário', en_US: 'Standalone API', es_ES: 'API independiente', it_IT: 'API standalone' } })
   await upsertOptionTranslation(prisma, 'Q052', 2, { label: { pt_BR: 'Integrada na aplicação', en_US: 'Embedded in the application', es_ES: 'Integrada en la aplicación', it_IT: "Integrata nell'applicazione" } })
-  await upsertOptionTranslation(prisma, 'Q052', 3, { label: { pt_BR: 'Pipeline completo (ingestão + processamento + output)', en_US: 'Full pipeline (ingestion + processing + output)', es_ES: 'Pipeline completo (ingesta + procesamiento + salida)', it_IT: 'Pipeline completo (ingestione + elaborazione + output)' } })
+  await upsertOptionTranslation(prisma, 'Q052', 3, { label: { pt_BR: 'Como parte de um fluxo completo para processar dados e entregar resultados', en_US: 'Full pipeline (ingestion + processing + output)', es_ES: 'Pipeline completo (ingesta + procesamiento + salida)', it_IT: 'Pipeline completo (ingestione + elaborazione + output)' } })
 
   // ──────────────────────────────────────────────────────────────
-  // BLOCO 7: CONTEXT (Q090-Q093)
+  // BLOCO 7: MARKETPLACE (Q070-Q074)
+  // ──────────────────────────────────────────────────────────────
+
+  const marketplaceTitles: Record<string, Record<LocaleKey, string>> = {
+    Q070: { pt_BR: 'Como o marketplace monetiza?', en_US: 'How does the marketplace monetize?', es_ES: '¿Cómo monetiza el marketplace?', it_IT: 'Come monetizza il marketplace?' },
+    Q071: { pt_BR: 'Qual nível de avaliações e reputação é necessário?', en_US: 'What level of reviews and reputation is needed?', es_ES: '¿Qué nivel de reseñas y reputación se necesita?', it_IT: 'Che livello di recensioni e reputazione è necessario?' },
+    Q072: { pt_BR: 'Precisa de chat entre usuários?', en_US: 'Do you need chat between users?', es_ES: '¿Necesitas chat entre usuarios?', it_IT: 'Serve una chat tra utenti?' },
+    Q073: { pt_BR: 'Haverá moeda virtual ou créditos internos?', en_US: 'Will there be virtual currency or internal credits?', es_ES: '¿Habrá moneda virtual o créditos internos?', it_IT: 'Ci saranno valuta virtuale o crediti interni?' },
+    Q074: { pt_BR: 'Precisa de assinatura premium?', en_US: 'Do you need a premium subscription?', es_ES: '¿Necesitas suscripción premium?', it_IT: 'Serve un abbonamento premium?' },
+  }
+  for (const [code, title] of Object.entries(marketplaceTitles)) {
+    await upsertQuestionTranslation(prisma, code, { title })
+  }
+  await upsertOptionTranslation(prisma, 'Q070', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q070', 2, { label: { pt_BR: 'Comissão simples por transação', en_US: 'Simple commission per transaction', es_ES: 'Comisión simple por transacción', it_IT: 'Commissione semplice per transazione' } })
+  await upsertOptionTranslation(prisma, 'Q070', 3, { label: { pt_BR: 'Comissão + split + regras avançadas', en_US: 'Commission + split + advanced rules', es_ES: 'Comisión + split + reglas avanzadas', it_IT: 'Commissione + split + regole avanzate' } })
+  await upsertOptionTranslation(prisma, 'Q071', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q071', 2, { label: { pt_BR: 'Avaliação básica por estrelas', en_US: 'Basic star rating', es_ES: 'Calificación básica por estrellas', it_IT: 'Valutazione base a stelle' } })
+  await upsertOptionTranslation(prisma, 'Q071', 3, { label: { pt_BR: 'Reputação completa com moderação', en_US: 'Full reputation system with moderation', es_ES: 'Reputación completa con moderación', it_IT: 'Sistema reputazionale completo con moderazione' } })
+  await upsertOptionTranslation(prisma, 'Q072', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q072', 2, { label: { pt_BR: 'Chat simples após match/pedido', en_US: 'Simple chat after match/order', es_ES: 'Chat simple tras match/pedido', it_IT: 'Chat semplice dopo match/ordine' } })
+  await upsertOptionTranslation(prisma, 'Q072', 3, { label: { pt_BR: 'Chat em tempo real com anexos', en_US: 'Real-time chat with attachments', es_ES: 'Chat en tiempo real con adjuntos', it_IT: 'Chat in tempo reale con allegati' } })
+  await upsertOptionTranslation(prisma, 'Q073', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q073', 2, { label: { pt_BR: 'Créditos simples para compras internas', en_US: 'Simple credits for internal purchases', es_ES: 'Créditos simples para compras internas', it_IT: 'Crediti semplici per acquisti interni' } })
+  await upsertOptionTranslation(prisma, 'Q073', 3, { label: { pt_BR: 'Wallet interna com regras de saldo', en_US: 'Internal wallet with balance rules', es_ES: 'Wallet interna con reglas de saldo', it_IT: 'Wallet interna con regole di saldo' } })
+  await upsertOptionTranslation(prisma, 'Q074', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q074', 2, { label: { pt_BR: 'Plano premium simples', en_US: 'Simple premium plan', es_ES: 'Plan premium simple', it_IT: 'Piano premium semplice' } })
+  await upsertOptionTranslation(prisma, 'Q074', 3, { label: { pt_BR: 'Planos com níveis e benefícios dinâmicos', en_US: 'Tiered plans with dynamic benefits', es_ES: 'Planes con niveles y beneficios dinámicos', it_IT: 'Piani a livelli con benefici dinamici' } })
+
+  // ──────────────────────────────────────────────────────────────
+  // BLOCO 8: CRYPTO (Q075-Q079)
+  // ──────────────────────────────────────────────────────────────
+
+  const cryptoTitles: Record<string, Record<LocaleKey, string>> = {
+    Q075: { pt_BR: 'Qual tipo de ativo/token está no escopo?', en_US: 'What type of asset/token is in scope?', es_ES: '¿Qué tipo de activo/token está en el alcance?', it_IT: 'Quale tipo di asset/token è nello scope?' },
+    Q076: { pt_BR: 'Qual rede blockchain pretende usar?', en_US: 'Which blockchain network do you plan to use?', es_ES: '¿Qué red blockchain planeas usar?', it_IT: 'Quale rete blockchain vuoi usare?' },
+    Q077: { pt_BR: 'Precisa de staking ou rewards?', en_US: 'Do you need staking or rewards?', es_ES: '¿Necesitas staking o rewards?', it_IT: 'Servono staking o rewards?' },
+    Q078: { pt_BR: 'Quais carteiras precisam ser integradas?', en_US: 'Which wallets need to be integrated?', es_ES: '¿Qué wallets deben integrarse?', it_IT: 'Quali wallet devono essere integrati?' },
+    Q079: { pt_BR: 'Qual nível de compliance/KYC é necessário?', en_US: 'What level of compliance/KYC is required?', es_ES: '¿Qué nivel de compliance/KYC se requiere?', it_IT: 'Quale livello di compliance/KYC è richiesto?' },
+  }
+  for (const [code, title] of Object.entries(cryptoTitles)) {
+    await upsertQuestionTranslation(prisma, code, { title })
+  }
+  await upsertOptionTranslation(prisma, 'Q075', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q075', 2, { label: { pt_BR: 'Utility token ou NFT simples', en_US: 'Utility token or simple NFT', es_ES: 'Utility token o NFT simple', it_IT: 'Utility token o NFT semplice' } })
+  await upsertOptionTranslation(prisma, 'Q075', 3, { label: { pt_BR: 'Token com regras avançadas / múltiplos ativos', en_US: 'Token with advanced rules / multiple assets', es_ES: 'Token con reglas avanzadas / múltiples activos', it_IT: 'Token con regole avanzate / asset multipli' } })
+  await upsertOptionTranslation(prisma, 'Q076', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q076', 2, { label: { pt_BR: 'Rede popular única (Ethereum, Polygon, Base)', en_US: 'Single popular network (Ethereum, Polygon, Base)', es_ES: 'Red popular única (Ethereum, Polygon, Base)', it_IT: 'Rete popolare singola (Ethereum, Polygon, Base)' } })
+  await upsertOptionTranslation(prisma, 'Q076', 3, { label: { pt_BR: 'Multi-chain ou rede especializada', en_US: 'Multi-chain or specialized network', es_ES: 'Multi-chain o red especializada', it_IT: 'Multi-chain o rete specializzata' } })
+  await upsertOptionTranslation(prisma, 'Q077', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q077', 2, { label: { pt_BR: 'Rewards simples / campanhas', en_US: 'Simple rewards / campaigns', es_ES: 'Rewards simples / campañas', it_IT: 'Rewards semplici / campagne' } })
+  await upsertOptionTranslation(prisma, 'Q077', 3, { label: { pt_BR: 'Staking completo com regras on-chain', en_US: 'Full staking with on-chain rules', es_ES: 'Staking completo con reglas on-chain', it_IT: 'Staking completo con regole on-chain' } })
+  await upsertOptionTranslation(prisma, 'Q078', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q078', 2, { label: { pt_BR: 'Uma wallet principal', en_US: 'One main wallet', es_ES: 'Una wallet principal', it_IT: 'Una wallet principale' } })
+  await upsertOptionTranslation(prisma, 'Q078', 3, { label: { pt_BR: 'Múltiplas wallets e conectores', en_US: 'Multiple wallets and connectors', es_ES: 'Múltiples wallets y conectores', it_IT: 'Wallet multiple e connettori' } })
+  await upsertOptionTranslation(prisma, 'Q079', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q079', 2, { label: { pt_BR: 'Compliance básico / termos e alertas', en_US: 'Basic compliance / terms and alerts', es_ES: 'Compliance básico / términos y alertas', it_IT: 'Compliance base / termini e avvisi' } })
+  await upsertOptionTranslation(prisma, 'Q079', 3, { label: { pt_BR: 'KYC/AML com validação de identidade', en_US: 'KYC/AML with identity verification', es_ES: 'KYC/AML con verificación de identidad', it_IT: 'KYC/AML con verifica identità' } })
+
+  // ──────────────────────────────────────────────────────────────
+  // BLOCO 9: BROWSER_EXT (Q080-Q083)
+  // ──────────────────────────────────────────────────────────────
+
+  const browserTitles: Record<string, Record<LocaleKey, string>> = {
+    Q080: { pt_BR: 'Quais navegadores a extensão deve atender?', en_US: 'Which browsers should the extension support?', es_ES: '¿Qué navegadores debe soportar la extensión?', it_IT: 'Quali browser deve supportare l’estensione?' },
+    Q081: { pt_BR: 'Qual nível de integração com páginas/APIs é necessário?', en_US: 'What level of integration with pages/APIs is needed?', es_ES: '¿Qué nivel de integración con páginas/APIs se necesita?', it_IT: 'Quale livello di integrazione con pagine/API è necessario?' },
+    Q082: { pt_BR: 'Precisa publicar nas stores oficiais?', en_US: 'Do you need publishing to official stores?', es_ES: '¿Necesitas publicar en las stores oficiales?', it_IT: 'Serve la pubblicazione negli store ufficiali?' },
+    Q083: { pt_BR: 'Precisa sincronizar com conta do usuário?', en_US: 'Do you need sync with a user account?', es_ES: '¿Necesitas sincronizar con la cuenta del usuario?', it_IT: 'Serve sincronizzare con l’account utente?' },
+  }
+  for (const [code, title] of Object.entries(browserTitles)) {
+    await upsertQuestionTranslation(prisma, code, { title })
+  }
+  await upsertOptionTranslation(prisma, 'Q080', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q080', 2, { label: { pt_BR: 'Chrome apenas', en_US: 'Chrome only', es_ES: 'Solo Chrome', it_IT: 'Solo Chrome' } })
+  await upsertOptionTranslation(prisma, 'Q080', 3, { label: { pt_BR: 'Chrome + Firefox/Edge/Safari', en_US: 'Chrome + Firefox/Edge/Safari', es_ES: 'Chrome + Firefox/Edge/Safari', it_IT: 'Chrome + Firefox/Edge/Safari' } })
+  await upsertOptionTranslation(prisma, 'Q081', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q081', 2, { label: { pt_BR: 'Integração simples com uma página ou API', en_US: 'Simple integration with one page or API', es_ES: 'Integración simple con una página o API', it_IT: 'Integrazione semplice con una pagina o API' } })
+  await upsertOptionTranslation(prisma, 'Q081', 3, { label: { pt_BR: 'Injeção avançada + múltiplas integrações', en_US: 'Advanced injection + multiple integrations', es_ES: 'Inyección avanzada + múltiples integraciones', it_IT: 'Iniezione avanzata + integrazioni multiple' } })
+  await upsertOptionTranslation(prisma, 'Q082', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q082', 2, { label: { pt_BR: 'Publicação inicial em uma store', en_US: 'Initial publishing to one store', es_ES: 'Publicación inicial en una store', it_IT: 'Pubblicazione iniziale su uno store' } })
+  await upsertOptionTranslation(prisma, 'Q082', 3, { label: { pt_BR: 'Publicação e manutenção em múltiplas stores', en_US: 'Publishing and maintenance in multiple stores', es_ES: 'Publicación y mantenimiento en múltiples stores', it_IT: 'Pubblicazione e manutenzione su store multipli' } })
+  await upsertOptionTranslation(prisma, 'Q083', 1, { label: { pt_BR: 'Não sei / preciso de orientação', en_US: 'I am not sure / I need guidance', es_ES: 'No lo sé / necesito orientación', it_IT: 'Non lo so / ho bisogno di orientamento' } })
+  await upsertOptionTranslation(prisma, 'Q083', 2, { label: { pt_BR: 'Sync básico de preferências', en_US: 'Basic preferences sync', es_ES: 'Sync básico de preferencias', it_IT: 'Sync base delle preferenze' } })
+  await upsertOptionTranslation(prisma, 'Q083', 3, { label: { pt_BR: 'Conta completa com dados e histórico', en_US: 'Full account with data and history', es_ES: 'Cuenta completa con datos e historial', it_IT: 'Account completo con dati e storico' } })
+
+  // ──────────────────────────────────────────────────────────────
+  // BLOCO 10: CONTEXT (Q090-Q093)
   // ──────────────────────────────────────────────────────────────
 
   await upsertQuestionTranslation(prisma, 'Q090', {
     title: { pt_BR: 'Qual é o orçamento disponível para o projeto?', en_US: 'What is the available budget for the project?', es_ES: '¿Cuál es el presupuesto disponible para el proyecto?', it_IT: 'Qual è il budget disponibile per il progetto?' },
     description: { pt_BR: 'Isso nos ajuda a sugerir a solução mais adequada ao seu investimento.', en_US: 'This helps us suggest the most suitable solution for your investment.', es_ES: 'Esto nos ayuda a sugerir la solución más adecuada a tu inversión.', it_IT: 'Questo ci aiuta a suggerire la soluzione più adatta al tuo investimento.' },
   })
-  await upsertOptionTranslation(prisma, 'Q090', 1, { label: { pt_BR: 'Abaixo de $3.000', en_US: 'Below $3,000', es_ES: 'Menos de $3.000', it_IT: 'Meno di $3.000' } })
-  await upsertOptionTranslation(prisma, 'Q090', 2, { label: { pt_BR: '$3.000 a $8.000', en_US: '$3,000 to $8,000', es_ES: '$3.000 a $8.000', it_IT: '$3.000 a $8.000' } })
-  await upsertOptionTranslation(prisma, 'Q090', 3, { label: { pt_BR: '$8.000 a $20.000', en_US: '$8,000 to $20,000', es_ES: '$8.000 a $20.000', it_IT: '$8.000 a $20.000' } })
-  await upsertOptionTranslation(prisma, 'Q090', 4, { label: { pt_BR: 'Acima de $20.000', en_US: 'Above $20,000', es_ES: 'Más de $20.000', it_IT: 'Oltre $20.000' } })
+  await upsertOptionTranslation(prisma, 'Q090', 1, { label: { pt_BR: 'Abaixo de R$ 3.000', en_US: 'Below US$ 3,000', es_ES: 'Menos de € 3.000', it_IT: 'Meno di € 3.000' } })
+  await upsertOptionTranslation(prisma, 'Q090', 2, { label: { pt_BR: 'R$ 3.000 a R$ 8.000', en_US: 'US$ 3,000 to US$ 8,000', es_ES: '€ 3.000 a € 8.000', it_IT: '€ 3.000 a € 8.000' } })
+  await upsertOptionTranslation(prisma, 'Q090', 3, { label: { pt_BR: 'R$ 8.000 a R$ 20.000', en_US: 'US$ 8,000 to US$ 20,000', es_ES: '€ 8.000 a € 20.000', it_IT: '€ 8.000 a € 20.000' } })
+  await upsertOptionTranslation(prisma, 'Q090', 4, { label: { pt_BR: 'Acima de R$ 20.000', en_US: 'Above US$ 20,000', es_ES: 'Más de € 20.000', it_IT: 'Oltre € 20.000' } })
 
   await upsertQuestionTranslation(prisma, 'Q091', {
     title: { pt_BR: 'Qual é o prazo esperado para entrega?', en_US: 'What is the expected delivery timeline?', es_ES: '¿Cuál es el plazo de entrega esperado?', it_IT: 'Qual è il termine di consegna previsto?' },
@@ -363,7 +454,7 @@ export async function seedTranslations(prisma: PrismaClient) {
   // ──────────────────────────────────────────────────────────────
 
   const leadTitles: Record<string, Record<LocaleKey, string>> = {
-    Q100: { pt_BR: 'Qual é o seu nome completo?', en_US: 'What is your full name?', es_ES: '¿Cuál es tu nombre completo?', it_IT: 'Qual è il tuo nome completo?' },
+    Q100: { pt_BR: 'Como podemos te chamar?', en_US: 'What is your full name?', es_ES: '¿Cuál es tu nombre completo?', it_IT: 'Qual è il tuo nome completo?' },
     Q101: { pt_BR: 'Qual é o seu email?', en_US: 'What is your email address?', es_ES: '¿Cuál es tu dirección de correo electrónico?', it_IT: 'Qual è il tuo indirizzo email?' },
     Q102: { pt_BR: 'Qual é o seu telefone? (opcional)', en_US: 'What is your phone number? (optional)', es_ES: '¿Cuál es tu número de teléfono? (opcional)', it_IT: 'Qual è il tuo numero di telefono? (opzionale)' },
     Q103: { pt_BR: 'Qual é o nome da sua empresa? (opcional)', en_US: 'What is your company name? (optional)', es_ES: '¿Cuál es el nombre de tu empresa? (opcional)', it_IT: 'Qual è il nome della tua azienda? (opzionale)' },
@@ -379,4 +470,7 @@ export async function seedTranslations(prisma: PrismaClient) {
   await upsertOptionTranslation(prisma, 'Q104', 3, { label: { pt_BR: 'Indicação de um amigo ou colega', en_US: 'Friend or colleague referral', es_ES: 'Recomendación de un amigo', it_IT: 'Raccomandazione di un amico' } })
   await upsertOptionTranslation(prisma, 'Q104', 4, { label: { pt_BR: 'Redes sociais (Instagram, Facebook, etc.)', en_US: 'Social media (Instagram, Facebook, etc.)', es_ES: 'Redes sociales (Instagram, Facebook, etc.)', it_IT: 'Social media (Instagram, Facebook, ecc.)' } })
   await upsertOptionTranslation(prisma, 'Q104', 5, { label: { pt_BR: 'Outro', en_US: 'Other', es_ES: 'Otro', it_IT: 'Altro' } })
+
+  await syncRefactorTranslations(prisma)
+  await applyCopywritingReviewV1(prisma)
 }

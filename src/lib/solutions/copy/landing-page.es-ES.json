@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Presupuesto landing page para captar más leads",
+    "description": "Landing de alta conversión con copy, píxeles Meta/Google Ads, GA4, LCP < 2.5s, validación de formularios, CRM, A/B testing y objetivo Lighthouse 100."
+  },
+  "hero": {
+    "h1": "presupuesto landing page: una landing lista para convertir",
+    "subtitle": "Landing de alta conversión con medición y velocidad para escalar campañas sin perder oportunidades.",
+    "cta": "Pide tu presupuesto"
+  },
+  "pain": {
+    "title": "Inviertes en tráfico, pero la landing no acompaña",
+    "bullets": [
+      "¿Alguna vez pagaste clics y el formulario no generó leads cualificados?",
+      "¿Alguna vez miraste PageSpeed y viste que la gente se va antes de leer tu oferta?",
+      "¿Alguna vez perdiste un lead porque no hubo validación, feedback o llegó tarde al CRM?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Copy que convierte",
+      "desc": "Texto orientado a acción: propuesta clara, prueba social, objeciones resueltas y CTA directo sin fricción."
+    },
+    {
+      "title": "Medición sin dudas",
+      "desc": "GA4 con eventos y conversiones definidos para que veas CVR, coste por lead y puntos de fuga reales."
+    },
+    {
+      "title": "Rendimiento de pago",
+      "desc": "Objetivo LCP < 2.5s y enfoque Lighthouse 100 para reducir rebote y aprovechar cada euro invertido."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye tu landing",
+    "bullets": [
+      "Hero + CTA",
+      "Prueba social",
+      "Secciones de beneficios",
+      "Bloques antiobjeciones",
+      "Formulario con validación",
+      "Integración con CRM",
+      "Píxeles Meta + Google Ads",
+      "Eventos + conversiones en GA4",
+      "Preparada para tests A/B"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Captación de leads",
+      "desc": "Landing centrada en calidad de lead, lista para campañas de conversión y respuesta rápida."
+    },
+    {
+      "title": "Lista de espera",
+      "desc": "Página ligera para validar demanda, capturar intención y medir altas con tracking consistente."
+    },
+    {
+      "title": "Webinar o evento",
+      "desc": "Registro con agenda clara y prueba de ponentes, con píxeles y eventos GA4 para optimizar."
+    },
+    {
+      "title": "Oferta de servicios",
+      "desc": "Enfoque consultivo para pedir presupuesto o reservar llamada, con objeciones bien trabajadas."
+    },
+    {
+      "title": "Producto digital",
+      "desc": "Diseñada para tráfico frío y remarketing, con ganchos para testear titular, CTA y orden de secciones."
+    }
+  ],
+  "stack": {
+    "title": "Stack e integraciones a tu medida",
+    "options": [
+      {
+        "name": "GA4",
+        "note": "Eventos y conversiones alineados con tu embudo y tu forma de reportar."
+      },
+      {
+        "name": "Google Ads",
+        "note": "Etiqueta y conversiones configuradas para optimizar por resultados, no por clics."
+      },
+      {
+        "name": "Meta Pixel",
+        "note": "Eventos estándar y personalizados para remarketing y audiencias de mayor intención."
+      },
+      {
+        "name": "CRM",
+        "note": "Envío automático de leads por API/webhook para que no dependas de exportaciones manuales."
+      },
+      {
+        "name": "Tests A/B",
+        "note": "Base preparada para variantes de copy, CTA y layout sin rehacer la implementación."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Alineación rápida",
+        "desc": "Tú compartes oferta, audiencia y objetivo; definimos estructura y mensaje principal."
+      },
+      {
+        "title": "Construcción + tracking",
+        "desc": "Entrego la landing con GA4, píxeles, formulario validado e integración con tu CRM."
+      },
+      {
+        "title": "Mejora con datos",
+        "desc": "Lanzas tráfico y ejecutas tests A/B para subir conversión con decisiones medibles."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿De qué depende el presupuesto de una landing page?",
+      "a": "Depende del número de secciones, complejidad del formulario, integraciones (CRM, píxeles y eventos GA4), variantes para A/B testing y plazo de entrega."
+    },
+    {
+      "q": "¿Incluyes GA4 y píxeles de Meta/Google Ads?",
+      "a": "Sí. Dejo GA4 con eventos y conversiones definidos, además de Meta Pixel y Google Ads para medir y optimizar campañas con consistencia."
+    },
+    {
+      "q": "¿La landing estará lista para tráfico de pago?",
+      "a": "Sí, se construye con rendimiento como requisito: objetivo LCP < 2.5s y enfoque Lighthouse 100. El resultado final también depende de imágenes, fuentes y scripts externos."
+    },
+    {
+      "q": "¿El formulario tiene validación y mensajes claros?",
+      "a": "Sí. Validación de campos, mensajes de error y confirmación, y feedback visible para reducir abandonos y leads perdidos."
+    },
+    {
+      "q": "¿Puedes integrar mi CRM y automatizaciones?",
+      "a": "Sí. El envío puede ser por API, webhook o herramientas de automatización, para que cada envío llegue a tu pipeline en tiempo real."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Consigue tu presupuesto con alcance claro",
+    "desc": "Dime tu oferta, audiencia y objetivo. Recibes una propuesta cerrada con tracking, rendimiento e integraciones listas para lanzar.",
+    "button": "Solicitar presupuesto"
+  }
+}

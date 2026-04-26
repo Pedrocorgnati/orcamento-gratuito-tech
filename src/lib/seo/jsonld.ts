@@ -89,3 +89,69 @@ export function getFAQSchema(locale: string) {
     })),
   }
 }
+
+/**
+ * Service schema por solution slug. Usa copy codex (hero/meta) + URL localizada.
+ */
+export function getSolutionServiceSchema(params: {
+  name: string
+  description: string
+  url: string
+  locale: string
+  providerName?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    inLanguage: params.locale,
+    areaServed: 'Worldwide',
+    serviceType: 'Software development budgeting',
+    provider: {
+      '@type': 'Organization',
+      name: params.providerName ?? 'Orçamento Gratuito Tech',
+      url: BASE_URL,
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'BRL',
+      availability: 'https://schema.org/InStock',
+    },
+  }
+}
+
+/**
+ * BreadcrumbList schema. Passa trilha Home → Hub → Solução.
+ */
+export function getBreadcrumbSchema(
+  items: Array<{ name: string; url: string }>,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: it.url,
+    })),
+  }
+}
+
+/**
+ * FAQPage schema a partir do copy.faq de uma solution.
+ */
+export function getSolutionFAQSchema(faq: Array<{ q: string; a: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
+}

@@ -7,6 +7,8 @@ import { COOKIE_NAMES } from '@/lib/constants'
 import { answerSchema, type SubmitAnswerResult } from '@/lib/validations/schemas'
 import { ERROR_CODES } from '@/lib/errors'
 import { recalculateAccumulators } from '@/lib/session/recalculateAccumulators' // RESOLVED: G011
+import { buildAnswerFlowContext } from '@/lib/session/answerFlow'
+import { logger } from '@/lib/logger'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -59,145 +61,173 @@ export async function submitAnswer(input: unknown): Promise<AnswerActionResult> 
   }
 
   try {
-    // 3. Buscar sessão
-    const session = await prisma.session.findUnique({
-      where: { id: sessionId },
-      select: {
-        id: true,
-        status: true,
-        expires_at: true,
-        questions_answered: true,
-      },
-    })
-
-    if (!session) {
-      return {
-        success: false,
-        error: { code: ERROR_CODES.SESSION_NOT_FOUND, message: 'Sessão não encontrada.' },
-      }
-    }
-
-    if (session.status === SessionStatus.EXPIRED || session.expires_at < new Date()) {
-      return {
-        success: false,
-        error: { code: ERROR_CODES.SESSION_EXPIRED, message: 'Sessão expirada. Inicie uma nova estimativa.' },
-      }
-    }
-
-    // 4. Buscar todas as options selecionadas e calcular impactos acumulados (SUM)
-    let priceImpact = 0
-    let timeImpact = 0
-    let complexityImpact = 0
-    let nextQuestionId: string | null = null
-
-    if (optionIds && optionIds.length > 0) {
-      const options = await prisma.option.findMany({
-        where: { id: { in: optionIds }, question_id: questionId },
+    const result = await prisma.$transaction(async (tx) => {
+      const session = await tx.session.findUnique({
+        where: { id: sessionId },
         select: {
           id: true,
-          price_impact: true,
-          time_impact: true,
-          complexity_impact: true,
-          next_question_id: true,
-          order: true,
+          status: true,
+          expires_at: true,
+          questions_answered: true,
+          current_question_id: true,
         },
-        orderBy: { order: 'asc' },
       })
 
-      if (options.length !== optionIds.length) {
-        return {
-          success: false,
-          error: { code: ERROR_CODES.VALIDATION_FAILED, message: 'Uma ou mais opções são inválidas para esta pergunta.' },
-        }
+      if (!session) throw new Error('SESSION_NOT_FOUND')
+      if (session.status === SessionStatus.EXPIRED || session.expires_at < new Date()) {
+        throw new Error('SESSION_EXPIRED')
+      }
+      if (session.status === SessionStatus.COMPLETED) {
+        throw new Error('SESSION_COMPLETED')
+      }
+      if (session.current_question_id && session.current_question_id !== questionId) {
+        throw new Error('OUT_OF_SEQUENCE')
       }
 
-      // SUM de todos os impactos
-      priceImpact = options.reduce((sum, o) => sum + o.price_impact, 0)
-      timeImpact = options.reduce((sum, o) => sum + o.time_impact, 0)
-      complexityImpact = options.reduce((sum, o) => sum + o.complexity_impact, 0)
-      // next_question_id da última option (maior order)
-      const lastOption = options[options.length - 1]!
-      nextQuestionId = lastOption.next_question_id
-    }
+      const {
+        priceImpact,
+        timeImpact,
+        complexityImpact,
+        nextQuestionId,
+        sessionUpdateData,
+        persistedTextValue,
+      } = await buildAnswerFlowContext({
+        sessionId,
+        questionId,
+        optionIds,
+        textValue,
+        client: tx,
+      })
 
-    // 5. Verificar se já existe resposta (para step_number correto)
-    const existingAnswer = await prisma.answer.findUnique({
-      where: { session_id_question_id: { session_id: sessionId, question_id: questionId } },
-      select: { step_number: true },
-    })
+      const existingAnswer = await tx.answer.findUnique({
+        where: { session_id_question_id: { session_id: sessionId, question_id: questionId } },
+        select: { step_number: true },
+      })
+      const stepNumber = existingAnswer?.step_number ?? session.questions_answered + 1
+      const singleOptionId = optionIds && optionIds.length === 1 ? optionIds[0]! : null
 
-    const stepNumber = existingAnswer?.step_number ?? session.questions_answered + 1
-
-    // Serializar optionIds como JSON string para o campo option_id (String? no DB)
-    const optionIdValue = optionIds && optionIds.length > 0 ? JSON.stringify(optionIds) : null
-
-    // 6. Upsert answer + update session em transação atômica (GAP-004)
-    await prisma.$transaction([
-      prisma.answer.upsert({
+      await tx.answer.upsert({
         where: { session_id_question_id: { session_id: sessionId, question_id: questionId } },
         create: {
           session_id: sessionId,
           question_id: questionId,
-          option_id: optionIdValue,
-          text_value: textValue ?? null,
+          option_id: singleOptionId,
+          text_value: persistedTextValue,
           price_impact_snapshot: priceImpact,
           time_impact_snapshot: timeImpact,
           complexity_impact_snapshot: complexityImpact,
           step_number: stepNumber,
         },
         update: {
-          option_id: optionIdValue,
-          text_value: textValue ?? null,
+          option_id: singleOptionId,
+          text_value: persistedTextValue,
           price_impact_snapshot: priceImpact,
           time_impact_snapshot: timeImpact,
           complexity_impact_snapshot: complexityImpact,
         },
-      }),
-      // Session update placeholder — recalculo feito após a transação com findMany
-      // A transação garante que answer e session são atualizados ou revertidos juntos.
-      // Por limitação do Prisma sequential transactions, fazemos o recalculo separado abaixo.
-      prisma.session.update({
+      })
+
+      const {
+        newQuestionsAnswered,
+        newPath,
+        newAccumPrice,
+        newAccumTime,
+        newAccumComplexity,
+        isComplete,
+        progressPercentage,
+      } = await recalculateAccumulators(
+        sessionId,
+        nextQuestionId,
+        !!(optionIds && optionIds.length > 0),
+        tx
+      )
+
+      await tx.session.update({
         where: { id: sessionId },
-        data: { updated_at: new Date() },
-      }),
-    ])
+        data: {
+          ...sessionUpdateData,
+          accumulated_price: newAccumPrice,
+          accumulated_time: newAccumTime,
+          accumulated_complexity: newAccumComplexity,
+          path_taken: newPath,
+          questions_answered: newQuestionsAnswered,
+          progress_percentage: progressPercentage,
+          current_question_id: nextQuestionId,
+          status: isComplete ? SessionStatus.COMPLETED : SessionStatus.IN_PROGRESS,
+          updated_at: new Date(),
+        },
+      })
 
-    // 7. Recalcular acumuladores a partir de TODAS as respostas (precisão absoluta)
-    const {
-      newQuestionsAnswered,
-      newPath,
-      newAccumPrice,
-      newAccumTime,
-      newAccumComplexity,
-      isComplete,
-      progressPercentage,
-    } = await recalculateAccumulators(sessionId, nextQuestionId, !!(optionIds && optionIds.length > 0))
-
-    // 8. Atualizar sessão com acumuladores recalculados
-    await prisma.session.update({
-      where: { id: sessionId },
-      data: {
-        accumulated_price: newAccumPrice,
-        accumulated_time: newAccumTime,
-        accumulated_complexity: newAccumComplexity,
-        path_taken: newPath,
-        questions_answered: newQuestionsAnswered,
-        progress_percentage: progressPercentage,
-        current_question_id: nextQuestionId,
-        status: isComplete ? SessionStatus.COMPLETED : SessionStatus.IN_PROGRESS,
-      },
+      return { nextQuestionId, progressPercentage, isComplete }
     })
 
     return {
       success: true,
       data: {
-        nextQuestionId,
-        progress: progressPercentage / 100,
-        isComplete,
+        nextQuestionId: result.nextQuestionId,
+        progress: result.progressPercentage / 100,
+        isComplete: result.isComplete,
       },
     }
   } catch (err: unknown) {
-    console.error('[submitAnswer]', err)
+    const code = err instanceof Error ? err.message : 'UNKNOWN'
+
+    switch (code) {
+      case 'INVALID_OPTIONS':
+        return {
+          success: false,
+          error: {
+            code: ERROR_CODES.VALIDATION_FAILED,
+            message: 'Uma ou mais opções são inválidas para esta pergunta.',
+          },
+        }
+      case 'QUESTION_NOT_FOUND':
+        return {
+          success: false,
+          error: { code: ERROR_CODES.VALIDATION_FAILED, message: 'Pergunta inválida.' },
+        }
+      case 'SESSION_NOT_FOUND':
+        return {
+          success: false,
+          error: { code: ERROR_CODES.SESSION_NOT_FOUND, message: 'Sessão não encontrada.' },
+        }
+      case 'SESSION_EXPIRED':
+        return {
+          success: false,
+          error: {
+            code: ERROR_CODES.SESSION_EXPIRED,
+            message: 'Sessão expirada. Inicie uma nova estimativa.',
+          },
+        }
+      case 'SESSION_COMPLETED':
+        return {
+          success: false,
+          error: { code: ERROR_CODES.FORBIDDEN, message: 'Sessão já finalizada.' },
+        }
+      case 'OUT_OF_SEQUENCE':
+        return {
+          success: false,
+          error: {
+            code: ERROR_CODES.VALIDATION_FAILED,
+            message: 'Pergunta fora de sequência. Atualize a página.',
+          },
+        }
+      default:
+        if (code.startsWith('INVALID_TEXT_VALUE:')) {
+          return {
+            success: false,
+            error: {
+              code: ERROR_CODES.VALIDATION_FAILED,
+              message: code.slice('INVALID_TEXT_VALUE:'.length),
+            },
+          }
+        }
+    }
+
+    logger.error('erro_interno_resposta', {
+      session_id: sessionId,
+      error: err instanceof Error ? err.message : String(err),
+    })
     return {
       success: false,
       error: { code: ERROR_CODES.INTERNAL_ERROR, message: 'Erro interno. Tente novamente.' },

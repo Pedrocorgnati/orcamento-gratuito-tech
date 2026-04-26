@@ -1,0 +1,25 @@
+import * as Sentry from '@sentry/nextjs'
+import { redactPII } from '@/lib/security/redactPII'
+
+const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN
+
+if (dsn) {
+  Sentry.init({
+    dsn,
+    environment:
+      process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT ??
+      process.env.NEXT_PUBLIC_VERCEL_ENV ??
+      process.env.NODE_ENV,
+    tracesSampleRate: 0.1,
+    sampleRate: 1.0,
+    beforeSend(event) {
+      if (event.extra) event.extra = redactPII(event.extra)
+      if (event.contexts) event.contexts = redactPII(event.contexts)
+      if (event.tags) event.tags = redactPII(event.tags) as typeof event.tags
+      if (event.user) event.user = redactPII(event.user)
+      return event
+    },
+  })
+}
+
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart

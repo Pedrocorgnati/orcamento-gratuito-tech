@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Landing page cost for high conversion | Ready for ads",
+    "description": "Get a landing built to convert: conversion copy, Lighthouse 100 target, LCP < 2.5s, GA4 + Meta/Google Ads pixels, form validation, and CRM integration."
+  },
+  "hero": {
+    "h1": "landing page cost: a conversion-ready page you can run ads to",
+    "subtitle": "High-conversion landing with tracking, pixels, and speed so you can scale traffic with confidence.",
+    "cta": "Request a quote"
+  },
+  "pain": {
+    "title": "You pay for clicks, but the page leaks leads",
+    "bullets": [
+      "Have you ever launched ads and watched expensive clicks turn into zero qualified leads?",
+      "Have you ever checked PageSpeed and realized your page loads late and people bounce fast?",
+      "Have you ever lost a hot lead because the form fails, lacks validation, or never reaches your CRM?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Conversion copy",
+      "desc": "Structure and wording that drive action fast: clear promise, proof, objections handled, and a CTA that feels natural."
+    },
+    {
+      "title": "Clean measurement",
+      "desc": "GA4 configured with defined events and conversions, so you see the funnel, CVR, and true cost per lead."
+    },
+    {
+      "title": "Real speed",
+      "desc": "Performance built-in with LCP < 2.5s as the target and a Lighthouse 100 goal to reduce drop-offs from paid traffic."
+    }
+  ],
+  "scope": {
+    "title": "What your landing includes",
+    "bullets": [
+      "Hero + CTA",
+      "Social proof",
+      "Benefit sections",
+      "Objection handling blocks",
+      "Form with validation",
+      "CRM integration",
+      "Meta Pixel + Google Ads tag",
+      "GA4 events + conversions",
+      "A/B testing-ready setup"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Lead generation",
+      "desc": "A form-first landing focused on lead quality, ready for conversion campaigns and follow-up speed."
+    },
+    {
+      "title": "Waitlist",
+      "desc": "A lean page to validate demand, capture intent, and measure sign-ups with consistent tracking."
+    },
+    {
+      "title": "Webinar or event",
+      "desc": "Registration flow with clear agenda and speaker proof, plus pixels and GA4 events for optimization."
+    },
+    {
+      "title": "Service offer",
+      "desc": "A consultative layout with social proof and objections addressed, built to book calls or request a quote."
+    },
+    {
+      "title": "Digital product",
+      "desc": "A page for cold traffic and retargeting, with A/B testing hooks for headline, CTA, and section order."
+    }
+  ],
+  "stack": {
+    "title": "Stack and integrations, your choice",
+    "options": [
+      {
+        "name": "GA4",
+        "note": "Events and conversions mapped to match your funnel and reporting needs."
+      },
+      {
+        "name": "Google Ads",
+        "note": "Tag and conversions aligned so optimization follows outcomes, not vanity clicks."
+      },
+      {
+        "name": "Meta Pixel",
+        "note": "Standard and custom events for retargeting and higher-quality audiences."
+      },
+      {
+        "name": "CRM",
+        "note": "Leads sent automatically via API/webhook, so you do not lose speed to manual exports."
+      },
+      {
+        "name": "A/B testing",
+        "note": "Baseline prepared for variations in headline, CTA, and layout without rework."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Quick alignment",
+        "desc": "You share the offer, audience, and goal; the structure and conversion copy are drafted."
+      },
+      {
+        "title": "Build + instrumentation",
+        "desc": "The page ships with GA4, Meta/Google Ads pixels, validated forms, and CRM integration."
+      },
+      {
+        "title": "Iterate with tests",
+        "desc": "You run traffic, then A/B test key elements to raise conversion rate with real data."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What affects landing page cost?",
+      "a": "Cost depends on layout complexity, number of sections, required integrations (CRM, tags, and GA4 events), A/B test variants, and your delivery timeline."
+    },
+    {
+      "q": "Do you set up GA4 and ad pixels?",
+      "a": "Yes. GA4 events and conversions are defined, and Meta Pixel plus Google Ads tags are installed so you can optimize campaigns with consistent tracking."
+    },
+    {
+      "q": "Will the landing be fast enough for paid traffic?",
+      "a": "Speed is a core requirement: LCP < 2.5s is the target and Lighthouse 100 is the goal. Final results also depend on assets like images, fonts, and third-party scripts."
+    },
+    {
+      "q": "Does the form include validation?",
+      "a": "Yes. Your form includes field validation and clear error/success feedback, reducing lost leads and improving completion rate for high-intent visitors."
+    },
+    {
+      "q": "Can you integrate with my CRM?",
+      "a": "Yes. Leads can be sent to your CRM via API, webhook, or automation tooling, so every submission reaches your pipeline without manual steps."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a clear landing page cost estimate",
+    "desc": "Share your offer, audience, and goal. You get a fixed-scope quote with the tracking and integrations you need to launch.",
+    "button": "Get my quote"
+  }
+}

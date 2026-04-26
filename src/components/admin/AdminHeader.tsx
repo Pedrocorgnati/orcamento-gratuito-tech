@@ -24,21 +24,22 @@ export function AdminHeader({ userEmail }: AdminHeaderProps) {
   }
 
   return (
-    <header className="h-16 border-b border-gray-200 bg-white px-6 flex items-center justify-between shrink-0">
-      <div className="flex items-center gap-3">
+    <header data-testid="admin-nav-header" className="h-16 border-b border-gray-200 bg-white px-6 flex items-center justify-between shrink-0">
+      <div data-testid="admin-nav-header-brand" className="flex items-center gap-3">
         <span className="text-sm font-semibold text-gray-900">
           Budget Free Engine — Admin
         </span>
       </div>
-      <div className="flex items-center gap-3">
+      <div data-testid="admin-nav-header-actions" className="flex items-center gap-3">
         {userEmail && (
-          <span className="hidden sm:block text-xs text-gray-500 truncate max-w-[200px]">
+          <span data-testid="admin-nav-header-user-email" className="hidden sm:block text-xs text-gray-500 truncate max-w-[200px]">
             {userEmail}
           </span>
         )}
         <button
           onClick={handleSignOut}
           type="button"
+          data-testid="admin-nav-header-signout-button"
           className="text-sm text-gray-500 hover:text-gray-900 transition-colors px-3 py-1.5 rounded-md hover:bg-gray-100"
         >
           Sair

@@ -1,4 +1,5 @@
 import { Header } from "./Header";
+import { MegaNavbar } from "./MegaNavbar";
 import { Footer } from "./Footer";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -14,7 +15,6 @@ interface PublicLayoutProps {
   privacyLabel?: string;
   copyrightLabel?: string;
   skipLinkLabel?: string;
-  loginLabel?: string;
   logoutLabel?: string;
   homeAriaLabel?: string;
   footerNavLabel?: string;
@@ -30,7 +30,6 @@ export function PublicLayout({
   privacyLabel,
   copyrightLabel,
   skipLinkLabel = "Pular para conteúdo principal",
-  loginLabel,
   logoutLabel,
   homeAriaLabel,
   footerNavLabel,
@@ -45,15 +44,18 @@ export function PublicLayout({
         {skipLinkLabel}
       </a>
 
-      <Header
-        variant={variant}
-        isAuthenticated={isAuthenticated}
-        userEmail={userEmail}
-        locale={locale}
-        loginLabel={loginLabel}
-        logoutLabel={logoutLabel}
-        homeAriaLabel={homeAriaLabel}
-      />
+      {variant === "admin" ? (
+        <Header
+          variant={variant}
+          isAuthenticated={isAuthenticated}
+          userEmail={userEmail}
+          locale={locale}
+          logoutLabel={logoutLabel}
+          homeAriaLabel={homeAriaLabel}
+        />
+      ) : (
+        <MegaNavbar locale={locale} />
+      )}
 
       <main
         id="main-content"

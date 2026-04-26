@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Presupuesto de software cripto y Web3 a medida",
+    "description": "Pide tu presupuesto de software cripto: wallets Web3, smart contracts en Solidity, tokens ERC-20/721/1155, KYC/AML, custodia, exchange y analítica on-chain en EVM."
+  },
+  "hero": {
+    "h1": "presupuesto software cripto para tu producto Web3",
+    "subtitle": "De la wallet a los contratos, estimamos alcance, riesgos y entregables con claridad.",
+    "cta": "Solicitar presupuesto"
+  },
+  "pain": {
+    "title": "Si te suena, hablemos",
+    "bullets": [
+      "¿Alguna vez te dieron un presupuesto sin detallar cadenas, tokens y dependencias?",
+      "¿Alguna vez te prometieron “rápido” y luego aparecieron KYC/AML, custodia y auditorías?",
+      "¿Alguna vez integraste MetaMask o WalletConnect y el onboarding se volvió un cuello de botella?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Alcance medible",
+      "desc": "Definimos funcionalidades, supuestos y criterios de aceptación para evitar cambios sorpresa y retrabajo."
+    },
+    {
+      "title": "Riesgo bajo control",
+      "desc": "Identificamos puntos críticos: auditoría de contratos, permisos, custodia, compliance y seguridad operativa."
+    },
+    {
+      "title": "Ruta de entrega",
+      "desc": "Trazamos fases realistas: prototipo, MVP y escalado, con hitos y dependencias técnicas bien visibles."
+    }
+  ],
+  "scope": {
+    "title": "Qué puede incluir el presupuesto",
+    "bullets": [
+      "Wallets Web3: MetaMask, WalletConnect",
+      "Smart contracts en Solidity (EVM)",
+      "Cadenas: Ethereum, Polygon, Base",
+      "Tokens: ERC-20, ERC-721, ERC-1155",
+      "Auditoría de contratos y remediación",
+      "Cumplimiento KYC/AML e integraciones",
+      "Custodia (propia o terceros) y políticas",
+      "Exchange: spot, swap, ramp on/off",
+      "Analítica on-chain y paneles de métricas"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Wallet y onboarding",
+      "desc": "Conexión segura, firmas, permisos y flujos claros para usuarios con MetaMask o WalletConnect."
+    },
+    {
+      "title": "Emisión de tokens",
+      "desc": "Diseño y despliegue de ERC-20/721/1155 con roles, pausas, upgrades y eventos trazables."
+    },
+    {
+      "title": "Marketplace NFT",
+      "desc": "Listados, compras, royalties y validaciones, con compatibilidad EVM y buenas prácticas de seguridad."
+    },
+    {
+      "title": "Custodia y compliance",
+      "desc": "Modelo de custodia, controles, KYC/AML y trazabilidad para operar con requisitos regulatorios."
+    },
+    {
+      "title": "Exchange y liquidez",
+      "desc": "Arquitectura para swap/spot, gestión de órdenes y riesgos, y conexión con proveedores cuando aplica."
+    }
+  ],
+  "stack": {
+    "title": "Stack habitual (ajustable a tu caso)",
+    "options": [
+      {
+        "name": "EVM",
+        "note": "Soporte para Ethereum, Polygon y Base según costes, usuarios y necesidades de seguridad."
+      },
+      {
+        "name": "Solidity",
+        "note": "Contratos con patrones auditables, tests, despliegues por entorno y control de permisos."
+      },
+      {
+        "name": "Wallets",
+        "note": "Integraciones con MetaMask y WalletConnect, manejo de redes, firmas y errores comunes."
+      },
+      {
+        "name": "Tokens",
+        "note": "Implementación ERC-20/721/1155 con eventos, metadata y compatibilidad con indexadores."
+      },
+      {
+        "name": "On-chain data",
+        "note": "Indexación y analítica on-chain para dashboards, alertas y métricas accionables del producto."
+      },
+      {
+        "name": "KYC/AML",
+        "note": "Flujos de verificación, scoring y cumplimiento, con registros y políticas de retención."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Te escuchamos",
+        "desc": "Recogemos objetivo, usuarios, cadena, tokens y restricciones de compliance para acotar el alcance."
+      },
+      {
+        "title": "Desglosamos",
+        "desc": "Partimos el trabajo por módulos: wallet, contratos, backend, analítica, KYC/AML y operación."
+      },
+      {
+        "title": "Presupuestamos",
+        "desc": "Entregamos estimación por fases, riesgos, entregables y supuestos, con opciones de coste/tiempo."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Qué información necesitas para estimar el presupuesto?",
+      "a": "Objetivo del producto, tipo de token (ERC-20/721/1155), cadenas EVM (Ethereum/Polygon/Base), modelo de custodia, requisitos KYC/AML, y si habrá exchange, ramp on/off o analítica on-chain."
+    },
+    {
+      "q": "¿Incluye auditoría de smart contracts en Solidity?",
+      "a": "Podemos incluir auditoría de contratos con terceros y nuestra fase de remediación: hardening, tests, revisión de permisos y verificación de escenarios de ataque antes de producción."
+    },
+    {
+      "q": "¿Trabajáis con MetaMask y WalletConnect?",
+      "a": "Sí, planteamos integración y UX para conexión, cambio de red, firma de mensajes y transacciones, además de manejo de errores y estados para reducir fricción en onboarding."
+    },
+    {
+      "q": "¿Podéis ayudar con KYC/AML y cumplimiento?",
+      "a": "Sí, definimos el flujo y las integraciones necesarias, además de registros, políticas y controles operativos. Si necesitas asesoría legal, coordinamos con tu equipo o proveedores."
+    },
+    {
+      "q": "¿Qué cadenas EVM recomendáis: Ethereum, Polygon o Base?",
+      "a": "Depende de tu mercado, costes por transacción, seguridad y ecosistema. Te proponemos una opción principal y alternativas, con impacto en UX, infraestructura e indexación."
+    },
+    {
+      "q": "¿Cómo evitamos sobrecostes durante el desarrollo?",
+      "a": "Cerramos alcance por fases, explicitamos supuestos, definimos criterios de aceptación y dejamos claro qué cambia el precio: nuevas cadenas, nuevos tokens, custodia más compleja o requisitos extra de compliance."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Pide tu estimación con alcance y riesgos claros",
+    "desc": "Cuéntame qué quieres construir y te devuelvo un presupuesto por fases, con supuestos, entregables y prioridades.",
+    "button": "Enviar requisitos"
+  }
+}

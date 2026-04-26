@@ -1,6 +1,14 @@
 /**
- * Rate limiter in-memory com sliding window.
- * Para produção, substituir por Redis-based rate limiter.
+ * Rate limiter com sliding window.
+ *
+ * MODO ATUAL: in-memory (Map). Funcional para single-instance.
+ * MIGRAÇÃO (TASK-REFORGE-1 module-18): quando UPSTASH_REDIS_REST_URL estiver
+ * disponível, substituir pelos exportados de rate-limiter-kv.ts.
+ *
+ * Passos manuais para ativar Upstash:
+ *   1. npm install @upstash/ratelimit @upstash/redis
+ *   2. Configurar UPSTASH_REDIS_REST_URL e UPSTASH_REDIS_REST_TOKEN no Vercel
+ *   3. Substituir importações por rate-limiter-kv.ts nos callers
  */
 
 type RateLimitEntry = {

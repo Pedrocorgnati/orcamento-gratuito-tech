@@ -24,9 +24,12 @@ interface ServerFetchOptions {
  */
 export async function serverFetch<T>(
   path: string,
-  options: ServerFetchOptions = {}
+  options: ServerFetchOptions & {
+    /** Status HTTP que devem devolver o payload mesmo com !res.ok (ex.: 503 fallback). */
+    acceptStatus?: number[]
+  } = {}
 ): Promise<T | null> {
-  const { sessionId, cache = 'no-store' } = options
+  const { sessionId, cache = 'no-store', acceptStatus = [] } = options
 
   try {
     const res = await fetch(`${BASE_URL}${path}`, {
@@ -37,7 +40,7 @@ export async function serverFetch<T>(
         : undefined,
     })
 
-    if (!res.ok) return null
+    if (!res.ok && !acceptStatus.includes(res.status)) return null
 
     return (await res.json()) as T
   } catch {

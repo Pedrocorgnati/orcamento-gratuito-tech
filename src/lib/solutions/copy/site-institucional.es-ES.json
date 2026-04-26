@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Presupuesto y diseño de sitio web empresarial | SystemForge",
+    "description": "Pide tu presupuesto para un sitio web empresarial rápido y medible: SEO on-page, Core Web Vitals, CMS headless, multi-idioma, RGPD, GA4/GTM y CRM."
+  },
+  "hero": {
+    "h1": "presupuesto sitio web empresarial: tu web corporativa lista para crecer",
+    "subtitle": "Una web corporativa rápida, accesible y preparada para SEO, analítica y captación de leads.",
+    "cta": "Solicitar presupuesto"
+  },
+  "pain": {
+    "title": "Cuando tu web no acompaña al negocio",
+    "bullets": [
+      "¿Alguna vez tu sitio tarda y pierdes contactos antes de que cargue?",
+      "¿Alguna vez publicas contenido y no posiciona por fallos de SEO on-page?",
+      "¿Alguna vez recibes formularios, pero no llegan al CRM o llegan incompletos?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "SEO on-page sólido",
+      "desc": "Arquitectura de contenidos, enlazado interno, metadatos y datos estructurados para que Google entienda tu propuesta y tus servicios."
+    },
+    {
+      "title": "Rendimiento medible",
+      "desc": "Optimización de LCP y Core Web Vitals, imágenes y fuentes bien servidas, y una base técnica que mantiene la velocidad con el tiempo."
+    },
+    {
+      "title": "Captación conectada",
+      "desc": "Formularios conectados a tu CRM, eventos en GA4 vía GTM, y widget de WhatsApp para reducir fricción y acelerar el contacto."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye un sitio institucional",
+    "bullets": [
+      "Estructura de páginas corporativas",
+      "SEO on-page por plantilla y página",
+      "Optimización de LCP y Core Web Vitals",
+      "CMS headless para contenidos",
+      "Multi-idioma y hreflang",
+      "Formularios con CRM y antispam",
+      "RGPD: cookies y consentimiento",
+      "GA4 + GTM con eventos clave",
+      "Accesibilidad WCAG (base)"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Empresa B2B",
+      "desc": "Presenta servicios, casos y equipo, y convierte visitas en leads con formularios conectados a tu CRM."
+    },
+    {
+      "title": "Grupo multi-sede",
+      "desc": "Secciones por país o ciudad, contenidos por idioma y señalización correcta con hreflang."
+    },
+    {
+      "title": "Marca empleadora",
+      "desc": "Página de talento con accesibilidad y analítica para medir interés, fuentes y conversiones."
+    },
+    {
+      "title": "Lanzamiento de unidad",
+      "desc": "Micrositio institucional con velocidad alta, SEO técnico correcto y medición en GA4 desde el día uno."
+    },
+    {
+      "title": "Replataformado",
+      "desc": "Migración cuidando SEO: redirecciones, canonicals, sitemaps y control de indexación para evitar caídas."
+    }
+  ],
+  "stack": {
+    "title": "Opciones técnicas según tu equipo",
+    "options": [
+      {
+        "name": "Next.js",
+        "note": "Rendimiento alto, SSR/SSG y control fino para Core Web Vitals y SEO."
+      },
+      {
+        "name": "Headless CMS",
+        "note": "Contenido editable sin tocar el frontend, con roles y flujos para marketing."
+      },
+      {
+        "name": "GA4 + GTM",
+        "note": "Medición de formularios, clics y conversiones con eventos claros y trazables."
+      },
+      {
+        "name": "CRM",
+        "note": "Integración para que cada lead llegue con origen, campaña y contexto del formulario."
+      },
+      {
+        "name": "RGPD",
+        "note": "Consentimiento, cookies y textos legales adaptados a captación y analítica."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "desc": "Entendemos objetivos, idiomas, SEO y necesidades de medición para definir la estructura."
+      },
+      {
+        "title": "Construcción",
+        "desc": "Implementamos páginas, CMS, formularios con CRM, GA4/GTM, RGPD y accesibilidad base."
+      },
+      {
+        "title": "Validación",
+        "desc": "Revisamos Core Web Vitals, indexación, eventos y entregamos checklist para operar el sitio."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Qué significa “sitio web institucional” exactamente?",
+      "a": "Es la web corporativa que explica quién eres, qué haces, cómo contactarte y por qué confiar en tu empresa, con estructura pensada para SEO y conversiones."
+    },
+    {
+      "q": "¿Incluye optimización de LCP y Core Web Vitals?",
+      "a": "Sí. Priorizamos LCP, estabilidad visual y tiempos de respuesta con buenas prácticas en imágenes, fuentes, scripts y renderizado para rendimiento sostenido."
+    },
+    {
+      "q": "¿Puedo editar contenidos sin depender de desarrollo?",
+      "a": "Sí. Con CMS headless puedes gestionar páginas, entradas, FAQs o casos, manteniendo el diseño y el SEO on-page consistente en todas las secciones."
+    },
+    {
+      "q": "¿Cómo conectáis formularios con mi CRM?",
+      "a": "Definimos campos, validaciones y flujos de envío. Integramos el formulario para que cada lead llegue al CRM con UTM, página de origen y consentimiento RGPD."
+    },
+    {
+      "q": "¿Configuráis cookies, consentimiento y RGPD?",
+      "a": "Sí. Implementamos el banner de consentimiento y el control de etiquetas en GTM, para que la analítica y el marketing respeten las preferencias del usuario."
+    },
+    {
+      "q": "¿El sitio cumple accesibilidad WCAG?",
+      "a": "Aplicamos una base WCAG: semántica HTML, foco visible, contraste, labels en formularios y navegación por teclado. Si necesitas auditoría completa, la planificamos."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Cuéntanos tu proyecto y te damos presupuesto",
+    "desc": "Dinos páginas, idiomas, integración con CRM y objetivos de SEO. Te respondemos con alcance, tiempos y un presupuesto claro.",
+    "button": "Pedir presupuesto"
+  }
+}

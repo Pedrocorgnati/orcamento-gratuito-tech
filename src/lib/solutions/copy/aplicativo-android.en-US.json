@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "Android App Development Cost: Clear Pricing for Founders",
+    "description": "Get a transparent view of android app development cost, scope, and timelines. Budget Free Tech helps you estimate, prioritize, and ship a reliable Android app."
+  },
+  "hero": {
+    "h1": "Android app development cost: know what you’ll pay before you build",
+    "subtitle": "You get a scoped estimate, clear tradeoffs, and a build plan you can defend.",
+    "cta": "Get a cost estimate"
+  },
+  "pain": {
+    "title": "Pricing feels vague until it’s too late",
+    "bullets": [
+      "Have you ever gotten an estimate that ignores Android edge cases like devices, OS versions, and OEM quirks?",
+      "Have you ever been quoted “MVP pricing” and then paid extra for login, offline mode, and push notifications?",
+      "Have you ever shipped a first version and realized performance, crashes, and analytics were never part of the plan?"
+    ]
+  },
+  "benefits": [
+    { "title": "Transparent cost drivers", "desc": "You see exactly what affects android app development cost: screens, flows, integrations, offline needs, and QA across devices." },
+    { "title": "Scope you can control", "desc": "You choose what ships first, what can wait, and what must be included to avoid rework on Android later." },
+    { "title": "Delivery with fewer surprises", "desc": "You get a timeline, milestones, and acceptance criteria that keep the project aligned with your budget and goals." }
+  ],
+  "scope": {
+    "title": "What your Android build can include",
+    "bullets": [
+      "Android UI screens with Material 3 patterns and accessibility basics",
+      "Authentication (email/password, OTP, or OAuth) with session handling",
+      "API integration (REST/GraphQL) with error states and retries",
+      "Push notifications via Firebase Cloud Messaging (FCM)",
+      "Offline-first data caching with sync conflict handling",
+      "Payments (Google Play Billing) for subscriptions or one-time purchases",
+      "Device capabilities: camera, location, Bluetooth, or biometrics as needed",
+      "Release setup: signing, Play Console track management, and staged rollout",
+      "Analytics and events (Firebase Analytics) with a measurable funnel"
+    ]
+  },
+  "useCases": [
+    { "title": "Marketplace app", "desc": "Listings, search, favorites, chat, and checkout with Android performance constraints in mind." },
+    { "title": "Field service app", "desc": "Offline tasks, photo capture, GPS, and reliable sync for teams on the move." },
+    { "title": "Subscription product", "desc": "Onboarding, paywalls, Google Play Billing, and retention-focused notifications." },
+    { "title": "Internal ops app", "desc": "Role-based access, forms, approvals, and integrations with your existing back office." },
+    { "title": "IoT companion app", "desc": "Bluetooth pairing, device management, and background workflows that behave across OEMs." }
+  ],
+  "stack": {
+    "title": "Android stack options you can choose",
+    "options": [
+      { "name": "Kotlin", "note": "Modern Android language with strong tooling and long-term maintainability." },
+      { "name": "Jetpack Compose", "note": "UI toolkit that speeds up screen delivery and keeps UI logic consistent." },
+      { "name": "Firebase", "note": "Common choice for auth, FCM push, analytics, crash reporting, and fast backend starts." },
+      { "name": "Room", "note": "Local database for offline mode, caching, and reliable sync foundations." },
+      { "name": "Retrofit/OkHttp", "note": "Battle-tested networking for APIs with timeouts, retries, and observability." },
+      { "name": "CI/CD (GitHub Actions)", "note": "Automates builds and releases so testing and Play Store delivery stay predictable." }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      { "title": "Define scope + assumptions", "desc": "You share goals, users, and constraints; we map screens, flows, and integrations." },
+      { "title": "Get a costed roadmap", "desc": "You receive a breakdown by milestone with options to reduce cost or speed delivery." },
+      { "title": "Build, test, ship", "desc": "We implement, QA across devices, and publish with Play Console release support." }
+    ]
+  },
+  "faq": [
+    { "q": "What drives android app development cost the most?", "a": "Scope complexity: number of screens, user roles, integrations, offline sync, push notifications, and the amount of device/OS QA required." },
+    { "q": "Can you give a fixed price before discovery?", "a": "We can give a range first, then convert it to a fixed price after a short scope workshop that confirms flows, integrations, and acceptance criteria." },
+    { "q": "Do I need a backend before building the Android app?", "a": "Not always. You can start with Firebase or integrate an existing API. The choice affects cost, timeline, and how much your team maintains later." },
+    { "q": "How do you handle Android device fragmentation?", "a": "We define a supported device/OS matrix, test on real devices and emulators, and include performance and crash monitoring to catch OEM-specific issues." },
+    { "q": "Will my estimate include Play Store release work?", "a": "Yes, if you want it included. That typically covers signing setup, Play Console configuration, internal testing, and staged rollout planning." }
+  ],
+  "ctaFinal": {
+    "title": "Want a clear estimate you can share internally?",
+    "desc": "Tell us your idea and constraints. You’ll get a scoped plan and pricing breakdown.",
+    "button": "Request pricing breakdown"
+  }
+}

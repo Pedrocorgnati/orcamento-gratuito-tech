@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "Presupuesto aplicación Android | Desarrollo de apps a medida",
+    "description": "Pide tu presupuesto aplicación android con un equipo experto en Kotlin, Jetpack Compose, Flutter o React Native. Publicación en Play Store, AAB, FCM y analítica."
+  },
+  "hero": {
+    "h1": "Pide tu presupuesto aplicación android y crea una app lista para Play Store, escalable y fácil de mantener",
+    "subtitle": "Diseño, desarrollo y publicación Android con foco en negocio, rendimiento y calidad.",
+    "cta": "Solicitar presupuesto sin compromiso"
+  },
+  "pain": {
+    "title": "Cuando una app se retrasa, cuesta el doble",
+    "bullets": [
+      "¿Alguna vez has pagado por una app y luego nadie se hace cargo de los errores o las actualizaciones?",
+      "¿Alguna vez te han prometido “rápido y barato” y acabas con crashes, malas reseñas y un código imposible de ampliar?",
+      "¿Alguna vez tu app no pasa revisiones, falla en dispositivos reales o se queda sin notificaciones cuando más las necesitas?"
+    ]
+  },
+  "benefits": [
+    { "title": "Presupuesto claro y realista", "desc": "Te damos un presupuesto desglosado por alcance, riesgos y prioridades, con entregables y criterios de aceptación para que sepas exactamente qué se construye y cuándo." },
+    { "title": "Experiencia Android orientada a resultados", "desc": "Optimizamos rendimiento, estabilidad y UX en Android, cuidando tiempos de carga, consumo de batería y compatibilidad para reducir desinstalaciones y aumentar conversiones." },
+    { "title": "Mantenibilidad desde el primer día", "desc": "Arquitectura limpia, documentación y prácticas de calidad para que puedas iterar rápido, añadir funciones sin miedo y mantener el control del producto a largo plazo." }
+  ],
+  "scope": {
+    "title": "Qué incluye el desarrollo Android",
+    "bullets": [
+      "Publicación y mantenimiento en Google Play Store (fichas, políticas, track interno/cerrado/producción)",
+      "Empaquetado y entrega en formato AAB, firma, versionado y gestión de tracks",
+      "Kotlin + Jetpack Compose (o vistas) con componentes reutilizables y estados controlados",
+      "Alternativas cross-platform: Flutter o React Native según tu caso y equipo",
+      "Notificaciones push con FCM, segmentación básica y gestión de tokens",
+      "Arquitectura offline-first con caché local y sincronización segura",
+      "Deep links y app links para campañas, onboarding y recuperación de carrito",
+      "Monitoreo de crashes, analítica de eventos y métricas de rendimiento"
+    ]
+  },
+  "useCases": [
+    { "title": "Marketplace y eCommerce", "desc": "Catálogo, búsqueda, carrito, pagos y seguimiento, con deep links para campañas y analítica por embudo." },
+    { "title": "App de reservas", "desc": "Agenda, disponibilidad, recordatorios por FCM y flujos simples para reducir cancelaciones y no-shows." },
+    { "title": "Plataforma SaaS móvil", "desc": "Autenticación, roles, pantallas de gestión y offline-first para trabajar incluso con conectividad irregular." },
+    { "title": "Logística y operativa", "desc": "Checklists, incidencias, geolocalización si aplica y sincronización, priorizando estabilidad en campo." },
+    { "title": "Comunidad y contenido", "desc": "Feeds, perfiles, notificaciones, moderación básica y deep links para compartir y reenganchar." }
+  ],
+  "stack": {
+    "title": "Stack Android recomendado según tu objetivo",
+    "options": [
+      { "name": "Kotlin", "note": "Ideal para Android nativo, máximo control, rendimiento y acceso completo a APIs del sistema." },
+      { "name": "Jetpack Compose", "note": "UI moderna declarativa para acelerar iteraciones, mantener consistencia y reducir código de interfaz." },
+      { "name": "Flutter", "note": "Buena opción si necesitas iOS y Android con una base común, manteniendo una experiencia fluida." },
+      { "name": "React Native", "note": "Adecuado si tu equipo domina JavaScript/TypeScript y buscas reutilizar lógica y componentes." },
+      { "name": "FCM", "note": "Notificaciones push fiables, segmentación y automatización básica para activación y retención." },
+      { "name": "AAB + Play Console", "note": "Entrega en Android App Bundle, gestión de versiones y despliegues por tracks con control de releases." }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      { "title": "Descubrimiento y alcance", "desc": "Definimos objetivos, usuarios, pantallas y prioridades para aterrizar un alcance viable y medible." },
+      { "title": "Diseño y desarrollo", "desc": "Construimos la app con sprints, revisiones frecuentes y entregas incrementales listas para validar." },
+      { "title": "QA y publicación", "desc": "Probamos en dispositivos reales, preparamos AAB y publicamos en Play Store con soporte post-lanzamiento." }
+    ]
+  },
+  "faq": [
+    { "q": "¿De qué depende el presupuesto de una aplicación Android?", "a": "Depende del número de pantallas, roles, integraciones, complejidad del backend, requisitos offline-first, notificaciones FCM, y si será nativa (Kotlin/Compose) o cross-platform (Flutter/React Native)." },
+    { "q": "¿Cuánto tarda en estar lista para Google Play Store?", "a": "El plazo varía por alcance, pero normalmente se organiza en entregas: MVP, mejoras y publicación. Incluimos preparación del AAB, checklist de calidad y soporte durante el release en Play Console." },
+    { "q": "¿Podéis integrar deep links y campañas de adquisición?", "a": "Sí. Implementamos deep links y app links para que tus usuarios aterricen en la pantalla correcta desde anuncios, emails o QR, y medimos eventos clave para optimizar el rendimiento de campañas." },
+    { "q": "¿Cómo gestionáis las notificaciones push con FCM?", "a": "Configuramos FCM, manejo de tokens, permisos y comportamientos en foreground/background. Además, definimos casos de uso (recordatorios, estado de pedido, alertas) y buenas prácticas para evitar spam." },
+    { "q": "¿La app funcionará sin conexión a internet?", "a": "Si lo necesitas, diseñamos un enfoque offline-first con almacenamiento local, colas de sincronización y resolución de conflictos. Así el usuario puede seguir trabajando y la app sincroniza cuando vuelve la conexión." }
+  ],
+  "ctaFinal": {
+    "title": "Cuéntame tu idea y te paso un presupuesto detallado",
+    "desc": "Comparte alcance, plazo y referencias. Te responderé con una estimación por fases y próximos pasos claros.",
+    "button": "Pedir presupuesto ahora"
+  }
+}

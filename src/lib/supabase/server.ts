@@ -68,9 +68,41 @@ export async function getSession() {
 }
 
 export async function getUser() {
-  const supabase = await createSupabaseServerClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  return user
+  try {
+    const supabase = await createSupabaseServerClient()
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser()
+    if (error) return null
+    return user
+  } catch {
+    // Supabase Auth indisponível (503/502) — tratar como sessão ausente
+    return null
+  }
+}
+
+type AdminUser = NonNullable<Awaited<ReturnType<typeof getUser>>>
+export type RequireAdminResult =
+  | { ok: true; user: AdminUser }
+  | { ok: false; status: 401; code: 'AUTH_001'; message: string }
+  | { ok: false; status: 403; code: 'AUTH_002'; message: string }
+
+/**
+ * Guard de defesa em profundidade para rotas admin server-side.
+ *  - sem sessão → 401 AUTH_001
+ *  - sessão válida mas email != ADMIN_EMAIL → 403 AUTH_002
+ *  - ADMIN_EMAIL não definido (dev/tests) → qualquer user autenticado é admin
+ *    (mantém paridade com o guard das páginas em (dashboard)/layout.tsx)
+ */
+export async function requireAdmin(): Promise<RequireAdminResult> {
+  const user = await getUser()
+  if (!user) {
+    return { ok: false, status: 401, code: 'AUTH_001', message: 'Autenticação necessária.' }
+  }
+  const adminEmail = process.env.ADMIN_EMAIL
+  if (adminEmail && user.email?.toLowerCase() !== adminEmail.toLowerCase()) {
+    return { ok: false, status: 403, code: 'AUTH_002', message: 'Acesso negado.' }
+  }
+  return { ok: true, user }
 }

@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Corporate Website Cost: Pricing, Scope, Timeline | Site Institucional",
+    "description": "Understand corporate website cost with clear scope, SEO-first performance, and integrations: headless CMS blog, i18n, GA4/GTM, HubSpot forms, GDPR, WCAG, and WhatsApp."
+  },
+  "hero": {
+    "h1": "Corporate website cost: get a fast, compliant, SEO-ready site-institucional",
+    "subtitle": "A corporate website built for Core Web Vitals, on-page SEO, and measurable leads.",
+    "cta": "Get a cost estimate"
+  },
+  "pain": {
+    "title": "Common headaches before a corporate site goes live",
+    "bullets": [
+      "Have you ever launched a site that looks great but loads slowly and hurts LCP and conversions?",
+      "Have you ever published blog content, yet pages never rank because on-page SEO and structure were missed?",
+      "Have you ever lost leads because forms break, CRM routing fails, or HubSpot fields do not map correctly?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Faster pages",
+      "desc": "You get a performance-first build that targets strong LCP and stable Core Web Vitals across real devices."
+    },
+    {
+      "title": "SEO foundation",
+      "desc": "You get clean information architecture, metadata, schema basics, and on-page SEO that supports long-term rankings."
+    },
+    {
+      "title": "Lead tracking",
+      "desc": "You get contact forms that connect to your CRM or HubSpot, plus GA4 and GTM events you can trust."
+    }
+  ],
+  "scope": {
+    "title": "What’s included in your corporate website",
+    "bullets": [
+      "On-page SEO setup",
+      "Core Web Vitals focus",
+      "LCP-focused performance",
+      "Headless CMS blog",
+      "i18n multilingual pages",
+      "CRM and HubSpot forms",
+      "GDPR-ready consent",
+      "GA4 and GTM tracking",
+      "WCAG accessibility checks",
+      "WhatsApp widget"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "New company launch",
+      "desc": "A credible corporate site to present your brand, services, and team, with tracking ready from day one."
+    },
+    {
+      "title": "B2B lead capture",
+      "desc": "Service pages plus forms that route to your CRM or HubSpot with UTM data and clean attribution."
+    },
+    {
+      "title": "Content-driven growth",
+      "desc": "A headless CMS blog that keeps marketing independent while maintaining performance and SEO consistency."
+    },
+    {
+      "title": "Global teams",
+      "desc": "Internationalized pages with i18n structure so you can publish localized copy without duplicating work."
+    },
+    {
+      "title": "Compliance-first brands",
+      "desc": "A site designed with GDPR considerations, WCAG accessibility, and clear analytics governance via GTM."
+    }
+  ],
+  "stack": {
+    "title": "Delivery options that fit your team",
+    "options": [
+      {
+        "name": "Next.js",
+        "note": "Great for CWV, SSR/SSG, and fast marketing pages with strong LCP targets."
+      },
+      {
+        "name": "Headless CMS",
+        "note": "A blog your team can edit safely, with structured fields and editorial workflows."
+      },
+      {
+        "name": "HubSpot",
+        "note": "Forms and contact routing with reliable field mapping and lifecycle tracking."
+      },
+      {
+        "name": "GA4 + GTM",
+        "note": "Analytics and tag governance with event standards, conversions, and UTM capture."
+      },
+      {
+        "name": "Accessibility",
+        "note": "WCAG-aligned components and content patterns that reduce legal and UX risk."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Define scope",
+        "desc": "We confirm pages, languages, integrations, and success metrics so your estimate is accurate."
+      },
+      {
+        "title": "Build and integrate",
+        "desc": "We ship a fast corporate site with headless CMS, i18n, forms, CRM/HubSpot, and WhatsApp."
+      },
+      {
+        "title": "Verify and launch",
+        "desc": "We validate Core Web Vitals, WCAG basics, GDPR consent, and GA4/GTM tracking before go-live."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What drives corporate website cost the most?",
+      "a": "Scope and complexity: number of pages, i18n languages, headless CMS blog requirements, integrations (CRM/HubSpot), and performance targets like LCP and Core Web Vitals."
+    },
+    {
+      "q": "Can you connect contact forms to HubSpot or our CRM?",
+      "a": "Yes. You get form validation, spam protection, field mapping, and routing that sends leads to HubSpot or your CRM with UTM data where applicable."
+    },
+    {
+      "q": "Do you handle GDPR and cookie consent setup?",
+      "a": "Yes. You get consent-aware analytics setup guidance and implementations that help you control what fires in GTM and what is measured in GA4."
+    },
+    {
+      "q": "How do you improve LCP and Core Web Vitals?",
+      "a": "You get an approach focused on image strategy, critical rendering paths, efficient components, and practical checks so real users see faster pages."
+    },
+    {
+      "q": "Will the site meet WCAG accessibility requirements?",
+      "a": "You get WCAG-aligned patterns and checks, with accessible navigation, form labels, focus states, and content guidance to reduce risk and improve UX."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Ready to price your corporate website with confidence?",
+    "desc": "Share your pages, languages, and integrations. You get a clear scope and a corporate website cost estimate you can defend internally.",
+    "button": "Request my estimate"
+  }
+}

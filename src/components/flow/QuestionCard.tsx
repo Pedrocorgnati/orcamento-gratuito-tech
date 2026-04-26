@@ -3,11 +3,13 @@
 import { useTranslations } from 'next-intl'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
+import { Collapsible } from '@/components/ui/CollapsibleInfo'
 import { cn } from '@/lib/utils'
 
 type QuestionTranslation = {
   title: string
   description: string | null
+  help_text?: string | null
   locale: string
 }
 
@@ -19,6 +21,8 @@ type QuestionCardProps = {
   onContinue?: () => void
   children: React.ReactNode
   className?: string
+  /** Layout das opções. 'list' empilha (default); 'grid' usa 3 colunas em desktop. */
+  optionsLayout?: 'list' | 'grid'
 }
 
 export function QuestionCard({
@@ -29,6 +33,7 @@ export function QuestionCard({
   onContinue,
   children,
   className,
+  optionsLayout = 'list',
 }: QuestionCardProps) {
   const t = useTranslations('flow')
   const hasNoOptions = !children
@@ -36,6 +41,7 @@ export function QuestionCard({
   return (
     <Card
       padding="none"
+      data-testid="flow-question-card"
       aria-label={t('question_aria', { id: questionId })}
       className={cn(
         'w-full p-6 sm:p-8',
@@ -45,28 +51,41 @@ export function QuestionCard({
       )}
     >
       {/* Cabeçalho da pergunta */}
-      <div className="flex flex-col gap-2">
-        <h1
-          id={`question-title-${questionId}`}
-          className="text-xl font-semibold leading-tight text-(--color-text-primary) sm:text-2xl"
-        >
-          {translation.title}
-        </h1>
-        {translation.description && (
-          <p className="text-sm text-(--color-text-muted) sm:text-base">
-            {translation.description}
-          </p>
-        )}
-      </div>
+      <Collapsible content={translation.help_text} size="md">
+        <div data-testid="flow-question-header" className="flex flex-col gap-2">
+          <div className="flex items-start gap-3">
+            <h1
+              id={`question-title-${questionId}`}
+              data-testid="flow-question-title"
+              className="flex-1 text-xl font-semibold leading-tight text-(--color-text-primary) sm:text-2xl"
+            >
+              {translation.title}
+            </h1>
+            <Collapsible.Trigger className="mt-1" />
+          </div>
+          {translation.description && (
+            <p data-testid="flow-question-description" className="text-sm text-(--color-text-muted) sm:text-base">
+              {translation.description}
+            </p>
+          )}
+          <Collapsible.Panel content={translation.help_text} />
+        </div>
+      </Collapsible>
 
       {/* Container das opções */}
       <div
         role="group"
+        data-testid="flow-question-options"
         aria-labelledby={`question-title-${questionId}`}
-        className="flex flex-col gap-3"
+        className={cn(
+          'gap-3',
+          optionsLayout === 'grid'
+            ? 'grid grid-cols-1 sm:grid-cols-2'
+            : 'flex flex-col'
+        )}
       >
         {hasNoOptions ? (
-          <p className="text-sm text-(--color-text-muted) text-center py-4">
+          <p data-testid="flow-question-empty" className="text-sm text-(--color-text-muted) text-center py-4">
             {t('no_options')}
           </p>
         ) : (
@@ -79,6 +98,7 @@ export function QuestionCard({
         <Button
           type="button"
           variant="primary"
+          data-testid="flow-question-continue-button"
           disabled={!selectedIds || selectedIds.length === 0}
           aria-disabled={!selectedIds || selectedIds.length === 0}
           onClick={onContinue}

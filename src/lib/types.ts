@@ -54,6 +54,7 @@ export interface ExchangeRateItem {
 /** Resultado da estimativa gerada pelo motor de pricing */
 export interface EstimationResult {
   projectType: ProjectType
+  projectTypes?: ProjectType[]
   complexity: ComplexityLevel
   priceMin: number
   priceMax: number
@@ -69,6 +70,16 @@ export interface EstimationResult {
   scoreTimeline: number
   scoreProfile: number
   scoreTotal: number
+  breakdown?: Array<{
+    projectType: ProjectType
+    priceMin: number
+    priceMax: number
+    daysMin: number
+    daysMax: number
+    complexity: ComplexityLevel
+    complexityScore: number
+    features: string[]
+  }>
 }
 
 /** Alerta de consistencia detectado pelo motor */

@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Software di intelligenza artificiale su misura per il tuo business",
+    "description": "Progettiamo e integriamo software IA su misura: LLM (OpenAI, Anthropic, Llama), RAG con embedding e vector DB, agenti con tool use, fine-tuning, guardrail,…"
+  },
+  "hero": {
+    "h1": "Preventivo software IA: intelligenza artificiale su misura per la tua azienda",
+    "subtitle": "Dalla discovery alla messa in produzione: LLM, RAG, agenti, guardrail e controllo costi.",
+    "cta": "Richiedi un preventivo"
+  },
+  "pain": {
+    "title": "Quando l'IA non porta risultati, di solito manca il metodo",
+    "bullets": [
+      "Ti è mai capitato di provare un chatbot e scoprire che inventa risposte, non cita le fonti e crea problemi al tuo team di supporto?",
+      "Ti è mai capitato che i costi token esplodano in produzione perché i prompt crescono, i log mancano e nessuno monitora latenza e qualità?",
+      "Ti è mai capitato di bloccare un progetto per dubbi su compliance IA, privacy e dati sensibili, senza una valutazione chiara dei rischi e dei controlli?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Risposte affidabili e verificabili",
+      "desc": "Definiamo casi d'uso e metriche, poi costruiamo RAG con embedding e fonti controllate, citazioni e fallback. Applichiamo guardrail, policy e test di qualità per ridurre allucinazioni e ambiguità."
+    },
+    {
+      "title": "Costi e performance sotto controllo",
+      "desc": "Progettiamo prompt e contesto per limitare token inutili, scegliamo modelli e routing, e misuriamo latenza, errori e consumo. Impostiamo osservabilità prompt, tracing e budget per team e funzionalità."
+    },
+    {
+      "title": "Compliance e governance operative",
+      "desc": "Mappiamo dati, permessi e retention, definiamo controlli su PII e contenuti, e documentiamo flussi e decisioni. Supportiamo valutazioni di rischio e audit trail, così l'IA resta gestibile anche nel tempo."
+    }
+  ],
+  "scope": {
+    "title": "Cosa includiamo nel progetto",
+    "bullets": [
+      "Analisi obiettivi, utenti e processi",
+      "Selezione LLM: OpenAI, Anthropic o Llama",
+      "RAG con embedding e knowledge base",
+      "Vector DB con pgvector o Pinecone",
+      "Agenti con tool use e integrazioni API",
+      "Fine-tuning quando serve davvero",
+      "Guardrail: policy, filtri e controlli",
+      "Osservabilità prompt, log e alerting",
+      "Valutazioni qualità: set di test e metriche",
+      "Piano compliance IA e sicurezza dati"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Assistente supporto clienti",
+      "desc": "Risponde con fonti interne, apre ticket, propone soluzioni e passa all'operatore quando necessario, con tracciamento qualità e controllo dei token."
+    },
+    {
+      "title": "Copilota per vendite",
+      "desc": "Recupera informazioni da CRM e documenti, prepara email e proposte, e aggiorna i sistemi via tool use, mantenendo coerenza e compliance."
+    },
+    {
+      "title": "Ricerca documentale interna",
+      "desc": "RAG su procedure, contratti e manuali con embedding e vector DB, permessi per ruolo e citazioni, per ridurre tempi di ricerca e errori."
+    },
+    {
+      "title": "Automazione back office",
+      "desc": "Classifica e compila dati, estrae campi da testi, verifica regole e attiva workflow, con guardrail e metriche di qualità a ogni rilascio."
+    },
+    {
+      "title": "Analisi e sintesi per management",
+      "desc": "Genera report e riepiloghi da più fonti, evidenzia anomalie e azioni consigliate, con valutazioni di accuratezza e osservabilità completa."
+    }
+  ],
+  "stack": {
+    "title": "Stack IA modulare, scelto per il tuo contesto",
+    "options": [
+      {
+        "name": "LLM",
+        "note": "Integrazione con OpenAI, Anthropic e Llama, con routing per costo, latenza e qualità, e versioning dei prompt per ambienti diversi."
+      },
+      {
+        "name": "RAG",
+        "note": "Embedding, chunking e retrieval con ranking, citazioni e cache; gestione fonti e aggiornamenti, per risposte basate su contenuti verificabili."
+      },
+      {
+        "name": "Vector DB",
+        "note": "Scelta tra pgvector e Pinecone in base a volumi e requisiti; strategie di indicizzazione, aggiornamento e isolamento per tenant e permessi."
+      },
+      {
+        "name": "Agenti",
+        "note": "Agenti con tool use per CRM, ERP, ticketing e database; orchestrazione, timeouts e regole di escalation, con controlli su azioni e dati."
+      },
+      {
+        "name": "Qualità & Guardrail",
+        "note": "Valutazioni automatiche e manuali, dataset di test, policy su PII e contenuti, prompt firewall e controlli di sicurezza per ridurre rischi operativi."
+      },
+      {
+        "name": "Osservabilità",
+        "note": "Logging, tracing e metriche su prompt, token, latenza e errori; dashboard e alerting per individuare regressioni e ottimizzare costi in continuo."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Scoping e criteri di successo",
+        "desc": "Definiamo obiettivi, dati disponibili, vincoli e metriche, includendo costi token, target di qualità e requisiti di compliance IA."
+      },
+      {
+        "title": "Prototipo con test di qualità",
+        "desc": "Costruiamo un MVP con LLM e RAG, set di valutazione, guardrail e osservabilità prompt, per misurare risultati prima di scalare."
+      },
+      {
+        "title": "Produzione e miglioramento continuo",
+        "desc": "Rilasciamo con monitoraggio, alert e procedure di rollback, ottimizziamo prompt e retrieval, e aggiorniamo modelli e dati con governance chiara."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Come definite il preventivo software IA in modo accurato?",
+      "a": "Partiamo da casi d'uso, volumi, integrazioni, vincoli dati e livello di automazione. Stimiamo sviluppo e infrastruttura, includendo costi token, vector DB, logging e manutenzione, poi proponiamo opzioni scalabili."
+    },
+    {
+      "q": "Quando serve fine-tuning e quando basta RAG?",
+      "a": "RAG è ideale quando la conoscenza vive in documenti e cambia spesso, perché aggiorni le fonti senza riaddestrare. Il fine-tuning ha senso per stile, classificazioni o output molto specifici, dopo test che dimostrano un vantaggio misurabile."
+    },
+    {
+      "q": "Che differenza c'è tra agenti e semplici prompt?",
+      "a": "Un prompt genera testo; un agente esegue azioni tramite tool use, con passaggi controllati e verifiche. Progettiamo orchestrazione, permessi, timeouts e log, così l'agente resta affidabile e non compie azioni non autorizzate."
+    },
+    {
+      "q": "Come gestite guardrail, sicurezza e dati sensibili?",
+      "a": "Applichiamo controlli su input e output, policy su PII, redazione e masking, e regole di accesso alle fonti. Documentiamo flussi e retention, e abilitiamo audit trail per supportare requisiti di compliance IA e privacy."
+    },
+    {
+      "q": "Come misurate la qualità delle risposte dell'IA?",
+      "a": "Creiamo un set di test con domande reali, rubriche di valutazione e metriche come accuratezza, citazioni corrette, completezza e tasso di fallback. Eseguiamo valutazioni automatiche e revisioni campionate per prevenire regressioni."
+    },
+    {
+      "q": "Come tenete sotto controllo i costi token in produzione?",
+      "a": "Ottimizziamo prompt e contesto, limitiamo la lunghezza delle conversazioni, usiamo cache e retrieval mirato, e impostiamo budget per endpoint. Con osservabilità prompt e dashboard, identifichi subito le chiamate costose e le correggi."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Parliamo del tuo caso e stimiamo tempi, costi e rischi",
+    "desc": "Raccontami obiettivi, dati e integrazioni: preparo una proposta chiara con architettura, valutazioni di qualità, piano di compliance IA e stima dei costi token.",
+    "button": "Richiedi il preventivo"
+  }
+}

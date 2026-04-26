@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Orçamento de software de IA sob medida | LLM, RAG e agentes",
+    "description": "Peça orçamento com LLMs (OpenAI, Anthropic, Llama), RAG com embeddings, agentes com tool use, guardrails e observabilidade. LGPD e custo de token controlados."
+  },
+  "hero": {
+    "h1": "orçamento software de ia: IA sob medida para seus dados, seus fluxos e seu time",
+    "subtitle": "LLMs, RAG e agentes com guardrails, LGPD e controle de custos por token para o seu time.",
+    "cta": "Pedir orçamento agora"
+  },
+  "pain": {
+    "title": "Quando a IA não encaixa no seu dia a dia",
+    "bullets": [
+      "Você já testou prompts e a resposta muda sem explicação, dificultando padronizar o processo.",
+      "Você já viu o custo de token subir com tentativas e retrabalho, sem saber onde otimizar.",
+      "Você já precisou usar dados internos, mas ficou inseguro com LGPD, acesso e rastreabilidade."
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Qualidade medida",
+      "desc": "Você acompanha avaliação de qualidade com critérios claros, casos de teste e métricas por caso de uso."
+    },
+    {
+      "title": "RAG que funciona",
+      "desc": "Busca semântica com embeddings e fontes citáveis, usando vector DB (pgvector ou Pinecone) e políticas de acesso."
+    },
+    {
+      "title": "Custo previsível",
+      "desc": "Estimativa e monitoramento de custos de token por fluxo, com limites, cache, roteamento de modelos e alertas."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no escopo do seu software de IA",
+    "bullets": [
+      "Diagnóstico do caso de uso",
+      "Mapeamento de dados e LGPD",
+      "Arquitetura LLM + RAG",
+      "Embeddings e chunking",
+      "Vector DB: pgvector ou Pinecone",
+      "Agentes com tool use",
+      "Guardrails e políticas",
+      "Observabilidade de prompts",
+      "Avaliação de qualidade contínua"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Atendimento com base na sua base",
+      "desc": "Assistente para suporte que consulta políticas, manuais e tickets anteriores com RAG e trilha de fontes."
+    },
+    {
+      "title": "Triagem e classificação de tickets",
+      "desc": "Roteamento automático por intenção, urgência e tipo de solicitação, com revisão humana quando necessário."
+    },
+    {
+      "title": "Busca semântica em documentos",
+      "desc": "Pesquisa interna por significado em PDFs, wikis e contratos, com filtros por área, cliente e permissão."
+    },
+    {
+      "title": "Geração de propostas e relatórios",
+      "desc": "Rascunhos consistentes com seu tom, dados do CRM e regras de negócio, com validação antes de enviar."
+    },
+    {
+      "title": "Análise de contratos e compliance",
+      "desc": "Extração de cláusulas, riscos e obrigações, com guardrails, logs e checklist de qualidade por tipo de documento."
+    }
+  ],
+  "stack": {
+    "title": "Stack de IA sob medida (você escolhe o nível de controle)",
+    "options": [
+      {
+        "name": "OpenAI",
+        "note": "Modelos para chat e tool use, com observabilidade de prompts e controle de custos por token."
+      },
+      {
+        "name": "Anthropic",
+        "note": "Claude para contextos longos e fluxos de segurança, com políticas e revisão de respostas."
+      },
+      {
+        "name": "Llama",
+        "note": "Modelos open-weight para mais controle de execução, privacidade e requisitos específicos de dados."
+      },
+      {
+        "name": "pgvector",
+        "note": "Vector DB no Postgres para RAG, com governança, backups e operação simples no seu ambiente."
+      },
+      {
+        "name": "Pinecone",
+        "note": "Vector DB gerenciado para escala e baixa latência, com filtros e namespaces por produto ou cliente."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "desc": "Você define objetivo, dados, restrições e riscos; eu desenho o caminho mais direto para o resultado."
+      },
+      {
+        "title": "Protótipo com métricas",
+        "desc": "RAG/agent funcional com guardrails, logs e avaliação de qualidade para calibrar custo e acurácia."
+      },
+      {
+        "title": "Entrega e operação",
+        "desc": "Deploy, observabilidade de prompts, alertas de custo, ajustes contínuos e documentação para o seu time."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Vocês usam OpenAI, Anthropic ou Llama no projeto?",
+      "a": "Sim. A escolha depende de custo, requisitos de dados e governança. Você pode começar com OpenAI/Anthropic e, se fizer sentido, evoluir para Llama em ambiente controlado."
+    },
+    {
+      "q": "Quando faz sentido RAG em vez de fine-tuning?",
+      "a": "RAG é ideal quando você precisa consultar informação atual e citável dos seus documentos. Fine-tuning ajuda mais em estilo e padrões de resposta; muitas vezes combinamos as duas abordagens com critérios de teste."
+    },
+    {
+      "q": "Como vocês estimam e controlam custos de token?",
+      "a": "Eu mapeio fluxos, volume de uso e tamanho médio de contexto, e coloco limites e observabilidade. Também aplico cache, redução de contexto e roteamento entre modelos para manter previsibilidade."
+    },
+    {
+      "q": "Como vocês tratam LGPD para IA na prática?",
+      "a": "Definimos base legal, minimização de dados, controles de acesso e retenção. Os prompts e respostas entram em logs com redaction quando necessário, e você mantém rastreabilidade de quem acessou o quê."
+    },
+    {
+      "q": "Como vocês medem se a IA está boa o suficiente?",
+      "a": "Criamos um conjunto de avaliação por caso de uso, com perguntas representativas e critérios objetivos. Você acompanha taxa de acerto, recusas seguras, qualidade de fontes no RAG e regressões ao longo do tempo."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Peça um orçamento com escopo e números claros",
+    "desc": "Conte seu caso de uso e eu retorno com opções de arquitetura, estimativa de custos de token e um plano por etapas.",
+    "button": "Quero meu orçamento"
+  }
+}

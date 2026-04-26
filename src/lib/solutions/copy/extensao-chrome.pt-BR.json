@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Orçamento de extensão para Chrome, Edge e Firefox (MV3)",
+    "description": "Peça orçamento para extensão Chrome/Edge/Firefox com Manifest V3: content scripts, service worker, Storage API, messaging, OAuth, automação em páginas e publicação na…"
+  },
+  "hero": {
+    "h1": "orçamento extensão chrome para Chrome, Edge e Firefox (Manifest V3)",
+    "subtitle": "Do protótipo à Chrome Web Store: extensões MV3 com automação, OAuth e permissões mínimas.",
+    "cta": "Pedir orçamento agora"
+  },
+  "pain": {
+    "title": "Quando a extensão vira um projeto complexo",
+    "bullets": [
+      "Você já travou com o Manifest V3 e a troca de background page por background service worker.",
+      "Você já ficou em dúvida sobre permissões, revisão da loja e como manter o mínimo necessário sem quebrar o fluxo.",
+      "Você já precisou injetar e manipular DOM com segurança e ainda trocar dados via messaging entre content scripts e service worker."
+    ]
+  },
+  "benefits": [
+    {
+      "title": "MV3 bem-feito",
+      "desc": "Arquitetura clara com content scripts, background service worker, Storage API e mensagens confiáveis para manter a extensão estável."
+    },
+    {
+      "title": "Automação com controle",
+      "desc": "Automação em páginas (LinkedIn, Gmail e outras) com injeção em DOM, seletores resilientes e limites para evitar comportamentos indesejados."
+    },
+    {
+      "title": "Privacidade e permissões",
+      "desc": "Escopo de permissões enxuto, transparência sobre dados e políticas alinhadas à publicação, reduzindo riscos na revisão e no uso."
+    }
+  ],
+  "scope": {
+    "title": "O que entra no orçamento",
+    "bullets": [
+      "Mapeamento do fluxo e requisitos",
+      "Arquitetura Manifest V3 (MV3)",
+      "Content scripts e injeção em DOM",
+      "Background service worker e eventos",
+      "Storage API (sync/local) e migração",
+      "Messaging (tabs, runtime) e filas",
+      "OAuth (Google/Microsoft) quando necessário",
+      "Limite de permissões e revisão de segurança",
+      "Publicação na Chrome Web Store e checklist",
+      "Compatibilidade com Edge e Firefox (quando aplicável)"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Prospeção no LinkedIn",
+      "desc": "Automatiza captura de dados visíveis, preenchimento assistido e tarefas repetitivas, com regras para não exagerar na página."
+    },
+    {
+      "title": "Produtividade no Gmail",
+      "desc": "Atalhos e ações na interface do Gmail com injeção controlada, leitura de estado do DOM e sincronização via storage."
+    },
+    {
+      "title": "Ferramentas internas",
+      "desc": "Extensão para equipes com autenticação (OAuth) e configuração por usuário, mantendo separação de dados e controle de acesso."
+    },
+    {
+      "title": "Apoio a CS e vendas",
+      "desc": "Botões e painéis contextuais em CRMs e webapps para reduzir cliques, puxar informações e padronizar processos."
+    },
+    {
+      "title": "Coleta e validação",
+      "desc": "Valida formulários e conteúdo em páginas específicas com content scripts, regras por domínio e relatórios simples."
+    }
+  ],
+  "stack": {
+    "title": "Stack, APIs e opções comuns",
+    "options": [
+      {
+        "name": "Manifest V3",
+        "note": "Estrutura recomendada para Chrome/Edge, com service worker em vez de background pages."
+      },
+      {
+        "name": "Content Scripts",
+        "note": "Injeção em DOM e automação na página, com isolamento e cuidados para evitar conflitos com o site."
+      },
+      {
+        "name": "Service Worker",
+        "note": "Background service worker para eventos, timers, rede e coordenação de mensagens com abas."
+      },
+      {
+        "name": "Storage API",
+        "note": "Persistência local/sync, migração de dados e tratamento de limites de quota e consistência."
+      },
+      {
+        "name": "OAuth + Tokens",
+        "note": "Login e autorização quando necessário, com proteção de tokens e troca segura entre contextos via messaging."
+      },
+      {
+        "name": "Publicação e Políticas",
+        "note": "Empacotamento, checklist, texto de privacidade, justificativa de permissões e submissão na Chrome Web Store."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Brief técnico",
+        "desc": "Você descreve o objetivo, páginas alvo e restrições; eu retorno perguntas e um escopo fechado."
+      },
+      {
+        "title": "Estimativa e arquitetura",
+        "desc": "Definimos MV3, permissões, fluxos de messaging, storage e OAuth para estimar prazo e custo."
+      },
+      {
+        "title": "Entrega e publicação",
+        "desc": "Implementação, testes básicos, empacotamento e suporte na publicação (incluindo ajustes de revisão da loja)."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Quanto custa um orçamento de extensão Chrome?",
+      "a": "O valor depende do escopo: páginas alvo, nível de automação, necessidade de OAuth, volume de dados no storage e requisitos de publicação. Com um brief rápido, eu fecho uma estimativa por entregáveis e risco."
+    },
+    {
+      "q": "Vocês trabalham com Manifest V3 (MV3) mesmo?",
+      "a": "Sim. O trabalho considera MV3 desde a arquitetura: content scripts para a página, background service worker para eventos e coordenação, e comunicação via messaging entre contextos."
+    },
+    {
+      "q": "Como vocês definem as permissões da extensão?",
+      "a": "Eu parto do princípio de permissões mínimas. Mapeio cada feature e justifico o que precisa (hosts, storage, tabs etc.), evitando permissões amplas que atrapalham privacidade e revisão."
+    },
+    {
+      "q": "A extensão vai coletar dados do usuário?",
+      "a": "Só se for requisito. Se houver coleta, a política de privacidade e a telemetria ficam explícitas, com armazenamento controlado e foco em não capturar dados sensíveis sem necessidade."
+    },
+    {
+      "q": "Dá para publicar na Chrome Web Store com vocês?",
+      "a": "Sim. Eu preparo o pacote, assets, descrições e checklist, e acompanho a submissão. Se a revisão pedir ajustes (permissões, privacidade, comportamento), eu trato as correções."
+    },
+    {
+      "q": "Funciona também no Edge e no Firefox?",
+      "a": "Edge geralmente segue Chrome. Para Firefox, avalio compatibilidades e diferenças de APIs/políticas para definir o que é 100% portável e o que precisa adaptação."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Vamos fechar seu orçamento com escopo e prazos claros",
+    "desc": "Me diga quais páginas a extensão vai atuar, se precisa de login (OAuth) e quais automações você quer. Eu retorno com escopo, permissões e estimativa.",
+    "button": "Solicitar orçamento"
+  }
+}

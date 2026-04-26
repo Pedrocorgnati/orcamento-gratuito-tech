@@ -22,11 +22,12 @@ export function BackButton({
   const isDisabled = isFirstQuestion || isPending
 
   return (
-    <div className="flex flex-col items-start gap-1">
+    <div data-testid="flow-back-button-wrapper" className="flex flex-col items-start gap-1">
       <Button
         type="button"
         variant="ghost"
         size="sm"
+        data-testid="flow-back-button"
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-label={
@@ -62,6 +63,7 @@ export function BackButton({
       </Button>
       {error && (
         <p
+          data-testid="flow-back-button-error"
           role="alert"
           aria-live="assertive"
           className="text-xs text-(--color-danger)"

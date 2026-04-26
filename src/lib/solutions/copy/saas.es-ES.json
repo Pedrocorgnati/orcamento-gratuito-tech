@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Presupuesto y desarrollo de sistema SaaS multi-tenant",
+    "description": "Calcula tu presupuesto de sistema SaaS multi-tenant con alcance claro: Stripe, RBAC, onboarding, dashboards, analítica, webhooks, API pública, feature flags, SSO y…"
+  },
+  "hero": {
+    "h1": "presupuesto sistema saas: coste real y alcance multi-tenant",
+    "subtitle": "Define tu alcance y recibe una estimación con entregables, plazos y riesgos controlados.",
+    "cta": "Pedir presupuesto"
+  },
+  "pain": {
+    "title": "Si esto te suena, no estás solo",
+    "bullets": [
+      "¿Alguna vez has presupuestado un SaaS y el alcance se duplicó por multi-tenant y permisos?",
+      "¿Alguna vez tu integración con Stripe falló por webhooks, impuestos o estados de pago no previstos?",
+      "¿Alguna vez el onboarding se atascó porque faltaban SSO, analítica y dashboards útiles?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Alcance cerrado",
+      "desc": "Alineamos requisitos y límites desde el inicio: tenants, planes, roles RBAC, flujos y criterios de aceptación."
+    },
+    {
+      "title": "Arquitectura SaaS",
+      "desc": "Diseño pensado para multi-tenant, feature flags por plan, API pública, webhooks y auditoría de eventos."
+    },
+    {
+      "title": "Cumplimiento y confianza",
+      "desc": "RGPD desde el diseño: consentimiento, retención, exportación de datos y trazabilidad para tu equipo."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye el presupuesto",
+    "bullets": [
+      "Modelo multi-tenant",
+      "RBAC por roles",
+      "Onboarding guiado",
+      "Dashboards por tenant",
+      "Analítica de producto",
+      "Stripe suscripciones",
+      "Webhooks y reintentos",
+      "API pública documentada",
+      "Feature flags por plan",
+      "SSO (SAML/OIDC)"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "B2B por cuentas",
+      "desc": "Tenants por empresa, usuarios por equipo y permisos RBAC para operar con seguridad."
+    },
+    {
+      "title": "SaaS por planes",
+      "desc": "Planes con Stripe, feature flags por tier y upgrades sin fricción dentro del producto."
+    },
+    {
+      "title": "Integraciones externas",
+      "desc": "API pública y webhooks para integrarte con CRM, BI o automatizaciones de tus clientes."
+    },
+    {
+      "title": "Operación interna",
+      "desc": "Panel admin, auditoría y analítica para soporte, finanzas y seguimiento de activación."
+    },
+    {
+      "title": "Enterprise",
+      "desc": "SSO, políticas de seguridad y controles de acceso para cumplir requisitos corporativos."
+    }
+  ],
+  "stack": {
+    "title": "Opciones de implementación",
+    "options": [
+      {
+        "name": "Next.js",
+        "note": "UI, onboarding y dashboards rápidos con SSR/ISR cuando aplique."
+      },
+      {
+        "name": "Node.js",
+        "note": "API pública, webhooks y jobs para reintentos y eventos."
+      },
+      {
+        "name": "PostgreSQL",
+        "note": "Datos multi-tenant con aislamiento, índices y auditoría por tenant."
+      },
+      {
+        "name": "Stripe",
+        "note": "Suscripciones, facturación y estado de pago sincronizado por webhooks."
+      },
+      {
+        "name": "SSO",
+        "note": "SAML/OIDC para clientes enterprise y gestión de sesión centralizada."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Descubrimiento",
+        "desc": "Revisamos objetivos, usuarios, tenants, roles y métricas de éxito."
+      },
+      {
+        "title": "Alcance y estimación",
+        "desc": "Definimos entregables, fases, riesgos y un presupuesto por módulo."
+      },
+      {
+        "title": "Ejecución y entrega",
+        "desc": "Construimos, probamos y desplegamos con analítica, seguridad y RGPD."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Qué significa multi-tenant y cómo impacta el presupuesto?",
+      "a": "Multi-tenant implica separar datos y permisos por tenant, además de adaptar onboarding, dashboards, límites y facturación. Esto añade trabajo en modelo de datos, control de acceso, pruebas y observabilidad, por eso debe presupuestarse explícitamente."
+    },
+    {
+      "q": "¿Stripe cubre todo o hay tareas extra que considerar?",
+      "a": "Stripe acelera pagos y suscripciones, pero necesitas manejar webhooks, reintentos, estados intermedios, impuestos, cancelaciones, upgrades y conciliación. El presupuesto contempla esas integraciones y sus escenarios reales."
+    },
+    {
+      "q": "¿Cómo definís RBAC para que no se vuelva un problema después?",
+      "a": "Partimos de roles y permisos por acciones, no solo por pantallas. Mapeamos casos de uso, herencia por tenant y auditoría de cambios. Así reduces accesos indebidos y evitas rehacer permisos cuando crece el producto."
+    },
+    {
+      "q": "¿Incluye SSO y requisitos enterprise desde el inicio?",
+      "a": "Sí, si lo necesitas. Se estima SSO (SAML/OIDC), políticas de sesión, provisión de usuarios y controles de seguridad. Si no es prioridad, se deja preparado el camino para añadirlo sin bloquear tu roadmap."
+    },
+    {
+      "q": "¿Cómo aseguráis el cumplimiento RGPD en un SaaS?",
+      "a": "Definimos base legal, consentimiento, retención, exportación y borrado, además de registros de actividad por tenant. También revisamos accesos, logs y minimización de datos para reducir riesgos de privacidad."
+    }
+  ],
+  "ctaFinal": {
+    "title": "¿Listo para estimar tu SaaS multi-tenant?",
+    "desc": "Cuéntame tu caso y te devuelvo un presupuesto con alcance, fases y entregables listos para ejecutar.",
+    "button": "Solicitar ahora"
+  }
+}

@@ -24,6 +24,9 @@ export enum ProjectType {
   WEB_APP = 'WEB_APP',
   MOBILE_APP = 'MOBILE_APP',
   AUTOMATION_AI = 'AUTOMATION_AI',
+  MARKETPLACE = 'MARKETPLACE',
+  CRYPTO = 'CRYPTO',
+  BROWSER_EXT = 'BROWSER_EXT',
 }
 
 export enum QuestionType {
@@ -40,10 +43,14 @@ export enum QuestionBlock {
   PROJECT_TYPE = 'PROJECT_TYPE',
   WEBSITES = 'WEBSITES',
   ECOMMERCE = 'ECOMMERCE',
+  MARKETPLACE = 'MARKETPLACE',
   WEB_SYSTEM = 'WEB_SYSTEM',
+  CRYPTO = 'CRYPTO',
   MOBILE_APP = 'MOBILE_APP',
   AUTOMATION_AI = 'AUTOMATION_AI',
+  BROWSER_EXT = 'BROWSER_EXT',
   CONTEXT = 'CONTEXT',
+  NARRATIVE = 'NARRATIVE',
   LEAD = 'LEAD',
 }
 
@@ -71,6 +78,7 @@ export enum EmailStatus {
   PENDING = 'PENDING',
   SENT = 'SENT',
   FAILED = 'FAILED',
+  DEAD_LETTER = 'DEAD_LETTER',
 }
 
 export enum ConsistencyAlertType {

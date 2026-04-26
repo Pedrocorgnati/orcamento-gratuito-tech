@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Chrome extension cost for MV3 (Chrome/Edge/Firefox)",
+    "description": "Estimate and build a Manifest V3 extension: content scripts, service worker, Storage API, messaging, OAuth, DOM injection, automation, and store publishing with privacy."
+  },
+  "hero": {
+    "h1": "chrome extension cost for Chrome, Edge, and Firefox (Manifest V3)",
+    "subtitle": "MV3 extension build and publish, with automation, OAuth, and minimal permissions across browsers.",
+    "cta": "Request a quote"
+  },
+  "pain": {
+    "title": "When an extension stops being simple",
+    "bullets": [
+      "Have you ever gotten stuck moving to Manifest V3 and replacing background pages with a background service worker?",
+      "Have you ever worried that broad permissions will fail store review, or hurt trust, even if features work locally?",
+      "Have you ever fought flaky DOM injection and page automation while content scripts and background messaging drift out of sync?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "MV3 architecture that holds",
+      "desc": "Clear separation between content scripts and the background service worker, with resilient messaging and storage patterns you can maintain."
+    },
+    {
+      "title": "Automation with guardrails",
+      "desc": "Page automation on targets like LinkedIn, Gmail, and other web apps using DOM injection and robust selectors, with limits to avoid unsafe behavior."
+    },
+    {
+      "title": "Permission scope and privacy",
+      "desc": "Minimal host permissions, explicit data handling, and a privacy-first approach aligned with Chrome Web Store policies and real user expectations."
+    }
+  ],
+  "scope": {
+    "title": "What the build includes",
+    "bullets": [
+      "Requirements and flow mapping",
+      "Manifest V3 (MV3) setup",
+      "Content scripts and DOM injection",
+      "Background service worker logic",
+      "Storage API (local/sync) and quotas",
+      "Messaging (runtime/tabs) patterns",
+      "OAuth login (Google/Microsoft) if needed",
+      "Page automation rules per site (LinkedIn, Gmail, etc.)",
+      "Chrome Web Store packaging, listing, and submission",
+      "Permission scope review and privacy text"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "LinkedIn workflows",
+      "desc": "Assist repetitive steps, extract visible data, and guide outreach tasks while keeping automation rate limits under control."
+    },
+    {
+      "title": "Gmail productivity",
+      "desc": "Add contextual actions and shortcuts in Gmail with safe DOM hooks, user settings, and predictable state syncing."
+    },
+    {
+      "title": "Internal tools",
+      "desc": "Authenticate with OAuth, store per-user settings, and ship a browser tool your team can trust and support."
+    },
+    {
+      "title": "CRM and sales enablement",
+      "desc": "Add buttons and panels inside web CRMs to reduce clicks, standardize notes, and pull context from the current page."
+    },
+    {
+      "title": "Validation and QA helpers",
+      "desc": "Validate forms and page content on specific domains, with per-site rules, reports, and clear failure handling."
+    }
+  ],
+  "stack": {
+    "title": "Typical APIs and implementation options",
+    "options": [
+      {
+        "name": "Manifest V3",
+        "note": "Chrome/Edge MV3 structure with policy-friendly defaults and clear extension boundaries."
+      },
+      {
+        "name": "Content Scripts",
+        "note": "DOM injection and in-page automation with isolation, safe selectors, and site-specific fallbacks."
+      },
+      {
+        "name": "Service Worker",
+        "note": "Background service worker for events, coordination, alarms, and cross-tab orchestration."
+      },
+      {
+        "name": "Storage API",
+        "note": "Local/sync persistence with migration strategy, quota awareness, and consistent reads and writes."
+      },
+      {
+        "name": "Messaging",
+        "note": "Runtime and tabs messaging with request/response patterns, retries, and explicit error surfaces."
+      },
+      {
+        "name": "OAuth",
+        "note": "OAuth flows when required, with token handling designed to reduce exposure and keep permissions tight."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Technical brief",
+        "desc": "You share target sites, flows, and constraints; you get questions and a scoped plan."
+      },
+      {
+        "title": "Estimate and design",
+        "desc": "Define MV3 permissions, storage, messaging, and OAuth needs to estimate timeline and cost."
+      },
+      {
+        "title": "Build and publish",
+        "desc": "Implement, test, package, and support Chrome Web Store publishing, including review feedback fixes."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What drives chrome extension cost in practice?",
+      "a": "Cost is mainly driven by scope: target sites, depth of automation, required permissions, OAuth needs, data volume in storage, and how much store review support you want."
+    },
+    {
+      "q": "Do you build with Manifest V3 (MV3)?",
+      "a": "Yes. The architecture is MV3-first: content scripts for the page, a background service worker for coordination, and messaging between contexts with explicit error handling."
+    },
+    {
+      "q": "How do you decide permission scope?",
+      "a": "You start from least privilege. Each feature is mapped to specific host permissions and APIs, avoiding broad access that increases review risk and privacy concerns."
+    },
+    {
+      "q": "Can the extension automate sites like LinkedIn or Gmail?",
+      "a": "Yes, when it is allowed for your use case. Automation uses content scripts, DOM injection, and guarded flows with rate limits and clear stop conditions."
+    },
+    {
+      "q": "Will you handle Chrome Web Store publishing?",
+      "a": "Yes. You get packaging, listing assets, submission support, and updates to permissions and privacy disclosures if reviewers request changes."
+    },
+    {
+      "q": "Does it also work on Edge and Firefox?",
+      "a": "Edge typically follows Chrome closely. Firefox support depends on API compatibility and policy differences, so you get a portability assessment and an adaptation plan when needed."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a clear estimate with scope, permissions, and timelines",
+    "desc": "Tell me the target pages, whether you need OAuth, and what the automation should do. You get a scoped plan and a quote you can act on.",
+    "button": "Get my estimate"
+  }
+}

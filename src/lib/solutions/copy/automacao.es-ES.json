@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Presupuesto de automatización de procesos y RPA",
+    "description": "Recibe un presupuesto claro de automatización: integraciones ERP/CRM/hojas/APIs, workflows n8n/Make/Zapier, Python y Apps Script, dashboards y ROI en horas."
+  },
+  "hero": {
+    "h1": "presupuesto automatización para tus procesos (RPA)",
+    "subtitle": "Automatiza ERP, CRM, hojas y APIs con workflows monitorizados y ROI medido en horas ahorradas.",
+    "cta": "Pide tu presupuesto"
+  },
+  "pain": {
+    "title": "Automatización que te quita fricción diaria",
+    "bullets": [
+      "¿Alguna vez has terminado el día copiando datos entre tu ERP, tu CRM y hojas de cálculo?",
+      "¿Alguna vez has perseguido aprobaciones y tareas repetitivas sin saber qué está bloqueado ni por qué?",
+      "¿Alguna vez se rompió una integración por un cambio de API, un límite de tasa o un cron mal configurado?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Integraciones de verdad",
+      "desc": "Conecta ERP, CRM, hojas y APIs con reglas claras, validaciones, logs y manejo de errores paso a paso."
+    },
+    {
+      "title": "Visibilidad y control",
+      "desc": "Dashboards y alertas te muestran qué se ejecutó, qué falló y qué requiere acción, sin suposiciones."
+    },
+    {
+      "title": "ROI en horas",
+      "desc": "Medimos el esfuerzo manual actual, registramos horas ahorradas tras el go-live y reportamos ROI por workflow."
+    }
+  ],
+  "scope": {
+    "title": "Qué incluye tu presupuesto de automatización",
+    "bullets": [
+      "Mapeo del proceso y baseline",
+      "Reglas, triggers y validaciones",
+      "Integraciones ERP/CRM/hojas/APIs",
+      "Workflows en n8n/Make/Zapier",
+      "Scripts Python para lógica compleja",
+      "Google Apps Script para Workspace",
+      "Webhooks para eventos en tiempo real",
+      "Colas y jobs por cron",
+      "Dashboards, logs y alertas",
+      "Medición de ROI en horas"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Sincronización de clientes",
+      "desc": "Alinea contactos, empresas y oportunidades entre CRM, ERP y hojas con validación y deduplicación."
+    },
+    {
+      "title": "Pedidos y facturación",
+      "desc": "Actualiza estados de pedidos, facturas y cobros mediante APIs y webhooks cuando ocurren eventos."
+    },
+    {
+      "title": "Conciliaciones programadas",
+      "desc": "Ejecuta revisiones diarias o semanales con cron y colas, con reintentos y reprocesos controlados."
+    },
+    {
+      "title": "Reportes automáticos",
+      "desc": "Genera reportes en Sheets y métricas en dashboards desde datos consolidados, reduciendo errores manuales."
+    },
+    {
+      "title": "Aprobaciones con SLA",
+      "desc": "Orquesta aprobaciones con notificaciones, plazos y trazabilidad para acelerar decisiones sin perder control."
+    }
+  ],
+  "stack": {
+    "title": "Herramientas que podemos usar en tu entorno",
+    "options": [
+      {
+        "name": "n8n",
+        "note": "Workflows autoalojados o gestionados con conectores, webhooks, scheduling y reintentos seguros."
+      },
+      {
+        "name": "Make",
+        "note": "Escenarios visuales para integrar apps rápido, con ramas, filtros y control de errores por paso."
+      },
+      {
+        "name": "Zapier",
+        "note": "Automatizaciones por eventos para ventas y operaciones, ideal para triggers y acciones sencillas."
+      },
+      {
+        "name": "Python",
+        "note": "Servicios y scripts para reglas avanzadas, orquestación de APIs, colas y tareas programadas."
+      },
+      {
+        "name": "Google Apps Script",
+        "note": "Automatización de Google Workspace (Sheets, Drive, Gmail) con permisos controlados y logging."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Entender",
+        "desc": "Compartes el proceso y los sistemas, y definimos entradas, salidas, reglas y métricas de éxito."
+      },
+      {
+        "title": "Automatizar",
+        "desc": "Construimos workflows, scripts e integraciones con webhooks, colas/cron, logs y reintentos."
+      },
+      {
+        "title": "Medir",
+        "desc": "Te llevas dashboards y alertas, más ROI en horas ahorradas para escalar lo que funciona."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Cómo calculáis un presupuesto de automatización?",
+      "a": "Definimos pasos del proceso, sistemas, volúmenes de datos, reglas y requisitos de fiabilidad; con eso estimamos esfuerzo, plazos y costes operativos."
+    },
+    {
+      "q": "¿En cuánto tiempo puede estar lista la automatización?",
+      "a": "Workflows simples pueden estar listos en días; integraciones con varios sistemas, validaciones, monitorización y reintentos suelen requerir semanas."
+    },
+    {
+      "q": "¿Podéis integrar mi ERP, CRM, hojas y APIs externas?",
+      "a": "Sí. Usamos conectores nativos cuando conviene y, si hace falta, APIs, webhooks, Python o Apps Script para cubrir reglas y formatos de datos."
+    },
+    {
+      "q": "¿Qué pasa si hay fallos, límites de tasa o reprocesos?",
+      "a": "Añadimos manejo de errores por paso, logs y alertas, backoff ante rate limits, colas para picos y revisiones programadas por cron."
+    },
+    {
+      "q": "¿Cómo sé que el ROI es real y no una estimación?",
+      "a": "Tomamos un baseline del tiempo manual actual, medimos horas ahorradas tras el lanzamiento y reportamos ROI por proceso y por mes."
+    },
+    {
+      "q": "¿Necesitas acceso total a mis sistemas para automatizar?",
+      "a": "No. Trabajamos con permisos mínimos (API keys o cuentas de servicio) y validamos entornos y accesos antes de pasar a producción."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Recibe tu presupuesto y un plan de ROI en horas",
+    "desc": "Cuéntame tu proceso y tus sistemas, y te devuelvo un alcance claro con plazos, monitorización y métricas de éxito.",
+    "button": "Solicitar presupuesto"
+  }
+}

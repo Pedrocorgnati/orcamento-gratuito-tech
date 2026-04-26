@@ -101,6 +101,9 @@ model Session {
   status                 String   @default("active") // SessionStatus
   current_question_id    String?
   project_type           String? // ProjectType
+  project_types          String[] @default([])
+  pending_blocks         String[] @default([])
+  current_block          String?
   path_taken             Json     @default("[]")
   accumulated_price      Float    @default(0)
   accumulated_time       Float    @default(0)
@@ -110,9 +113,19 @@ model Session {
   locale                 String   @default("pt-BR") // Locale
   currency               String   @default("BRL") // Currency
   intermediate_email     String?
+  resume_email_scheduled_for DateTime?
+  resume_email_sent_at       DateTime?
   visitor_ip             String?
   user_agent             String?
   expires_at             DateTime
+
+  // CL-250: UTM + referrer (first-touch attribution)
+  utm_source             String?
+  utm_medium             String?
+  utm_campaign           String?
+  utm_term               String?
+  utm_content            String?
+  referrer               String?
 
   currentQuestion Question? @relation("CurrentQuestion", fields: [current_question_id], references: [id])
   answers         Answer[]
@@ -124,6 +137,7 @@ model Session {
   @@index([status])
   @@index([expires_at])
   @@index([status, expires_at])
+  @@index([resume_email_scheduled_for, resume_email_sent_at])
   @@map("sessions")
 }
 
@@ -182,14 +196,37 @@ model Lead {
   honeypot_triggered  Boolean   @default(false)  // SEC-010
   is_suspicious       Boolean   @default(false)  // INT-103: detecção de respostas suspeitas
   suspicious_pattern  String?                    // 'TOO_FAST' | 'TOO_UNIFORM' | 'BUDGET_MISMATCH'
-  email_status        String    @default("PENDING") // EmailStatus
+  email_status        String    @default("PENDING") // EmailStatus (PENDING|SENT|FAILED|DEAD_LETTER)
   email_retry_count   Int       @default(0)
   email_sent_at       DateTime?
+  last_failure_reason String?
+  dead_letter_at      DateTime?
   anonymized_at       DateTime?
 
   // INT-024: placeholder para feedback de acurácia (V2)
   // null = não avaliado, true = estimativa precisa, false = estimativa imprecisa
   accuracy_feedback   Boolean?
+
+  // CL-281: snapshot da versão de pesos/preços usada no cálculo
+  pricing_version     String?
+
+  // CL-113: whatsapp dedicado, separado de phone
+  whatsapp            String?
+
+  // CL-232: unsubscribe token + flag (GDPR/CAN-SPAM)
+  unsubscribe_token   String    @unique @default(cuid())
+  unsubscribed_at     DateTime?
+
+  // CL-250: UTM + referrer attribution (herdado da Session no create)
+  utm_source          String?
+  utm_medium          String?
+  utm_campaign        String?
+  utm_term            String?
+  utm_content         String?
+  referrer            String?
+
+  // CL-245: versao da Politica de Privacidade aceita no consent
+  consent_policy_version String?
 
   session Session @relation(fields: [session_id], references: [id])
 
@@ -201,12 +238,53 @@ model Lead {
   @@index([created_at])
   @@index([email_status])
   @@index([anonymized_at])
+  @@index([email])
   @@map("leads")
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Config & Exchange Rates
 // ─────────────────────────────────────────────────────────────────────────────
+
+// TASK-6: telemetria server-side de fluxo (abandono/retomada/alertas)
+model FlowEvent {
+  id          String   @id @default(cuid())
+  session_id  String
+  event_type  String
+  block       String?
+  question_id String?
+  meta        Json?
+  created_at  DateTime @default(now())
+
+  @@index([event_type, created_at])
+  @@index([session_id])
+  @@index([block])
+  @@map("flow_events")
+}
+
+model ConsistencyAlertLog {
+  id         String   @id @default(cuid())
+  session_id String
+  alert_type String
+  context    Json?
+  created_at DateTime @default(now())
+
+  @@index([alert_type, created_at])
+  @@map("consistency_alert_logs")
+}
+
+// TASK-7: solicitações de direito de exclusão (LGPD/GDPR)
+model ErasureRequest {
+  id           String    @id @default(cuid())
+  email        String
+  token        String    @unique
+  verified_at  DateTime?
+  processed_at DateTime?
+  created_at   DateTime  @default(now())
+
+  @@index([email])
+  @@map("erasure_requests")
+}
 
 model ExchangeRate {
   id            String @id @default(cuid())
@@ -230,6 +308,9 @@ model PricingConfig {
   complexity_multiplier_medium    Float  @default(1.3)
   complexity_multiplier_high      Float  @default(1.7)
   complexity_multiplier_very_high Float  @default(2.2)
+
+  // CL-281: versão semântica dos pesos (bumpar a cada recalibração)
+  version                         String @default("v1")
 
   updated_at DateTime @updatedAt
 

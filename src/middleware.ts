@@ -93,7 +93,8 @@ export async function middleware(request: NextRequest) {
       )
     }
 
-    // Refresh sessao Supabase em API routes de admin
+    // Refresh sessao Supabase + guard ADMIN_EMAIL em API routes de admin
+    // (defesa em profundidade — route handlers ainda chamam requireAdmin())
     if (pathname.startsWith('/api/v1/admin')) {
       let response = NextResponse.next({ request })
 
@@ -118,7 +119,20 @@ export async function middleware(request: NextRequest) {
         }
       )
 
-      await supabase.auth.getUser()
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      const adminEmail = process.env.ADMIN_EMAIL
+      if (
+        user &&
+        adminEmail &&
+        user.email?.toLowerCase() !== adminEmail.toLowerCase()
+      ) {
+        return NextResponse.json(
+          { error: { code: 'AUTH_002', message: 'Acesso negado.' } },
+          { status: 403 }
+        )
+      }
       return response
     }
 
@@ -174,12 +188,31 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 4. Injeta locale detectado no header para fallback extra
+  // 4. Entry-point /pt-BR/flow → cria sessao via bootstrap handler
+  //    next-intl faz meta-refresh em page.tsx redirect; 307 pelo middleware é determinístico
+  const flowEntryMatch = pathname.match(/^\/([a-z]{2}-[A-Z]{2})\/flow\/?$/)
+  if (flowEntryMatch) {
+    const url = new URL(
+      `/api/v1/flow/bootstrap?locale=${flowEntryMatch[1]}`,
+      request.url
+    )
+    // Forward `preselect` deep-link (numeric 1..11) vindo de landings de solução.
+    const rawPreselect = request.nextUrl.searchParams.get('preselect')
+    if (rawPreselect) {
+      const n = Number.parseInt(rawPreselect, 10)
+      if (Number.isInteger(n) && n >= 1 && n <= 11) {
+        url.searchParams.set('preselect', String(n))
+      }
+    }
+    return NextResponse.redirect(url, 307)
+  }
+
+  // 5. Injeta locale detectado no header para fallback extra
   const detectedLocale = detectLocale(request)
   const requestHeaders = new Headers(request.headers)
   requestHeaders.set('x-detected-locale', detectedLocale)
 
-  // 5. next-intl middleware para deteccao e redirecionamento de locale
+  // 6. next-intl middleware para deteccao e redirecionamento de locale
   return handleI18n(request)
 }
 

@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Presupuesto aplicación iOS: desarrollo para iPhone a medida",
+    "description": "Pide tu presupuesto aplicación iOS con alcance claro, plazos realistas y entrega lista para App Store Connect, TestFlight y publicación. Habla con un equipo experto."
+  },
+  "hero": {
+    "h1": "Presupuesto aplicación iOS para tu app de iPhone, con alcance y entrega listos para publicar",
+    "subtitle": "Estimación clara, diseño según HIG y desarrollo iOS con pruebas en TestFlight.",
+    "cta": "Solicitar presupuesto"
+  },
+  "pain": {
+    "title": "¿Te suena esto?",
+    "bullets": [
+      "¿Alguna vez te han dado un precio sin explicar qué incluye, ni criterios de aceptación?",
+      "¿Alguna vez has llegado tarde a publicar por problemas con App Store Connect y revisiones?",
+      "¿Alguna vez te prometieron notificaciones y login, pero falló APNs o Sign in with Apple?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "Presupuesto con detalle",
+      "desc": "Te entregamos una estimación desglosada por funcionalidades, pantallas y riesgos, para que sepas qué pagas y por qué, sin letras pequeñas."
+    },
+    {
+      "title": "Calidad iOS real",
+      "desc": "Diseñamos siguiendo las Human Interface Guidelines (HIG) y validamos comportamiento en iPhone con TestFlight, para evitar sorpresas antes de publicar."
+    },
+    {
+      "title": "Listo para App Store",
+      "desc": "Preparamos la entrega pensando en App Store Connect: compilación, firma, In-App Purchases (si aplica), privacidad y flujo de revisión con documentación."
+    }
+  ],
+  "scope": {
+    "title": "Qué suele incluir el desarrollo",
+    "bullets": [
+      "Arquitectura y planificación del producto iOS",
+      "Diseño de pantallas alineado con HIG",
+      "Desarrollo nativo con Swift y SwiftUI",
+      "Alternativas con Flutter o React Native",
+      "Integración APNs para notificaciones push",
+      "Inicio de sesión con Sign in with Apple",
+      "Compras integradas con In-App Purchases",
+      "Analítica, eventos y medición de conversiones",
+      "Pruebas internas y beta con TestFlight",
+      "Publicación y gestión en App Store Connect"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "MVP para validar",
+      "desc": "Construimos un MVP iOS con lo esencial, métricas y feedback vía TestFlight para iterar rápido."
+    },
+    {
+      "title": "App existente",
+      "desc": "Mejoramos una app de iPhone: rendimiento, UX según HIG, bugs y nuevas funcionalidades."
+    },
+    {
+      "title": "Producto con pagos",
+      "desc": "Implementamos In-App Purchases, suscripciones y restauración de compras con reglas claras."
+    },
+    {
+      "title": "Notificaciones y engagement",
+      "desc": "Configuramos APNs, permisos, deep links y mensajes segmentados para reactivar usuarios."
+    },
+    {
+      "title": "Login seguro",
+      "desc": "Añadimos Sign in with Apple y otros proveedores, con sesiones, revocación y cumplimiento de políticas."
+    }
+  ],
+  "stack": {
+    "title": "Stack iOS según tu caso",
+    "options": [
+      {
+        "name": "Swift",
+        "note": "Base sólida para apps iPhone con control total y buen rendimiento."
+      },
+      {
+        "name": "SwiftUI",
+        "note": "UI moderna para iterar rápido en pantallas, estados y accesibilidad."
+      },
+      {
+        "name": "Flutter",
+        "note": "Útil si necesitas multiplataforma, manteniendo integración nativa donde haga falta."
+      },
+      {
+        "name": "React Native",
+        "note": "Buena opción si ya tienes equipo JS y un roadmap multiplataforma definido."
+      },
+      {
+        "name": "APNs + backend",
+        "note": "Notificaciones push con tokens, entornos, logs y pruebas reales en dispositivos."
+      },
+      {
+        "name": "App Store Connect",
+        "note": "Gestión de builds, testers, metadatos, revisiones y publicación con checklist."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "1) Llamada breve",
+        "desc": "Entendemos tu objetivo, usuarios, pantallas clave y requisitos iOS (login, pagos, push)."
+      },
+      {
+        "title": "2) Alcance y estimación",
+        "desc": "Definimos entregables, priorización y una estimación por fases, con hitos y riesgos."
+      },
+      {
+        "title": "3) Construcción y publicación",
+        "desc": "Desarrollamos, probamos en TestFlight y dejamos todo listo para App Store Connect."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Qué necesito para pedir el presupuesto?",
+      "a": "Con un resumen de la idea, ejemplos de apps similares y una lista de pantallas o flujos ya podemos empezar. Si no lo tienes, lo definimos contigo en la primera llamada."
+    },
+    {
+      "q": "¿Publicáis la app en App Store Connect?",
+      "a": "Sí. Te guiamos con certificados, perfiles, builds, metadatos y el proceso de revisión. Si prefieres, lo hacemos juntos para que tu equipo quede autosuficiente."
+    },
+    {
+      "q": "¿Cómo se prueban los cambios antes de salir a producción?",
+      "a": "Usamos TestFlight para beta interna y externa, con checklist de escenarios, control de versiones y feedback de testers para reducir riesgos."
+    },
+    {
+      "q": "¿Podéis implementar Sign in with Apple y notificaciones APNs?",
+      "a": "Sí. Integramos Sign in with Apple siguiendo requisitos de Apple y configuramos APNs (entornos, tokens y logs) para push confiables."
+    },
+    {
+      "q": "¿Incluye In-App Purchases y suscripciones?",
+      "a": "Si tu modelo lo requiere, definimos productos, flujos de compra, restauración y validación. También preparamos la configuración en App Store Connect y pruebas completas."
+    },
+    {
+      "q": "¿Nativo o Flutter/React Native: qué conviene?",
+      "a": "Depende de tu roadmap y de la complejidad iOS. Te recomendamos Swift/SwiftUI si buscas experiencia iPhone muy cuidada; Flutter o React Native si necesitas multiplataforma con un único equipo."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Hablemos de tu app iPhone y cerremos un alcance claro",
+    "desc": "Cuéntanos tu idea y te devolvemos un presupuesto aplicación iOS con fases, plazos y entregables.",
+    "button": "Pedir presupuesto"
+  }
+}

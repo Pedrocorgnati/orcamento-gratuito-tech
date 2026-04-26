@@ -14,6 +14,8 @@ import {
 } from '@/lib/enums'
 import { env } from '@/lib/env'
 import { logger } from '@/lib/logger'
+import { alertOwnerEmailFailure } from '@/lib/notifications/alertOwnerEmailFailure'
+import { findRecurringLeads } from '@/services/lead.service'
 import type { EstimationResult } from '@/lib/types'
 import type { Lead } from '@prisma/client'
 
@@ -60,6 +62,23 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
   const visitorSubject =
     VISITOR_SUBJECTS[lead.locale] ?? VISITOR_SUBJECTS['pt_BR']
 
+  // CL-286: calcular recorrencia (inclui o lead atual). Falha silenciosa — nunca
+  // bloquear envio se a query falhar (defaults = 1 / [])
+  let recurrenceCount = 1
+  let previousSubmissions: Date[] = []
+  try {
+    const recurring = await findRecurringLeads(lead.email)
+    recurrenceCount = recurring.length
+    previousSubmissions = recurring
+      .filter((r) => r.id !== lead.id)
+      .map((r) => r.created_at)
+  } catch (err) {
+    logger.warn('recurrence_lookup_failed', {
+      leadId: lead.id,
+      err: err instanceof Error ? err.message : String(err),
+    })
+  }
+
   let ownerRetryCount = 0
   let visitorRetryCount = 0
 
@@ -81,8 +100,10 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
         from: RESEND_FROM_EMAIL,
         to: [ADMIN_EMAIL],
         replyTo: ADMIN_EMAIL,
-        subject: `🎯 Novo Lead: ${lead.name} — Score ${lead.score_total} (${lead.score})`,
-        react: renderOwnerEmail({ lead, estimation }),
+        subject: `🎯 Novo Lead${recurrenceCount >= 2 ? ` [RECORRENTE ${recurrenceCount}x]` : ''}: ${lead.name} — Score ${lead.score_total} (${lead.score})`,
+        react: renderOwnerEmail({ lead, estimation, recurrenceCount, previousSubmissions }),
+        // CL-288: text fallback mínimo para clientes que não renderizam HTML
+        text: `Novo Lead: ${lead.name} (${lead.email})\nScore: ${lead.score_total}/100 (${lead.score})\nProject: ${estimation.project_type}\nRange: ${estimation.price_range_formatted}`,
       })
     }, RETRY_OPTIONS)
   }
@@ -98,6 +119,8 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
         replyTo: ADMIN_EMAIL,
         subject: visitorSubject,
         react: renderVisitorEmail({ lead, estimation }),
+        // CL-288: text fallback
+        text: `Olá ${lead.name},\nSua faixa estimada: ${estimation.price_range_formatted} em ${estimation.days_range_formatted}.\nObrigado por usar o Budget Free Engine.`,
       })
     }, RETRY_OPTIONS)
   }
@@ -111,15 +134,52 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
   const allSucceeded =
     ownerResult.status === 'fulfilled' && visitorResult.status === 'fulfilled'
 
+  // CL-290: se todas as 3 tentativas falharam, transicionar para DEAD_LETTER
+  const ownerExhausted =
+    ownerResult.status === 'rejected' && ownerResult.reason instanceof RetryExhaustedError
+  const visitorExhausted =
+    visitorResult.status === 'rejected' && visitorResult.reason instanceof RetryExhaustedError
+  const isDeadLetter = ownerExhausted || visitorExhausted
+
+  const failureReason = !allSucceeded
+    ? [
+        ownerResult.status === 'rejected' ? ownerResult.reason : null,
+        visitorResult.status === 'rejected' ? visitorResult.reason : null,
+      ]
+        .filter(Boolean)
+        .map((e: unknown) =>
+          e instanceof RetryExhaustedError
+            ? `RetryExhausted(${e.attempts})`
+            : e instanceof Error
+              ? e.message
+              : String(e)
+        )
+        .join(' | ')
+    : null
+
   // Atualizar status final no banco
   await prisma.lead.update({
     where: { id: lead.id },
     data: {
-      email_status: allSucceeded ? EmailStatus.SENT : EmailStatus.FAILED,
+      email_status: allSucceeded
+        ? EmailStatus.SENT
+        : isDeadLetter
+          ? EmailStatus.DEAD_LETTER
+          : EmailStatus.FAILED,
       email_retry_count: Math.max(ownerRetryCount, visitorRetryCount),
       email_sent_at: allSucceeded ? new Date() : undefined,
+      last_failure_reason: failureReason,
+      dead_letter_at: isDeadLetter ? new Date() : undefined,
     },
   })
+
+  // CL-290: dispara alerta proativo apenas em DEAD_LETTER (idempotente: so se transicionou agora)
+  if (isDeadLetter) {
+    await alertOwnerEmailFailure({
+      leadId: lead.id,
+      reason: failureReason ?? 'unknown',
+    })
+  }
 
   // Log sem PII (SEC-008) — apenas leadId, nunca email/phone
   logger.info('email_send_complete', {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { reportError } from "@/lib/errors";
 
 interface GlobalErrorProps {
   error: Error & { digest?: string };
@@ -9,9 +10,8 @@ interface GlobalErrorProps {
 
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   useEffect(() => {
-    // Fallback de logging sem dependências externas
     console.error("[GlobalError]", error.message, error.digest);
-    // TODO (F11): window.Sentry?.captureException(error);
+    reportError(error, { digest: error.digest, source: "global-error" });
   }, [error]);
 
   return (

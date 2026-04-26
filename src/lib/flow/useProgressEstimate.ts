@@ -1,20 +1,12 @@
 'use client'
 import { useMemo } from 'react'
-
-// Estimativa de perguntas por tipo de projeto (baseado na árvore de decisão)
-// Valores calculados a partir dos paths definidos no motor de decisão
-const ESTIMATED_QUESTIONS_BY_TYPE: Record<string, number> = {
-  WEBSITE: 12,
-  ECOMMERCE: 16,
-  WEB_APP: 15,
-  MOBILE_APP: 18,
-  AUTOMATION_AI: 14,
-  default: 15, // fallback — alinhado com ESTIMATED_TOTAL_QUESTIONS do backend
-}
+import type { ProjectType } from '@/lib/enums'
+import { estimateQuestionCountForProjectTypes } from '@/lib/project-config'
 
 interface UseProgressEstimateOptions {
   /** Tipo do projeto determinado pelo motor de decisão */
   projectType?: string | null
+  projectTypes?: string[]
   /** Quantidade de perguntas já respondidas (questions_answered no schema) */
   questionsAnswered: number
   /** Percentual de progresso vindo do banco (0-100) */
@@ -35,14 +27,19 @@ interface ProgressEstimate {
  */
 export function useProgressEstimate({
   projectType,
+  projectTypes,
   questionsAnswered,
   sessionProgress,
 }: UseProgressEstimateOptions): ProgressEstimate {
   return useMemo(() => {
-    const typeKey = projectType ?? 'default'
-    const estimatedTotal =
-      ESTIMATED_QUESTIONS_BY_TYPE[typeKey] ??
-      ESTIMATED_QUESTIONS_BY_TYPE['default']
+    const normalizedProjectTypes =
+      projectTypes && projectTypes.length > 0
+        ? projectTypes
+        : projectType
+          ? [projectType]
+          : []
+
+    const estimatedTotal = estimateQuestionCountForProjectTypes(normalizedProjectTypes as ProjectType[])
 
     // Preferir sessionProgress do banco quando disponível e válido
     const progressPercent =
@@ -51,5 +48,5 @@ export function useProgressEstimate({
         : Math.min(99, Math.round((questionsAnswered / estimatedTotal) * 100))
 
     return { estimatedTotal, progressPercent }
-  }, [projectType, questionsAnswered, sessionProgress])
+  }, [projectType, projectTypes, questionsAnswered, sessionProgress])
 }

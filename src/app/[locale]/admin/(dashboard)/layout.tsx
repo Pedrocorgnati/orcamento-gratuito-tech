@@ -31,9 +31,9 @@ export default async function AdminDashboardLayout({
 
   return (
     <NextIntlClientProvider locale="pt-BR" messages={ptBRMessages}>
-      <div className="min-h-screen bg-(--color-surface) flex flex-col">
+      <div data-testid="admin-dashboard-layout" className="min-h-screen bg-(--color-surface) flex flex-col">
         <AdminHeader userEmail={session.user.email ?? undefined} />
-        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main data-testid="admin-dashboard-main" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {children}
         </main>
       </div>

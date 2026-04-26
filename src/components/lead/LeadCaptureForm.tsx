@@ -31,6 +31,7 @@ const FORM_LABELS: Record<string, {
   name: string
   email: string
   phone: string
+  whatsapp: string
   company: string
   optional: string
   submitting: string
@@ -43,6 +44,7 @@ const FORM_LABELS: Record<string, {
     name: 'Nome',
     email: 'Email',
     phone: 'Telefone',
+    whatsapp: 'WhatsApp',
     company: 'Empresa',
     optional: '(opcional)',
     submitting: 'Enviando...',
@@ -55,6 +57,7 @@ const FORM_LABELS: Record<string, {
     name: 'Name',
     email: 'Email',
     phone: 'Phone',
+    whatsapp: 'WhatsApp',
     company: 'Company',
     optional: '(optional)',
     submitting: 'Submitting...',
@@ -67,6 +70,7 @@ const FORM_LABELS: Record<string, {
     name: 'Nombre',
     email: 'Email',
     phone: 'Teléfono',
+    whatsapp: 'WhatsApp',
     company: 'Empresa',
     optional: '(opcional)',
     submitting: 'Enviando...',
@@ -79,6 +83,7 @@ const FORM_LABELS: Record<string, {
     name: 'Nome',
     email: 'Email',
     phone: 'Telefono',
+    whatsapp: 'WhatsApp',
     company: 'Azienda',
     optional: '(opzionale)',
     submitting: 'Invio in corso...',
@@ -124,8 +129,9 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
     const formData = new FormData()
     formData.append('name',              data.name)
     formData.append('email',             data.email)
-    if (data.phone)   formData.append('phone',   data.phone ?? '')
-    if (data.company) formData.append('company', data.company ?? '')
+    if (data.phone)    formData.append('phone',    data.phone ?? '')
+    if (data.whatsapp) formData.append('whatsapp', data.whatsapp ?? '')
+    if (data.company)  formData.append('company',  data.company ?? '')
     formData.append('sessionId',         data.sessionId)
     formData.append('consentGiven',      String(data.consentGiven))
     formData.append('consentVersion',    data.consentVersion)
@@ -154,17 +160,19 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
+      data-testid="form-lead"
       className="bg-(--color-background) rounded-2xl shadow-(--shadow-md) p-6 md:p-8 space-y-5"
       aria-label={labels.ariaLabel}
     >
       {/* Campo: Nome (obrigatório) */}
-      <div>
+      <div data-testid="form-lead-name-field">
         <Label htmlFor="name">
           {labels.name} <span aria-hidden="true" className="text-(--color-danger)">*</span>
         </Label>
         <Input
           id="name"
           type="text"
+          data-testid="form-lead-name-input"
           autoComplete="name"
           aria-required="true"
           aria-invalid={!!errors.name}
@@ -173,20 +181,21 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
           className="mt-1"
         />
         {errors.name && (
-          <p id="name-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
+          <p id="name-error" data-testid="form-lead-name-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
             {errors.name.message}
           </p>
         )}
       </div>
 
       {/* Campo: Email (obrigatório) */}
-      <div>
+      <div data-testid="form-lead-email-field">
         <Label htmlFor="email">
           {labels.email} <span aria-hidden="true" className="text-(--color-danger)">*</span>
         </Label>
         <Input
           id="email"
           type="email"
+          data-testid="form-lead-email-input"
           autoComplete="email"
           aria-required="true"
           aria-invalid={!!errors.email}
@@ -195,20 +204,21 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
           className="mt-1"
         />
         {errors.email && (
-          <p id="email-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
+          <p id="email-error" data-testid="form-lead-email-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
             {errors.email.message}
           </p>
         )}
       </div>
 
       {/* Campo: Telefone (opcional) */}
-      <div>
+      <div data-testid="form-lead-phone-field">
         <Label htmlFor="phone">
           {labels.phone} <span className="text-(--color-text-muted) text-sm font-normal">{labels.optional}</span>
         </Label>
         <Input
           id="phone"
           type="tel"
+          data-testid="form-lead-phone-input"
           autoComplete="tel"
           aria-required="false"
           aria-invalid={!!errors.phone}
@@ -218,20 +228,45 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
           placeholder={labels.phonePlaceholder}
         />
         {errors.phone && (
-          <p id="phone-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
+          <p id="phone-error" data-testid="form-lead-phone-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
             {errors.phone.message}
           </p>
         )}
       </div>
 
+      {/* Campo: WhatsApp (opcional) — CL-113 dedicado */}
+      <div data-testid="form-lead-whatsapp-field">
+        <Label htmlFor="whatsapp">
+          {labels.whatsapp} <span className="text-(--color-text-muted) text-sm font-normal">{labels.optional}</span>
+        </Label>
+        <Input
+          id="whatsapp"
+          type="tel"
+          data-testid="form-lead-whatsapp-input"
+          autoComplete="tel"
+          aria-required="false"
+          aria-invalid={!!errors.whatsapp}
+          aria-describedby={errors.whatsapp ? 'whatsapp-error' : undefined}
+          {...register('whatsapp')}
+          className="mt-1"
+          placeholder={labels.phonePlaceholder}
+        />
+        {errors.whatsapp && (
+          <p id="whatsapp-error" data-testid="form-lead-whatsapp-error" className="mt-1 text-sm text-(--color-danger)" role="alert">
+            {errors.whatsapp.message}
+          </p>
+        )}
+      </div>
+
       {/* Campo: Empresa (opcional) */}
-      <div>
+      <div data-testid="form-lead-company-field">
         <Label htmlFor="company">
           {labels.company} <span className="text-(--color-text-muted) text-sm font-normal">{labels.optional}</span>
         </Label>
         <Input
           id="company"
           type="text"
+          data-testid="form-lead-company-input"
           autoComplete="organization"
           aria-required="false"
           {...register('company')}
@@ -252,7 +287,7 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
 
       {/* Erro de servidor */}
       {serverError && (
-        <p className="text-sm text-(--color-danger) bg-red-50 rounded-lg p-3" role="alert">
+        <p data-testid="form-lead-server-error" className="text-sm text-(--color-danger) bg-red-50 rounded-lg p-3" role="alert">
           {serverError}
         </p>
       )}
@@ -260,6 +295,7 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
       {/* Botão submit — disabled até consent_given=true (INT-090) */}
       <Button
         type="submit"
+        data-testid="form-lead-submit-button"
         disabled={!consentGiven || formState === 'submitting'}
         aria-busy={formState === 'submitting'}
         className="w-full"

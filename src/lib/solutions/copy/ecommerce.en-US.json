@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Ecommerce Development Cost: Custom Store Estimate",
+    "description": "Understand ecommerce development cost for a custom Shopify alternative with Stripe/PayPal, tax, shipping, inventory, ERP sync, coupons, and Core Web Vitals-focused SEO."
+  },
+  "hero": {
+    "h1": "ecommerce development cost: estimate your custom online store",
+    "subtitle": "Plan catalog, checkout, tax, and shipping, then launch a fast, SEO-ready store.",
+    "cta": "Get a cost estimate"
+  },
+  "pain": {
+    "title": "Why online stores run over budget",
+    "bullets": [
+      "Have you ever launched a store, then discovered taxes, shipping rules, and refunds were never fully defined",
+      "Have you ever added Stripe or PayPal, only to get stuck on webhooks, fraud checks, and failed payment edge cases",
+      "Have you ever outgrown your admin panel and inventory process, then paid again to retrofit ERP sync and reporting"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "A clearer cost breakdown",
+      "desc": "You get an estimate tied to scope: catalog size, checkout flows, coupons, shipping logic, taxes, and integrations."
+    },
+    {
+      "title": "Revenue-ready checkout",
+      "desc": "You ship a payment flow with Stripe and PayPal, webhook handling, refunds, and order status you can trust."
+    },
+    {
+      "title": "SEO and performance built-in",
+      "desc": "You launch with technical SEO basics and Core Web Vitals priorities so pages load fast and rank better."
+    }
+  ],
+  "scope": {
+    "title": "What’s included in ecommerce development",
+    "bullets": [
+      "Product catalog, variants, and collections",
+      "Cart and checkout with Stripe and PayPal",
+      "Tax rules, invoices, and refund handling",
+      "Shipping rates, zones, and tracking emails",
+      "Inventory management and low-stock alerts",
+      "Coupons, discounts, and promotions engine",
+      "Admin panel for products, orders, and customers",
+      "ERP integration option for sync and reporting",
+      "SEO setup, structured data, and Core Web Vitals"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Shopify alternative",
+      "desc": "You need a custom store without platform limits, with full ownership of features and data."
+    },
+    {
+      "title": "Headless ecommerce",
+      "desc": "You want a flexible frontend with a robust backend and APIs for catalog, cart, and orders."
+    },
+    {
+      "title": "B2B ordering",
+      "desc": "You support price lists, customer groups, purchase orders, and admin-approved workflows."
+    },
+    {
+      "title": "Subscription or bundles",
+      "desc": "You sell recurring products or bundles with clear pricing, renewals, and order history."
+    },
+    {
+      "title": "ERP-first ops",
+      "desc": "You need inventory, orders, and customers to sync with your ERP to reduce manual work."
+    }
+  ],
+  "stack": {
+    "title": "Build options for your online store",
+    "options": [
+      {
+        "name": "Custom storefront",
+        "note": "A tailored experience with full control over SEO, performance, and conversion flows."
+      },
+      {
+        "name": "Headless CMS",
+        "note": "Manage content and landing pages while keeping ecommerce logic in a dedicated backend."
+      },
+      {
+        "name": "Stripe + PayPal",
+        "note": "Payment methods with webhook-driven order states, refunds, and fraud-aware handling."
+      },
+      {
+        "name": "ERP integration",
+        "note": "Sync products, stock, pricing, and orders with your operational system when needed."
+      },
+      {
+        "name": "Admin panel",
+        "note": "Operate catalog, inventory, coupons, and fulfillment with role-based access and audit trails."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Define scope",
+        "desc": "You share catalog needs, integrations, and rules for tax, shipping, and discounts."
+      },
+      {
+        "title": "Estimate and plan",
+        "desc": "You receive milestones, deliverables, and a cost range based on the agreed scope."
+      },
+      {
+        "title": "Build and launch",
+        "desc": "You get a tested store with an admin panel, analytics hooks, and a deployment checklist."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "What affects ecommerce development cost the most?",
+      "a": "Scope and complexity: catalog rules, shipping and tax logic, payment edge cases, coupons, admin workflows, and external integrations like an ERP."
+    },
+    {
+      "q": "Can you support Stripe and PayPal together?",
+      "a": "Yes. We can offer both, including webhook handling for payment confirmation, refunds, dispute flows, and consistent order status updates."
+    },
+    {
+      "q": "Do you handle taxes and shipping configuration?",
+      "a": "Yes. We implement the rules you need for regions, rates, carriers, and checkout messaging, and document how your team updates them in the admin panel."
+    },
+    {
+      "q": "Will my store be SEO-ready from day one?",
+      "a": "Yes. We cover technical SEO foundations like clean URLs, metadata, sitemaps, structured data where relevant, and Core Web Vitals priorities."
+    },
+    {
+      "q": "Is headless ecommerce right for my business?",
+      "a": "Headless can help when you need a custom frontend or multiple channels. If your needs are simpler, a conventional architecture can be faster to ship and cheaper to maintain."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Get a realistic ecommerce cost estimate",
+    "desc": "Share your catalog, payment, tax, and shipping needs and get a clear scope and budget.",
+    "button": "Request an estimate"
+  }
+}

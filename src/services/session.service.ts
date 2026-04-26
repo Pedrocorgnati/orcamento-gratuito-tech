@@ -30,6 +30,9 @@ export type SessionGetResult = {
   currency: string
   current_question_id: string | null
   project_type: string | null
+  project_types: string[]
+  pending_blocks: string[]
+  current_block: string | null
   path_taken: string[]
   accumulated_price: number
   accumulated_time: number
@@ -91,6 +94,7 @@ function resolveTranslation<T extends { locale: string }>(
 function _mapSessionToResult(session: {
   id: string; status: string; locale: string; currency: string
   current_question_id: string | null; project_type: string | null
+  project_types: string[]; pending_blocks: string[]; current_block: string | null
   path_taken: unknown; accumulated_price: number; accumulated_time: number
   accumulated_complexity: number; questions_answered: number
   progress_percentage: number; expires_at: Date; created_at: Date; updated_at: Date
@@ -102,6 +106,9 @@ function _mapSessionToResult(session: {
     currency: session.currency,
     current_question_id: session.current_question_id,
     project_type: session.project_type,
+    project_types: session.project_types ?? [],
+    pending_blocks: session.pending_blocks ?? [],
+    current_block: session.current_block,
     path_taken: (session.path_taken as string[]) ?? [],
     accumulated_price: session.accumulated_price,
     accumulated_time: session.accumulated_time,
@@ -142,7 +149,18 @@ export class SessionService {
    */
   async create(
     input: SessionCreateInput,
-    meta?: { ip?: string; userAgent?: string }
+    meta?: {
+      ip?: string
+      userAgent?: string
+      attribution?: {
+        utmSource?: string | null
+        utmMedium?: string | null
+        utmCampaign?: string | null
+        utmTerm?: string | null
+        utmContent?: string | null
+        referrer?: string | null
+      }
+    }
   ): Promise<SessionCreateResult> {
     const enumLocale = toEnumLocale(input.locale)
     const currency =
@@ -166,6 +184,12 @@ export class SessionService {
         expires_at: expiresAt,
         visitor_ip: meta?.ip ?? input.visitorIp ?? null,
         user_agent: meta?.userAgent ?? input.userAgent ?? null,
+        utm_source: meta?.attribution?.utmSource ?? null,
+        utm_medium: meta?.attribution?.utmMedium ?? null,
+        utm_campaign: meta?.attribution?.utmCampaign ?? null,
+        utm_term: meta?.attribution?.utmTerm ?? null,
+        utm_content: meta?.attribution?.utmContent ?? null,
+        referrer: meta?.attribution?.referrer ?? null,
       },
     })
 

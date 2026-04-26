@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Preventivo sito aziendale | Sito istituzionale su misura",
+    "description": "Richiedi un preventivo per il tuo sito aziendale: struttura chiara, SEO on-page, Core Web Vitals (LCP), multilingua, GDPR e integrazioni GA4/GTM, CRM e WhatsApp."
+  },
+  "hero": {
+    "h1": "Preventivo sito aziendale: il tuo sito istituzionale che converte",
+    "subtitle": "Un sito corporate veloce, accessibile e pronto per marketing e vendite, senza frizioni.",
+    "cta": "Richiedi il tuo preventivo"
+  },
+  "pain": {
+    "title": "Quando il sito aziendale non aiuta davvero",
+    "bullets": [
+      "Ti è mai capitato di avere visite, ma poche richieste dal form contatti?",
+      "Ti è mai capitato che il sito sia lento e penalizzato su Core Web Vitals, soprattutto LCP?",
+      "Ti è mai capitato di dover aggiornare contenuti e lingue, ma il CMS rende tutto macchinoso?"
+    ]
+  },
+  "benefits": [
+    {
+      "title": "SEO on-page solida",
+      "desc": "Architettura informativa, tag e contenuti progettati per presidiare le query corporate e generare contatti qualificati."
+    },
+    {
+      "title": "Performance misurabili",
+      "desc": "Ottimizziamo LCP e le metriche dei Core Web Vitals con immagini, font e rendering curati, per un’esperienza fluida."
+    },
+    {
+      "title": "Gestione contenuti snella",
+      "desc": "CMS headless con workflow chiari: aggiorni pagine, sezioni e traduzioni senza dipendere ogni volta dallo sviluppo."
+    }
+  ],
+  "scope": {
+    "title": "Cosa include un sito istituzionale corporate",
+    "bullets": [
+      "Analisi obiettivi e messaggi",
+      "Struttura pagine e IA",
+      "SEO on-page e schema",
+      "Ottimizzazione LCP e CWV",
+      "CMS headless e contenuti",
+      "Sito multilingua e hreflang",
+      "Form contatti con CRM",
+      "GA4 e GTM configurati",
+      "GDPR e cookie consent",
+      "Accessibilità WCAG base"
+    ]
+  },
+  "useCases": [
+    {
+      "title": "Azienda B2B",
+      "desc": "Presentazione autorevole, pagine servizi e form che alimenta il CRM per follow-up e pipeline commerciale."
+    },
+    {
+      "title": "Corporate multilingua",
+      "desc": "Gestione lingue con hreflang, contenuti coerenti e percorsi utente chiari per mercati diversi."
+    },
+    {
+      "title": "Gruppo con brand",
+      "desc": "Sezioni per business unit, governance dei contenuti e template riutilizzabili per crescere senza caos."
+    },
+    {
+      "title": "Recruiting e employer",
+      "desc": "Pagine carriera, integrazione tracciamenti e performance ottimizzate per ridurre abbandoni e aumentare candidature."
+    },
+    {
+      "title": "Lancio di una sede",
+      "desc": "Sezioni local, CTA mirate e analytics puliti per misurare lead, chiamate e richieste di contatto."
+    }
+  ],
+  "stack": {
+    "title": "Opzioni tecniche, scelte con criterio",
+    "options": [
+      {
+        "name": "CMS headless",
+        "note": "Contenuti modulari, revisioni e ruoli; pronto per multilingua e aggiornamenti rapidi."
+      },
+      {
+        "name": "Core Web Vitals",
+        "note": "Focus su LCP, immagini e font; controllo continuo con misurazioni reali e best practice."
+      },
+      {
+        "name": "Analytics",
+        "note": "GA4 e GTM impostati in modo pulito, eventi essenziali e tracciamento conversioni senza rumore."
+      },
+      {
+        "name": "CRM & Lead",
+        "note": "Form contatti integrato al CRM con campi, consenso e routing, per non perdere opportunità."
+      },
+      {
+        "name": "Compliance",
+        "note": "GDPR, cookie banner e gestione consensi; attenzione a privacy, log e data retention."
+      },
+      {
+        "name": "Accessibilità",
+        "note": "Fondamentali WCAG: contrasto, focus, semantica e form utilizzabili anche con tastiera e screen reader."
+      }
+    ]
+  },
+  "howItWorks": {
+    "steps": [
+      {
+        "title": "Brief e struttura",
+        "desc": "Definiamo obiettivi, sitemap e contenuti chiave, così il sito parla chiaro a clienti e stakeholder."
+      },
+      {
+        "title": "Design e build",
+        "desc": "Costruiamo pagine e componenti con performance e SEO in testa, integrando CMS, tracking e form."
+      },
+      {
+        "title": "Go-live e misure",
+        "desc": "Pubblicazione, verifiche su CWV, QA e tracciamenti; poi ottimizzazioni in base ai dati."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Quanto costa un sito istituzionale aziendale?",
+      "a": "Dipende da numero di pagine, lingue, integrazioni (CRM, GA4/GTM) e livello di contenuti. Ti preparo un preventivo chiaro con voci e tempi, senza sorprese."
+    },
+    {
+      "q": "Il preventivo include SEO e performance Core Web Vitals?",
+      "a": "Sì: lavoriamo su SEO on-page (struttura, metadati, schema) e su performance con focus su LCP e metriche CWV, così il sito è rapido e misurabile."
+    },
+    {
+      "q": "Posso gestire i contenuti in autonomia dal CMS?",
+      "a": "Sì: configuriamo un CMS headless con moduli e campi chiari. Puoi aggiornare sezioni, immagini e testi, e gestire la multilingua senza blocchi operativi."
+    },
+    {
+      "q": "Come funziona l’integrazione del form contatti con CRM?",
+      "a": "Mappiamo i campi e i consensi, poi inviamo i lead al CRM con regole di routing e notifiche. In questo modo vendite e marketing ricevono contatti completi e tracciabili."
+    },
+    {
+      "q": "Cosa fate per GDPR, cookie e tracciamenti?",
+      "a": "Impostiamo cookie banner e gestione consensi, configurando GA4 e GTM in modo conforme. Dove serve, differenziamo eventi e script in base al consenso."
+    },
+    {
+      "q": "Il sito sarà accessibile secondo WCAG?",
+      "a": "Progettiamo con basi WCAG: semantica, contrasto, navigazione da tastiera, focus e form leggibili. Se ti serve un livello più stringente, lo includiamo a scopo e budget."
+    }
+  ],
+  "ctaFinal": {
+    "title": "Parliamo del tuo sito aziendale e del preventivo",
+    "desc": "Dimmi obiettivi, lingue e integrazioni richieste: ti rispondo con una proposta concreta, tempi e priorità.",
+    "button": "Richiedi un preventivo"
+  }
+}
