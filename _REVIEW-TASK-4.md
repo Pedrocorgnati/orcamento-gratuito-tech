@@ -201,4 +201,4 @@
 
 **Auditado por:** Claude Code  
 **Timestamp:** 2026-03-22 (automated review)  
-**Modelo:** Haiku 4.5
+**Modelo:** Sonnet 4.5

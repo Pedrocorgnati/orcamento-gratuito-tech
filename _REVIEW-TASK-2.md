@@ -1,7 +1,7 @@
 # TASK-2 Review Report: FlowLayout e Rotas /[locale]/flow
 
 **Data:** 2026-03-22  
-**Revisor:** Claude Code (Haiku)  
+**Revisor:** Claude Code (Sonnet)  
 **Task:** TASK-2 — FlowLayout e Rotas /[locale]/flow  
 **Módulo:** module-8-decision-engine-ui  
 **Status:** ✅ APROVADO COM RESSALVAS
