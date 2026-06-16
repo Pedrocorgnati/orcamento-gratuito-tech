@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { logger } from '@/lib/logger'
 import { SessionStatus } from '@/lib/enums'
+import { assertCronAuth } from '@/lib/security/cronAuth'
 
 /**
  * OPS-003: Cron job para limpeza de sessões expiradas.
@@ -17,26 +18,10 @@ import { SessionStatus } from '@/lib/enums'
  */
 export async function GET(request: NextRequest) {
   // ============================================================
-  // STEP 1: Validação de CRON_SECRET
+  // STEP 1: Validação de CRON_SECRET (tempo constante — P2-6)
   // ============================================================
-  const cronSecret = process.env.CRON_SECRET
-  if (!cronSecret) {
-    logger.error('cleanup_sessions_misconfigured', { detail: 'CRON_SECRET não configurado' })
-    return NextResponse.json(
-      { error: 'Server misconfiguration' },
-      { status: 500 }
-    )
-  }
-
-  const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${cronSecret}`) {
-    // Log sem revelar o segredo ou IP do chamador
-    logger.warn('cleanup_sessions_unauthorized', {})
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    )
-  }
+  const auth = assertCronAuth(request, 'cleanup_sessions')
+  if (!auth.ok) return auth.response
 
   const startTime = Date.now()
 

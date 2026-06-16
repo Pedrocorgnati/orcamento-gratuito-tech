@@ -45,7 +45,9 @@ const LOCALE_PREFIX_PATTERN = /^\/([a-z]{2}-[A-Z]{2})\//
 // Supabase session check for Edge Runtime
 // ---------------------------------------------------------------------------
 
-async function getSupabaseSession(request: NextRequest) {
+// P2-5: usa getUser() (revalida no servidor de auth) em vez de getSession()
+// (que só lê o cookie). Paridade com o guard das rotas /api/v1/admin.
+async function getSupabaseUser(request: NextRequest) {
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -60,9 +62,9 @@ async function getSupabaseSession(request: NextRequest) {
   )
 
   const {
-    data: { session },
-  } = await supabase.auth.getSession()
-  return session
+    data: { user },
+  } = await supabase.auth.getUser()
+  return user
 }
 
 // ---------------------------------------------------------------------------
@@ -167,11 +169,11 @@ export async function middleware(request: NextRequest) {
 
   // 3. Session guard para sub-rotas do admin (/xx-XX/admin/dashboard, etc.)
   if (ADMIN_SUBROUTE_PATTERN.test(pathname)) {
-    const session = await getSupabaseSession(request)
+    const user = await getSupabaseUser(request)
     const localeMatch = pathname.match(LOCALE_PREFIX_PATTERN)
     const locale = localeMatch?.[1] ?? routing.defaultLocale
 
-    if (!session) {
+    if (!user) {
       // Nao autenticado — redirecionar para pagina de login
       return NextResponse.redirect(new URL(`/${locale}/admin`, request.url))
     }
@@ -180,7 +182,7 @@ export async function middleware(request: NextRequest) {
     const adminEmail = process.env.ADMIN_EMAIL
     if (
       adminEmail &&
-      session.user?.email?.toLowerCase() !== adminEmail.toLowerCase()
+      user.email?.toLowerCase() !== adminEmail.toLowerCase()
     ) {
       const url = new URL(`/${locale}/admin`, request.url)
       url.searchParams.set('error', 'unauthorized')

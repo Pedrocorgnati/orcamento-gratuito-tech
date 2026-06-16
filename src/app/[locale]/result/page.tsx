@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, cache } from 'react'
 import { unstable_cache } from 'next/cache'
 import type { Metadata } from 'next'
 import { SkeletonLoader } from '@/components/ui/SkeletonLoader'
@@ -53,14 +53,18 @@ type ResultPageProps = {
 /**
  * Busca a estimativa da sessão via API interna.
  * Retorna null em qualquer erro (SESSION_080 / SYS_001 / VAL_001).
+ *
+ * O-1: `cache()` (React, por-request) deduplica a chamada entre generateMetadata
+ * e ResultContent na MESMA request, evitando recalcular a estimativa 2x por view.
+ * 503 (ESTIMATE_052) devolve payload útil com fallback BRL — não descartar.
  */
-async function fetchEstimation(sessionId: string): Promise<EstimationApiResult | null> {
-  // 503 (ESTIMATE_052) devolve payload útil com fallback BRL — não descartar.
-  return serverFetch<EstimationApiResult>(
-    `/api/v1/sessions/${sessionId}/estimate`,
-    { sessionId, acceptStatus: [503] }
-  )
-}
+const fetchEstimation = cache(
+  async (sessionId: string): Promise<EstimationApiResult | null> =>
+    serverFetch<EstimationApiResult>(
+      `/api/v1/sessions/${sessionId}/estimate`,
+      { sessionId, acceptStatus: [503] }
+    )
+)
 
 function normalizeEstimation(estimation: EstimationApiResult): EstimationResult {
   return {
@@ -216,10 +220,8 @@ export async function generateMetadata({ params }: ResultPageProps): Promise<Met
     const cookieStore = await cookies()
     const sessionId = cookieStore.get(COOKIE_NAMES.SESSION_ID)?.value
     if (sessionId) {
-      const estimation = await serverFetch<Partial<EstimationApiResult>>(
-        `/api/v1/sessions/${sessionId}/estimate`,
-        { sessionId, acceptStatus: [503] }
-      )
+      // O-1: reusa o fetch memoizado (mesma request) — não dispara 2ª estimativa.
+      const estimation = await fetchEstimation(sessionId)
       if (estimation) {
         const min = estimation?.price_min ?? 0
         const max = estimation?.price_max ?? 0

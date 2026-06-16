@@ -44,13 +44,20 @@ async function applyUnsubscribe(token: string): Promise<Outcome> {
     }
     const session = await prisma.session.findUnique({
       where: { id: token },
-      select: { id: true, intermediate_email: true },
+      select: { id: true, intermediate_email: true, resume_email_sent_at: true },
     })
     if (session) {
       if (!session.intermediate_email) return 'already'
       await prisma.session.update({
         where: { id: session.id },
-        data: { intermediate_email: null, resume_email_sent_at: new Date() },
+        // P2-8: preservar timestamp real de envio (paridade com a rota REST).
+        // Sobrescrever incondicionalmente corrompia o sinal de "quando o resume
+        // foi enviado". `?? new Date()` mantém idempotência (campo continua
+        // não-nulo para suprimir reenvio) sem destruir o valor existente.
+        data: {
+          intermediate_email: null,
+          resume_email_sent_at: session.resume_email_sent_at ?? new Date(),
+        },
       })
       return 'session'
     }

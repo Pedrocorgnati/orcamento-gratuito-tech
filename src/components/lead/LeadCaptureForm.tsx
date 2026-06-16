@@ -136,6 +136,7 @@ export function LeadCaptureForm({ sessionId, locale }: LeadCaptureFormProps) {
     formData.append('consentGiven',      String(data.consentGiven))
     formData.append('consentVersion',    data.consentVersion)
     formData.append('marketing_consent', String(data.marketing_consent))
+    if (data.policyVersion) formData.append('policyVersion', data.policyVersion)
     formData.append('locale',            locale)
     formData.append('_hp',               data._hp ?? '')
 

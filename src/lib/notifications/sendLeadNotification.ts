@@ -16,6 +16,7 @@ import { env } from '@/lib/env'
 import { logger } from '@/lib/logger'
 import { alertOwnerEmailFailure } from '@/lib/notifications/alertOwnerEmailFailure'
 import { findRecurringLeads } from '@/services/lead.service'
+import { formatCurrencyRange, formatDaysRange } from '@/lib/utils/format'
 import type { EstimationResult } from '@/lib/types'
 import type { Lead } from '@prisma/client'
 
@@ -103,7 +104,7 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
         subject: `🎯 Novo Lead${recurrenceCount >= 2 ? ` [RECORRENTE ${recurrenceCount}x]` : ''}: ${lead.name} — Score ${lead.score_total} (${lead.score})`,
         react: renderOwnerEmail({ lead, estimation, recurrenceCount, previousSubmissions }),
         // CL-288: text fallback mínimo para clientes que não renderizam HTML
-        text: `Novo Lead: ${lead.name} (${lead.email})\nScore: ${lead.score_total}/100 (${lead.score})\nProject: ${estimation.project_type}\nRange: ${estimation.price_range_formatted}`,
+        text: `Novo Lead: ${lead.name} (${lead.email})\nScore: ${lead.score_total}/100 (${lead.score})\nProject: ${estimation.projectType}\nRange: ${formatCurrencyRange(estimation.priceMin, estimation.priceMax, estimation.currency, estimation.locale)}`,
       })
     }, RETRY_OPTIONS)
   }
@@ -120,7 +121,7 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
         subject: visitorSubject,
         react: renderVisitorEmail({ lead, estimation }),
         // CL-288: text fallback
-        text: `Olá ${lead.name},\nSua faixa estimada: ${estimation.price_range_formatted} em ${estimation.days_range_formatted}.\nObrigado por usar o Budget Free Engine.`,
+        text: `Olá ${lead.name},\nSua faixa estimada: ${formatCurrencyRange(estimation.priceMin, estimation.priceMax, estimation.currency, estimation.locale)} em ${formatDaysRange(estimation.daysMin, estimation.daysMax, estimation.locale)}.\nObrigado por usar o Budget Free Engine.`,
       })
     }, RETRY_OPTIONS)
   }

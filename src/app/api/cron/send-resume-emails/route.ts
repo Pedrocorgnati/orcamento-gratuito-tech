@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { logger } from '@/lib/logger'
 import { SessionStatus } from '@/lib/enums'
 import { sendResumeEmail } from '@/lib/notifications/sendResumeEmail'
+import { assertCronAuth } from '@/lib/security/cronAuth'
 
 /**
  * CL-110 / CL-111 / CL-141 — Cron job hourly que envia emails de retomada.
@@ -25,22 +26,9 @@ import { sendResumeEmail } from '@/lib/notifications/sendResumeEmail'
 const BATCH_LIMIT = 100
 
 export async function GET(request: NextRequest) {
-  const cronSecret = process.env.CRON_SECRET
-  if (!cronSecret) {
-    logger.error('resume_emails_misconfigured', {
-      detail: 'CRON_SECRET nao configurado',
-    })
-    return NextResponse.json(
-      { error: 'Server misconfiguration' },
-      { status: 500 }
-    )
-  }
-
-  const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${cronSecret}`) {
-    logger.warn('resume_emails_unauthorized', {})
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  // Validação de CRON_SECRET (tempo constante — P2-6)
+  const auth = assertCronAuth(request, 'resume_emails')
+  if (!auth.ok) return auth.response
 
   const startTime = Date.now()
 

@@ -1,4 +1,5 @@
 import 'server-only'
+import { Prisma } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { logger } from '@/lib/logger'
 
@@ -21,13 +22,15 @@ const ALLOWED_META_KEYS = new Set([
   'recurrence_count',
 ])
 
-function sanitizeMeta(raw: Record<string, unknown> | undefined): Record<string, unknown> | null {
-  if (!raw) return null
-  const out: Record<string, unknown> = {}
+function sanitizeMeta(
+  raw: Record<string, unknown> | undefined
+): Prisma.InputJsonValue | undefined {
+  if (!raw) return undefined
+  const out: Record<string, Prisma.InputJsonValue> = {}
   for (const [k, v] of Object.entries(raw)) {
-    if (ALLOWED_META_KEYS.has(k)) out[k] = v
+    if (ALLOWED_META_KEYS.has(k)) out[k] = v as Prisma.InputJsonValue
   }
-  return Object.keys(out).length > 0 ? out : null
+  return Object.keys(out).length > 0 ? out : undefined
 }
 
 export interface RecordEventInput {

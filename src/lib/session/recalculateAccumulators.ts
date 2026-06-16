@@ -64,7 +64,12 @@ export async function recalculateAccumulators(
   const newAccumTime = scopedAnswers.reduce((sum, a) => sum + a.time_impact_snapshot, 0)
   const newAccumComplexity = scopedAnswers.reduce((sum, a) => sum + a.complexity_impact_snapshot, 0)
 
-  const isComplete = nextQuestionId === null && hasAnswers
+  // P2-4: completude derivada do estado real da sessão (>=1 resposta persistida),
+  // não de "esta submissão teve opções". Desacopla do tipo da pergunta terminal:
+  // um terminal TEXT_INPUT também conclui o fluxo quando não há próxima pergunta.
+  // `hasAnswers` é mantido por compat de assinatura mas não decide mais a conclusão.
+  void hasAnswers
+  const isComplete = nextQuestionId === null && newQuestionsAnswered > 0
   const estimatedTotalQuestions =
     session
       ? estimateQuestionCountForProjectTypes(

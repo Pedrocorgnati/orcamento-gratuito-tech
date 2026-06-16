@@ -67,6 +67,12 @@ export const sessionRateLimiter = new RateLimiter(50, 60_000)
 /** Rate limiter para captura de leads: 3 req/hora por IP (INT-096) */
 export const leadRateLimiter = new RateLimiter(3, 60 * 60_000)
 
+/** P1-4: solicitações de exclusão — 5 req/hora por IP (anti-spam/abuso) */
+export const erasureIpRateLimiter = new RateLimiter(5, 60 * 60_000)
+
+/** P1-4: throttle por e-mail — 1 solicitação a cada 15 min (anti e-mail bombing) */
+export const erasureEmailRateLimiter = new RateLimiter(1, 15 * 60_000)
+
 /**
  * Limpeza periódica para evitar crescimento ilimitado do store em memória.
  * Roda a cada 5 minutos; .unref?() não impede shutdown gracioso do Node.js.
@@ -76,5 +82,7 @@ if (typeof setInterval !== 'undefined') {
   setInterval(() => {
     sessionRateLimiter.cleanup()
     leadRateLimiter.cleanup()
+    erasureIpRateLimiter.cleanup()
+    erasureEmailRateLimiter.cleanup()
   }, 5 * 60_000).unref?.()
 }

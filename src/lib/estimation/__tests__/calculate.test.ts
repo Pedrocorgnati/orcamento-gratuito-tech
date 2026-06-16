@@ -164,4 +164,20 @@ describe('calculateEstimation()', () => {
     const result = calculateEstimation(buildInput({ accumulatedComplexity: 71 }))
     expect(result.complexity).toBe(ComplexityLevel.VERY_HIGH)
   })
+
+  // ── P2-2: scores fracionários nas fronteiras (antes caíam em VERY_HIGH) ────
+  it('score=30.5 → MEDIUM (fracionário, não cai no fallback)', () => {
+    const result = calculateEstimation(buildInput({ accumulatedComplexity: 30.5 }))
+    expect(result.complexity).toBe(ComplexityLevel.MEDIUM)
+  })
+
+  it('score=50.5 → HIGH (fracionário)', () => {
+    const result = calculateEstimation(buildInput({ accumulatedComplexity: 50.5 }))
+    expect(result.complexity).toBe(ComplexityLevel.HIGH)
+  })
+
+  it('score=70.5 → VERY_HIGH (fracionário)', () => {
+    const result = calculateEstimation(buildInput({ accumulatedComplexity: 70.5 }))
+    expect(result.complexity).toBe(ComplexityLevel.VERY_HIGH)
+  })
 })

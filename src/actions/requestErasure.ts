@@ -1,8 +1,10 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { z } from 'zod'
 import { prisma } from '@/lib/prisma'
 import { generateErasureToken } from '@/lib/security/erasure'
+import { erasureIpRateLimiter, erasureEmailRateLimiter } from '@/lib/rate-limiter'
 import { logger } from '@/lib/logger'
 import { Resend } from 'resend'
 
@@ -26,6 +28,26 @@ export async function requestErasure(formData: FormData): Promise<RequestErasure
   }
 
   const email = parsed.data.email.toLowerCase()
+
+  // P1-4: anti-spam / anti-enumeração. Limite por IP e throttle por e-mail.
+  // Resposta SEMPRE genérica ({ success: true }) quando bloqueado, para não
+  // revelar existência de conta nem permitir bombardeio de e-mails à vítima.
+  // Nota: limitador in-memory (best-effort em serverless — ver P1-6).
+  const headersList = await headers()
+  const ip =
+    headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    headersList.get('x-real-ip') ??
+    'unknown'
+
+  if (!erasureIpRateLimiter.check(`erasure-ip:${ip}`)) {
+    logger.warn('erasure_rate_limited_ip', {})
+    return { success: true }
+  }
+  if (!erasureEmailRateLimiter.check(`erasure-email:${email}`)) {
+    logger.info('erasure_rate_limited_email', {})
+    return { success: true }
+  }
+
   const token = generateErasureToken()
 
   await prisma.erasureRequest.create({

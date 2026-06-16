@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { logger } from '@/lib/logger'
+import { anonymizeLeads } from '@/lib/security/erasure'
+import { assertCronAuth } from '@/lib/security/cronAuth'
 
 /**
  * COMP-004: Cron job para anonimização de leads (LGPD/GDPR).
@@ -20,25 +22,10 @@ import { logger } from '@/lib/logger'
  */
 export async function GET(request: NextRequest) {
   // ============================================================
-  // STEP 1: Validação de CRON_SECRET
+  // STEP 1: Validação de CRON_SECRET (tempo constante — P2-6)
   // ============================================================
-  const cronSecret = process.env.CRON_SECRET
-  if (!cronSecret) {
-    logger.error('anonymize_leads_misconfigured', { detail: 'CRON_SECRET não configurado' })
-    return NextResponse.json(
-      { error: 'Server misconfiguration' },
-      { status: 500 }
-    )
-  }
-
-  const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${cronSecret}`) {
-    logger.warn('anonymize_leads_unauthorized', {})
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    )
-  }
+  const auth = assertCronAuth(request, 'anonymize_leads')
+  if (!auth.ok) return auth.response
 
   const startTime = Date.now()
 
@@ -65,38 +52,12 @@ export async function GET(request: NextRequest) {
     }
 
     // ============================================================
-    // STEP 3: Anonimizar em batches (evita timeout no Vercel/Neon)
-    // Batch de 100 por iteração — seguro para connection pool padrão
+    // STEP 3: Anonimização canônica (P1-2) — Lead + Session + respostas
+    // narrativas, em batches transacionais. Mesmo helper do erasure a pedido,
+    // evitando divergência de sentinela/escopo e vazamento de PII (whatsapp,
+    // visitor_ip, intermediate_email, texto livre).
     // ============================================================
-    const BATCH_SIZE = 100
-    let totalAnonymized = 0
-
-    while (true) {
-      const batch = await prisma.lead.findMany({
-        where: { created_at: { lt: retentionDate }, anonymized_at: null },
-        select: { id: true },
-        take: BATCH_SIZE,
-      })
-
-      if (batch.length === 0) break
-
-      const ids = batch.map((l) => l.id)
-      const batchResult = await prisma.lead.updateMany({
-        where: { id: { in: ids } },
-        data: {
-          name: '[Removido]',
-          email: 'anonimizado@example.com',
-          phone: null,
-          company: null,
-          scope_story: '[Removido]',
-          anonymized_at: new Date(),
-        },
-      })
-
-      totalAnonymized += batchResult.count
-
-      if (batch.length < BATCH_SIZE) break
-    }
+    const totalAnonymized = await anonymizeLeads({ created_at: { lt: retentionDate } })
 
     const duration = Date.now() - startTime
 

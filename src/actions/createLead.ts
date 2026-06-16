@@ -106,6 +106,7 @@ export async function createLead(formData: FormData): Promise<ActionResult> {
     consentVersion:    CONSENT_VERSION,
     _hp:               '',  // já verificado acima
     marketing_consent: formData.get('marketing_consent') === 'true',
+    policyVersion:     (formData.get('policyVersion') as string) || undefined,
     locale,
   }
 
@@ -117,7 +118,7 @@ export async function createLead(formData: FormData): Promise<ActionResult> {
     return { success: false, errors: parsed.error.flatten().fieldErrors }
   }
 
-  const { name, email, phone, company, sessionId, consentGiven, consentVersion, marketing_consent } =
+  const { name, email, phone, whatsapp, company, sessionId, consentGiven, consentVersion, marketing_consent, policyVersion } =
     parsed.data
 
   // ─── LEAD_051: Consentimento obrigatório ──────────────────────────────────
@@ -147,9 +148,12 @@ export async function createLead(formData: FormData): Promise<ActionResult> {
       name,
       email,
       phone,
+      whatsapp,
       company,
       consentGiven,
       consentVersion,
+      policyVersion,
+      marketing_consent,
       _hp: '',
     })
     shouldRedirectToThankYou = true

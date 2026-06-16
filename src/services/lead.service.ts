@@ -48,7 +48,7 @@ export async function findRecurringLeads(email: string, windowMonths = 12) {
 }
 
 export class LeadService {
-  async create(input: LeadSchemaInput): Promise<LeadCreateResult> {
+  async create(input: LeadSchemaInput & { marketing_consent?: boolean }): Promise<LeadCreateResult> {
     // 1. Verificar sessão
     const session = await prisma.session.findUnique({
       where: { id: input.sessionId },
@@ -164,6 +164,8 @@ export class LeadService {
         email_status: EmailStatus.PENDING,
         pricing_version: pricingVersion,
         whatsapp: input.whatsapp ?? null,
+        // INT-091: consentimento de marketing persistido (antes era sempre default false)
+        marketing_consent: input.marketing_consent ?? false,
         // CL-250: propagate first-touch attribution from Session to Lead
         utm_source: session.utm_source ?? null,
         utm_medium: session.utm_medium ?? null,

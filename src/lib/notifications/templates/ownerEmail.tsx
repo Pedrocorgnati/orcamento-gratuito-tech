@@ -20,11 +20,22 @@ import { formatCurrency } from '@/lib/utils/format'
 import { Locale, Currency, ComplexityLevel, LeadScore } from '@/lib/enums'
 import { computeEstimationConfidence } from '@/lib/scoring/estimationConfidence'
 
+// EstimationResult reconstruído a partir do Lead não carrega complexity_score
+// (só o enum `complexity`). Derivamos um proxy numérico representativo por banda
+// para o cálculo de confiança, evitando a penalidade espúria de complexityScore<10
+// que `?? 0` aplicava a TODO email.
+const COMPLEXITY_SCORE_PROXY: Record<ComplexityLevel, number> = {
+  [ComplexityLevel.LOW]: 15,
+  [ComplexityLevel.MEDIUM]: 40,
+  [ComplexityLevel.HIGH]: 60,
+  [ComplexityLevel.VERY_HIGH]: 80,
+}
+
 function computeConfidencePctForEmail(lead: Lead, estimation: EstimationResult): number {
   return computeEstimationConfidence({
     isSuspicious: Boolean(lead.is_suspicious),
     consistencyAlertsCount: 0,
-    complexityScore: estimation.complexity_score ?? 0,
+    complexityScore: COMPLEXITY_SCORE_PROXY[estimation.complexity] ?? 40,
     featuresCount: (estimation.features ?? []).length,
   }).percent
 }

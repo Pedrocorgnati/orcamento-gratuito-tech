@@ -76,12 +76,17 @@ export interface EstimationCalculated {
 export const PRICE_RANGE_FACTOR = { min: 0.85, max: 1.15 } as const
 export const DAYS_RANGE_FACTOR  = { min: 0.90, max: 1.10 } as const
 
-/** Thresholds de complexidade — INT-054 */
-const COMPLEXITY_THRESHOLDS: Array<[ComplexityLevel, number, number]> = [
-  [ComplexityLevel.LOW,       0,  30],
-  [ComplexityLevel.MEDIUM,   31,  50],
-  [ComplexityLevel.HIGH,     51,  70],
-  [ComplexityLevel.VERY_HIGH, 71, Infinity],
+/**
+ * Thresholds de complexidade — INT-054.
+ * P2-2: fronteiras CONTÍGUAS por limite superior. As faixas antigas
+ * ([0,30],[31,50],[51,70]) deixavam scores fracionários (30.5/50.5/70.5) sem
+ * faixa, caindo no fallback VERY_HIGH. A forma `score <= max` alinha com
+ * `_inferComplexityLevel` do estimation.service (o caminho de cálculo vivo).
+ */
+const COMPLEXITY_THRESHOLDS: Array<[ComplexityLevel, number]> = [
+  [ComplexityLevel.LOW,    30],
+  [ComplexityLevel.MEDIUM, 50],
+  [ComplexityLevel.HIGH,   70],
 ]
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -90,10 +95,10 @@ const COMPLEXITY_THRESHOLDS: Array<[ComplexityLevel, number, number]> = [
 
 /** Mapeia score numérico para ComplexityLevel enum (INV-002) */
 function scoreToComplexityLevel(score: number): ComplexityLevel {
-  for (const [level, min, max] of COMPLEXITY_THRESHOLDS) {
-    if (score >= min && score <= max) return level
+  for (const [level, max] of COMPLEXITY_THRESHOLDS) {
+    if (score <= max) return level
   }
-  return ComplexityLevel.VERY_HIGH // fallback seguro
+  return ComplexityLevel.VERY_HIGH // score > 70 (inclui fracionários)
 }
 
 /** Camada 1: Extrai preço e prazo base do PricingConfig */
@@ -160,7 +165,8 @@ export function calculateEstimation(input: CalculationInput): EstimationCalculat
     throw new Error(`INV-001: priceMin (${priceMin}) deve ser menor que priceMax (${priceMax})`)
   }
   if (daysMin >= daysMax) {
-    throw new Error(`INV-002: daysMin (${daysMin}) deve ser menor que daysMax (${daysMax})`)
+    // O-3: rótulo próprio (INV-002 já designa o enum de complexidade no header).
+    throw new Error(`INV-005: daysMin (${daysMin}) deve ser menor que daysMax (${daysMax})`)
   }
 
   return {
